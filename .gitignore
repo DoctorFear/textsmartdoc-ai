@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# FAISS index hoặc dữ liệu lưu tạm
+faiss_index/
+*.faiss
+
+
+
+# Model downloads / HuggingFace cache
+.cache/
+huggingface/
