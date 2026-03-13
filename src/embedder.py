@@ -7,8 +7,3 @@ embedder = HuggingFaceEmbeddings(
     encode_kwargs={'normalize_embeddings': True}
 )
 
-# Test
-if __name__ == "__main__":
-    vec = embedder.embed_query("Thử embedding tiếng Việt và English")
-    print(len(vec))       # số chiều
-    print(vec[:10])       # in 10 giá trị đầu để xem vector
