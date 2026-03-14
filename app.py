@@ -60,32 +60,30 @@ with st.sidebar:
         st.rerun()
 
     # Instructions section
-    st.subheader("Hướng dẫn sử dụng")
-    st.markdown("""
-    1. Tải lên file PDF ở phần chính giữa  
-    2. Chờ xử lý xong (thấy thông báo xanh)  
-    3. Đặt câu hỏi bằng tiếng Việt hoặc tiếng Anh  
-    4. Hệ thống chỉ trả lời dựa trên nội dung tài liệu
-    """)
-
-    # Settings information
-    st.subheader("Thiết lập & Tùy chọn")
-    st.markdown("""
-    - Chunk size: 1200  
-    - Chunk overlap: 200  
-    - Số đoạn lấy lại: 4  
-    - Temperature: 0.7  
-    """)
+    with st.expander("Hướng dẫn sử dụng"):
+        st.markdown("""
+        1. Tải lên file PDF ở phần chính giữa  
+        2. Chờ xử lý xong (thấy thông báo xanh)  
+        3. Đặt câu hỏi bằng tiếng Việt hoặc tiếng Anh  
+        4. Hệ thống chỉ trả lời dựa trên nội dung tài liệu
+        5. **Lưu ý**: Tùy chỉnh Chunk size, Chunk overlap trước khi upload tài liệu
+        """)
 
     # Model configuration display
-    st.subheader("Cấu hình mô hình")
-    st.markdown(f"""
-    • **Embedding**: paraphrase-multilingual-mpnet-base-v2  
-    • **LLM**: Qwen2.5 7B (Ollama)  
-    • **Retriever**: FAISS – top 4 chunks  
-    • **Temperature**: 0.7  
-    • **Ngày chạy**: {datetime.now().strftime('%d/%m/%Y %H:%M')}
-    """)
+    with st.expander("Cấu hình mô hình"):
+        st.markdown(f"""
+        • **Embedding**: paraphrase-multilingual-mpnet-base-v2  
+        • **LLM**: Qwen2.5 7B (Ollama)  
+        • **Retriever**: FAISS – top 4 chunks  
+        • **Temperature**: 0.7  
+        • **Ngày chạy**: {datetime.now().strftime('%d/%m/%Y %H:%M')}
+        """)
+        
+    # Cho phép người dùng chỉnh chunk_size, chunk_overlap, k
+    with st.expander("Thiết lập & Tùy chọn"):
+        chunk_size = st.number_input("Chunk size", min_value=200, max_value=2000, value=1200, step=100)
+        chunk_overlap = st.number_input("Chunk overlap", min_value=0, max_value=500, value=200, step=50)
+        top_k = st.number_input("Số đoạn lấy lại (k)", min_value=1, max_value=10, value=3, step=1)
 
 
 # ── Main Area ────────────────────────────────────────────────────────────────
@@ -131,7 +129,7 @@ if uploaded_file is not None:
                     tmp_path = tmp.name
                 # Load + split + embed + create FAISS
                 # Gọi load_and_split để chia nhỏ văn bản thành các đoạn (chunk).
-                chunks = load_and_split(tmp_path, chunk_size=1200, chunk_overlap=200) ######### CHỈNH TẠI ĐÂY
+                chunks = load_and_split(tmp_path, chunk_size=chunk_size, chunk_overlap=chunk_overlap) ######### CHỈNH TẠI ĐÂY
                 if not chunks:
                     raise ValueError("Không trích xuất được nội dung từ PDF (có thể là PDF scan hoặc rỗng).")
 
@@ -161,7 +159,7 @@ if prompt:
                     # Retrieve & Tạo retriever từ FAISS index.
                     retriever = st.session_state.vectorstore.as_retriever(
                         search_type="similarity",
-                        search_kwargs={"k": 4} ######### CHỈNH TẠI ĐÂY
+                        search_kwargs={"k": top_k} ######### CHỈNH TẠI ĐÂY
                     )
                     retrieved_docs = retriever.invoke(prompt)
 
