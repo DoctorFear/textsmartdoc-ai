@@ -1,0 +1,212 @@
+:root {
+    --primary: #007BFF;
+    --accent: #FFC107;
+    --dark: #2C2F33;
+    --light: #F8F9FA;
+}
+
+/* Nền ứng dụng */
+.stApp {
+    background-color: var(--light);
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: var(--dark);
+    color: white;
+}
+
+/* Nút bấm chung */
+.stButton > button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    transition: 0.3s;
+}
+.stButton > button:hover {
+    background-color: var(--accent);
+    color: black;
+    transform: scale(1.01);
+}
+
+/* Tiêu đề */
+h1, h2, h3 {
+    color: var(--dark);
+}
+
+/* Tin nhắn chat */
+.stChatMessage.user {
+    background-color: #E3F2FD;
+}
+.stChatMessage.assistant {
+    background-color: #FFF3E0;
+}
+
+/* Nút Browse files */
+button[kind="secondary"][data-testid="stBaseButton-secondary"] {
+    background-color: #28a745 !important; /* xanh lá */
+    color: white !important;
+    border-radius: 6px !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    transition: 0.3s;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
+    background-color: #218838 !important; /* xanh lá đậm */
+    color: #fff !important;
+    transform: scale(1.05);
+}
+
+/* Nút Remove file */
+button[kind="minimal"][data-testid="stBaseButton-minimal"] {
+    background-color: #dc3545 !important; /* đỏ */
+    color: white !important;
+    border-radius: 6px !important;
+    border: none !important;
+    padding: 4px 8px !important;
+    transition: 0.3s;
+    margin-left: 8px;
+}
+
+/* Hiệu ứng hover */
+button[kind="minimal"][data-testid="stBaseButton-minimal"]:hover {
+    background-color: #c82333 !important; /* đỏ đậm */
+    color: #fff !important;
+    transform: scale(1.05);
+}
+
+/* Đổi màu tên file */
+div[data-testid="stFileUploaderFileName"] {
+    color: #ffffff !important; /* xanh dương */
+    font-weight: bold;
+}
+
+/* Đổi màu dung lượng file */
+small.st-emotion-cache-1rpn56r {
+    color: #FF5722 !important; /* cam */
+    font-style: italic;
+}
+
+.st-emotion-cache-1l4firl {
+    display: flex;
+    -webkit-box-align: baseline;
+    align-items: baseline;
+    flex: 1 1 0%;
+    padding-left: 5px;
+    overflow: hidden;
+}
+
+.st-emotion-cache-1h1td79 h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    padding: 1rem 0px;
+    text-align: center;
+}
+
+.st-emotion-cache-1cl4umz {
+  background-color: #ff4d4f; /* màu nền đỏ */
+  color: white;              /* chữ trắng */
+  border-radius: 8px;        /* bo góc */
+  padding: 10px 16px;        /* khoảng cách trong */
+  font-weight: bold;
+  cursor: pointer;
+}
+.st-emotion-cache-1cl4umz:hover {
+  background-color: #d9363e; /* màu khi hover */
+}
+
+/* Ẩn label mặc định của file uploader khi dùng inline */
+div[data-testid="stFileUploader"] label {
+    display: none;
+}
+
+/* Căn chỉnh file uploader ngang với chat input */
+div[data-testid="stFileUploader"] {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+div[data-testid="stFileUploader"] section {
+    padding: 4px 8px !important;
+    min-height: unset !important;
+    border-radius: 8px !important;
+}
+
+.st-emotion-cache-i0nc7r {
+    display: none;
+}
+
+.st-emotion-cache-36dndz .ewslnz90 {
+    display: flex;
+    height: 3.5rem;
+    gap: 0.5rem;
+}
+
+.st-emotion-cache-36dndz .ewslnz90 {
+    display: flex;
+    width: 8rem;
+    height: 3.5rem;
+    gap: 0.5rem;
+}
+
+.st-emotion-cache-ukvpxj {
+    width: auto;
+    flex: none;
+}
+
+.st-emotion-cache-fis6aj ewslnz97 {
+    display: none;
+}
+
+.st-emotion-cache-1permvm {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 0.5rem 4.5rem 0.5rem 33rem;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.st-emotion-cache-18kf3ut:nth-last-of-type(3) {
+    margin-top: -1rem;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .st-emotion-cache-1permvm {
+        flex-direction: column; /* xếp dọc khi màn hình hẹp */
+        padding: 0.25rem;
+    }
+}
+
+.st-emotion-cache-6mn6c9 {
+    background-color: rgb(240, 242, 246);
+    border: 1px solid transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    flex: 1 1 0%;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+.st-emotion-cache-36dndz .ewslnz97 {
+    display: none;
+}
+
+.st-emotion-cache-1tvzk6f {
+    display: none;
+}

@@ -9,12 +9,16 @@ from src.vectorstore import create_vectorstore
 from src.rag_chain import llm, PROMPT, format_docs, rag_chain
 from streamlit_js_eval import streamlit_js_eval
 import time
-    
+
+
+# ── Load CSS từ file riêng ───────────────────────────────────────────────────
+def load_css(file_path: str):
+    with open(file_path, "r", encoding="utf-8") as f:
+        css = f.read()
+    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+
+
 # ── Theme & Color Palette ────────────────────────────────────────────────────
-PRIMARY = "#007BFF"
-ACCENT = "#FFC107"
-DARK = "#2C2F33"
-LIGHT = "#F8F9FA"
 TEXT_SIDEBAR = "#FFFFFF"     # Màu chữ trắng cho sidebar
 
 st.set_page_config( # Cấu hình giao diện
@@ -24,216 +28,8 @@ st.set_page_config( # Cấu hình giao diện
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
-st.markdown(f"""
-<style>
-:root {{
-    --primary: {PRIMARY};
-    --accent: {ACCENT};
-    --dark: {DARK};
-    --light: {LIGHT};
-}}
-/* Nền ứng dụng */
-.stApp {{
-    background-color: var(--light);
-}}
-/* Sidebar */
-section[data-testid="stSidebar"] {{
-    background-color: var(--dark);
-    color: white;
-}}
-/* Nút bấm chung */
-.stButton > button {{
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 6px !important;
-    border: none !important;
-    padding: 6px 12px !important;
-    transition: 0.3s;
-}}
-.stButton > button:hover {{
-    background-color: {ACCENT};
-    color: black;
-    transform: scale(1.01);
-}}
-/* Tiêu đề */
-h1, h2, h3 {{
-    color: var(--dark);
-}}
-/* Tin nhắn chat */
-.stChatMessage.user {{
-    background-color: #E3F2FD;
-}}
-.stChatMessage.assistant {{
-    background-color: #FFF3E0;
-}}
-/* Nút Browse files */
-button[kind="secondary"][data-testid="stBaseButton-secondary"] {{
-    background-color: #28a745 !important; /* xanh lá */
-    color: white !important;
-    border-radius: 6px !important;
-    border: none !important;
-    padding: 6px 12px !important;
-    transition: 0.3s;
-    margin-top: 4px;
-    margin-left: 4px;
-}}
-button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {{
-    background-color: #218838 !important; /* xanh lá đậm */
-    color: #fff !important;
-    transform: scale(1.05);
-}}
-/* Nút Remove file */
-button[kind="minimal"][data-testid="stBaseButton-minimal"] {{
-    background-color: #dc3545 !important; /* đỏ */
-    color: white !important;
-    border-radius: 6px !important;
-    border: none !important;
-    padding: 4px 8px !important;
-    transition: 0.3s;
-    margin-left: 8px;
-}}
-/* Hiệu ứng hover */
-button[kind="minimal"][data-testid="stBaseButton-minimal"]:hover {{
-    background-color: #c82333 !important; /* đỏ đậm */
-    color: #fff !important;
-    transform: scale(1.05);
-}}
-/* Đổi màu tên file */
-div[data-testid="stFileUploaderFileName"] {{
-    color: #ffffff !important; /* xanh dương */
-    font-weight: bold;
-}}
-/* Đổi màu dung lượng file */
-small.st-emotion-cache-1rpn56r {{
-    color: #FF5722 !important; /* cam */
-    font-style: italic;
-}}
-.st-emotion-cache-1l4firl {{
-    display: flex;
-    -webkit-box-align: baseline;
-    align-items: baseline;
-    flex: 1 1 0%;
-    padding-left: 5px;
-    overflow: hidden;
-}}
-.st-emotion-cache-1h1td79 h2{{
-    font-size: 2.25rem;
-    font-weight: 800;
-    padding: 1rem 0px;
-    text-align: center;
-}}
-.st-emotion-cache-1cl4umz {{
-  background-color: #ff4d4f; /* màu nền đỏ */
-  color: white;              /* chữ trắng */
-  border-radius: 8px;        /* bo góc */
-  padding: 10px 16px;        /* khoảng cách trong */
-  font-weight: bold;
-  cursor: pointer;
-}}
-.st-emotion-cache-1cl4umz:hover {{
-  background-color: #d9363e; /* màu khi hover */
-}}
-/* Ẩn label mặc định của file uploader khi dùng inline */
-div[data-testid="stFileUploader"] label {{
-    display: none;
-}}
-/* Căn chỉnh file uploader ngang với chat input */
-div[data-testid="stFileUploader"] {{
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}}
-div[data-testid="stFileUploader"] section {{
-    padding: 4px 8px !important;
-    min-height: unset !important;
-    border-radius: 8px !important;
-}}
-
-.st-emotion-cache-i0nc7r {{
-    display: none;
-}}
-.st-emotion-cache-36dndz .ewslnz90 {{
-    display: flex;
-    height: 3.5rem;
-    gap: 0.5rem;
-}}
-.st-emotion-cache-36dndz .ewslnz90 {{
-    display: flex;
-    width: 8rem;
-    height: 3.5rem;
-    gap: 0.5rem;
-}}
-.st-emotion-cache-ukvpxj {{
-    width: auto;
-    flex: none;
-}}
-
-.st-emotion-cache-fis6aj ewslnz97 {{
-    display: none;
-}}
-
-
-
-.st-emotion-cache-1permvm {{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 0.5rem 4.5rem 0.5rem 33rem;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
-}}
-
-.st-emotion-cache-18kf3ut:nth-last-of-type(3) {{
-    margin-top: -1rem;
-}}
-
-
-
-/* Responsive cho màn hình nhỏ */
-@media (max-width: 768px) {{
-    .st-emotion-cache-1permvm {{
-        flex-direction: column; /* xếp dọc khi màn hình hẹp */
-        padding: 0.25rem;
-    }}
-}}
-
-.st-emotion-cache-6mn6c9 {{
-    background-color: rgb(240, 242, 246);
-    border: 1px solid transparent;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-align: stretch;
-    align-items: stretch;
-    flex: 1 1 0%;
-    padding: 0.75rem 1rem;
-    gap: 0.5rem;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-
-}}
-
-.st-emotion-cache-36dndz .ewslnz97{{
-    display: none;
-}}
-
-.st-emotion-cache-1tvzk6f {{
-    display: none
-}}
-
-
-</style>
-
-
-
-""", unsafe_allow_html=True)
-
+# Custom CSS (load từ file styles.css cùng thư mục)
+load_css("styles.css")
 
 
 # ── Caching ──── Giúp giữ lại mô hình trong bộ nhớ, tránh load lại nhiều lần tăng tốc độ.
@@ -257,13 +53,11 @@ if "current_file" not in st.session_state:
 with st.sidebar:
     st.markdown(f"<h2 style='color:{TEXT_SIDEBAR};'>SmartDoc AI</h2>", unsafe_allow_html=True)
 
-
     if st.button("Xóa tài liệu & Reset", type="primary", use_container_width=True):
         st.session_state.vectorstore = None
         st.session_state.messages = []
         st.session_state.current_file = None
         st.rerun()
-
 
     # Instructions section
     st.subheader("Hướng dẫn sử dụng")
@@ -294,8 +88,6 @@ with st.sidebar:
     """)
 
 
-
-
 # ── Main Area ────────────────────────────────────────────────────────────────
 # Title và header
 st.title("📄 Hỏi đáp thông minh với tài liệu PDF")
@@ -312,7 +104,6 @@ else:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-
 
 
 # ── Input hỏi đáp + File uploader ngang hàng ────────────────────────────────
@@ -343,7 +134,7 @@ if uploaded_file is not None:
                 chunks = load_and_split(tmp_path, chunk_size=1200, chunk_overlap=200) ######### CHỈNH TẠI ĐÂY
                 if not chunks:
                     raise ValueError("Không trích xuất được nội dung từ PDF (có thể là PDF scan hoặc rỗng).")
-               
+
                 # Dùng create_vectorstore để tạo FAISS index từ embedding.
                 # Nếu thành công → lưu vào session_state.vectorstore.
                 st.session_state.vectorstore = create_vectorstore(chunks, get_embedder())
@@ -373,7 +164,7 @@ if prompt:
                         search_kwargs={"k": 4} ######### CHỈNH TẠI ĐÂY
                     )
                     retrieved_docs = retriever.invoke(prompt)
-                   
+
                     if not retrieved_docs:
                         response = "Không tìm thấy thông tin liên quan trong tài liệu."
                         # Nếu không tìm thấy đoạn liên quan → trả lời mặc định.
@@ -384,7 +175,7 @@ if prompt:
                             "context": context,
                             "question": prompt
                         }).strip()
-                       
+
                         # Nếu LLM trả về rỗng hoặc quá ngắn → fallback
                         if len(response) < 10:
                             response = "Không tìm thấy thông tin phù hợp trong tài liệu."
@@ -400,6 +191,4 @@ if prompt:
                 });
             """,
             key=f"scroll_{int(time.time() * 100000)}"
-)
-
-
+        )
