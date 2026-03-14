@@ -8,3 +8,4 @@ pdfplumber
 sentence-transformers
 torch
 python-dotenv
+streamlit-js-eval

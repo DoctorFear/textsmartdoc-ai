@@ -7,7 +7,9 @@ from src.loader import load_and_split
 from src.embedder import embedder
 from src.vectorstore import create_vectorstore
 from src.rag_chain import llm, PROMPT, format_docs, rag_chain
-
+from streamlit_js_eval import streamlit_js_eval
+import time
+    
 # ── Theme & Color Palette ────────────────────────────────────────────────────
 PRIMARY = "#007BFF"
 ACCENT = "#FFC107"
@@ -221,6 +223,10 @@ div[data-testid="stFileUploader"] section {{
     display: none;
 }}
 
+.st-emotion-cache-1tvzk6f {{
+    display: none
+}}
+
 
 </style>
 
@@ -386,5 +392,14 @@ if prompt:
                     response = f"**Lỗi khi xử lý câu hỏi:** {str(e)}\n(Kiểm tra Ollama có đang chạy không?)"
         st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
+
+        streamlit_js_eval(
+            js_expressions="""
+                parent.document.querySelectorAll('*').forEach(function(el) {
+                    el.scrollTop = el.scrollHeight;
+                });
+            """,
+            key=f"scroll_{int(time.time() * 100000)}"
+)
 
 
