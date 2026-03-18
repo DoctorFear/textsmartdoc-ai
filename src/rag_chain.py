@@ -14,15 +14,34 @@ llm = OllamaLLM(
 )
 
 prompt_template = """
-Bạn là trợ lý thông minh trả lời dựa trên tài liệu sau. Chỉ dùng thông tin trong CONTEXT, không bịa thêm.
-Nếu không biết thì nói "Không tìm thấy thông tin trong tài liệu".
+Bạn là trợ lý thông minh, trả lời CHÍNH XÁC dựa trên tài liệu.
 
-CONTEXT: {context}
+QUY TẮC BẮT BUỘC:
+1. CHỈ dùng thông tin trong CONTEXT. Không bịa thêm, không suy luận ngoài.
+2. Nếu CONTEXT có thông tin liên quan (dù chỉ một phần nhỏ), BẮT BUỘC phải trả lời dựa trên đó.
+3. Chỉ được nói "Không tìm thấy thông tin" khi CONTEXT hoàn toàn KHÔNG có bất kỳ thông tin nào liên quan đến câu hỏi.
+4. Trả lời ngắn gọn, rõ ràng, tự nhiên (3-6 câu).
+
+{language_instruction}
+
+CONTEXT:
+{context}
 
 Câu hỏi: {question}
 
-Trả lời bằng tiếng Việt nếu câu hỏi bằng tiếng Việt, tiếng Anh nếu bằng tiếng Anh.
+Trả lời:
 """
+
+def get_language_instruction(question: str) -> str:
+    viet_chars = 'àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ'
+    is_viet = any(c in question.lower() for c in viet_chars)
+    
+    if is_viet:
+        return """BẮT BUỘC: Trả lời BẰNG TIẾNG VIỆT, tự nhiên, không lẫn tiếng Anh/Trung.
+    Ưu tiên trả lời nếu có bất kỳ thông tin liên quan nào trong CONTEXT."""
+    else:
+        return """Answer in ENGLISH, concise and natural.
+    Only say you don't know if there is truly no relevant information."""
 
 PROMPT = PromptTemplate.from_template(prompt_template)
 

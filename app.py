@@ -6,7 +6,7 @@ from datetime import datetime
 from src.loader import load_and_split
 from src.embedder import embedder
 from src.vectorstore import create_vectorstore
-from src.rag_chain import llm, format_docs, rag_chain
+from src.rag_chain import get_language_instruction, llm, format_docs, rag_chain
 from streamlit_js_eval import streamlit_js_eval
 import time
 from src.logger import setup_logger
@@ -65,11 +65,20 @@ with st.sidebar:
     # Instructions section
     with st.expander("Hướng dẫn sử dụng"):
         st.markdown("""
+        **Các bước hoạt động** 
         1. Tải lên file PDF ở phần chính giữa  
         2. Chờ xử lý xong (thấy thông báo xanh)  
         3. Đặt câu hỏi bằng tiếng Việt hoặc tiếng Anh  
-        4. Hệ thống chỉ trả lời dựa trên nội dung tài liệu
-        5. **Lưu ý**: Tùy chỉnh Chunk size, Chunk overlap trước khi upload tài liệu
+        4. Hệ thống chỉ trả lời dựa trên nội dung tài liệu  
+
+        **Tùy chỉnh để có được câu trả lời tốt nhất**  
+        • **Chunk Size** & **Chunk Overlap**: Tăng lên nếu tài liệu dài hoặc phức tạp (thường 1000-1500 & 200-300)  
+        • **Top-k** & **Fetch-k**: Tăng nếu câu trả lời không chính xác (khuyến nghị Top-k = 5-7)  
+        • **Search Type = MMR** → sẽ tự động hiện **Lambda Mult** (0.7 là giá trị tốt nhất)  
+        
+        **Lưu ý quan trọng**:  
+        • Thông số càng lớn **không phải lúc nào cũng tốt hơn**. Cần thử nghiệm để tìm giá trị phù hợp.  
+        • Nếu câu trả lời vẫn sai → thử tăng Chunk Size + Top-k hoặc chuyển sang MMR.
         """)
 
     # Model configuration display
@@ -84,12 +93,18 @@ with st.sidebar:
         
     # Cho phép người dùng chỉnh chunk_size, chunk_overlap, k
     with st.expander("Thiết lập & Tùy chọn"):
-        chunk_size = st.slider("Chunk Size", min_value=200, max_value=2000, value=1200, step=100)
-        chunk_overlap = st.slider("Chunk Overlap", min_value=0, max_value=500, value=200, step=50)
-        top_k = st.slider("Search Kwargs - Top-k", min_value=1, max_value=10, value=3, step=1)
-        fetch_k = st.slider("Search Kwargs - Fetch-k", min_value=top_k, max_value=100, value=30, step=5)
-        lambda_mult = st.slider("Lambda Mult", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
-        search_type = st.selectbox("Search Type", options=["similarity", "mmr"], index=0)
+        chunk_size = st.slider("Chunk Size", 200, 2000, 1200, 100)
+        chunk_overlap = st.slider("Chunk Overlap", 0, 500, 200, 50)
+        top_k = st.slider("Top-k", 1, 10, 3, 1)
+        fetch_k = st.slider("Fetch-k", min_value=top_k, max_value=100, value=30, step=5)
+        search_type = st.selectbox("Search Type", ["similarity", "mmr"], index=0)
+
+        # Chỉ hiện lambda khi chọn MMR
+        if search_type == "mmr":
+            lambda_mult = st.slider("Lambda Mult (Diversity)", 0.0, 1.0, 0.7, 0.05,
+                                help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt")
+        else:
+            lambda_mult = 0.7  # giá trị mặc định, không dùng
 
 
 
@@ -235,7 +250,10 @@ if prompt:
                     else:
                         retriever = st.session_state.vectorstore.as_retriever(
                             search_type="similarity",
-                            search_kwargs={"k": top_k}
+                            search_kwargs={
+                                "k": top_k,
+                                "fetch_k": fetch_k  
+                            }
                         )
                     retrieved_docs = retriever.invoke(prompt)
 
@@ -250,19 +268,23 @@ if prompt:
                     )
 
                     if not retrieved_docs:
-                        response = "Không tìm thấy thông tin liên quan trong tài liệu."
+                        response = ""
                         # Nếu không tìm thấy đoạn liên quan → trả lời mặc định.
                     else:
                         context = format_docs(retrieved_docs)
                         # Invoke chain
                         response = rag_chain.invoke({
                             "context": context,
-                            "question": prompt
+                            "question": prompt,
+                            "language_instruction": get_language_instruction(prompt)
                         }).strip()
 
                         # Nếu LLM trả về rỗng hoặc quá ngắn → fallback
-                        if len(response) < 10:
+                        if "không tìm thấy" in response.lower() or len(response.strip()) < 15:
                             response = "Không tìm thấy thông tin phù hợp trong tài liệu."
+                        else:
+                            # Giữ nguyên câu trả lời của LLM
+                            pass
                     logger.info(f"Response length: {len(response)} chars")  # ← LOG 6
                     
                 except Exception as e:
