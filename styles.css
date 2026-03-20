@@ -25,7 +25,6 @@ section[data-testid="stSidebar"] {
     border: none !important;
     padding: 6px 12px !important;
     transition: 0.3s;
-    margin-bottom: 2rem;
 }
 .stButton > button:hover {
     background-color: var(--accent);
@@ -54,8 +53,8 @@ button[kind="secondary"][data-testid="stBaseButton-secondary"] {
     border: none !important;
     padding: 6px 12px !important;
     transition: 0.3s;
-    margin-top: 4px;
-    margin-left: 4px;
+    margin-bottom: 20px;
+
 }
 button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
     background-color: #218838 !important; /* xanh lá đậm */
@@ -63,9 +62,65 @@ button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
     transform: scale(1.05);
 }
 
+.st-emotion-cache-epvm6 button[kind="secondary"][data-testid="stBaseButton-secondary"] {
+  background-color: #28a745 !important; /* xanh lá */
+  color: #fff !important;
+  border-radius: 6px !important;
+  border: none !important;
+  padding: 6px 12px !important;
+  transition: 0.3s;
+  margin-top: 4px;
+}
+
+.st-emotion-cache-epvm6 button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
+  background-color: #218838 !important; /* xanh lá đậm khi hover */
+}
+
+button[kind="tertiary"][data-testid="stBaseButton-tertiary"] {
+  background-color: #d9534f !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  border: none !important;
+  padding: 6px 12px !important;
+  transition: 0.3s;
+}
+button[kind="tertiary"][data-testid="stBaseButton-tertiary"]:hover {
+  background-color: #c9302c !important;
+  transform: scale(1.05);
+}
+
+
+button[kind="primary"][data-testid="stBaseButton-primary"] {
+background-color: #9e9e9e1c !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  border: none !important;
+  padding: 6px 12px !important;
+  transition: 0.3s;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+}
+button[kind="primary"][data-testid="stBaseButton-primary"]:hover {
+background-color: #ffffff42 !important;
+}
+
+/* Chỉ áp dụng cho .st-emotion-cache-1lads1q khi nó là con của button primary */
+button[kind="primary"][data-testid="stBaseButton-primary"] .st-emotion-cache-1lads1q {
+  display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: start;
+    width: 100%;
+}
+
+
+
 /* Nút Remove file */
 button[kind="minimal"][data-testid="stBaseButton-minimal"] {
-    background-color: #dc3545 !important; /* đỏ */
+    background-color: #5935dc !important; /* đỏ */
     color: white !important;
     border-radius: 6px !important;
     border: none !important;
@@ -147,12 +202,7 @@ div[data-testid="stFileUploader"] section {
     gap: 0.5rem;
 }
 
-.st-emotion-cache-36dndz .ewslnz90 {
-    display: flex;
-    width: 8rem;
-    height: 3.5rem;
-    gap: 0.5rem;
-}
+
 
 .st-emotion-cache-ukvpxj {
     width: auto;
@@ -287,4 +337,84 @@ div[data-testid="stFileUploader"] section {
     bottom: 0.125rem;
     right: calc(0.5625rem);
     margin-bottom: 9px;
+}
+
+
+.st-emotion-cache-1h1td79 h3 {
+    font-size: 1.125rem;
+    font-weight: 800;
+    padding: 0.75rem 0px 1rem;
+    text-align: center;
+        margin-top: 10px;
+}
+
+
+
+.st-emotion-cache-18kf3ut:nth-last-of-type(3) .st-emotion-cache-1permvm {
+position: relative;
+    bottom: 0;
+    left: 16%;
+    width: 100%;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+    background-color: #ffffff00;
+    display: ruby;
+    flex-direction: row;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
+.st-ed {
+    background-color: ivory;
+}
+.st-emotion-cache-18kf3ut:nth-last-of-type(3):has(.st-emotion-cache-1permvm) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    min-width: 1rem;
+    height: auto;
+    background-color: ivory;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.st-emotion-cache-bkogk3 .st-emotion-cache-1h1td79 {
+    font-family: "Source Sans", sans-serif, "Source Sans", sans-serif;
+    font-size: 1rem;
+    margin-bottom: -1rem;
+    color: orangered;
+    max-width: 100%;
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+.st-emotion-cache-bkogk3 .st-emotion-cache-1h1td79 p {
+        word-break: break-word;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.st-emotion-cache-zh2fnc .st-emotion-cache-8atqhb button[kind="secondary"][data-testid="stBaseButton-secondary"] {
+      background-color: #795548 !important;
+    color: white !important;
+    border-radius: 6px !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    transition: 0.3s;
+    margin-bottom: 13px;
+}
+
+.st-emotion-cache-zh2fnc .st-emotion-cache-8atqhb button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
+  background-color: #a77968 !important;
+  color: #fff !important;
+}
+
+
+
+/* Target alert container warning */
+div[data-testid="stAlertContainer"] {
+    border-bottom-left-radius: initial;
+    border-bottom-right-radius: initial;
 }

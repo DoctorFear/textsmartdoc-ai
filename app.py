@@ -10,6 +10,12 @@ from src.rag_chain import get_language_instruction, llm, format_docs, rag_chain
 from streamlit_js_eval import streamlit_js_eval
 import time
 from src.logger import setup_logger
+# ── Import persistence (lưu/load lịch sử + FAISS ra disk) ───────────────────
+from src.persistence import (
+    save_history, load_history,
+    save_vectorstore, load_vectorstore,
+    delete_all_vectorstores
+)
 logger = setup_logger()
 
 
@@ -51,16 +57,17 @@ if "messages" not in st.session_state:
     st.session_state.messages = [] # lịch sử hội thoại.
 if "current_file" not in st.session_state:
     st.session_state.current_file = None #  tên file PDF hiện tại.
+# ── Session State bổ sung cho chat sessions + persistence (tính năng lịch sử)───────────────────
+if "chat_sessions" not in st.session_state:
+    st.session_state.chat_sessions = load_history()  # load các chat cũ nếu có
+if "current_chat_id" not in st.session_state:
+    st.session_state.current_chat_id = None # lưu id của đoạn chat đang hoạt động
+if "pending_prompt" not in st.session_state:
+    st.session_state.pending_prompt = None  # giữ câu hỏi khi qua rerun để hiển thị tên của nó ở history
 
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown(f"<h2 style='color:{TEXT_SIDEBAR};'>SmartDoc AI</h2>", unsafe_allow_html=True)
-
-    if st.button("Xóa tài liệu & Reset", type="primary", use_container_width=True):
-        st.session_state.vectorstore = None
-        st.session_state.messages = []
-        st.session_state.current_file = None
-        st.rerun()
 
     # Instructions section
     with st.expander("Hướng dẫn sử dụng"):
@@ -106,6 +113,123 @@ with st.sidebar:
         else:
             lambda_mult = 0.7  # giá trị mặc định, không dùng
 
+    # ── Lịch sử cuộc trò chuyện ─────────────────────────────────────────────
+    st.subheader("Lịch sử cuộc trò chuyện")
+
+    # Nút xóa tất cả lịch sử
+    # Nút bấm để mở dialog
+    if st.button("🔄 Đặt lại lịch sử", type="tertiary", use_container_width=True):
+        if len(st.session_state.chat_sessions) > 0:
+            st.session_state.show_confirm = True
+
+    # Hiển thị dialog xác nhận
+    if st.session_state.get("show_confirm", False):
+        st.warning("Bạn có chắc chắn muốn xóa toàn bộ lịch sử không?")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("✅ Đồng ý"):
+                delete_all_vectorstores()
+                st.session_state.chat_sessions   = []
+                st.session_state.messages        = []
+                st.session_state.current_chat_id = None
+                st.session_state.vectorstore     = None
+                st.session_state.current_file    = None
+                save_history([])
+                st.session_state.show_confirm = False
+                st.rerun()
+        with col2:
+            if st.button("❌ Hủy"):
+                st.session_state.show_confirm = False
+                st.rerun()
+
+
+    # ── Nút New Chat ─────────────────────────────────────────────────────────
+    if st.button(
+        "✨ Hộp thoại mới",
+        type="secondary",
+        use_container_width=True,
+    ):
+        # Chống spam: nếu đang ở session rỗng (chưa chat) thì không tạo thêm — chỉ rerun
+        # GIỮ LẠI session rỗng hiện tại, không dọn nó
+        if len(st.session_state.messages) == 0 and st.session_state.current_chat_id is not None:
+            st.rerun()  # rerun để sidebar re-render, session rỗng hiện tại vẫn còn
+
+        # Dọn các session rỗng KHÁC (không phải session đang active)
+        active_id = st.session_state.current_chat_id
+        st.session_state.chat_sessions = [
+            s for s in st.session_state.chat_sessions
+            if len(s.get("messages", [])) > 0 or s["id"] == active_id
+        ]
+
+        # Lưu session hiện tại xuống disk trước khi tạo mới
+        if st.session_state.current_chat_id is not None and st.session_state.current_file is not None:
+            for s in st.session_state.chat_sessions:
+                if s["id"] == st.session_state.current_chat_id:
+                    s["messages"]    = st.session_state.messages.copy()
+                    s["vectorstore"] = st.session_state.vectorstore
+                    s["file"]        = st.session_state.current_file
+                    save_vectorstore(s["id"], st.session_state.vectorstore)
+                    break
+            save_history(st.session_state.chat_sessions)
+
+        # ID không trùng dù có xóa session giữa chừng
+        new_id = max([s["id"] for s in st.session_state.chat_sessions], default=-1) + 1
+        st.session_state.chat_sessions.append({
+            "id":          new_id,
+            "title":       "Cuộc trò chuyện mới",
+            "messages":    [],
+            "vectorstore": None,
+            "file":        None
+        })
+        st.session_state.current_chat_id = new_id
+        st.session_state.messages        = []
+        st.session_state.vectorstore     = None
+        st.session_state.current_file    = None
+        st.rerun()
+
+    # ── Hiển thị danh sách các cuộc chat — mới nhất lên đầu ─────────────────
+    for session in reversed(st.session_state.chat_sessions):
+        title     = session["title"]
+        is_active = session["id"] == st.session_state.current_chat_id
+
+        if st.button(
+            f"📩 {title}",
+            key=f"chat_{session['id']}",
+            use_container_width=True,
+            type="primary"
+        ):
+            # Lưu session hiện tại xuống disk trước khi chuyển
+            if st.session_state.current_chat_id is not None and len(st.session_state.messages) > 0 and st.session_state.current_file is not None:
+                for s in st.session_state.chat_sessions:
+                    if s["id"] == st.session_state.current_chat_id:
+                        s["messages"]    = st.session_state.messages.copy()
+                        s["vectorstore"] = st.session_state.vectorstore
+                        s["file"]        = st.session_state.current_file
+                        save_vectorstore(s["id"], st.session_state.vectorstore)
+                        break
+                save_history(st.session_state.chat_sessions)
+
+            target_id = session["id"]
+
+            # Load messages + file từ disk — nguồn sự thật duy nhất, tránh RAM lẫn lộn
+            fresh_sessions = load_history()
+            target = next((s for s in fresh_sessions if s["id"] == target_id), None)
+
+            if target:
+                # Cập nhật lại RAM từ disk để đồng bộ
+                st.session_state.chat_sessions = fresh_sessions
+                st.session_state.current_chat_id = target_id
+                st.session_state.messages        = target["messages"].copy()
+                st.session_state.current_file    = target.get("file")
+            else:
+                # Session không có trên disk (chưa lưu) → dùng RAM
+                st.session_state.current_chat_id = target_id
+                st.session_state.messages        = session["messages"].copy()
+                st.session_state.current_file    = session.get("file")
+
+            # Load vectorstore từ disk — không dùng RAM cache để tránh lẫn lộn
+            st.session_state.vectorstore = load_vectorstore(target_id, get_embedder())
+            st.rerun()
 
 
 # ── Main Area ────────────────────────────────────────────────────────────────
@@ -143,6 +267,12 @@ with col_upload:
 
 with col_chat:
     prompt = st.chat_input("Nhập câu hỏi về tài liệu...") # ô nhập liệu
+
+# ── Nhặt lại pending_prompt nếu vừa rerun sau khi tạo session tự động ────────
+if not prompt and st.session_state.pending_prompt:
+    prompt = st.session_state.pending_prompt
+    st.session_state.pending_prompt = None  # xóa sau khi dùng
+
 
 # ── Xử lý upload & indexing ──────────────────────────────────────────────────
 if uploaded_file is not None:
@@ -225,8 +355,43 @@ if uploaded_file is not None:
 
 # Xử lý câu hỏi
 if prompt:
+    # ── Chặn spam chat khi chưa upload file ──────────────────────────────
+    if st.session_state.vectorstore is None:
+        st.warning("⚠️ Vui lòng upload tài liệu trước khi hỏi.")
+        st.stop()
+
+    # ── Tạo session tự động nếu user hỏi mà chưa nhấn New Chat ──────────────
+    # QUAN TRỌNG: xử lý session TRƯỚC khi append messages
+    # để tránh bug spam — append chỉ xảy ra đúng 1 lần sau rerun
+    if st.session_state.current_chat_id is None:
+        # Chưa có session nào → tạo mới rồi rerun (chưa append messages)
+        new_id = max([s["id"] for s in st.session_state.chat_sessions], default=-1) + 1
+        st.session_state.chat_sessions.append({
+            "id":          new_id,
+            "title":       prompt[:40] + ("..." if len(prompt) > 40 else ""),
+            "messages":    [],             # rỗng — append sau rerun mới đúng
+            "vectorstore": st.session_state.vectorstore,
+            "file":        st.session_state.current_file
+        })
+        st.session_state.current_chat_id = new_id
+        # Chỉ lưu xuống disk khi đã có file upload
+        if st.session_state.current_file is not None:
+            save_vectorstore(new_id, st.session_state.vectorstore)  # ghi FAISS ra disk
+            save_history(st.session_state.chat_sessions)             # ghi JSON ra disk
+        st.session_state.pending_prompt = prompt  # giữ lại để xử lý sau rerun
+        st.rerun()  # rerun để sidebar hiển thị session mới + nút New Chat sáng lên ngay
+
+    # Append messages đúng 1 lần — sau khi session đã tồn tại
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Lưu câu hỏi vào session_state.messages để hiển thị lại sau này.
+
+    # Cập nhật title từ câu hỏi đầu tiên (nếu vẫn là tên mặc định)
+    for s in st.session_state.chat_sessions:
+        if s["id"] == st.session_state.current_chat_id:
+            if s["title"] == "Cuộc trò chuyện mới":
+                s["title"] = prompt[:40] + ("..." if len(prompt) > 40 else "")
+            break
+
     with st.chat_message("user"): # Hiển thị tin nhắn của người dùng trong khung chat.
         st.markdown(prompt)
     with st.chat_message("assistant"): # Tạo khung chat cho assistant.
@@ -297,9 +462,20 @@ if prompt:
                     else:
                         response = f"❌ Lỗi xử lý câu hỏi: {str(e)}"
 
-                    
         st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
+
+        # ── Lưu messages + vectorstore xuống disk sau mỗi lượt trả lời ──────
+        # Chỉ lưu khi đã có file upload + đang trong session hợp lệ
+        if st.session_state.current_chat_id is not None and st.session_state.current_file is not None:
+            for s in st.session_state.chat_sessions:
+                if s["id"] == st.session_state.current_chat_id:
+                    s["messages"]    = st.session_state.messages.copy()
+                    s["vectorstore"] = st.session_state.vectorstore
+                    s["file"]        = st.session_state.current_file
+                    save_vectorstore(s["id"], st.session_state.vectorstore)  # ghi FAISS ra disk
+                    break
+            save_history(st.session_state.chat_sessions)  # ghi JSON ra disk — chỉ khi có file
 
         streamlit_js_eval(
             js_expressions="""

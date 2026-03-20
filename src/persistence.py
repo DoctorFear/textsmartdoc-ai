@@ -1,0 +1,127 @@
+# persistence.py
+# ── Xử lý toàn bộ việc lưu/load lịch sử chat + FAISS vectorstore ra disk ────
+#
+# Cấu trúc thư mục được tạo tự động:
+#   chat_history.json              ← danh sách sessions + messages
+#   faiss_store/
+#       chat_0/
+#           index.faiss
+#           index.pkl
+#       chat_1/
+#           ...
+
+import json
+import os
+import shutil
+from langchain_community.vectorstores import FAISS
+
+# ── Đường dẫn mặc định ───────────────────────────────────────────────────────
+HISTORY_FILE = "chat_history.json"
+FAISS_DIR    = "faiss_store"
+
+
+# ────────────────────────────────────────────────────────────────────────────
+# 1. MESSAGES  →  chat_history.json
+# ────────────────────────────────────────────────────────────────────────────
+
+def save_history(chat_sessions: list) -> None:
+    """
+    Lưu toàn bộ danh sách sessions xuống chat_history.json.
+
+    Chỉ lưu các field có thể JSON-serialize được:
+        id, title, messages, file
+    Bỏ qua field 'vectorstore' (object Python — lưu riêng bằng save_vectorstore).
+    """
+    serializable = []
+    for s in chat_sessions:
+        serializable.append({
+            "id":       s["id"],
+            "title":    s["title"],
+            "messages": s["messages"],
+            "file":     s.get("file"),   # tên file PDF (string hoặc None)
+        })
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(serializable, f, ensure_ascii=False, indent=2)
+
+
+def load_history() -> list:
+    """
+    Đọc chat_history.json → trả về list sessions khi app khởi động.
+
+    Field 'vectorstore' được set = None vì object FAISS không lưu trong JSON.
+    Dùng load_vectorstore() riêng khi user click vào một session.
+
+    Trả về [] nếu file chưa tồn tại hoặc bị hỏng.
+    """
+    if not os.path.exists(HISTORY_FILE):
+        return []
+    try:
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            sessions = json.load(f)
+        # Đảm bảo mỗi session có đủ keys (phòng file cũ thiếu field)
+        for s in sessions:
+            s.setdefault("messages",    [])
+            s.setdefault("file",        None)
+            s.setdefault("vectorstore", None)  # load lazy khi user chọn chat
+        return sessions
+    except (json.JSONDecodeError, KeyError):
+        return []  # file bị hỏng → bắt đầu sạch
+
+
+# ────────────────────────────────────────────────────────────────────────────
+# 2. FAISS VECTORSTORE  →  faiss_store/chat_<id>/
+# ────────────────────────────────────────────────────────────────────────────
+
+def save_vectorstore(session_id: int, vectorstore) -> None:
+    """
+    Lưu FAISS index của một session vào:
+        faiss_store/chat_<session_id>/index.faiss
+        faiss_store/chat_<session_id>/index.pkl
+
+    Tạo thư mục tự động nếu chưa có.
+    Bỏ qua nếu vectorstore = None.
+    """
+    if vectorstore is None:
+        return
+    folder = os.path.join(FAISS_DIR, f"chat_{session_id}")
+    os.makedirs(folder, exist_ok=True)
+    vectorstore.save_local(folder)  # LangChain FAISS API
+
+
+def load_vectorstore(session_id: int, embedder) -> object | None:
+    """
+    Load FAISS index từ disk cho session <session_id>.
+
+    Tham số:
+        session_id  — id của session cần load
+        embedder    — phải là CÙNG embedding model lúc tạo index
+
+    Trả về vectorstore object, hoặc None nếu chưa có file / bị hỏng.
+    """
+    folder = os.path.join(FAISS_DIR, f"chat_{session_id}")
+    faiss_file = os.path.join(folder, "index.faiss")
+
+    if not os.path.exists(faiss_file):
+        return None
+    try:
+        return FAISS.load_local(
+            folder,
+            embedder,
+            allow_dangerous_deserialization=True  # bắt buộc với LangChain >= 0.1.17
+        )
+    except Exception:
+        return None  # index bị hỏng → coi như chưa có
+
+
+# ────────────────────────────────────────────────────────────────────────────
+# 3. DỌN DẸP
+# ────────────────────────────────────────────────────────────────────────────
+
+def delete_all_vectorstores() -> None:
+    """
+    Xóa toàn bộ thư mục faiss_store/.
+    Gọi khi user nhấn 'Xóa tất cả lịch sử'.
+    """
+    if os.path.exists(FAISS_DIR):
+        shutil.rmtree(FAISS_DIR)
+
