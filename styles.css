@@ -69,7 +69,7 @@ button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
   border: none !important;
   padding: 6px 12px !important;
   transition: 0.3s;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 .st-emotion-cache-epvm6 button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
@@ -219,7 +219,7 @@ div[data-testid="stFileUploader"] section {
     right: 0;
     width: 100%;
     z-index: 100;
-    padding: 0.5rem 9.5rem 0.5rem 31rem;
+    padding: 0.5rem 5.5rem 0.5rem 32rem;
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -317,6 +317,21 @@ div[data-testid="stFileUploader"] section {
     -webkit-box-pack: start;
     justify-content: start;
 }
+.st-emotion-cache-19ysvjp .st-emotion-cache-wfksaw {
+        display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    min-width: 1rem;
+    flex-flow: column;
+    flex: 1 1 0%;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: start;
+    margin-left: 36px;
+}
 
 .st-emotion-cache-99anic:hover:enabled ~ .st-emotion-cache-1lsfsc6,
 .st-emotion-cache-99anic:focus:enabled ~ .st-emotion-cache-1lsfsc6 {
@@ -350,32 +365,6 @@ div[data-testid="stFileUploader"] section {
 
 
 
-.st-emotion-cache-18kf3ut:nth-last-of-type(3) .st-emotion-cache-1permvm {
-position: relative;
-    bottom: 0;
-    left: 16%;
-    width: 100%;
-    padding: 0.5rem 0rem 0.5rem 0rem;
-    background-color: #ffffff00;
-    display: ruby;
-    flex-direction: row;
-    align-items: flex-end;
-    box-sizing: border-box;
-}
-.st-ed {
-    background-color: ivory;
-}
-.st-emotion-cache-18kf3ut:nth-last-of-type(3):has(.st-emotion-cache-1permvm) {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    min-width: 1rem;
-    height: auto;
-    background-color: ivory;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-}
 
 .st-emotion-cache-bkogk3 .st-emotion-cache-1h1td79 {
     font-family: "Source Sans", sans-serif, "Source Sans", sans-serif;
@@ -404,6 +393,7 @@ position: relative;
     padding: 6px 12px !important;
     transition: 0.3s;
     margin-bottom: 13px;
+
 }
 
 .st-emotion-cache-zh2fnc .st-emotion-cache-8atqhb button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
@@ -413,8 +403,51 @@ position: relative;
 
 
 
-/* Target alert container warning */
-div[data-testid="stAlertContainer"] {
-    border-bottom-left-radius: initial;
-    border-bottom-right-radius: initial;
+.st-emotion-cache-1permvm:has(.st-emotion-cache-19ysvjp) {
+    background-color: ivory;
+    position: relative;
+    display: flex;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    flex: 1 1 0%;
+    padding: 1rem 1rem 0 1rem;
+    gap: 0.5rem;
+    box-sizing: border-box;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+.st-emotion-cache-1j60fej {
+    font-size: 1rem;
+    font-weight: 800;
+
+    text-align: center;
+    opacity: 1;
+    color: #fa5853;
+    max-width: 100%;
+    padding-top: 12px;
+    width: 100%;
+    background-color: ivory;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+}
+
+section[data-testid="stFileUploaderDropzone"].st-emotion-cache-15nprkh {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 2px dashed #aaa;
+}
+.st-emotion-cache-1yiq2ps > section:first-of-type  {
+             position: relative;
+    user-select: auto;
+    height: auto;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    min-width: 400px;
+    max-width: 450px;
+}
+
+.st-emotion-cache-8atqhb:has(.st-emotion-cache-zh2fnc button[kind="secondary"][data-testid="stBaseButton-secondary"]) {
+    margin-top: 10px;
 }

@@ -124,7 +124,7 @@ with st.sidebar:
 
     # Hiển thị dialog xác nhận
     if st.session_state.get("show_confirm", False):
-        st.warning("Bạn có chắc chắn muốn xóa toàn bộ lịch sử không?")
+        st.caption("**Bạn có chắc chắn muốn xóa toàn bộ lịch sử không?**")
         col1, col2 = st.columns(2)
         with col1:
             if st.button("✅ Đồng ý"):
