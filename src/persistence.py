@@ -58,14 +58,13 @@ def load_history() -> list:
     try:
         with open(HISTORY_FILE, "r", encoding="utf-8") as f:
             sessions = json.load(f)
-        # Đảm bảo mỗi session có đủ keys (phòng file cũ thiếu field)
         for s in sessions:
             s.setdefault("messages",    [])
             s.setdefault("file",        None)
-            s.setdefault("vectorstore", None)  # load lazy khi user chọn chat
+            s.setdefault("vectorstore", None)
         return sessions
     except (json.JSONDecodeError, KeyError):
-        return []  # file bị hỏng → bắt đầu sạch
+        return []
 
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -73,31 +72,14 @@ def load_history() -> list:
 # ────────────────────────────────────────────────────────────────────────────
 
 def save_vectorstore(session_id: int, vectorstore) -> None:
-    """
-    Lưu FAISS index của một session vào:
-        faiss_store/chat_<session_id>/index.faiss
-        faiss_store/chat_<session_id>/index.pkl
-
-    Tạo thư mục tự động nếu chưa có.
-    Bỏ qua nếu vectorstore = None.
-    """
     if vectorstore is None:
         return
     folder = os.path.join(FAISS_DIR, f"chat_{session_id}")
     os.makedirs(folder, exist_ok=True)
-    vectorstore.save_local(folder)  # LangChain FAISS API
+    vectorstore.save_local(folder)
 
 
 def load_vectorstore(session_id: int, embedder) -> object | None:
-    """
-    Load FAISS index từ disk cho session <session_id>.
-
-    Tham số:
-        session_id  — id của session cần load
-        embedder    — phải là CÙNG embedding model lúc tạo index
-
-    Trả về vectorstore object, hoặc None nếu chưa có file / bị hỏng.
-    """
     folder = os.path.join(FAISS_DIR, f"chat_{session_id}")
     faiss_file = os.path.join(folder, "index.faiss")
 
@@ -107,10 +89,11 @@ def load_vectorstore(session_id: int, embedder) -> object | None:
         return FAISS.load_local(
             folder,
             embedder,
-            allow_dangerous_deserialization=True  # bắt buộc với LangChain >= 0.1.17
+            allow_dangerous_deserialization=True
         )
-    except Exception:
-        return None  # index bị hỏng → coi như chưa có
+    except Exception as e:
+        print(f"Lỗi load FAISS cho session {session_id}: {e}")
+        return None
 
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -118,10 +101,5 @@ def load_vectorstore(session_id: int, embedder) -> object | None:
 # ────────────────────────────────────────────────────────────────────────────
 
 def delete_all_vectorstores() -> None:
-    """
-    Xóa toàn bộ thư mục faiss_store/.
-    Gọi khi user nhấn 'Xóa tất cả lịch sử'.
-    """
     if os.path.exists(FAISS_DIR):
         shutil.rmtree(FAISS_DIR)
-

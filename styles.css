@@ -106,6 +106,7 @@ button[kind="primary"][data-testid="stBaseButton-primary"]:hover {
 background-color: #ffffff42 !important;
 }
 
+
 /* Chỉ áp dụng cho .st-emotion-cache-1lads1q khi nó là con của button primary */
 button[kind="primary"][data-testid="stBaseButton-primary"] .st-emotion-cache-1lads1q {
   display: flex;
@@ -115,7 +116,6 @@ button[kind="primary"][data-testid="stBaseButton-primary"] .st-emotion-cache-1la
     justify-content: start;
     width: 100%;
 }
-
 
 
 /* Nút Remove file */

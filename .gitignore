@@ -29,3 +29,13 @@ faiss_index/
 # Model downloads / HuggingFace cache
 .cache/
 huggingface/
+
+
+# Bỏ qua thư mục FAISS lưu index
+faiss_store/
+
+# Bỏ qua file lịch sử chat
+chat_history.json
+
+# Bỏ qua thư mục logs
+logs/

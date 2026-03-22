@@ -1,7 +1,54 @@
 [
   {
     "id": 0,
-    "title": "Cuộc trò chuyện mới",
+    "title": "VoNhat.pdf",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là nhân vật trong văn bản, có vẻ như một người bán hàng ở chợ tỉnh. Anh ta đã trả hàng xong và đang ngồi uống nước khi gặp lại một người đàn bà không rõ danh phận của mình lần đầu tiên. Sau đó, họ gặp nhau lại và người đàn bà này về nhà Tràng ở khu vực khác."
+      },
+      {
+        "role": "user",
+        "content": "Tràng gặp vợ mình ở đâu"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin phù hợp trong tài liệu."
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là một nhân vật trong đoạn văn, có vẻ như một người bán hàng hoặc lao động bình thường ở khu vực nông thôn. Anh ta xuất hiện lần đầu tiên khi đang ngồi uống nước bên ngoài chợ tỉnh, và sau đó gặp lại một người phụ nữ bị thất tình, tên gọi không được đề cập trong đoạn văn này. Tràng tỏ ra khá chu đáo đối với người phụ nữ này, mời cô ấy ăn bánh đúc và còn đề nghị về cùng anh ta."
+      },
+      {
+        "role": "user",
+        "content": "Tràng có vợ không"
+      },
+      {
+        "role": "assistant",
+        "content": "Không, Tràng chưa có vợ trong đoạn văn này. Tràng đang nói với bà cụ rằng anh ta đã gặp một người phụ nữ mới và cô ấy sẽ là vợ của anh ta, nhưng thực tế họ chỉ mới làm quen nhau ở nơi chôn cất ông cụ Tứ."
+      },
+      {
+        "role": "user",
+        "content": "Porfolio này là của ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Portfolio này là của HA THAI SON.Thông tin này có trong CONTEXT, đề cập đến một người với tên HA THAI SON và liệt kê các thông tin liên quan đến học vấn, dự án và kỹ năng."
+      }
+    ],
+    "file": "Porfolio.pdf"
+  },
+  {
+    "id": 1,
+    "title": "Porfolio này là của ai",
     "messages": [
       {
         "role": "user",
@@ -13,28 +60,52 @@
       },
       {
         "role": "user",
-        "content": "Porfolio  này là của ai"
+        "content": "anh ấy có kĩ năng thiết kế không"
       },
       {
         "role": "assistant",
-        "content": "Không tìm thấy thông tin trong CONTEXT liên quan đến portfolio của bất kỳ ai.ImageContext does not contain any information related to a portfolio of anyone involved."
+        "content": "Anh ấy có kĩ năng thiết kế đồ họa, cụ thể là sử dụng Adobe Photoshop."
+      },
+      {
+        "role": "user",
+        "content": "Tràng có quen cô gái nào không"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng có quen một số cô gái trong câu chuyện, cụ thể là Thị. Có đoạn văn mô tả Thị cười tình tứ với Tràng và Tràng thích cách Thị xử sự với mình, cho thấy Tràng đã quen biết Thị một thời gian."
       }
     ],
     "file": "VoNhat.pdf"
   },
   {
-    "id": 1,
-    "title": "Cuộc trò chuyện mới",
+    "id": 2,
+    "title": "A Phủ là ai?",
     "messages": [
       {
         "role": "user",
-        "content": "Tràng có trong tác phẩm không"
+        "content": "A Phủ là ai?"
       },
       {
         "role": "assistant",
-        "content": "Đúng rồi, Tràng có xuất hiện trong tác phẩm này. Tràng là nhân vật chính, một người đàn ông nghèo khổ đang đi cùng với một người đàn bà không rõ tên trong một đoạn đường nhỏ."
+        "content": "A Phủ là người đàn ông bị nhốt và sử dụng như lao động phục vụ nợ trong nhà thống lí Pá Tra. Ông là một người không có bố mẹ, ruộng đất hoặc bạc, nên không thể lấy vợ được. A Phủ lớn lên ở làng Hang-bla Nam xưa, nơi bị bệnh đậu mùa tàn phá, khiến ông phải lưu lạc đến Hồng Ngài làm công ăn tiền."
+      },
+      {
+        "role": "user",
+        "content": "cho tôi yêu cầu của nó"
+      },
+      {
+        "role": "assistant",
+        "content": "Các yêu cầu phát triển bao gồm:\n\n1. Thêm hỗ trợ file DOCX.\n2. Lưu trữ lịch sử hội thoại.\n3. Thêm nút xóa lịch史记：这部分内容是关于系统开发的需求，包括支持.docx文件、存储对话历史记录以及添加删除历史记录的按钮等。这些需求旨在提高系统的功能性和用户友好性。\n4. 改进分块策略。\n5. 添加引用/来源追踪。\n6. 实现对话增强生成式检索（Conversational RAG）。\n7. 添加混合搜索方法，结合语义搜索和关键词搜索。\n8. 支持多文档RAG并根据元数据进行过滤。\n9. 实现重排序与交叉编码器。"
+      },
+      {
+        "role": "user",
+        "content": "Các yêu cầu phát triển bao gồm (trả lời tiếng việt )"
+      },
+      {
+        "role": "assistant",
+        "content": "Các yêu cầu phát triển bao gồm việc thêm hỗ trợ file DOCX, lưu trữ lịch sử hội thoại, thêm nút xóa lịch sử, cải thiện chiến lược chunk, truy vấn với nguồn gốc thông tin, thực hiện RAG dựa trên cuộc hội thoại, kết hợp tìm kiếmSemantic và keyword, xử lý nhiều tài liệu cùng lúc với lọc metadata, và triển khai sắp xếp lại sử dụng cross-encoder."
       }
     ],
-    "file": "VoNhat.pdf"
+    "file": "ossd assignment.pdf"
   }
 ]
