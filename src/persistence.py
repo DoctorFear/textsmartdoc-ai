@@ -39,6 +39,7 @@ def save_history(chat_sessions: list) -> None:
             "title":    s["title"],
             "messages": s["messages"],
             "file":     s.get("file"),   # tên file PDF (string hoặc None)
+            "files": s.get("files", []),
         })
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(serializable, f, ensure_ascii=False, indent=2)
@@ -59,8 +60,9 @@ def load_history() -> list:
         with open(HISTORY_FILE, "r", encoding="utf-8") as f:
             sessions = json.load(f)
         for s in sessions:
-            s.setdefault("messages",    [])
-            s.setdefault("file",        None)
+            s.setdefault("messages", [])
+            s.setdefault("file", None)
+            s.setdefault("files", [])
             s.setdefault("vectorstore", None)
         return sessions
     except (json.JSONDecodeError, KeyError):

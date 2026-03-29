@@ -32,6 +32,113 @@
         ]
       }
     ],
-    "file": null
+    "file": null,
+    "files": []
+  },
+  {
+    "id": 1,
+    "title": "ChuyenNguoiConGaiNamXuong.docx",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ai là người viết ra tác phẩm"
+      },
+      {
+        "role": "assistant",
+        "content": "Nguyễn Dữ là người viết ra tác phẩm này.",
+        "citations": [
+          {
+            "index": 1,
+            "page": "N/A",
+            "file": "tmp29ggeyml.docx",
+            "snippet": "- Thiếp sở dĩ nương tựa vào chàng vì có cái thú vui nghi gia nghi thất. Nay đã bình rơi trâm gãy, mây tạnh mưa tan, sen rũ trong ao, liễu tàn trước gió; khóc tuyết bông hoa rụng cuống, kêu xuân cái én lìa đàn, nước thẳm buồm xa, đâu còn có thể lại lê..."
+          },
+          {
+            "index": 2,
+            "page": "N/A",
+            "file": "tmp29ggeyml.docx",
+            "snippet": "Phan nói:  - Nương Tử nghĩa khác Tào Nga, hờn không Tinh Vệ mà phải ôm mối hận gieo mình xuống nước. Nay thóc cũ không còn, thóc mới vừa gặt, há lại không tưởng nhớ đến quê hương ư?  Vũ Nương nói:  - Tôi bị chồng ruồng rẫy, thà già ở chốn làng mây cu..."
+          },
+          {
+            "index": 3,
+            "page": "N/A",
+            "file": "tmp29ggeyml.docx",
+            "snippet": "Chuyện người con gái Nam Xương  (Trích trong tập \"Truyền kỳ mạn lục\")  Tác giả: Nguyễn Dữ  Vũ Thị Thiết, người con gái quê ở Nam Xương, tính đã thuỳ mị, nết na, lại thêm tư dung tốt đẹp. Trong làng có chàng Trương Sinh, mến vì dung hạnh, xin với mẹ đ..."
+          }
+        ],
+        "self_rag_meta": null
+      }
+    ],
+    "file": "ChuyenNguoiConGaiNamXuong.docx",
+    "files": []
+  },
+  {
+    "id": 2,
+    "title": "ChuyenNguoiConGaiNamXuong.docx",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Trong chuyện có mấy nhân vật"
+      },
+      {
+        "role": "assistant",
+        "content": "Trong truyện có 4 nhân vật chính:\n\n1. Phan Lang - người làm đầu mục ở bến đò Hoàng Giang.\n2. Linh Phi - vợ vua biển Nam Hải, sống trong động rùa.\n3. Vũ Nương - người bị oan uổng và sau đó gặp lại Phan Lang.\n4. Xích Hỗn - sứ giả được Linh Phi sai đưa Phan Lang ra khỏi nước.\n\nCó tổng cộng 4 nhân vật chính trong câu chuyện này.",
+        "citations": [
+          {
+            "index": 1,
+            "page": "N/A",
+            "file": "ChuyenNguoiConGaiNamXuong.docx",
+            "snippet": "- Tôi là Linh Phi trong động rùa, vợ vua biển Nam Hải, nhớ hồi còn nhỏ đi chơi ở bến sông bị người phường chài bắt được, ngẫu nhiên báo mộng, quả được nhờ ơn. Gặp gỡ ngày nay, há chẳng phải lòng trời xui khiến cho tôi có dịp đền ơn trả nghĩa?  Phi bè..."
+          },
+          {
+            "index": 2,
+            "page": "N/A",
+            "file": "ChuyenNguoiConGaiNamXuong.docx",
+            "snippet": "- Cha Đản lại đến kia kìa!  Chàng hỏi đâu. Nó chỉ bóng chàng ở trên vách:  - Đây này!  Thì ra, ngày thường, ở một mình, nàng hay đùa con, trỏ bóng mình mà bảo là cha Đản. Bấy giờ chàng mới tỉnh ngộ, thấu nỗi oan của vợ, nhưng việc trót đã qua rồi!  C..."
+          },
+          {
+            "index": 3,
+            "page": "N/A",
+            "file": "ChuyenNguoiConGaiNamXuong.docx",
+            "snippet": "Phan nói:  - Nương Tử nghĩa khác Tào Nga, hờn không Tinh Vệ mà phải ôm mối hận gieo mình xuống nước. Nay thóc cũ không còn, thóc mới vừa gặt, há lại không tưởng nhớ đến quê hương ư?  Vũ Nương nói:  - Tôi bị chồng ruồng rẫy, thà già ở chốn làng mây cu..."
+          }
+        ],
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Cho biết tác giả của chuyện người con gái nam xương và các nhân vật chính của vợ nhặt"
+      },
+      {
+        "role": "assistant",
+        "content": "Tác giả của \"Chuyện người con gái Nam Xương\" là Nguyễn Dữ. Nhân vật chính trong truyện ngắn \"Vợ nhặt\" không được nêu tên rõ ràng trong đoạn văn cung cấp, nhưng có thể hiểu Tràng là nhân vật chính vì bài văn tập trung miêu tả hành động và tâm trạng của ông.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
+          },
+          {
+            "index": 2,
+            "page": "N/A",
+            "file": "ChuyenNguoiConGaiNamXuong.docx",
+            "snippet": "Chuyện người con gái Nam Xương  (Trích trong tập \"Truyền kỳ mạn lục\")  Tác giả: Nguyễn Dữ  Vũ Thị Thiết, người con gái quê ở Nam Xương, tính đã thuỳ mị, nết na, lại thêm tư dung tốt đẹp. Trong làng có chàng Trương Sinh, mến vì dung hạnh, xin với mẹ đ..."
+          },
+          {
+            "index": 3,
+            "page": 8,
+            "file": "VoNhat.pdf",
+            "snippet": "uốn khúc trong cánh đồng tối. Mùi đốt đống rấm ở những nhà có người chết theo gió thoảng vào khét lẹt. Bà lão thở nhẹ ra một hơi dài. Bà lão nghĩ đến ông lão, nghĩ đến đưa con gái út. Bà lão nghĩ đến cuộc đời cực khổ dài dằng dặc của mình. Vợ chồng c..."
+          }
+        ],
+        "self_rag_meta": null
+      }
+    ],
+    "file": "VoNhat.pdf",
+    "files": [
+      "ChuyenNguoiConGaiNamXuong.docx",
+      "VoNhat.pdf"
+    ]
   }
 ]

@@ -452,3 +452,11 @@ section[data-testid="stFileUploaderDropzone"].st-emotion-cache-15nprkh {
     margin-top: 10px;
 }
 
+/* ── Self-RAG Checkbox (8.2.10) ── fix màu chữ trong sidebar tối ── */
+section[data-testid="stSidebar"] div[data-testid="stCheckbox"] label p,
+section[data-testid="stSidebar"] div[data-testid="stCheckbox"] label span,
+section[data-testid="stSidebar"] div[data-testid="stCheckbox"] label {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    opacity: 1 !important;
+}
