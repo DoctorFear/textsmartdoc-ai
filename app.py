@@ -111,6 +111,7 @@ def create_new_chat_session(title="Cuộc trò chuyện mới"):
         "messages": [],
         "vectorstore": None,
         "file": None
+
     })
     st.session_state.current_chat_id = new_id
     st.session_state.messages = []
@@ -247,6 +248,11 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+    if "citations" in message and message["citations"]:
+        with st.expander(" Xem nguồn trích dẫn (Citations) & Highlight"):
+            for cite in message["citations"]:
+                st.markdown(f"**Nguồn {cite['index']}:** File `{st.session_state.current_file}` — Trang **{cite['page']}**")
+                st.info(f'"{cite["snippet"]}"')
 
 # ── Input hỏi đáp + File uploader ngang hàng ────────────────────────────────
 col_upload, col_chat = st.columns([1, 4])
@@ -276,6 +282,7 @@ if not prompt and st.session_state.pending_prompt:
 
 # ── Xử lý upload & indexing ──────────────────────────────────────────────────
 if uploaded_file is not None:
+    original_file_name = uploaded_file.name
     file_bytes = uploaded_file.getvalue()
     file_size_mb = len(file_bytes) / (1024 * 1024)
 
@@ -399,6 +406,21 @@ if prompt:
                         f"search_type={search_type} | "
                         f"sources: {[doc.metadata.get('source', 'unknown') for doc in retrieved_docs]}"
                     )
+                    citations = []
+                    for i, doc in enumerate(retrieved_docs):
+                        page_num = doc.metadata.get("page", -1) + 1
+
+                        raw_source = doc.metadata.get("source", "Unknown")
+                        file_name = os.path.basename(raw_source) if raw_source != "Unknown" else "Unknown document"
+
+                        snippet = doc.page_content[:250].replace('\n', ' ') + "..."
+
+                        citations.append({
+                            "index": i + 1,
+                            "page": page_num if page_num > 0 else "N/A",
+                            "file": file_name,
+                            "snippet": snippet
+                        })
 
                     if not retrieved_docs:
                         response = "Không tìm thấy thông tin liên quan trong tài liệu."
@@ -425,7 +447,16 @@ if prompt:
                         response = f"❌ Lỗi xử lý câu hỏi: {str(e)}"
 
         st.markdown(response)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+        if citations:
+            with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
+                st.markdown("Hệ thống đã dựa các đoạn văn bản sau để tạo câu trả lời:")
+
+                for cite in citations:
+
+                    st.markdown(f"**Nguồn {cite['index']}:** File `{st.session_state.current_file}` — Trang **{cite['page']}**")
+
+                    st.info(f'"{cite["snippet"]}"')
+        st.session_state.messages.append({"role": "assistant", "content": response,"citations": citations})
 
         # Lưu sau mỗi lượt trả lời
         save_current_session_to_disk()
