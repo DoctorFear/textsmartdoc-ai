@@ -77,7 +77,7 @@ button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
 }
 
 button[kind="tertiary"][data-testid="stBaseButton-tertiary"] {
-  background-color: #d9534f !important;
+  background-color: #8BC34A !important;
   color: #fff !important;
   border-radius: 6px !important;
   border: none !important;
@@ -85,7 +85,7 @@ button[kind="tertiary"][data-testid="stBaseButton-tertiary"] {
   transition: 0.3s;
 }
 button[kind="tertiary"][data-testid="stBaseButton-tertiary"]:hover {
-  background-color: #c9302c !important;
+  background-color: #6b953a  !important;
   transform: scale(1.05);
 }
 
@@ -451,3 +451,4 @@ section[data-testid="stFileUploaderDropzone"].st-emotion-cache-15nprkh {
 .st-emotion-cache-8atqhb:has(.st-emotion-cache-zh2fnc button[kind="secondary"][data-testid="stBaseButton-secondary"]) {
     margin-top: 10px;
 }
+

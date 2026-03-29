@@ -1,71 +1,37 @@
 [
   {
     "id": 0,
-    "title": "Vợ chồng a Phủ.pdf",
+    "title": "Tràng là ai",
     "messages": [
       {
         "role": "user",
-        "content": "Vì sao Mị phải làm dâu nhà thống lí Pá Tra"
+        "content": "Tràng là ai"
       },
       {
         "role": "assistant",
-        "content": "Mị phải làm dâu nhà thống lí Pá Tra để trừ nợ. Ông lão của Mị đang nợ thống lí, và thống lí đề nghị nhận Mị làm con dâu để xoá bỏ khoản nợ này.",
+        "content": "Tràng là người đàn ông trong câu chuyện, có lẽ là nhân vật chính. Anh ta thường xuyên đến chợ tỉnh để trả hàng và gặp gỡ người khác. Tràng từng bị từ chối bởi một người phụ nữ mà anh ta quan tâm, nhưng sau đó cô ấy lại tìm上门了。在故事中，他是一位经常到集市上做生意的男子，遇到了一个让他心动但又被拒绝的女人，后来这个女人又找到了他，并最终决定与他一起生活。",
         "citations": [
           {
             "index": 1,
-            "page": 1,
-            "file": "tmpz5j6516h.pdf",
-            "snippet": "chưa trả hết nợ. Cho tới năm ấy Mị đã lớn, Mị là con gái đầu lòng. Thống lí Pá Tra đến bảo bố Mị : -Cho tao đứa con gái này về làm dâu thì tao xoá hết nợ cho. Ông lão nghĩ năm nào cũng phải trả một nương ngô cho người ta, thì tiếc ngô, nhưng cũng lại..."
+            "page": 2,
+            "file": "tmpwng4dpqe.pdf",
+            "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
           },
           {
             "index": 2,
-            "page": 6,
-            "file": "tmpz5j6516h.pdf",
-            "snippet": "các chị vợ anh, vợ chú của A Sử có còn ở nhà, không biết tất cả những người đàn bà khốn khổ sa vào nhà quan đã được đi chơi hay là họ cũng đang phải trói như Mị. Mị không thể biết. Đời người đàn bà lấy chồng nhà giàu ở Hồng Ngài thì một đời con người..."
+            "page": 3,
+            "file": "tmpwng4dpqe.pdf",
+            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
           },
           {
             "index": 3,
-            "page": 2,
-            "file": "tmpz5j6516h.pdf",
-            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
-          }
-        ]
-      },
-      {
-        "role": "user",
-        "content": "Vì sao Mị phải làm dâu nhà thống lí Pá Tra\n\n"
-      },
-      {
-        "role": "assistant",
-        "content": "Mị phải làm dâu nhà thống lí Pá Tra để trả nợ. Bố Mị đã không thể trả hết một nương ngô cho người ta hàng năm, nên thống lí Pá Tra đề nghị nhận Mị làm con dâu và sẽ xoá hết nợ cho họ.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "tmpz5j6516h.pdf",
-            "snippet": "chưa trả hết nợ. Cho tới năm ấy Mị đã lớn, Mị là con gái đầu lòng. Thống lí Pá Tra đến bảo bố Mị : -Cho tao đứa con gái này về làm dâu thì tao xoá hết nợ cho. Ông lão nghĩ năm nào cũng phải trả một nương ngô cho người ta, thì tiếc ngô, nhưng cũng lại..."
-          },
-          {
-            "index": 2,
             "page": 6,
-            "file": "tmpz5j6516h.pdf",
-            "snippet": "các chị vợ anh, vợ chú của A Sử có còn ở nhà, không biết tất cả những người đàn bà khốn khổ sa vào nhà quan đã được đi chơi hay là họ cũng đang phải trói như Mị. Mị không thể biết. Đời người đàn bà lấy chồng nhà giàu ở Hồng Ngài thì một đời con người..."
-          },
-          {
-            "index": 3,
-            "page": 2,
-            "file": "tmpz5j6516h.pdf",
-            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
+            "file": "tmpwng4dpqe.pdf",
+            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
           }
         ]
       }
     ],
-    "file": "Vợ chồng a Phủ.pdf"
-  },
-  {
-    "id": 1,
-    "title": "Cuộc trò chuyện mới",
-    "messages": [],
     "file": null
   }
 ]

@@ -14,7 +14,7 @@ from src.logger import setup_logger
 from src.persistence import (
     save_history, load_history,
     save_vectorstore, load_vectorstore,
-    delete_all_vectorstores
+    delete_all_vectorstores, delete_vectorstore
 )
 logger = setup_logger()
 
@@ -59,7 +59,12 @@ if "current_file" not in st.session_state:
     st.session_state.current_file = None #  tên file PDF hiện tại.
 # ── Session State bổ sung cho chat sessions + persistence (tính năng lịch sử)───────────────────
 if "chat_sessions" not in st.session_state:
-    st.session_state.chat_sessions = load_history()  # load các chat cũ nếu có
+    sessions = load_history()
+    sessions = [
+        s for s in sessions
+        if not (s["title"] == "Cuộc trò chuyện mới" and not s["messages"] and not s["file"])
+    ]   
+    st.session_state.chat_sessions = sessions
 if "current_chat_id" not in st.session_state:
     st.session_state.current_chat_id = None # lưu id của đoạn chat đang hoạt động
 if "pending_prompt" not in st.session_state:
@@ -79,7 +84,14 @@ def save_current_session_to_disk():
             if st.session_state.vectorstore is not None:
                 save_vectorstore(s["id"], st.session_state.vectorstore)
             break
-    save_history(st.session_state.chat_sessions)
+
+    # Lọc bỏ các session rỗng trước khi lưu
+    cleaned_sessions = [
+        s for s in st.session_state.chat_sessions
+        if not (s["title"] == "Cuộc trò chuyện mới" and not s["messages"] and not s["file"])
+    ]
+    save_history(cleaned_sessions)
+
 
 
 def load_session_to_state(target_id):
@@ -196,6 +208,33 @@ with st.sidebar:
             if st.button("❌ Hủy"):
                 st.session_state.show_confirm = False
                 st.rerun()
+
+
+        # ── Nút Clear Vector Store ─────────────────────────────────────────────
+    if st.session_state.vectorstore is not None and st.session_state.current_chat_id is not None:
+        if st.button("🗑️ Xóa tài liệu hiện tại", type="tertiary", use_container_width=True, key="quart_btn"):
+            st.session_state.show_confirm_clear_vs = True
+
+    if st.session_state.get("show_confirm_clear_vs", False):
+        st.caption("**Bạn có chắc chắn muốn xóa tài liệu hiện tại không?**")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("✅ Đồng ý", key="confirm_clear_vs_yes"):
+                delete_vectorstore(st.session_state.current_chat_id)
+                for s in st.session_state.chat_sessions:
+                    if s["id"] == st.session_state.current_chat_id:
+                        s["file"] = None
+                        break
+                save_history(st.session_state.chat_sessions)
+                st.session_state.vectorstore = None
+                st.session_state.current_file = None
+                st.session_state.show_confirm_clear_vs = False
+                st.rerun()
+        with col2:
+            if st.button("❌ Hủy", key="confirm_clear_vs_no"):
+                st.session_state.show_confirm_clear_vs = False
+                st.rerun()
+
 
 
     # ── Nút New Chat ─────────────────────────────────────────────────────────

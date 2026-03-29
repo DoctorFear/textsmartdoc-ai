@@ -103,3 +103,12 @@ def load_vectorstore(session_id: int, embedder) -> object | None:
 def delete_all_vectorstores() -> None:
     if os.path.exists(FAISS_DIR):
         shutil.rmtree(FAISS_DIR)
+
+
+def delete_vectorstore(session_id: int) -> None:
+    """
+    Xóa vectorstore của một session cụ thể (chat_<id>).
+    """
+    folder = os.path.join(FAISS_DIR, f"chat_{session_id}")
+    if os.path.exists(folder):
+        shutil.rmtree(folder)
