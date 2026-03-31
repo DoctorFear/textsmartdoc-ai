@@ -70,7 +70,9 @@
       }
     ],
     "file": "ChuyenNguoiConGaiNamXuong.docx",
-    "files": []
+    "files": [
+      "tmp29ggeyml.docx"
+    ]
   },
   {
     "id": 2,
@@ -133,6 +135,44 @@
           }
         ],
         "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "ai là người viết chuyện"
+      },
+      {
+        "role": "assistant",
+        "content": "Nguyễn Dữ là người viết truyện \"Chuyện người con gái Nam Xương\".",
+        "citations": [
+          {
+            "index": 1,
+            "page": "N/A",
+            "file": "ChuyenNguoiConGaiNamXuong.docx",
+            "snippet": "Chuyện người con gái Nam Xương  (Trích trong tập \"Truyền kỳ mạn lục\")  Tác giả: Nguyễn Dữ  Vũ Thị Thiết, người con gái quê ở Nam Xương, tính đã thuỳ mị, nết na, lại thêm tư dung tốt đẹp. Trong làng có chàng Trương Sinh, mến vì dung hạnh, xin với mẹ đ..."
+          },
+          {
+            "index": 2,
+            "page": "N/A",
+            "file": "ChuyenNguoiConGaiNamXuong.docx",
+            "snippet": "- Thiếp sở dĩ nương tựa vào chàng vì có cái thú vui nghi gia nghi thất. Nay đã bình rơi trâm gãy, mây tạnh mưa tan, sen rũ trong ao, liễu tàn trước gió; khóc tuyết bông hoa rụng cuống, kêu xuân cái én lìa đàn, nước thẳm buồm xa, đâu còn có thể lại lê..."
+          },
+          {
+            "index": 3,
+            "page": "N/A",
+            "file": "ChuyenNguoiConGaiNamXuong.docx",
+            "snippet": "Phan nói:  - Nương Tử nghĩa khác Tào Nga, hờn không Tinh Vệ mà phải ôm mối hận gieo mình xuống nước. Nay thóc cũ không còn, thóc mới vừa gặt, há lại không tưởng nhớ đến quê hương ư?  Vũ Nương nói:  - Tôi bị chồng ruồng rẫy, thà già ở chốn làng mây cu..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 2,
+          "confidence": 10,
+          "query_used": "ai là tác giả của truyện",
+          "evaluation": {
+            "score": 10,
+            "reason": "Đáp án chính xác và phù hợp với ngữ cảnh tài liệu",
+            "is_sufficient": true
+          }
+        }
       }
     ],
     "file": "VoNhat.pdf",

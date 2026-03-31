@@ -151,6 +151,34 @@ def create_new_chat_session(title="Cuoc tro chuyen moi", keep_current_context=Fa
     return new_id
 
 
+def render_self_rag_meta(meta: dict):
+    """Render khối thông tin Self-RAG gọn, đều dòng và dễ đọc hơn."""
+    if not meta:
+        return
+
+    attempts = meta.get("attempts", 1)
+    confidence = meta.get("confidence", "?")
+    query_used = meta.get("query_used", "")
+    reason = meta.get("evaluation", {}).get("reason", "")
+
+    blocks = [
+        f"<div><strong>Số lần thử:</strong> {attempts} | <strong>Độ tin cậy:</strong> {confidence}/10</div>"
+    ]
+
+    if attempts > 1 and query_used:
+        blocks.append(
+            f"<div><strong>Câu hỏi được viết lại:</strong> <em>{query_used}</em></div>"
+        )
+
+    if reason:
+        blocks.append(f"<div><strong>Lý do đánh giá:</strong> {reason}</div>")
+
+    st.markdown(
+        f"<div class='self-rag-meta'>{''.join(blocks)}</div>",
+        unsafe_allow_html=True
+    )
+
+
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown(f"<h2 style='color:{TEXT_SIDEBAR};'>SmartDoc AI</h2>", unsafe_allow_html=True)
@@ -365,12 +393,8 @@ for message in st.session_state.messages:
     if "self_rag_meta" in message and message["self_rag_meta"]:
         meta = message["self_rag_meta"]
         with st.expander("🔁 Thông tin Self-RAG"):
-            st.caption(f"Số lần thử: **{meta.get('attempts', 1)}** | Độ tin cậy: **{meta.get('confidence', '?')}/10**")
-            if meta.get("attempts", 1) > 1:
-                st.caption(f"Câu hỏi được viết lại: _{meta.get('query_used', '')}_")
-            reason = meta.get("evaluation", {}).get("reason", "")
-            if reason:
-                st.caption(f"Lý do đánh giá: {reason}")
+            render_self_rag_meta(meta)
+
     
     if "citations" in message and message["citations"]:
         with st.expander(" Xem nguồn trích dẫn (Citations) & Highlight"):
@@ -678,45 +702,34 @@ if prompt:
 
         st.markdown(response)
         
-        # Hiển thị thông tin Self-RAG nếu có ngay sau câu trả lời (8.2.10)
-        if self_rag_meta:
-            with st.expander("🔁 Thông tin Self-RAG"):
-                confidence = self_rag_meta["confidence"]
-                color = "green" if confidence >= 7 else "orange" if confidence >= 4 else "red"
-                st.caption(
-                    f"Số lần thử: **{self_rag_meta['attempts']}** | "
-                    f"Độ tin cậy: :{color}[**{confidence}/10**]"
-                )
-                if self_rag_meta["attempts"] > 1:
-                    st.caption(f"Câu hỏi được viết lại: _{self_rag_meta['query_used']}_")
-                reason = self_rag_meta["evaluation"].get("reason", "")
-                if reason:
-                    st.caption(f"Lý do đánh giá: {reason}")
+    # Hiển thị thông tin Self-RAG nếu có ngay sau câu trả lời (8.2.10)
+    if self_rag_meta:
+        with st.expander("🔁 Thông tin Self-RAG"):
+            render_self_rag_meta(self_rag_meta)
+                
+    if citations:
+        with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
+            st.markdown("Hệ thống đã dựa các đoạn văn bản sau để tạo câu trả lời:")
 
-        if citations:
-            with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
-                st.markdown("Hệ thống đã dựa các đoạn văn bản sau để tạo câu trả lời:")
+            for cite in citations:
+                st.markdown(f"**Nguồn {cite['index']}:** File `{cite['file']}` — Trang **{cite['page']}**")
+                st.info(f'"{cite["snippet"]}"')
+        
+    st.session_state.messages.append({
+        "role": "assistant", 
+        "content": response,
+        "citations": citations, 
+        "self_rag_meta": self_rag_meta  # None nếu không bật Self-RAG
+    })
 
-                for cite in citations:
+    # Lưu sau mỗi lượt trả lời
+    save_current_session_to_disk()
 
-                    st.markdown(f"**Nguồn {cite['index']}:** File `{cite['file']}` — Trang **{cite['page']}**")
-
-                    st.info(f'"{cite["snippet"]}"')
-        st.session_state.messages.append({
-            "role": "assistant", 
-            "content": response,
-            "citations": citations, 
-            "self_rag_meta": self_rag_meta  # None nếu không bật Self-RAG
-            })
-
-        # Lưu sau mỗi lượt trả lời
-        save_current_session_to_disk()
-
-        streamlit_js_eval(
-            js_expressions="""
-                parent.document.querySelectorAll('*').forEach(function(el) {
-                    el.scrollTop = el.scrollHeight;
-                });
-            """,
-            key=f"scroll_{int(time.time() * 100000)}"
-        )
+    streamlit_js_eval(
+        js_expressions="""
+            parent.document.querySelectorAll('*').forEach(function(el) {
+                el.scrollTop = el.scrollHeight;
+            });
+        """,
+        key=f"scroll_{int(time.time() * 100000)}"
+    )

@@ -23,6 +23,8 @@ QUY TẮC BẮT BUỘC:
 2. Nếu CONTEXT có thông tin liên quan (dù chỉ một phần nhỏ), BẮT BUỘC phải trả lời dựa trên đó.
 3. Chỉ được nói "Không tìm thấy thông tin" khi CONTEXT hoàn toàn KHÔNG có bất kỳ thông tin nào liên quan đến câu hỏi.
 4. Trả lời ngắn gọn, rõ ràng, tự nhiên (3-6 câu).
+5. Nếu câu hỏi là tiếng Việt, TUYỆT ĐỐI trả lời hoàn toàn bằng tiếng Việt.
+6. TUYỆT ĐỐI không dùng tiếng Trung hoặc ký tự Hán trong câu trả lời.
 
 {language_instruction}
 
@@ -37,6 +39,9 @@ Trả lời:
 REWRITE_PROMPT_TEMPLATE = """Bạn là trợ lý thông minh, hãy viết lại câu hỏi sau để tối ưu cho việc tìm kiếm ngữ nghĩa trong tài liệu.
 Chỉ trả về câu hỏi đã được viết lại, không giải thích bất cứ điều gì thêm.
 
+YÊU CẦU NGÔN NGỮ:
+{language_lock}
+
 Câu hỏi gốc: {question}
 Câu hỏi đã được viết lại:"""
 
@@ -45,24 +50,51 @@ EVAL_PROMPT_TEMPLATE = """Bạn là trợ lý thông minh, hãy đánh giá câu
 Chỉ trả về JSON hợp lệ, KHÔNG giải thích, KHÔNG thêm bất kỳ text nào khác.
 Format bắt buộc: {{"score": <số từ 1 đến 10>, "reason": "<lý do ngắn gọn>", "is_sufficient": <true hoặc false>}}
  
+YÊU CẦU NGÔN NGỮ CHO FIELD reason:
+{language_lock}
+
 Câu hỏi: {question}
 Ngữ cảnh tài liệu: {context}
 Câu trả lời: {answer}
 
 JSON:"""
 
-def get_language_instruction(question: str) -> str:
-    # Phát hiện ngôn ngữ câu hỏi và trả về chỉ thị ngôn ngữ tương ứng
-    viet_chars = 'àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ'
-    is_viet = any(c in question.lower() for c in viet_chars)
-    
-    if is_viet:
-        return """BẮT BUỘC: Trả lời BẰNG TIẾNG VIỆT, tự nhiên, không lẫn tiếng Anh/Trung.
-    Ưu tiên trả lời nếu có bất kỳ thông tin liên quan nào trong CONTEXT."""
-    else:
-        return """Answer in ENGLISH, concise and natural.
-    Only say you don't know if there is truly no relevant information."""
+# --- Hàm kiểm tra xem câu hỏi có thể là tiếng Việt hay không ---
+def is_probably_vietnamese(text: str) -> bool:
+    text_lower = f" {text.lower().strip()} "
+    viet_chars = "àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ"
+    viet_hints = [
+        " là ", " và ", " của ", " trong ", " cho ", " với ",
+        " tóm tắt ", " câu ", " truyện ", " tài liệu ",
+        " ai ", " gì ", " nào ", " vì sao ", " như thế nào "
+    ]
+    return any(ch in text_lower for ch in viet_chars) or any(word in text_lower for word in viet_hints)
 
+
+# --- Hàm tạo chỉ thị ngôn ngữ dựa trên độ ngữ tiếng Việt của câu hỏi ---
+def get_language_instruction(question: str) -> str:
+    if is_probably_vietnamese(question):
+        return (
+            "BẮT BUỘC: Trả lời HOÀN TOÀN bằng tiếng Việt tự nhiên. "
+            "TUYỆT ĐỐI không dùng tiếng Trung, không xen tiếng Trung, "
+            "không dùng ký tự Hán trong câu trả lời."
+        )
+    return (
+        "Answer ONLY in natural ENGLISH. "
+        "Do not use Chinese characters or Chinese words."
+    )
+
+
+# --- Hàm tạo khóa ngôn ngữ cho bước self-rag (rewrite/evaluate) ---
+def get_self_rag_language_lock(question: str) -> str:
+    if is_probably_vietnamese(question):
+        return (
+            "Trả về HOÀN TOÀN bằng tiếng Việt. "
+            "Tuyệt đối không dùng tiếng Trung hay ký tự Hán."
+        )
+    return "Return ONLY in English. Do not use Chinese."
+
+# --- Hàm định dạng danh sách tài liệu thành một chuỗi context ---
 def format_docs(docs):
     # docs là list Document
     return "\n\n".join(getattr(doc, "page_content", str(doc)) for doc in docs)
@@ -78,19 +110,25 @@ rag_chain = (
 # -----------------------------------------------------
 # SELF-RAG (8.2.10)
 # -----------------------------------------------------
+# --- Hàm viết lại câu hỏi (query rewrite) cho self-rag ---
 def rewrite_query(question: str) -> str:
     """Viết lại câu hỏi để cải thiện chất lượng tìm kiếm ngữ nghĩa.
     Được gọi từ lần thử thứ 2 trở đi trong self_rag_query.
     """
     rewrite_prompt = PromptTemplate.from_template(REWRITE_PROMPT_TEMPLATE)
     rewrite_chain = rewrite_prompt | llm | StrOutputParser()
-    rewritten = rewrite_chain.invoke({"question": question}).strip()
+    rewritten = rewrite_chain.invoke({
+        "question": question,
+        "language_lock": get_self_rag_language_lock(question)
+    }).strip()
+
  
     # Đảm bảo không trả về chuỗi rỗng
     rewritten = rewritten.replace("```", "").replace("json", "").strip().strip('"')
     return rewritten if rewritten else question
  
  
+# --- Hàm đánh giá chất lượng câu trả lời do LLM sinh ra ---
 def evaluate_answer(question: str, context: str, answer: str) -> dict:
     """LLM tự đánh giá chất lượng câu trả lời dựa trên ngữ cảnh.
 
@@ -102,7 +140,8 @@ def evaluate_answer(question: str, context: str, answer: str) -> dict:
     raw = eval_chain.invoke({
         "question": question,
         "context": context,
-        "answer": answer
+        "answer": answer,
+        "language_lock": get_self_rag_language_lock(question)
     }).strip()
  
     try:
@@ -114,6 +153,7 @@ def evaluate_answer(question: str, context: str, answer: str) -> dict:
         return {"score": 3, "reason": "LLM trả về JSON không hợp lệ", "is_sufficient": False}
  
  
+# --- Hàm chính Self-RAG: retrieve, generate, evaluate, retry ---
 def self_rag_query(question: str, retriever, max_retries: int = 2) -> dict:
     """Pipeline Self-RAG hoàn chỉnh: retrieve → generate → evaluate → retry nếu cần.
  

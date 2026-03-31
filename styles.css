@@ -460,3 +460,33 @@ section[data-testid="stSidebar"] div[data-testid="stCheckbox"] label {
     -webkit-text-fill-color: #FFFFFF !important;
     opacity: 1 !important;
 }
+
+/* ── Self-RAG Meta (8.2.10) ── cân đối khoảng cách trong khối thông tin ── */
+div[data-testid="stExpander"] .self-rag-meta {
+    margin-top: 0.35rem;
+    padding: 0.35rem 0.1rem 0.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    line-height: 1.6;
+}
+
+/* ── Self-RAG Meta (8.2.10) ── định dạng từng dòng nội dung ── */
+div[data-testid="stExpander"] .self-rag-meta div {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #4b5563;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+/* ── Self-RAG Meta (8.2.10) ── làm nổi bật nhãn thông tin ── */
+div[data-testid="stExpander"] .self-rag-meta strong {
+    color: #1f2937;
+}
+
+/* ── Self-RAG Meta (8.2.10) ── làm dịu phần câu hỏi viết lại ── */
+div[data-testid="stExpander"] .self-rag-meta em {
+    color: #6b7280;
+    font-style: italic;
+}
