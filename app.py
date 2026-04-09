@@ -621,8 +621,10 @@ if prompt:
                         search_type=search_type,
                         search_kwargs=retriever_kwargs
                     )
+
                     all_docs = list(st.session_state.vectorstore.docstore._dict.values())
                     current_doc_count = len(all_docs)
+                    ## Tạo BM25 (nếu chưa có)
                     if "bm25_retriever" not in st.session_state or st.session_state.get(
                             "bm25_doc_count") != current_doc_count:
                         logger.info("Đang tạo index BM25 (Chỉ chạy 1 lần duy nhất)...")
@@ -631,6 +633,7 @@ if prompt:
 
                     bm25_retriever = st.session_state.bm25_retriever
                     bm25_retriever.k = top_k
+                    ## implement ensemble retriever
                     retriever = EnsembleRetriever(
                         retrievers=[bm25_retriever, retriever],
                         weights=[0.3, 0.7]
