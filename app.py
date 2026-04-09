@@ -16,8 +16,10 @@ from src.persistence import (
     save_vectorstore, load_vectorstore,
     delete_all_vectorstores, delete_vectorstore
 )
-logger = setup_logger()
+from langchain_community.retrievers import BM25Retriever
+from langchain.retrievers import EnsembleRetriever
 
+logger = setup_logger()
 
 
 # ── Load CSS từ file riêng ───────────────────────────────────────────────────
@@ -28,9 +30,9 @@ def load_css(file_path: str):
 
 
 # ── Theme & Color Palette ────────────────────────────────────────────────────
-TEXT_SIDEBAR = "#FFFFFF"     # Màu chữ trắng cho sidebar
+TEXT_SIDEBAR = "#FFFFFF"  # Màu chữ trắng cho sidebar
 
-st.set_page_config( # Cấu hình giao diện
+st.set_page_config(  # Cấu hình giao diện
     page_title="SmartDoc AI",
     page_icon="📄",
     layout="wide",
@@ -46,30 +48,32 @@ load_css("styles.css")
 def get_embedder():
     return embedder
 
+
 @st.cache_resource
 def get_llm():
     return llm
 
+
 # ── Session State ───── Lưu trữ trạng thái
 if "vectorstore" not in st.session_state:
-    st.session_state.vectorstore = None # nơi chứa FAISS index của tài liệu.
+    st.session_state.vectorstore = None  # nơi chứa FAISS index của tài liệu.
 if "messages" not in st.session_state:
-    st.session_state.messages = [] # lịch sử hội thoại.
+    st.session_state.messages = []  # lịch sử hội thoại.
 if "current_file" not in st.session_state:
-    st.session_state.current_file = None #  tên file PDF hiện tại.
+    st.session_state.current_file = None  # tên file PDF hiện tại.
 # ── Session State bổ sung cho chat sessions + persistence (tính năng lịch sử)───────────────────
 if "chat_sessions" not in st.session_state:
     sessions = load_history()
     sessions = [
         s for s in sessions
         if not (s["title"] == "Cuộc trò chuyện mới" and not s["messages"] and not s["file"])
-    ]   
+    ]
     st.session_state.chat_sessions = sessions
 if "current_chat_id" not in st.session_state:
-    st.session_state.current_chat_id = None # lưu id của đoạn chat đang hoạt động
+    st.session_state.current_chat_id = None  # lưu id của đoạn chat đang hoạt động
 if "pending_prompt" not in st.session_state:
     st.session_state.pending_prompt = None  # giữ câu hỏi khi qua rerun để hiển thị tên của nó ở history
-# Session State bổ sung cho upload feedback 
+# Session State bổ sung cho upload feedback
 if "upload_success_msg" not in st.session_state:
     st.session_state.upload_success_msg = None
 if "upload_info_msg" not in st.session_state:
@@ -83,13 +87,14 @@ if "uploader_nonce" not in st.session_state:
 if "self_rag_enabled" not in st.session_state:
     st.session_state.self_rag_enabled = False  # mặc định tắt để tiết kiệm tài nguyên
 
+
 # ── Hàm hỗ trợ tách biệt các đoạn lặp ───────────────────────────────────────
 
 def save_current_session_to_disk():
     """Lưu messages, file, vectorstore của chat hiện tại xuống disk"""
     if st.session_state.current_chat_id is None:
         return
-    
+
     uploaded_sources = get_uploaded_sources(st.session_state.vectorstore)
 
     for s in st.session_state.chat_sessions:
@@ -107,7 +112,6 @@ def save_current_session_to_disk():
         if not (s["title"] == "Cuộc trò chuyện mới" and not s["messages"] and not s.get("file") and not s.get("files"))
     ]
     save_history(st.session_state.chat_sessions)
-
 
 
 def load_session_to_state(target_id):
@@ -141,7 +145,7 @@ def create_new_chat_session(title="Cuoc tro chuyen moi", keep_current_context=Fa
         "messages": [],
         "vectorstore": None,
         "file": None,
-         "files": []
+        "files": []
     })
     st.session_state.current_chat_id = new_id
     if not keep_current_context:
@@ -196,7 +200,7 @@ with st.sidebar:
         • **Chunk Size** & **Chunk Overlap**: Tăng lên nếu tài liệu dài hoặc phức tạp (thường 1000-1500 & 200-300)  
         • **Top-k** & **Fetch-k**: Tăng nếu câu trả lời không chính xác (khuyến nghị Top-k = 5-7)  
         • **Search Type = MMR** → sẽ tự động hiện **Lambda Mult** (0.7 là giá trị tốt nhất)  
-        
+
         **Lưu ý quan trọng**:  
         • Thông số càng lớn **không phải lúc nào cũng tốt hơn**. Cần thử nghiệm để tìm giá trị phù hợp.  
         • Nếu câu trả lời vẫn sai → thử tăng Chunk Size + Top-k hoặc chuyển sang MMR.
@@ -211,7 +215,7 @@ with st.sidebar:
         • **Temperature**: 0.7  
         • **Ngày chạy**: {datetime.now().strftime('%d/%m/%Y %H:%M')}
         """)
-        
+
     # Cho phép người dùng chỉnh chunk_size, chunk_overlap, k
     with st.expander("Thiết lập & Tùy chọn"):
         chunk_size = st.slider("Chunk Size", 200, 2000, 1200, 100)
@@ -223,7 +227,7 @@ with st.sidebar:
         # Chỉ hiện lambda khi chọn MMR
         if search_type == "mmr":
             lambda_mult = st.slider("Lambda Mult (Diversity)", 0.0, 1.0, 0.7, 0.05,
-                                help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt")
+                                    help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt")
         else:
             lambda_mult = 0.7  # giá trị mặc định, không dùng
 
@@ -234,7 +238,7 @@ with st.sidebar:
             value=st.session_state.self_rag_enabled,
             help="Self-RAG cho phép tự đánh giá và cải thiện câu trả lời. Chậm hơn nhưng chính xác hơn."
         )
-    
+
     # ── Hiển thị danh sách tài liệu đã upload + filter (8.2.8) ────────────────────────────────────
     with st.expander("Tài liệu đã upload", expanded=True):
         uploaded_sources = get_uploaded_sources(st.session_state.vectorstore)
@@ -280,11 +284,11 @@ with st.sidebar:
         with col1:
             if st.button("✅ Đồng ý"):
                 delete_all_vectorstores()
-                st.session_state.chat_sessions   = []
-                st.session_state.messages        = []
+                st.session_state.chat_sessions = []
+                st.session_state.messages = []
                 st.session_state.current_chat_id = None
-                st.session_state.vectorstore     = None
-                st.session_state.current_file    = None
+                st.session_state.vectorstore = None
+                st.session_state.current_file = None
                 save_history([])
                 st.session_state.show_confirm = False
                 st.rerun()
@@ -292,7 +296,6 @@ with st.sidebar:
             if st.button("❌ Hủy"):
                 st.session_state.show_confirm = False
                 st.rerun()
-
 
         # ── Nút Clear Vector Store ─────────────────────────────────────────────
     if st.session_state.vectorstore is not None and st.session_state.current_chat_id is not None:
@@ -320,13 +323,11 @@ with st.sidebar:
                 st.session_state.show_confirm_clear_vs = False
                 st.rerun()
 
-
-
     # ── Nút New Chat ─────────────────────────────────────────────────────────
     if st.button(
-        "✨ Hộp thoại mới",
-        type="secondary",
-        use_container_width=True,
+            "✨ Hộp thoại mới",
+            type="secondary",
+            use_container_width=True,
     ):
         # Chống spam: nếu đang ở session rỗng (chưa chat) thì không tạo thêm — chỉ rerun
         if len(st.session_state.messages) == 0 and st.session_state.current_chat_id is not None:
@@ -339,17 +340,16 @@ with st.sidebar:
         new_id = create_new_chat_session("Cuộc trò chuyện mới")
         st.rerun()
 
-
     # ── Hiển thị danh sách các cuộc chat — mới nhất lên đầu ─────────────────
     for session in reversed(st.session_state.chat_sessions):
-        title     = session["title"]
+        title = session["title"]
         is_active = session["id"] == st.session_state.current_chat_id
 
         if st.button(
-            f"📩 {title}",
-            key=f"chat_{session['id']}",
-            use_container_width=True,
-            type="primary"
+                f"📩 {title}",
+                key=f"chat_{session['id']}",
+                use_container_width=True,
+                type="primary"
         ):
             # Lưu session hiện tại trước khi chuyển
             save_current_session_to_disk()
@@ -358,10 +358,10 @@ with st.sidebar:
             load_session_to_state(session["id"])
             st.rerun()
 
-
 # ── Main Area ────────────────────────────────────────────────────────────────
 st.title("📄 Hỏi đáp thông minh với tài liệu")
-st.markdown("**SmartDoc AI** – Upload PDF hoặc DOCX → hỏi bất kỳ câu gì liên quan đến nội dung tài liệu. Hệ thống chạy cục bộ, bảo mật cao.")
+st.markdown(
+    "**SmartDoc AI** – Upload PDF hoặc DOCX → hỏi bất kỳ câu gì liên quan đến nội dung tài liệu. Hệ thống chạy cục bộ, bảo mật cao.")
 
 current_sources = get_uploaded_sources(st.session_state.vectorstore)
 
@@ -385,7 +385,7 @@ if st.session_state.get("upload_warning_msgs"):
     for msg in st.session_state.upload_warning_msgs:
         st.warning(msg)
     st.session_state.upload_warning_msgs = []
-    
+
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
@@ -395,7 +395,6 @@ for message in st.session_state.messages:
         with st.expander("🔁 Thông tin Self-RAG"):
             render_self_rag_meta(meta)
 
-    
     if "citations" in message and message["citations"]:
         with st.expander(" Xem nguồn trích dẫn (Citations) & Highlight"):
             for cite in message["citations"]:
@@ -424,12 +423,11 @@ with col_upload:
     )
 
 with col_chat:
-    prompt = st.chat_input("Nhập câu hỏi về tài liệu...") # ô nhập liệu
+    prompt = st.chat_input("Nhập câu hỏi về tài liệu...")  # ô nhập liệu
 
 if not prompt and st.session_state.pending_prompt:
     prompt = st.session_state.pending_prompt
     st.session_state.pending_prompt = None
-
 
 # ── Xử lý upload nhiều file & indexing ─────────────────────────────────────────
 if uploaded_file:
@@ -441,10 +439,10 @@ if uploaded_file:
         else:
             pending_session_title = f"{uploaded_file[0].name[:35]} +{len(uploaded_file) - 1} file"
 
-    processed_names = []      # Danh sách file xử lý thành công
-    error_messages = []       # Danh sách lỗi
-    total_chunks = 0          # Tổng số đoạn (chunks)
-    total_size_mb = 0.0       # Tổng dung lượng (MB)
+    processed_names = []  # Danh sách file xử lý thành công
+    error_messages = []  # Danh sách lỗi
+    total_chunks = 0  # Tổng số đoạn (chunks)
+    total_size_mb = 0.0  # Tổng dung lượng (MB)
 
     with st.spinner("Đang xử lý tài liệu..."):
         # ── Lặp qua từng file upload ───────────────────────────────────────────
@@ -566,7 +564,6 @@ if uploaded_file:
         st.session_state.uploader_nonce += 1
         st.rerun()
 
-
 # Xử lý câu hỏi
 if prompt:
     if st.session_state.vectorstore is None:
@@ -576,8 +573,8 @@ if prompt:
     # ── Tạo session tự động nếu user hỏi mà chưa nhấn New Chat ──────────────
     if st.session_state.current_chat_id is None:
         create_new_chat_session(
-        prompt[:40] + ("..." if len(prompt) > 40 else ""),
-        keep_current_context=True
+            prompt[:40] + ("..." if len(prompt) > 40 else ""),
+            keep_current_context=True
         )
         save_current_session_to_disk()
         st.session_state.pending_prompt = prompt
@@ -605,26 +602,39 @@ if prompt:
             else:
                 try:
                     logger.info(f"Query: '{prompt[:80]}...'" if len(prompt) > 80 else f"Query: '{prompt}'")  # ← LOG 4
-                    
+
                     # Áp dụng filter tài liệu nếu người dùng chọn (8.2.8)
                     source_filter = None
                     if "source_filter_select" in st.session_state:
                         selected = st.session_state.source_filter_select
                         if selected != "Tất cả tài liệu":
                             source_filter = selected
- 
+
                     # Cấu hình retriever với filter (nếu có)
                     retriever_kwargs = {"k": top_k, "fetch_k": fetch_k}
                     if source_filter:
                         retriever_kwargs["filter"] = {"source": source_filter}
                     if search_type == "mmr":
                         retriever_kwargs["lambda_mult"] = lambda_mult
- 
+
                     retriever = st.session_state.vectorstore.as_retriever(
                         search_type=search_type,
                         search_kwargs=retriever_kwargs
                     )
-                    
+                    all_docs = list(st.session_state.vectorstore.docstore._dict.values())
+                    current_doc_count = len(all_docs)
+                    if "bm25_retriever" not in st.session_state or st.session_state.get(
+                            "bm25_doc_count") != current_doc_count:
+                        logger.info("Đang tạo index BM25 (Chỉ chạy 1 lần duy nhất)...")
+                        st.session_state.bm25_retriever = BM25Retriever.from_documents(all_docs)
+                        st.session_state.bm25_doc_count = current_doc_count
+
+                    bm25_retriever = st.session_state.bm25_retriever
+                    bm25_retriever.k = top_k
+                    retriever = EnsembleRetriever(
+                        retrievers=[bm25_retriever, retriever],
+                        weights=[0.3, 0.7]
+                    )
                     if search_type == "mmr":
                         logger.info(f"Retriever: MMR | k={top_k} | lambda_mult={lambda_mult} | fetch_k={fetch_k}")
                     else:
@@ -637,10 +647,10 @@ if prompt:
                         response = result["answer"]
                         retrieved_docs = result["docs"]
                         self_rag_meta = {
-                            "attempts":    result["attempts"],
-                            "confidence":  result["confidence"],
-                            "query_used":  result["query_used"],
-                            "evaluation":  result["evaluation"]
+                            "attempts": result["attempts"],
+                            "confidence": result["confidence"],
+                            "query_used": result["query_used"],
+                            "evaluation": result["evaluation"]
                         }
                         logger.info(
                             f"Self-RAG | attempts={result['attempts']} | "
@@ -650,13 +660,13 @@ if prompt:
                     else:
                         # Chế độ thường: pipeline RAG chuẩn
                         retrieved_docs = retriever.invoke(prompt)
- 
+
                         logger.info(
                             f"Retrieved {len(retrieved_docs)} docs | "
                             f"search_type={search_type} | "
                             f"sources: {[doc.metadata.get('source', 'unknown') for doc in retrieved_docs]}"
                         )
- 
+
                         if not retrieved_docs:
                             response = "Không tìm thấy thông tin liên quan trong tài liệu."
                         else:
@@ -666,11 +676,11 @@ if prompt:
                                 "question": prompt,
                                 "language_instruction": get_language_instruction(prompt)
                             }).strip()
- 
+
                             if "không tìm thấy" in response.lower() or len(response.strip()) < 15:
                                 response = "Không tìm thấy thông tin phù hợp trong tài liệu."
 
-                    # Tạo citations từ retrieved_docs 
+                    # Tạo citations từ retrieved_docs
                     citations = []
                     for i, doc in enumerate(retrieved_docs):
                         page_num = doc.metadata.get("page", -1) + 1
@@ -701,12 +711,12 @@ if prompt:
                     self_rag_meta = None
 
         st.markdown(response)
-        
+
     # Hiển thị thông tin Self-RAG nếu có ngay sau câu trả lời (8.2.10)
     if self_rag_meta:
         with st.expander("🔁 Thông tin Self-RAG"):
             render_self_rag_meta(self_rag_meta)
-                
+
     if citations:
         with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
             st.markdown("Hệ thống đã dựa các đoạn văn bản sau để tạo câu trả lời:")
@@ -714,11 +724,11 @@ if prompt:
             for cite in citations:
                 st.markdown(f"**Nguồn {cite['index']}:** File `{cite['file']}` — Trang **{cite['page']}**")
                 st.info(f'"{cite["snippet"]}"')
-        
+
     st.session_state.messages.append({
-        "role": "assistant", 
+        "role": "assistant",
         "content": response,
-        "citations": citations, 
+        "citations": citations,
         "self_rag_meta": self_rag_meta  # None nếu không bật Self-RAG
     })
 

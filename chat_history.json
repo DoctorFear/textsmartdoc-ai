@@ -1,184 +1,176 @@
 [
   {
     "id": 0,
-    "title": "Tràng là ai",
+    "title": "VoChongAPhu.pdf",
     "messages": [
       {
         "role": "user",
-        "content": "Tràng là ai"
+        "content": "vì sao Mị phải làm dâu nhà thống lí Pá Tra"
       },
       {
         "role": "assistant",
-        "content": "Tràng là người đàn ông trong câu chuyện, có lẽ là nhân vật chính. Anh ta thường xuyên đến chợ tỉnh để trả hàng và gặp gỡ người khác. Tràng từng bị từ chối bởi một người phụ nữ mà anh ta quan tâm, nhưng sau đó cô ấy lại tìm上门了。在故事中，他是一位经常到集市上做生意的男子，遇到了一个让他心动但又被拒绝的女人，后来这个女人又找到了他，并最终决定与他一起生活。",
-        "citations": [
-          {
-            "index": 1,
-            "page": 2,
-            "file": "tmpwng4dpqe.pdf",
-            "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
-          },
-          {
-            "index": 2,
-            "page": 3,
-            "file": "tmpwng4dpqe.pdf",
-            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
-          },
-          {
-            "index": 3,
-            "page": 6,
-            "file": "tmpwng4dpqe.pdf",
-            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
-          }
-        ]
-      }
-    ],
-    "file": null,
-    "files": []
-  },
-  {
-    "id": 1,
-    "title": "ChuyenNguoiConGaiNamXuong.docx",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Ai là người viết ra tác phẩm"
-      },
-      {
-        "role": "assistant",
-        "content": "Nguyễn Dữ là người viết ra tác phẩm này.",
-        "citations": [
-          {
-            "index": 1,
-            "page": "N/A",
-            "file": "tmp29ggeyml.docx",
-            "snippet": "- Thiếp sở dĩ nương tựa vào chàng vì có cái thú vui nghi gia nghi thất. Nay đã bình rơi trâm gãy, mây tạnh mưa tan, sen rũ trong ao, liễu tàn trước gió; khóc tuyết bông hoa rụng cuống, kêu xuân cái én lìa đàn, nước thẳm buồm xa, đâu còn có thể lại lê..."
-          },
-          {
-            "index": 2,
-            "page": "N/A",
-            "file": "tmp29ggeyml.docx",
-            "snippet": "Phan nói:  - Nương Tử nghĩa khác Tào Nga, hờn không Tinh Vệ mà phải ôm mối hận gieo mình xuống nước. Nay thóc cũ không còn, thóc mới vừa gặt, há lại không tưởng nhớ đến quê hương ư?  Vũ Nương nói:  - Tôi bị chồng ruồng rẫy, thà già ở chốn làng mây cu..."
-          },
-          {
-            "index": 3,
-            "page": "N/A",
-            "file": "tmp29ggeyml.docx",
-            "snippet": "Chuyện người con gái Nam Xương  (Trích trong tập \"Truyền kỳ mạn lục\")  Tác giả: Nguyễn Dữ  Vũ Thị Thiết, người con gái quê ở Nam Xương, tính đã thuỳ mị, nết na, lại thêm tư dung tốt đẹp. Trong làng có chàng Trương Sinh, mến vì dung hạnh, xin với mẹ đ..."
-          }
-        ],
-        "self_rag_meta": null
-      }
-    ],
-    "file": "ChuyenNguoiConGaiNamXuong.docx",
-    "files": [
-      "tmp29ggeyml.docx"
-    ]
-  },
-  {
-    "id": 2,
-    "title": "ChuyenNguoiConGaiNamXuong.docx",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Trong chuyện có mấy nhân vật"
-      },
-      {
-        "role": "assistant",
-        "content": "Trong truyện có 4 nhân vật chính:\n\n1. Phan Lang - người làm đầu mục ở bến đò Hoàng Giang.\n2. Linh Phi - vợ vua biển Nam Hải, sống trong động rùa.\n3. Vũ Nương - người bị oan uổng và sau đó gặp lại Phan Lang.\n4. Xích Hỗn - sứ giả được Linh Phi sai đưa Phan Lang ra khỏi nước.\n\nCó tổng cộng 4 nhân vật chính trong câu chuyện này.",
-        "citations": [
-          {
-            "index": 1,
-            "page": "N/A",
-            "file": "ChuyenNguoiConGaiNamXuong.docx",
-            "snippet": "- Tôi là Linh Phi trong động rùa, vợ vua biển Nam Hải, nhớ hồi còn nhỏ đi chơi ở bến sông bị người phường chài bắt được, ngẫu nhiên báo mộng, quả được nhờ ơn. Gặp gỡ ngày nay, há chẳng phải lòng trời xui khiến cho tôi có dịp đền ơn trả nghĩa?  Phi bè..."
-          },
-          {
-            "index": 2,
-            "page": "N/A",
-            "file": "ChuyenNguoiConGaiNamXuong.docx",
-            "snippet": "- Cha Đản lại đến kia kìa!  Chàng hỏi đâu. Nó chỉ bóng chàng ở trên vách:  - Đây này!  Thì ra, ngày thường, ở một mình, nàng hay đùa con, trỏ bóng mình mà bảo là cha Đản. Bấy giờ chàng mới tỉnh ngộ, thấu nỗi oan của vợ, nhưng việc trót đã qua rồi!  C..."
-          },
-          {
-            "index": 3,
-            "page": "N/A",
-            "file": "ChuyenNguoiConGaiNamXuong.docx",
-            "snippet": "Phan nói:  - Nương Tử nghĩa khác Tào Nga, hờn không Tinh Vệ mà phải ôm mối hận gieo mình xuống nước. Nay thóc cũ không còn, thóc mới vừa gặt, há lại không tưởng nhớ đến quê hương ư?  Vũ Nương nói:  - Tôi bị chồng ruồng rẫy, thà già ở chốn làng mây cu..."
-          }
-        ],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Cho biết tác giả của chuyện người con gái nam xương và các nhân vật chính của vợ nhặt"
-      },
-      {
-        "role": "assistant",
-        "content": "Tác giả của \"Chuyện người con gái Nam Xương\" là Nguyễn Dữ. Nhân vật chính trong truyện ngắn \"Vợ nhặt\" không được nêu tên rõ ràng trong đoạn văn cung cấp, nhưng có thể hiểu Tràng là nhân vật chính vì bài văn tập trung miêu tả hành động và tâm trạng của ông.",
+        "content": "Mị phải làm dâu nhà thống lí Pá Tra để trả nợ. Bố Mị đã vay tiền từ cha của thống lí Pá Tra, và mỗi năm Mị cần phải trả một nương ngô làm lãi suất cho nợ ấy. Cho đến khi Mị lớn lên, bố Mị đề nghị gả Mị cho thống lí Pá Tra để được xóa hết nợ.",
         "citations": [
           {
             "index": 1,
             "page": 1,
-            "file": "VoNhat.pdf",
-            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
+            "file": "VoChongAPhu.pdf",
+            "snippet": "chưa trả hết nợ. Cho tới năm ấy Mị đã lớn, Mị là con gái đầu lòng. Thống lí Pá Tra đến bảo bố Mị : -Cho tao đứa con gái này về làm dâu thì tao xoá hết nợ cho. Ông lão nghĩ năm nào cũng phải trả một nương ngô cho người ta, thì tiếc ngô, nhưng cũng lại..."
           },
           {
             "index": 2,
-            "page": "N/A",
-            "file": "ChuyenNguoiConGaiNamXuong.docx",
-            "snippet": "Chuyện người con gái Nam Xương  (Trích trong tập \"Truyền kỳ mạn lục\")  Tác giả: Nguyễn Dữ  Vũ Thị Thiết, người con gái quê ở Nam Xương, tính đã thuỳ mị, nết na, lại thêm tư dung tốt đẹp. Trong làng có chàng Trương Sinh, mến vì dung hạnh, xin với mẹ đ..."
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "các chị vợ anh, vợ chú của A Sử có còn ở nhà, không biết tất cả những người đàn bà khốn khổ sa vào nhà quan đã được đi chơi hay là họ cũng đang phải trói như Mị. Mị không thể biết. Đời người đàn bà lấy chồng nhà giàu ở Hồng Ngài thì một đời con người..."
           },
           {
             "index": 3,
-            "page": 8,
-            "file": "VoNhat.pdf",
-            "snippet": "uốn khúc trong cánh đồng tối. Mùi đốt đống rấm ở những nhà có người chết theo gió thoảng vào khét lẹt. Bà lão thở nhẹ ra một hơi dài. Bà lão nghĩ đến ông lão, nghĩ đến đưa con gái út. Bà lão nghĩ đến cuộc đời cực khổ dài dằng dặc của mình. Vợ chồng c..."
+            "page": 5,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "vào cổ rồi bịt cái khăn trắng lên đầu. Có khi nó đi mấy ngày mấy đêm. Nó còn muốn rình bắt mấy người con gái nữa về làm vợ. Cũng chẳng bao giờ Mị nói gì. Bây giờ Mị cũng không nói. Mị đến góc nhà, lấy ống mỡ, xắn một miếng bỏ thêm vào đĩa đèn cho sán..."
+          },
+          {
+            "index": 4,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
+          },
+          {
+            "index": 5,
+            "page": 1,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Ai ở xa về, có việc vào nhà thống lí Pá Tra thường trông thấy có một cô con gái ngồi quay sợi gai bên tảng đá trước của, cạnh tàu ngựa. Lúc nào cũng vậy, dù quay sợi, thái cỏ ngựa, dệt vải, chẻ củi hay đi công nước dưới khe suối lên, cô ấy cũng cúi m..."
           }
         ],
         "self_rag_meta": null
       },
       {
         "role": "user",
-        "content": "ai là người viết chuyện"
+        "content": "vì sao a Phủ bị bắt vào nhà thống lí Pá Tra"
       },
       {
         "role": "assistant",
-        "content": "Nguyễn Dữ là người viết truyện \"Chuyện người con gái Nam Xương\".",
+        "content": "A Phủ bị bắt vào nhà thống lí Pá Tra vì đã để hổ bắt mất một con bò. Khi đó A Phủ đang trông nom bò ngựa và mải mê bẫy nhím, dẫn đến việc không phát hiện kịp thời sự xuất hiện của hổ. Sau khi A Phủ bị bắt trói, chỉ có thống lí Pá Tra mới có quyền giải quyết vụ việc này theo quy định của địa phương.",
         "citations": [
           {
             "index": 1,
-            "page": "N/A",
-            "file": "ChuyenNguoiConGaiNamXuong.docx",
-            "snippet": "Chuyện người con gái Nam Xương  (Trích trong tập \"Truyền kỳ mạn lục\")  Tác giả: Nguyễn Dữ  Vũ Thị Thiết, người con gái quê ở Nam Xương, tính đã thuỳ mị, nết na, lại thêm tư dung tốt đẹp. Trong làng có chàng Trương Sinh, mến vì dung hạnh, xin với mẹ đ..."
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
           },
           {
             "index": 2,
-            "page": "N/A",
-            "file": "ChuyenNguoiConGaiNamXuong.docx",
-            "snippet": "- Thiếp sở dĩ nương tựa vào chàng vì có cái thú vui nghi gia nghi thất. Nay đã bình rơi trâm gãy, mây tạnh mưa tan, sen rũ trong ao, liễu tàn trước gió; khóc tuyết bông hoa rụng cuống, kêu xuân cái én lìa đàn, nước thẳm buồm xa, đâu còn có thể lại lê..."
+            "page": 2,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
           },
           {
             "index": 3,
-            "page": "N/A",
-            "file": "ChuyenNguoiConGaiNamXuong.docx",
-            "snippet": "Phan nói:  - Nương Tử nghĩa khác Tào Nga, hờn không Tinh Vệ mà phải ôm mối hận gieo mình xuống nước. Nay thóc cũ không còn, thóc mới vừa gặt, há lại không tưởng nhớ đến quê hương ư?  Vũ Nương nói:  - Tôi bị chồng ruồng rẫy, thà già ở chốn làng mây cu..."
+            "page": 8,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "–Thằng A Phủ ra đây. A Phủ ra quỳ giữa nhà. Lập tức, bọn trai làng xô đến, trước nhất, chắp tay lạy lia lịa tên thống lí Pá Tra rồi quay lại đánh A Phủ. A Phủ quỳ chịu đòn, chỉ im như cái tượng đá. Cứ mỗi đợt bọn chức việc hút thuốc phiện xong, A Phủ..."
+          },
+          {
+            "index": 4,
+            "page": 11,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "nó bắt trói đến chết người đàn bà ngày trước cũng ở cái nhà này. Chúng nó thật độc ác. Cơ chừng này chỉ đem mai là người kia chết, chết đau, chết đói, chết rét, phải chết. Ta là thân đàn bà, nó đã bắt ta về trình ma nhà nó rồi thì chỉ còn biết đợi ng..."
+          },
+          {
+            "index": 5,
+            "page": 10,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "mà A Phủ thì không có bố mẹ, không có ruộng không có bạc, A Phủ không thể lấy nổi vợ. Tuy nhiên, đang tuổi chơi, trong ngày Tết đến, dù A Phủ chẳng có quản áo mới như nhiều trai khác, A Phủ chỉ có độc một chiếc vòng vía” làn trên cổ, A Phủ cũng cú cù..."
+          },
+          {
+            "index": 6,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "chuyện A Sử đi chơi bị đánh vỡ đầu. Nửa đêm qua, A Sử vào làng tìm đến đám chơi có tiếng sáo, tiếng khén Nhiều trai làng ấy và các làng khác đã tới, chơi quay, thổi sáo suốt ngày, chập tối vừa xong chầu rượu trong nhà, bay giờ vẫn còn chưa chịu tan v..."
           }
         ],
-        "self_rag_meta": {
-          "attempts": 2,
-          "confidence": 10,
-          "query_used": "ai là tác giả của truyện",
-          "evaluation": {
-            "score": 10,
-            "reason": "Đáp án chính xác và phù hợp với ngữ cảnh tài liệu",
-            "is_sufficient": true
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Trận bệnh đậu mùa đã xảy ra ở làng nào kiến bố mẹ a Phủ qua đời"
+      },
+      {
+        "role": "assistant",
+        "content": "Trận bệnh đậu mùa đã xảy ra ở làng Hang-bla Nam xưa. Theo văn bản, bố mẹ A Phủ sống ởHang-bla Nam xưa và vì bệnh đậu mùa mà nhiều trẻ con cùng người lớn trong làng này đều đã chết, khiến chỉ còn lại A Phủ một mình.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 10,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "phẳng. Không còn có lúc nào trở về làng bên. Nhưng A Phủ cũng chẳng muốn trở về làm gì bên ấy nữa. A Phủ cũng không phải người làng bên ấy. Bố mẹ đề A Phủ ở Hang-bla Nam xưa, làng Hàng-bla phải một trận bệnh đậu mùa, nhiều trẻ con, cả người lớn chết ..."
+          },
+          {
+            "index": 2,
+            "page": 8,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "–Thằng A Phủ ra đây. A Phủ ra quỳ giữa nhà. Lập tức, bọn trai làng xô đến, trước nhất, chắp tay lạy lia lịa tên thống lí Pá Tra rồi quay lại đánh A Phủ. A Phủ quỳ chịu đòn, chỉ im như cái tượng đá. Cứ mỗi đợt bọn chức việc hút thuốc phiện xong, A Phủ..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "chuyện A Sử đi chơi bị đánh vỡ đầu. Nửa đêm qua, A Sử vào làng tìm đến đám chơi có tiếng sáo, tiếng khén Nhiều trai làng ấy và các làng khác đã tới, chơi quay, thổi sáo suốt ngày, chập tối vừa xong chầu rượu trong nhà, bay giờ vẫn còn chưa chịu tan v..."
+          },
+          {
+            "index": 4,
+            "page": 7,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "bố mẹ và người trong nhà ấy đã đi ngủ Nhưng người ra người vào còn dập dìu quanh ngõ. A Sử đúng ngoài tức làm. Nó bàn với một lũ khác, doạ đánh bọn con trai lạ vẫn bám quanh nhà đã khiến cho bọn A Sử bị vướng không thể vào được. Bọn A Sử ném đá vào v..."
+          },
+          {
+            "index": 5,
+            "page": 2,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Mị chi bưng mặt khóc. Mị ném nắm lá ngón xuống đất, nám lá ngón Mị đã tìm hái trong rừng Mị vẫn giấu trong áo. Thế là Mị không đành lòng chết Mị chết thì bố Mị còn khổ hơn bao nhiều lần bay giờ nữa. Mị đành trở lại nhà thống lí. Lần lần, mấy năm qua,..."
           }
-        }
+        ],
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Vì sao người con gái lại muốn tự tử bằng lá độc"
+      },
+      {
+        "role": "assistant",
+        "content": "Người con gái Mị muốn tự tử bằng lá độc vì Mị đã tìm thấy cây lá ngón trong rừng và giấu trong áo. Mị không đành lòng chết nhưng nghĩ rằng nếu Mị chết, bố Mị sẽ còn khổ hơn nhiều lần so với bây giờ. Tuy nhiên, sau một thời gian sống trong cực khổ, Mị dần quen với cuộc sống này và quyết định sử dụng lá ngón để kết thúc cuộc đời mình vì cho rằng đó là cách để không làm bố Mị thêm khổ nữa.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Mị chi bưng mặt khóc. Mị ném nắm lá ngón xuống đất, nám lá ngón Mị đã tìm hái trong rừng Mị vẫn giấu trong áo. Thế là Mị không đành lòng chết Mị chết thì bố Mị còn khổ hơn bao nhiều lần bay giờ nữa. Mị đành trở lại nhà thống lí. Lần lần, mấy năm qua,..."
+          },
+          {
+            "index": 2,
+            "page": 11,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "nó bắt trói đến chết người đàn bà ngày trước cũng ở cái nhà này. Chúng nó thật độc ác. Cơ chừng này chỉ đem mai là người kia chết, chết đau, chết đói, chết rét, phải chết. Ta là thân đàn bà, nó đã bắt ta về trình ma nhà nó rồi thì chỉ còn biết đợi ng..."
+          },
+          {
+            "index": 3,
+            "page": 5,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "vào cổ rồi bịt cái khăn trắng lên đầu. Có khi nó đi mấy ngày mấy đêm. Nó còn muốn rình bắt mấy người con gái nữa về làm vợ. Cũng chẳng bao giờ Mị nói gì. Bây giờ Mị cũng không nói. Mị đến góc nhà, lấy ống mỡ, xắn một miếng bỏ thêm vào đĩa đèn cho sán..."
+          },
+          {
+            "index": 4,
+            "page": 10,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "mà A Phủ thì không có bố mẹ, không có ruộng không có bạc, A Phủ không thể lấy nổi vợ. Tuy nhiên, đang tuổi chơi, trong ngày Tết đến, dù A Phủ chẳng có quản áo mới như nhiều trai khác, A Phủ chỉ có độc một chiếc vòng vía” làn trên cổ, A Phủ cũng cú cù..."
+          }
+        ],
+        "self_rag_meta": null
       }
     ],
-    "file": "VoNhat.pdf",
+    "file": "VoChongAPhu.pdf",
     "files": [
-      "ChuyenNguoiConGaiNamXuong.docx",
-      "VoNhat.pdf"
+      "VoChongAPhu.pdf"
     ]
   }
 ]
