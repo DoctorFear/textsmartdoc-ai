@@ -11,3 +11,6 @@ python-dotenv
 streamlit-js-eval
 docx2txt
 rank_bm25
+pytesseract
+pillow
+pdf2image

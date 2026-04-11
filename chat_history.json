@@ -1,176 +1,41 @@
 [
   {
     "id": 0,
-    "title": "VoChongAPhu.pdf",
+    "title": "Valecheva_TypesOfGraphs_NoDate.pdf",
     "messages": [
       {
         "role": "user",
-        "content": "vì sao Mị phải làm dâu nhà thống lí Pá Tra"
+        "content": "tóm tắt file"
       },
       {
         "role": "assistant",
-        "content": "Mị phải làm dâu nhà thống lí Pá Tra để trả nợ. Bố Mị đã vay tiền từ cha của thống lí Pá Tra, và mỗi năm Mị cần phải trả một nương ngô làm lãi suất cho nợ ấy. Cho đến khi Mị lớn lên, bố Mị đề nghị gả Mị cho thống lí Pá Tra để được xóa hết nợ.",
+        "content": "File này đề cập đến hai loại biểu đồ: Biểu đồ cột và Scatter Plot. Biểu đồ cột được sử dụng để thể hiện các nhóm dữ liệu riêng lẻ hoặc so sánh sự khác biệt giữa các danh mục, với mỗi bar có chiều cao tương ứng với giá trị đại diện. Trong khi đó, Scatter Plot là một biểu đồ x-y dùng để thể hiện mối quan hệ giữa hai biến số, giúp nhìn thấy cách một biến phụ thuộc vào biến khác.",
         "citations": [
           {
             "index": 1,
-            "page": 1,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "chưa trả hết nợ. Cho tới năm ấy Mị đã lớn, Mị là con gái đầu lòng. Thống lí Pá Tra đến bảo bố Mị : -Cho tao đứa con gái này về làm dâu thì tao xoá hết nợ cho. Ông lão nghĩ năm nào cũng phải trả một nương ngô cho người ta, thì tiếc ngô, nhưng cũng lại..."
+            "page": 3,
+            "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
+            "snippet": "statistics, and marketing. They are commonly used to illustrate categories of data. Each rectangular bar in a Bar Graph has a height corresponding to the values that they represent. The x-axis of a Bar Graph presents the discrete categories, and the ..."
           },
           {
             "index": 2,
             "page": 6,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "các chị vợ anh, vợ chú của A Sử có còn ở nhà, không biết tất cả những người đàn bà khốn khổ sa vào nhà quan đã được đi chơi hay là họ cũng đang phải trói như Mị. Mị không thể biết. Đời người đàn bà lấy chồng nhà giàu ở Hồng Ngài thì một đời con người..."
+            "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
+            "snippet": "5. Scatter Plot A Scatter Plot is an x-y diagram that shows a relationship between two variables. It is used to plot data points on both the horizontal x-axis and the vertical y-axis. The purpose of a Scatter Plot is to show the relationship between ..."
           },
           {
             "index": 3,
-            "page": 5,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "vào cổ rồi bịt cái khăn trắng lên đầu. Có khi nó đi mấy ngày mấy đêm. Nó còn muốn rình bắt mấy người con gái nữa về làm vợ. Cũng chẳng bao giờ Mị nói gì. Bây giờ Mị cũng không nói. Mị đến góc nhà, lấy ống mỡ, xắn một miếng bỏ thêm vào đĩa đèn cho sán..."
-          },
-          {
-            "index": 4,
-            "page": 6,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
-          },
-          {
-            "index": 5,
-            "page": 1,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "Ai ở xa về, có việc vào nhà thống lí Pá Tra thường trông thấy có một cô con gái ngồi quay sợi gai bên tảng đá trước của, cạnh tàu ngựa. Lúc nào cũng vậy, dù quay sợi, thái cỏ ngựa, dệt vải, chẻ củi hay đi công nước dưới khe suối lên, cô ấy cũng cúi m..."
-          }
-        ],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "vì sao a Phủ bị bắt vào nhà thống lí Pá Tra"
-      },
-      {
-        "role": "assistant",
-        "content": "A Phủ bị bắt vào nhà thống lí Pá Tra vì đã để hổ bắt mất một con bò. Khi đó A Phủ đang trông nom bò ngựa và mải mê bẫy nhím, dẫn đến việc không phát hiện kịp thời sự xuất hiện của hổ. Sau khi A Phủ bị bắt trói, chỉ có thống lí Pá Tra mới có quyền giải quyết vụ việc này theo quy định của địa phương.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 6,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
-          },
-          {
-            "index": 2,
             "page": 2,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
-          },
-          {
-            "index": 3,
-            "page": 8,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "–Thằng A Phủ ra đây. A Phủ ra quỳ giữa nhà. Lập tức, bọn trai làng xô đến, trước nhất, chắp tay lạy lia lịa tên thống lí Pá Tra rồi quay lại đánh A Phủ. A Phủ quỳ chịu đòn, chỉ im như cái tượng đá. Cứ mỗi đợt bọn chức việc hút thuốc phiện xong, A Phủ..."
-          },
-          {
-            "index": 4,
-            "page": 11,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "nó bắt trói đến chết người đàn bà ngày trước cũng ở cái nhà này. Chúng nó thật độc ác. Cơ chừng này chỉ đem mai là người kia chết, chết đau, chết đói, chết rét, phải chết. Ta là thân đàn bà, nó đã bắt ta về trình ma nhà nó rồi thì chỉ còn biết đợi ng..."
-          },
-          {
-            "index": 5,
-            "page": 10,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "mà A Phủ thì không có bố mẹ, không có ruộng không có bạc, A Phủ không thể lấy nổi vợ. Tuy nhiên, đang tuổi chơi, trong ngày Tết đến, dù A Phủ chẳng có quản áo mới như nhiều trai khác, A Phủ chỉ có độc một chiếc vòng vía” làn trên cổ, A Phủ cũng cú cù..."
-          },
-          {
-            "index": 6,
-            "page": 6,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "chuyện A Sử đi chơi bị đánh vỡ đầu. Nửa đêm qua, A Sử vào làng tìm đến đám chơi có tiếng sáo, tiếng khén Nhiều trai làng ấy và các làng khác đã tới, chơi quay, thổi sáo suốt ngày, chập tối vừa xong chầu rượu trong nhà, bay giờ vẫn còn chưa chịu tan v..."
-          }
-        ],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Trận bệnh đậu mùa đã xảy ra ở làng nào kiến bố mẹ a Phủ qua đời"
-      },
-      {
-        "role": "assistant",
-        "content": "Trận bệnh đậu mùa đã xảy ra ở làng Hang-bla Nam xưa. Theo văn bản, bố mẹ A Phủ sống ởHang-bla Nam xưa và vì bệnh đậu mùa mà nhiều trẻ con cùng người lớn trong làng này đều đã chết, khiến chỉ còn lại A Phủ một mình.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 10,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "phẳng. Không còn có lúc nào trở về làng bên. Nhưng A Phủ cũng chẳng muốn trở về làm gì bên ấy nữa. A Phủ cũng không phải người làng bên ấy. Bố mẹ đề A Phủ ở Hang-bla Nam xưa, làng Hàng-bla phải một trận bệnh đậu mùa, nhiều trẻ con, cả người lớn chết ..."
-          },
-          {
-            "index": 2,
-            "page": 8,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "–Thằng A Phủ ra đây. A Phủ ra quỳ giữa nhà. Lập tức, bọn trai làng xô đến, trước nhất, chắp tay lạy lia lịa tên thống lí Pá Tra rồi quay lại đánh A Phủ. A Phủ quỳ chịu đòn, chỉ im như cái tượng đá. Cứ mỗi đợt bọn chức việc hút thuốc phiện xong, A Phủ..."
-          },
-          {
-            "index": 3,
-            "page": 6,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "chuyện A Sử đi chơi bị đánh vỡ đầu. Nửa đêm qua, A Sử vào làng tìm đến đám chơi có tiếng sáo, tiếng khén Nhiều trai làng ấy và các làng khác đã tới, chơi quay, thổi sáo suốt ngày, chập tối vừa xong chầu rượu trong nhà, bay giờ vẫn còn chưa chịu tan v..."
-          },
-          {
-            "index": 4,
-            "page": 7,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "bố mẹ và người trong nhà ấy đã đi ngủ Nhưng người ra người vào còn dập dìu quanh ngõ. A Sử đúng ngoài tức làm. Nó bàn với một lũ khác, doạ đánh bọn con trai lạ vẫn bám quanh nhà đã khiến cho bọn A Sử bị vướng không thể vào được. Bọn A Sử ném đá vào v..."
-          },
-          {
-            "index": 5,
-            "page": 2,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "Mị chi bưng mặt khóc. Mị ném nắm lá ngón xuống đất, nám lá ngón Mị đã tìm hái trong rừng Mị vẫn giấu trong áo. Thế là Mị không đành lòng chết Mị chết thì bố Mị còn khổ hơn bao nhiều lần bay giờ nữa. Mị đành trở lại nhà thống lí. Lần lần, mấy năm qua,..."
-          }
-        ],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Vì sao người con gái lại muốn tự tử bằng lá độc"
-      },
-      {
-        "role": "assistant",
-        "content": "Người con gái Mị muốn tự tử bằng lá độc vì Mị đã tìm thấy cây lá ngón trong rừng và giấu trong áo. Mị không đành lòng chết nhưng nghĩ rằng nếu Mị chết, bố Mị sẽ còn khổ hơn nhiều lần so với bây giờ. Tuy nhiên, sau một thời gian sống trong cực khổ, Mị dần quen với cuộc sống này và quyết định sử dụng lá ngón để kết thúc cuộc đời mình vì cho rằng đó là cách để không làm bố Mị thêm khổ nữa.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 2,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "Mị chi bưng mặt khóc. Mị ném nắm lá ngón xuống đất, nám lá ngón Mị đã tìm hái trong rừng Mị vẫn giấu trong áo. Thế là Mị không đành lòng chết Mị chết thì bố Mị còn khổ hơn bao nhiều lần bay giờ nữa. Mị đành trở lại nhà thống lí. Lần lần, mấy năm qua,..."
-          },
-          {
-            "index": 2,
-            "page": 11,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "nó bắt trói đến chết người đàn bà ngày trước cũng ở cái nhà này. Chúng nó thật độc ác. Cơ chừng này chỉ đem mai là người kia chết, chết đau, chết đói, chết rét, phải chết. Ta là thân đàn bà, nó đã bắt ta về trình ma nhà nó rồi thì chỉ còn biết đợi ng..."
-          },
-          {
-            "index": 3,
-            "page": 5,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "vào cổ rồi bịt cái khăn trắng lên đầu. Có khi nó đi mấy ngày mấy đêm. Nó còn muốn rình bắt mấy người con gái nữa về làm vợ. Cũng chẳng bao giờ Mị nói gì. Bây giờ Mị cũng không nói. Mị đến góc nhà, lấy ống mỡ, xắn một miếng bỏ thêm vào đĩa đèn cho sán..."
-          },
-          {
-            "index": 4,
-            "page": 10,
-            "file": "VoChongAPhu.pdf",
-            "snippet": "mà A Phủ thì không có bố mẹ, không có ruộng không có bạc, A Phủ không thể lấy nổi vợ. Tuy nhiên, đang tuổi chơi, trong ngày Tết đến, dù A Phủ chẳng có quản áo mới như nhiều trai khác, A Phủ chỉ có độc một chiếc vòng vía” làn trên cổ, A Phủ cũng cú cù..."
+            "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
+            "snippet": "The above Line Graph contains only one line. However, Line Graphs can illustrate more than one set of data, and therefore can contain more than one line. 2.Bar Graph A Bar Graph represents discrete data with rectangular columns (or bars). Bar Graphs ..."
           }
         ],
         "self_rag_meta": null
       }
     ],
-    "file": "VoChongAPhu.pdf",
+    "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
     "files": [
-      "VoChongAPhu.pdf"
+      "Valecheva_TypesOfGraphs_NoDate.pdf"
     ]
   }
 ]
