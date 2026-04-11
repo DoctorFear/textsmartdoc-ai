@@ -2,6 +2,8 @@ from langchain_community.document_loaders import PDFPlumberLoader
 from langchain_community.document_loaders import Docx2txtLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from datetime import datetime
+from pdf2image import convert_from_path
+import pytesseract
 import os
 
 def load_and_split(file_path: str, display_name: str | None = None, chunk_size=1000, chunk_overlap=100):

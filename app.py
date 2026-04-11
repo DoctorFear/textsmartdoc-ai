@@ -8,7 +8,11 @@ from src.embedder import embedder
 from src.vectorstore import add_to_vectorstore, create_vectorstore, get_uploaded_sources
 from src.rag_chain import get_language_instruction, llm, format_docs, rag_chain, self_rag_query
 from streamlit_js_eval import streamlit_js_eval
+from src.conversational import rewrite_with_history
+from src.reranker import rerank
 import time
+
+
 from src.logger import setup_logger
 # ── Import persistence (lưu/load lịch sử + FAISS ra disk) ───────────────────
 from src.persistence import (
@@ -230,6 +234,16 @@ with st.sidebar:
                                     help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt")
         else:
             lambda_mult = 0.7  # giá trị mặc định, không dùng
+
+        retrieval_mode = st.selectbox(
+            "Retrieval Mode",
+            ["faiss", "bm25", "hybrid"],
+            index=2  # default hybrid
+        )
+        use_reranker = st.checkbox(
+            "Use Cross-Encoder Reranking",
+            value=True
+        )
 
         # Toggle bật/tắt chế độ Self-RAG (8.2.10)
         st.divider()
@@ -662,7 +676,39 @@ if prompt:
                         )
                     else:
                         # Chế độ thường: pipeline RAG chuẩn
-                        retrieved_docs = retriever.invoke(prompt)
+                        
+                        # retrieved_docs = retriever.invoke(prompt)
+                        # testing conversational
+                        query_for_retrieval = rewrite_with_history(
+                            prompt,
+                            st.session_state.messages
+                        )
+                        # Dense retriever (FAISS)
+                        faiss_retriever = st.session_state.vectorstore.as_retriever(
+                            search_type=search_type,
+                            search_kwargs=retriever_kwargs
+                        )
+                        # BM25 setup (already cached)
+                        bm25_retriever = st.session_state.bm25_retriever
+                        bm25_retriever.k = top_k
+                        # Switch logic
+                        if retrieval_mode == "faiss":
+                            retriever = faiss_retriever
+                        elif retrieval_mode == "bm25":
+                            retriever = bm25_retriever
+                        elif retrieval_mode == "hybrid":
+                            retriever = EnsembleRetriever(
+                                retrievers=[bm25_retriever, faiss_retriever],
+                                weights=[0.3, 0.7]
+                            )
+                        retrieved_docs = retriever.invoke(query_for_retrieval)
+                        if use_reranker:
+                            retrieved_docs = rerank(
+                                query_for_retrieval,
+                                retrieved_docs,
+                                top_k=top_k
+                            )
+
 
                         logger.info(
                             f"Retrieved {len(retrieved_docs)} docs | "
