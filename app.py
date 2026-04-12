@@ -78,13 +78,30 @@ st.markdown(
 )
 
 current_sources = get_uploaded_sources(st.session_state.vectorstore)
+
 if st.session_state.vectorstore is None:
-    st.info("Vui lòng tải file PDF hoặc DOCX lên ở ô bên trái (hàng dưới) để bắt đầu hỏi đáp.")
-elif len(current_sources) <= 1:
-    st.success(f"Đang làm việc với tài liệu: **{st.session_state.current_file}**")
+    st.info("Vui lòng tải file PDF hoặc DOCX lên ở ô bên trái để bắt đầu hỏi đáp.")
+
 else:
-    st.success(f"Đang làm việc với **{len(current_sources)} tài liệu** trong cùng 1 index.")
-    st.caption(" | ".join(current_sources))
+    # Lấy session hiện tại
+    session = next((s for s in st.session_state.chat_sessions 
+                   if s["id"] == st.session_state.current_chat_id), None)
+    
+    files_meta = session.get("files_metadata", {}) if session else {}
+
+    if len(current_sources) <= 1:
+        file_name = st.session_state.current_file or (current_sources[0] if current_sources else "")
+        date = files_meta.get(file_name, {}).get("upload_date", "N/A")
+        st.success(f"Đang làm việc với tài liệu: **{file_name}**")
+        st.caption(f"Ngày upload: {date}")
+    else:
+        st.success(f"Đang làm việc với **{len(current_sources)} tài liệu** trong cùng phiên.")
+        
+        caption = " | ".join(
+            f"**{src}** ({files_meta.get(src, {}).get('upload_date', 'N/A')})"
+            for src in current_sources
+        )
+        st.caption(caption)
 
 # Thông báo upload sau rerun
 if st.session_state.upload_success_msg:

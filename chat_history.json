@@ -1,41 +1,347 @@
 [
   {
     "id": 0,
-    "title": "Valecheva_TypesOfGraphs_NoDate.pdf",
+    "title": "cho tôi doanh số tháng 2",
     "messages": [
       {
         "role": "user",
-        "content": "tóm tắt file"
+        "content": "cho tôi doanh số tháng 2"
       },
       {
         "role": "assistant",
-        "content": "File này đề cập đến hai loại biểu đồ: Biểu đồ cột và Scatter Plot. Biểu đồ cột được sử dụng để thể hiện các nhóm dữ liệu riêng lẻ hoặc so sánh sự khác biệt giữa các danh mục, với mỗi bar có chiều cao tương ứng với giá trị đại diện. Trong khi đó, Scatter Plot là một biểu đồ x-y dùng để thể hiện mối quan hệ giữa hai biến số, giúp nhìn thấy cách một biến phụ thuộc vào biến khác.",
+        "content": "Không tìm thấy thông tin phù hợp trong tài liệu.",
         "citations": [
           {
             "index": 1,
-            "page": 3,
-            "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
-            "snippet": "statistics, and marketing. They are commonly used to illustrate categories of data. Each rectangular bar in a Bar Graph has a height corresponding to the values that they represent. The x-axis of a Bar Graph presents the discrete categories, and the ..."
+            "page": 1,
+            "file": "test_docx_table.docx",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025...."
           },
           {
             "index": 2,
-            "page": 6,
-            "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
-            "snippet": "5. Scatter Plot A Scatter Plot is an x-y diagram that shows a relationship between two variables. It is used to plot data points on both the horizontal x-axis and the vertical y-axis. The purpose of a Scatter Plot is to show the relationship between ..."
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
           },
           {
             "index": 3,
-            "page": 2,
-            "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
-            "snippet": "The above Line Graph contains only one line. However, Line Graphs can illustrate more than one set of data, and therefore can contain more than one line. 2.Bar Graph A Bar Graph represents discrete data with rectangular columns (or bars). Bar Graphs ..."
+            "page": 1,
+            "file": "test_docx_table.docx",
+            "snippet": "Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
           }
         ],
         "self_rag_meta": null
       }
     ],
-    "file": "Valecheva_TypesOfGraphs_NoDate.pdf",
+    "file": "test_docx_table.pdf",
     "files": [
-      "Valecheva_TypesOfGraphs_NoDate.pdf"
-    ]
+      "test_docx_table.docx",
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.docx": {
+        "upload_date": "2026-04-12 22:03:29",
+        "upload_timestamp": "2026-04-12T22:03:29.400207",
+        "file_type": "docx",
+        "size_mb": 0.1
+      },
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-12 22:03:29",
+        "upload_timestamp": "2026-04-12T22:03:29.400207",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 1,
+    "title": "test_docx_table.docx +1 file",
+    "messages": [],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.docx",
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.docx": {
+        "upload_date": "2026-04-12 22:10:12",
+        "upload_timestamp": "2026-04-12T22:10:12.960933",
+        "file_type": "docx",
+        "size_mb": 0.1
+      },
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-12 22:10:12",
+        "upload_timestamp": "2026-04-12T22:10:12.960933",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Tràng là ai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là nhân vật chính trong truyện \"Vợ nhặt\" của nhà văn Kim Lân. Anh ta sống ở xóm ngụ cư, làm nghề mượn xe thóc của Liên đoàn để đi bán lấy tiền trang trải cuộc sống hàng ngày. Tràng thường đi dạo trên con đường từ chợ về nhà và thường xuyên bị trẻ con trong xóm rượt đuổi, đùa giỡn khi thấy anh đi ngang qua.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+          },
+          {
+            "index": 4,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
+          },
+          {
+            "index": 5,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "– Việt Minh phải không? – Ừ, sao nhà biết? Tràng không trả lời. Trong ý nghĩ của hắn vụt hiện ra cảnh những người nghèo đói ầm ầm kéo nhau đi trên đê Sộp. Đằng trước có lá cờ đỏ to lắm. Hôm ấy hắn láng máng nghe người ta nói họ là Việt Minh đấy. Họ đ..."
+          }
+        ],
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Cho tôi doanh thu quý 1"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.docx",
+            "snippet": "Bảng 1: Doanh thu theo quý..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Cho tôi doanh thu quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "test_docx_table.docx",
+            "snippet": "Bảng 1: Doanh thu theo quý..."
+          }
+        ],
+        "self_rag_meta": null
+      }
+    ],
+    "file": "VoNhat.pdf",
+    "files": [
+      "VoNhat.pdf",
+      "test_docx_table.docx",
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.docx": {
+        "upload_date": "2026-04-12 22:15:22",
+        "upload_timestamp": "2026-04-12T22:15:22.418623",
+        "file_type": "docx",
+        "size_mb": 0.1
+      },
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-12 22:15:22",
+        "upload_timestamp": "2026-04-12T22:15:22.418623",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      },
+      "VoNhat.pdf": {
+        "upload_date": "2026-04-12 22:42:16",
+        "upload_timestamp": "2026-04-12T22:42:16.617376",
+        "file_type": "pdf",
+        "size_mb": 0.24
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Tràng là ai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin phù hợp trong tài liệu.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-12 22:48:18",
+        "upload_timestamp": "2026-04-12T22:48:18.565221",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Tràng là ai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin phù hợp trong tài liệu.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 1"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-12 22:52:00",
+        "upload_timestamp": "2026-04-12T22:52:00.478110",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 5,
+    "title": "Cho tôi doanh số quý 1",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Cho tôi doanh số quý 1"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh số quý 1 năm 2025 là 450 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 9,
+          "query_used": "Cho tôi doanh số quý 1",
+          "evaluation": {
+            "score": 9,
+            "reason": "Trả lời chính xác và đầy đủ",
+            "is_sufficient": true
+          }
+        }
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-12 23:02:28",
+        "upload_timestamp": "2026-04-12T23:02:28.199775",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
   }
 ]

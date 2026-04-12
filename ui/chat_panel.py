@@ -67,7 +67,6 @@ def render_chat_history():
 def handle_query(prompt, settings, save_current_session_fn, create_new_chat_session_fn):
     """
     Nhận prompt từ user, chạy pipeline RAG, render kết quả.
-    settings: dict từ sidebar (top_k, fetch_k, search_type, lambda_mult, retrieval_mode, use_reranker)
     """
     if st.session_state.vectorstore is None:
         st.warning("⚠️ Vui lòng upload tài liệu trước khi hỏi.")
@@ -84,61 +83,71 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
         st.rerun()
 
     # Append user message
+    is_first_message = len(st.session_state.messages) == 0
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     # Cập nhật title nếu cần
     for s in st.session_state.chat_sessions:
         if s["id"] == st.session_state.current_chat_id:
-            if s["title"] == "Cuộc trò chuyện mới":
-                s["title"] = prompt[:40] + ("..." if len(prompt) > 40 else "")
+            if is_first_message:
+                new_title = prompt[:48] + ("..." if len(prompt) > 48 else "")
+                old_title = s["title"]
+                s["title"] = new_title
+                logger.info(f"Đổi title session {s['id']}: '{old_title}' → '{new_title}' (dựa trên câu hỏi đầu tiên)")
             break
 
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Unpack settings
-    top_k          = settings["top_k"]
-    fetch_k        = settings["fetch_k"]
-    search_type    = settings["search_type"]
-    lambda_mult    = settings["lambda_mult"]
-    retrieval_mode = settings["retrieval_mode"]
-    use_reranker   = settings["use_reranker"]
+    # ================== UNPACK SETTINGS ==================
+    top_k            = settings["top_k"]
+    fetch_k          = settings["fetch_k"]
+    search_type      = settings["search_type"]
+    lambda_mult      = settings["lambda_mult"]
+    retrieval_mode   = settings["retrieval_mode"]
+    use_reranker     = settings.get("use_reranker", False)
+    self_rag_enabled = settings.get("self_rag_enabled", False)   # ← Lấy từ selectbox
 
     retrieved_docs = []
     self_rag_meta  = None
 
     with st.chat_message("assistant"):
-        with st.spinner("Đang tìm kiếm và suy nghĩ..."):
+        spinner_text = "Đang tìm kiếm và suy nghĩ..."
+        if self_rag_enabled:
+            spinner_text = "Đang chạy Self-RAG (tự đánh giá)..."
+        elif use_reranker:
+            spinner_text = "Đang tìm kiếm và rerank bằng Cross-Encoder..."
+
+        with st.spinner(spinner_text):
             if st.session_state.vectorstore is None:
                 response  = "Vui lòng upload tài liệu trước khi hỏi."
                 citations = []
             else:
                 try:
-                    logger.info(f"Query: '{prompt[:80]}...'" if len(prompt) > 80 else f"Query: '{prompt}'")  # ← LOG 4
+                    logger.info(f"Query: '{prompt[:80]}...'" if len(prompt) > 80 else f"Query: '{prompt}'")
 
-                    # Áp dụng filter tài liệu nếu người dùng chọn (8.2.8)
+                    # Áp dụng filter tài liệu
                     source_filter = None
                     if "source_filter_select" in st.session_state:
                         selected = st.session_state.source_filter_select
                         if selected != "Tất cả tài liệu":
                             source_filter = selected
 
-                    # Cấu hình retriever kwargs
                     retriever_kwargs = {"k": top_k, "fetch_k": fetch_k}
                     if source_filter:
                         retriever_kwargs["filter"] = {"source": source_filter}
+                        logger.info(f"Áp dụng filter source: {source_filter}")
                     if search_type == "mmr":
                         retriever_kwargs["lambda_mult"] = lambda_mult
 
                     all_docs = list(st.session_state.vectorstore.docstore._dict.values())
 
-                    if st.session_state.self_rag_enabled:
-                        # ── Chế độ Self-RAG (8.2.10) ─────────────────────────
-                        # Self-RAG dùng hybrid bên trong get_retriever
+                    # ================== SELF-RAG ==================
+                    if self_rag_enabled:                    # ← Sửa ở đây
                         retriever, st.session_state = _update_bm25_cache(
                             st.session_state,
                             all_docs, top_k,
-                            retrieval_mode="hybrid",
+                            retrieval_mode="hybrid",        # Self-RAG thường dùng hybrid
                             search_type=search_type,
                             retriever_kwargs=retriever_kwargs,
                         )
@@ -151,17 +160,11 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             "query_used": result["query_used"],
                             "evaluation": result["evaluation"],
                         }
-                        logger.info(
-                            f"Self-RAG | attempts={result['attempts']} | "
-                            f"confidence={result['confidence']} | "
-                            f"query_used='{result['query_used'][:60]}'"
-                        )
+                        logger.info(f"Self-RAG | attempts={result['attempts']} | confidence={result['confidence']}")
+
                     else:
-                        # ── Chế độ thường: Conversational RAG (8.2.6) ────────
-                        query_for_retrieval = rewrite_with_history(
-                            prompt,
-                            st.session_state.messages
-                        )
+                        # Normal RAG
+                        query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
 
                         retriever, st.session_state = _update_bm25_cache(
                             st.session_state,
@@ -173,14 +176,13 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
 
                         retrieved_docs = retriever.invoke(query_for_retrieval)
 
-                        # Re-ranking (8.2.9)
+                        # Re-ranking
                         if use_reranker:
                             retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
 
                         logger.info(
                             f"Retrieved {len(retrieved_docs)} docs | "
-                            f"retrieval_mode={retrieval_mode} | search_type={search_type} | "
-                            f"sources: {[doc.metadata.get('source', 'unknown') for doc in retrieved_docs]}"
+                            f"retrieval_mode={retrieval_mode} | search_type={search_type}"
                         )
 
                         if not retrieved_docs:
@@ -188,18 +190,15 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                         else:
                             context  = format_docs(retrieved_docs)
                             response = rag_chain.invoke({
-                                "context":              context,
-                                "question":             prompt,
+                                "context": context,
+                                "question": prompt,
                                 "language_instruction": get_language_instruction(prompt)
                             }).strip()
 
                             if "không tìm thấy" in response.lower() or len(response.strip()) < 15:
                                 response = "Không tìm thấy thông tin phù hợp trong tài liệu."
 
-                    # Tạo citations (8.2.5) — dùng src/citation.py
                     citations = build_citations(retrieved_docs)
-
-                    logger.info(f"Response length: {len(response)} chars")  # ← LOG 6
 
                 except Exception as e:
                     err = str(e).lower()
@@ -209,17 +208,17 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                         response = "⏱️ Ollama phản hồi quá chậm."
                     else:
                         response = f"❌ Lỗi xử lý câu hỏi: {str(e)}"
-                    citations     = []
+                    citations = []
                     self_rag_meta = None
 
         st.markdown(response)
 
-    # Hiển thị thông tin Self-RAG nếu có (8.2.10)
+    # Hiển thị Self-RAG meta nếu có
     if self_rag_meta:
         with st.expander("🔁 Thông tin Self-RAG"):
             render_self_rag_meta(self_rag_meta)
 
-    # Hiển thị citations (8.2.5)
+    # Hiển thị citations
     if citations:
         with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
             st.markdown("Hệ thống đã dựa các đoạn văn bản sau để tạo câu trả lời:")
@@ -234,30 +233,25 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
         "self_rag_meta": self_rag_meta,
     })
 
-    # Lưu sau mỗi lượt trả lời
     save_current_session_fn()
 
     streamlit_js_eval(
-        js_expressions="""
-            parent.document.querySelectorAll('*').forEach(function(el) {
-                el.scrollTop = el.scrollHeight;
-            });
-        """,
+        js_expressions="parent.document.querySelectorAll('*').forEach(el => el.scrollTop = el.scrollHeight);",
         key=f"scroll_{int(time.time() * 100000)}"
     )
-
-
 # ── Internal helper ───────────────────────────────────────────────────────────
 
 def _update_bm25_cache(session_state, all_docs, top_k, retrieval_mode, search_type, retriever_kwargs):
     """
-    Gọi src/hybrid_search.get_retriever(), truyền session_state làm bm25_cache,
-    rồi cập nhật lại session_state với cache mới trả về.
+    Cập nhật retriever với filter source nếu có.
     """
     bm25_cache = {
         "bm25_retriever": session_state.get("bm25_retriever"),
         "bm25_doc_count": session_state.get("bm25_doc_count"),
     }
+
+    # Lấy filter từ retriever_kwargs (nếu có)
+    source_filter = retriever_kwargs.get("filter", {}).get("source")
 
     retriever, bm25_cache = get_retriever(
         vectorstore=session_state.vectorstore,
@@ -268,6 +262,36 @@ def _update_bm25_cache(session_state, all_docs, top_k, retrieval_mode, search_ty
         top_k=top_k,
         bm25_cache=bm25_cache,
     )
+
+    # === SỬA QUAN TRỌNG: Áp dụng filter thủ công cho BM25 và Hybrid ===
+    if source_filter:
+        # Lọc docs trước khi đưa vào BM25 hoặc Ensemble
+        filtered_docs = [doc for doc in all_docs 
+                        if doc.metadata.get("source") == source_filter]
+        
+        if filtered_docs:
+            # Tạo lại BM25 chỉ trên docs đã lọc
+            from src.hybrid_search import build_bm25_retriever
+            bm25_retriever = build_bm25_retriever(filtered_docs, top_k)
+            bm25_cache["bm25_retriever"] = bm25_retriever
+            bm25_cache["bm25_doc_count"] = len(filtered_docs)
+
+            # Nếu là hybrid → rebuild ensemble với BM25 đã lọc
+            if retrieval_mode == "hybrid":
+                faiss_retriever = session_state.vectorstore.as_retriever(
+                    search_type=search_type,
+                    search_kwargs={**retriever_kwargs, "filter": {"source": source_filter}}
+                )
+                from src.hybrid_search import build_ensemble_retriever
+                retriever = build_ensemble_retriever(
+                    bm25_retriever, 
+                    faiss_retriever,
+                    bm25_weight=0.3,   # hoặc lấy từ config
+                    faiss_weight=0.7
+                )
+            else:
+                # Nếu chỉ BM25 thì dùng retriever đã lọc
+                retriever = bm25_retriever
 
     session_state["bm25_retriever"] = bm25_cache["bm25_retriever"]
     session_state["bm25_doc_count"] = bm25_cache["bm25_doc_count"]

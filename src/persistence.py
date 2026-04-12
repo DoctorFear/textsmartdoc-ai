@@ -34,13 +34,14 @@ def save_history(chat_sessions: list) -> None:
     """
     serializable = []
     for s in chat_sessions:
-        serializable.append({
-            "id":       s["id"],
-            "title":    s["title"],
-            "messages": s["messages"],
-            "file":     s.get("file"),   # tên file PDF (string hoặc None)
-            "files": s.get("files", []),
-        })
+            serializable.append({
+                "id":               s["id"],
+                "title":            s["title"],
+                "messages":         s["messages"],
+                "file":             s.get("file"),
+                "files":            s.get("files", []),
+                "files_metadata":   s.get("files_metadata", {}),   # ← Quan trọng: lưu metadata theo file
+            })
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(serializable, f, ensure_ascii=False, indent=2)
 
@@ -63,6 +64,7 @@ def load_history() -> list:
             s.setdefault("messages", [])
             s.setdefault("file", None)
             s.setdefault("files", [])
+            s.setdefault("files_metadata", {})
             s.setdefault("vectorstore", None)
         return sessions
     except (json.JSONDecodeError, KeyError):

@@ -13,7 +13,7 @@ TOP_K             = 3      # Số chunks trả về sau retrieval
 FETCH_K           = 30     # Số chunks lấy trước khi lọc (dùng cho MMR)
 LAMBDA_MULT       = 0.7    # Hệ số đa dạng MMR (0=đa dạng, 1=chính xác)
 SEARCH_TYPE       = "similarity"   # "similarity" hoặc "mmr"
-RETRIEVAL_MODE    = "hybrid"       # "faiss", "bm25", hoặc "hybrid"
+RETRIEVAL_MODE    = "faiss"       # "faiss", "bm25", hoặc "hybrid"
 
 # ── Hybrid search weights (8.2.7) ─────────────────────────────────────────────
 BM25_WEIGHT       = 0.3    # Trọng số BM25 trong ensemble

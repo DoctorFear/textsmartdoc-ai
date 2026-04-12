@@ -9,6 +9,7 @@ from src.loader import load_and_split
 from src.vectorstore import add_to_vectorstore, get_uploaded_sources
 from src.config import MAX_FILE_SIZE_MB
 from src.logger import setup_logger
+from datetime import datetime
 
 logger = setup_logger()
 
@@ -125,13 +126,62 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, create_new_chat_ses
 
         # ── Sau khi xử lý xong tất cả file ──────────────────────────────────
         if processed_names:
-            # Cập nhật lại tiêu đề chat nếu đang là mặc định
+            # Tạo metadata cho các file vừa upload
+            current_metadata = {}
+            upload_time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            upload_timestamp = datetime.now().isoformat()
+
+            for name in processed_names:
+                current_metadata[name] = {
+                    "upload_date": upload_time_str,
+                    "upload_timestamp": upload_timestamp,
+                    "file_type": os.path.splitext(name)[1].lower().replace(".", ""),
+                    "size_mb": round(len(uploaded_file.getvalue()) / (1024 * 1024), 2) if 'uploaded_file' in locals() else None
+                }
+
+            # Cập nhật metadata vào session hiện tại
             for s in st.session_state.chat_sessions:
-                if s["id"] == st.session_state.current_chat_id and s["title"] == "Cuộc trò chuyện mới":
+                if s["id"] == st.session_state.current_chat_id:
+                    if "files_metadata" not in s:
+                        s["files_metadata"] = {}
+                    # Merge metadata mới (không ghi đè metadata cũ của file khác)
+                    s["files_metadata"].update(current_metadata)
+                    break
+
+            # === QUY TẮC ĐẶT TIÊU ĐỀ MỚI ===
+            if st.session_state.current_chat_id is None:
+                # Trường hợp chưa có chat nào → tạo mới với tên file
+                if len(processed_names) == 1:
+                    session_title = processed_names[0][:50]
+                else:
+                    session_title = f"{processed_names[0][:35]} +{len(processed_names)-1} file"
+                
+                create_new_chat_session_fn(
+                    title="Cuộc trò chuyện mới",
+                    keep_current_context=True,
+                    initial_title=session_title
+                )
+            else:
+                # Đã có chat → kiểm tra xem có tin nhắn nào chưa
+                current_session = next((s for s in st.session_state.chat_sessions 
+                                    if s["id"] == st.session_state.current_chat_id), None)
+                
+                if current_session and not current_session.get("messages"):
+                    # Chưa có tin nhắn nào → đặt tên theo file
                     if len(processed_names) == 1:
-                        s["title"] = processed_names[0][:50]
+                        new_title = processed_names[0][:50]
                     else:
-                        s["title"] = f"{processed_names[0][:35]} +{len(processed_names) - 1} file"
+                        new_title = f"{processed_names[0][:35]} +{len(processed_names)-1} file"
+                    
+                    current_session["title"] = new_title
+
+            # Cập nhật lại tiêu đề nếu đang là mặc định và đã có tin nhắn 
+            # (trường hợp chat trước rồi upload thêm)
+            for s in st.session_state.chat_sessions:
+                if s["id"] == st.session_state.current_chat_id:
+                    if s["title"] in ["Cuộc trò chuyện mới", "Cuoc tro chuyen moi"] and s.get("messages"):
+                        # Nếu đã có tin nhắn thì giữ nguyên tiêu đề từ tin nhắn đầu
+                        pass
                     break
 
             save_current_session_fn()
@@ -142,10 +192,11 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, create_new_chat_ses
                 f"Hoàn tất! Đã xử lý {len(processed_names)} tài liệu ({total_chunks} chunks)."
             )
             st.session_state.upload_info_msg = (
-                f"📄 Tài liệu mới: {', '.join(processed_names)}  \n"
-                f"📦 Tổng dung lượng: {total_size_mb:.2f} MB  \n"
-                f"🔢 Số đoạn (chunks): {total_chunks}  \n"
-                f"📚 Tổng tài liệu đang index: {len(all_sources)}"
+                f"Tài liệu mới: {', '.join(processed_names)} \n  "
+                f"Ngày upload: {upload_time_str}\n"
+                f"Tổng dung lượng: {total_size_mb:.2f} MB \n"
+                f"Số đoạn (chunks): {total_chunks} \n"
+                f"Tổng tài liệu đang index: {len(all_sources)}"
             )
             st.session_state.upload_warning_msgs = error_messages
             st.session_state.uploader_nonce += 1

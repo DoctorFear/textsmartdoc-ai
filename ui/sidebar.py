@@ -11,6 +11,7 @@ from src.config import SIDEBAR_TEXT_COLOR
 from src.logger import setup_logger
 from ui.settings_panel import render_model_info, render_settings_panel
 
+
 logger = setup_logger()
 
 
@@ -69,22 +70,30 @@ def load_session_to_state(target_id, embedder):
     #st.warning(f"⚠️ Không thể load vectorstore cho chat này. Tài liệu có thể bị xóa hoặc lỗi index.") FIX 8.2.2
 
 
-def create_new_chat_session(title="Cuoc tro chuyen moi", keep_current_context=False):
-    """Tạo session chat mới và cập nhật state"""
+def create_new_chat_session(title="Cuộc trò chuyện mới", keep_current_context=False, initial_title=None):
+    """Tạo session chat mới.
+    
+    initial_title: Nếu truyền vào thì ưu tiên dùng làm title (dùng khi upload file).
+    """
     new_id = max([s["id"] for s in st.session_state.chat_sessions], default=-1) + 1
+    
+    final_title = initial_title if initial_title else title
+    
     st.session_state.chat_sessions.append({
         "id": new_id,
-        "title": title,
+        "title": final_title,
         "messages": [],
         "vectorstore": None,
         "file": None,
         "files": []
     })
     st.session_state.current_chat_id = new_id
+    
     if not keep_current_context:
         st.session_state.messages = []
         st.session_state.vectorstore = None
         st.session_state.current_file = None
+    
     return new_id
 
 
@@ -129,18 +138,64 @@ def render_sidebar(embedder) -> dict:
         settings = render_settings_panel()
 
         # ── Tài liệu đã upload + filter (8.2.8) ──────────────────────────────
-        with st.expander("Tài liệu đã upload", expanded=True):
+        with st.expander("Tài liệu đã upload"):
             uploaded_sources = get_uploaded_sources(st.session_state.vectorstore)
             if uploaded_sources:
                 st.markdown(
-                    f"<div style='background-color:#FFFFFF; color:#31333F; border-radius:8px; "
-                    f"padding:8px 12px; font-size:0.875rem;'>"
-                    f"Đang index: <b>{len(uploaded_sources)}</b> tài liệu"
-                    f"</div>",
+                    f"""
+                    <div style="
+                    color: rgb(255 255 255);
+                    border-radius: 12px;
+                    padding: 12px 16px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    display: inline-block;
+                    width: 100%;
+                    ">
+                        📂 Hệ thống đang xử lý: <b>{len(uploaded_sources)}</b> tài liệu
+                    </div>
+                    """,
                     unsafe_allow_html=True
                 )
                 for src in uploaded_sources:
-                    st.caption(f"• {src}")
+                    st.markdown(
+                        f"""
+                        <div style="
+                        color: rgb(255 255 255);
+                        border-radius: 8px;
+                        padding: 6px 10px;
+                        margin: 4px 0px;
+                        font-size: 0.95rem;
+                        display: flex;
+                        align-items: center;
+                        margin-left: 26px;
+                        ">
+                            <span style="margin-right:8px;">    📄</span> {src}
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+
+                source_options = ["Tất cả tài liệu"] + uploaded_sources
+                st.markdown(
+                    """
+                    <style>
+                    /* Style cho label của selectbox */
+                    label[data-testid="stWidgetLabel"] {
+                        font-size: 1rem;
+                        color: #ffffff;
+                        margin-bottom: 10px;
+                        display: flex;
+                        align-items: center;
+                        margin-top: 10px;
+                        margin-left: 20px;
+                    }
+                    }
+                    </style>
+                    """,
+                    unsafe_allow_html=True
+                )
 
                 source_options = ["Tất cả tài liệu"] + uploaded_sources
                 st.selectbox(
@@ -149,9 +204,10 @@ def render_sidebar(embedder) -> dict:
                     index=0,
                     key="source_filter_select"
                 )
+
             else:
                 st.markdown(
-                    "<div style='background-color:#FFFFFF; color:#31333F; border-radius:8px; "
+                    "<div style='color:rgb(255 255 255); border-radius:8px; "
                     "padding:8px 12px; font-size:0.875rem;'>"
                     "Chưa có tài liệu nào được upload."
                     "</div>",
@@ -201,19 +257,21 @@ def render_sidebar(embedder) -> dict:
                             s["file"] = None
                             s["files"] = []
                             break
+                    
                     # === RESET TRIỆT ĐỂ session_state ===
                     st.session_state.vectorstore = None
                     st.session_state.current_file = None
                     
-                    # Xóa cache BM25 (rất quan trọng)
+                    # Xóa cache BM25
                     if "bm25_retriever" in st.session_state:
                         st.session_state.pop("bm25_retriever", None)
                     if "bm25_doc_count" in st.session_state:
                         st.session_state.pop("bm25_doc_count", None)
 
-                    # Reset source filter nếu có
+                    # === SỬA Ở ĐÂY: Không gán trực tiếp source_filter_select ===
+                    # Thay vì gán trực tiếp, chúng ta sẽ xóa key này để selectbox tự reset về index=0
                     if "source_filter_select" in st.session_state:
-                        st.session_state.source_filter_select = "Tất cả tài liệu"
+                        del st.session_state.source_filter_select
 
                     # Lưu lại history
                     save_history(st.session_state.chat_sessions)

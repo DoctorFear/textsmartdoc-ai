@@ -25,58 +25,64 @@ def render_model_info():
 
 
 def render_settings_panel() -> dict:
-    """
-    Render expander 'Thiết lập & Tùy chọn'.
-    Mọi default đều lấy từ src/config.py.
-
-    Returns:
-        dict settings với keys:
-            chunk_size, chunk_overlap,
-            top_k, fetch_k, search_type, lambda_mult,
-            retrieval_mode, use_reranker
-        (self_rag_enabled được ghi thẳng vào session_state)
-    """
     settings = {}
 
     with st.expander("Thiết lập & Tùy chọn"):
         settings["chunk_size"]    = st.slider("Chunk Size",    200,  2000, CHUNK_SIZE,   100)
         settings["chunk_overlap"] = st.slider("Chunk Overlap",   0,   500, CHUNK_OVERLAP, 50)
         settings["top_k"]         = st.slider("Top-k",           1,    10, TOP_K,          1)
-        settings["fetch_k"]       = st.slider(
-            "Fetch-k",
-            min_value=settings["top_k"],
-            max_value=100,
-            value=FETCH_K,
-            step=5
-        )
+        settings["fetch_k"]       = st.slider("Fetch-k", min_value=settings["top_k"], max_value=100, value=FETCH_K, step=5)
+        
         settings["search_type"] = st.selectbox(
             "Search Type",
             ["similarity", "mmr"],
             index=0 if SEARCH_TYPE == "similarity" else 1
         )
 
-        # Chỉ hiện lambda khi chọn MMR
         if settings["search_type"] == "mmr":
             settings["lambda_mult"] = st.slider(
                 "Lambda Mult (Diversity)", 0.0, 1.0, LAMBDA_MULT, 0.05,
                 help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt"
             )
         else:
-            settings["lambda_mult"] = LAMBDA_MULT  # giá trị mặc định, không dùng
+            settings["lambda_mult"] = LAMBDA_MULT
 
-        settings["retrieval_mode"] = st.selectbox(
+        # Retrieval Mode - Sửa label cho dễ hiểu
+        retrieval_options = ["faiss", "hybrid", "bm25"]
+        retrieval_labels = [
+            "FAISS (Vector Search)", 
+            "Hybrid (FAISS + BM25)", 
+            "BM25 (Keyword Search)"
+        ]
+        
+        selected_label = st.selectbox(
             "Retrieval Mode",
-            ["faiss", "bm25", "hybrid"],
-            index=["faiss", "bm25", "hybrid"].index(RETRIEVAL_MODE)
+            retrieval_labels,
+            index=retrieval_options.index(RETRIEVAL_MODE)
         )
-        settings["use_reranker"] = st.checkbox("Use Cross-Encoder Reranking", value=USE_RERANKER)
+        settings["retrieval_mode"] = retrieval_options[retrieval_labels.index(selected_label)]
 
-        # Toggle Self-RAG (8.2.10)
-        st.divider()
-        st.session_state.self_rag_enabled = st.checkbox(
-            "Bật Self-RAG",
-            value=st.session_state.self_rag_enabled,
-            help="Self-RAG cho phép tự đánh giá và cải thiện câu trả lời. Chậm hơn nhưng chính xác hơn."
+        # Reranking - Selectbox như bạn muốn
+        settings["reranking_method"] = st.selectbox(
+            "Reranking",
+            ["Bi-encoder (Nhanh)", "Cross-Encoder (Chính xác hơn)"],
+            index=0,
+            help="Bi-encoder: Nhanh, phù hợp sử dụng thông thường.\nCross-Encoder: Độ chính xác cao hơn nhưng chậm hơn."
         )
+        
+        # Chuyển thành boolean để code cũ dễ dùng
+        settings["use_reranker"] = (settings["reranking_method"] == "Cross-Encoder (Chính xác hơn)")
+
+        # Self-RAG
+        settings["self_rag_method"] = st.selectbox(
+            "Chế độ Self-RAG",
+            ["Tắt (Normal RAG)", "Bật Self-RAG (Tự đánh giá)"],
+            index=0,   # Mặc định là Tắt
+            help="Self-RAG sẽ tự viết lại câu hỏi và đánh giá chất lượng câu trả lời → chính xác hơn nhưng chậm hơn."
+        )
+        
+        settings["self_rag_enabled"] = (settings["self_rag_method"] == "Bật Self-RAG (Tự đánh giá)")
+
+        st.divider()
 
     return settings
