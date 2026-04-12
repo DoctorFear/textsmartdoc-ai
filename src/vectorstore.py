@@ -1,4 +1,4 @@
-# src/vectorstore.py
+# src/vectorstore.py FAISS CRUD + metadata filter → 8.2.8
 from langchain_community.vectorstores import FAISS
 from src.loader import load_and_split
 from src.embedder import embedder

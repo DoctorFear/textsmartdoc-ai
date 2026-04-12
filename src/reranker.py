@@ -1,3 +1,4 @@
+#Cross-encoder rerank → 8.2.9
 from sentence_transformers import CrossEncoder
 
 # good balance model

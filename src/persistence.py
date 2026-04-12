@@ -1,4 +1,4 @@
-# persistence.py
+# persistence.py Save/load FAISS + chat JSON → 8.2.2
 # ── Xử lý toàn bộ việc lưu/load lịch sử chat + FAISS vectorstore ra disk ────
 #
 # Cấu trúc thư mục được tạo tự động:
@@ -95,6 +95,7 @@ def load_vectorstore(session_id: int, embedder) -> object | None:
         )
     except Exception as e:
         print(f"Lỗi load FAISS cho session {session_id}: {e}")
+        # delete_vectorstore(session_id) FIX 8.2.2
         return None
 
 

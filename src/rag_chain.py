@@ -1,4 +1,4 @@
-# src/rag_chain.py
+# src/rag_chain.py LLM + prompt + Self-RAG → 8.2.10
 from langchain_ollama import OllamaLLM
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
