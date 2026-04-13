@@ -33,6 +33,12 @@ def render_settings_panel() -> dict:
         settings["chunk_overlap"] = st.slider("Chunk Overlap",   0,   500, CHUNK_OVERLAP, 50)
         settings["top_k"]         = st.slider("Top-k",           1,    10, TOP_K,          1)
         settings["fetch_k"]       = st.slider("Fetch-k", min_value=settings["top_k"], max_value=100, value=FETCH_K, step=5)
+
+        settings["ocr_enabled"] = st.toggle(
+            "Chế độ quét ảnh (OCR)", 
+            value=False, 
+            help="Bật khi bạn upload file PDF scan hoặc file ảnh. Tắt để đọc văn bản nhanh hơn."
+        )
         
         settings["search_type"] = st.selectbox(
             "Search Type",
@@ -43,7 +49,7 @@ def render_settings_panel() -> dict:
         if settings["search_type"] == "mmr":
             settings["lambda_mult"] = st.slider(
                 "Lambda Mult (Diversity)", 0.0, 1.0, LAMBDA_MULT, 0.05,
-                help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt"
+                # help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt"
             )
         else:
             settings["lambda_mult"] = LAMBDA_MULT
@@ -53,7 +59,7 @@ def render_settings_panel() -> dict:
             "Chế độ Self-RAG",
             ["Tắt (Normal RAG)", "Bật Self-RAG (Tự đánh giá)"],
             index=0,
-            help="Self-RAG sẽ tự viết lại câu hỏi và đánh giá chất lượng → chính xác hơn nhưng chậm hơn."
+            # help="Self-RAG sẽ tự viết lại câu hỏi và đánh giá chất lượng → chính xác hơn nhưng chậm hơn."
         )
         
         settings["self_rag_enabled"] = (settings["self_rag_method"] == "Bật Self-RAG (Tự đánh giá)")

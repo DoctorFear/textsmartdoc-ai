@@ -7,7 +7,7 @@ import tempfile
 import streamlit as st
 from src.loader import load_and_split
 from src.vectorstore import add_to_vectorstore, get_uploaded_sources
-from src.config import MAX_FILE_SIZE_MB
+from src.config import MAX_FILE_SIZE_MB, OCR_MODE
 from src.logger import setup_logger
 from datetime import datetime
 
@@ -16,15 +16,14 @@ logger = setup_logger()
 MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024
 
 
-def render_upload_panel(embedder, chunk_size, chunk_overlap, create_new_chat_session_fn, save_current_session_fn):
-    """
-    Render file uploader và xử lý toàn bộ logic upload.
-    Trả về col_chat để app.py đặt chat_input vào đó.
-    """
+def render_upload_panel(embedder, chunk_size, chunk_overlap, ocr_enabled, create_new_chat_session_fn, save_current_session_fn):
     col_upload, col_chat = st.columns([1, 4])
 
     with col_upload:
-        # Key động để tránh cache file cũ khi chuyển chat
+        if ocr_enabled:
+            st.info("🔍 Chế độ OCR đang BẬT")
+
+        # Key động để tránh cache file cũ
         uploader_key = (
             f"uploader_{st.session_state.current_chat_id if st.session_state.current_chat_id is not None else 'new'}"
             f"_{st.session_state.uploader_nonce}"
@@ -33,7 +32,8 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, create_new_chat_ses
             "TẢI TÀI LIỆU (PDF/DOCX)",
             type=["pdf", "docx"],
             accept_multiple_files=True,
-            help="Chỉ hỗ trợ tài liệu có text layer (không phải scan/image-only). Tối đa ~50MB.",
+            # Cập nhật help text
+            help="Hỗ trợ cả PDF văn bản và PDF scan (nếu bật OCR).",
             label_visibility="collapsed",
             key=uploader_key
         )
@@ -53,6 +53,8 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, create_new_chat_ses
         total_size_mb = 0.0
 
         with st.spinner("Đang xử lý tài liệu..."):
+
+
             for uploaded_file in uploaded_files:
                 file_bytes = uploaded_file.getvalue()
                 file_size_mb = len(file_bytes) / (1024 * 1024)
@@ -81,6 +83,7 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, create_new_chat_ses
                         display_name=uploaded_file.name,
                         chunk_size=chunk_size,
                         chunk_overlap=chunk_overlap,
+                        ocr_enabled=ocr_enabled
                     )
 
                     # Nếu chưa có chat session, chỉ tạo khi file đầu tiên xử lý thành công
