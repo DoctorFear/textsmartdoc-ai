@@ -37,6 +37,13 @@ h1, h2, h3 {
     color: var(--dark);
 }
 
+h3:contains("Normal RAG") {
+    color: #6c757d !important;
+}
+h3:contains("CoRAG") {
+    color: #007BFF !important;
+}
+
 /* Tin nhắn chat */
 .stChatMessage.user {
     background-color: #E3F2FD;
@@ -404,7 +411,6 @@ div[data-testid="stFileUploader"] section {
 }
 
 
-
 .st-emotion-cache-1permvm:has(.st-emotion-cache-19ysvjp) {
     background-color: ivory;
     position: relative;
@@ -491,4 +497,54 @@ div[data-testid="stExpander"] .self-rag-meta strong {
 div[data-testid="stExpander"] .self-rag-meta em {
     color: #6b7280;
     font-style: italic;
+}
+
+[data-testid="stVerticalBlock"] > div:has(.stSubheader) {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.stCheckbox label {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* Ensure the body and app root allow scrolling */
+html, body, [data-testid="stAppViewContainer"] {
+    overflow-y: auto !important;
+}
+
+/* Force the main scroll container to behave */
+[data-testid="stMainViewContainer"] {
+    overflow-y: auto !important;
+}
+
+/* Prevent the column container from clipping content */
+[data-testid="column"] {
+    width: 100% !important;
+    flex: 1 1 calc(50% - 1rem) !important;
+    min-width: 300px; /* Ensures columns stack on mobile instead of breaking */
+}
+
+/* Ensure the chat messages area can grow and trigger page scroll */
+[data-testid="stVerticalBlock"] {
+    overflow: visible !important;
+}
+
+/* Custom Scrollbar Styling (Optional, for better UI) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

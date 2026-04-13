@@ -118,7 +118,7 @@ if st.session_state.upload_warning_msgs:
 # Lịch sử chat
 render_chat_history()
 
-# Upload + chat input ngang hàng
+# Upload + chat input ngang hàng + chế độ so sánh
 col_chat = render_upload_panel(
     embedder=get_embedder(),
     chunk_size=settings["chunk_size"],
@@ -128,6 +128,7 @@ col_chat = render_upload_panel(
 )
 
 with col_chat:
+    st.session_state.compare_mode = st.toggle("So sánh RAG/CoRAG", value=st.session_state.get("compare_mode", False))
     prompt = st.chat_input("Nhập câu hỏi về tài liệu...")
 
 if not prompt and st.session_state.pending_prompt:

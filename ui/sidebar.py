@@ -309,7 +309,4 @@ def render_sidebar(embedder) -> dict:
                 load_session_to_state(session["id"], embedder)
                 st.rerun()
 
-
-                    
-
     return settings
