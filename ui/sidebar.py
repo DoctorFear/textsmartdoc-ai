@@ -205,6 +205,50 @@ def render_sidebar(embedder) -> dict:
                     key="source_filter_select"
                 )
 
+                # Nút Clear Vector Store (8.2.3)
+                if st.session_state.vectorstore is not None and st.session_state.current_chat_id is not None:
+                    if st.button("🗑️ Xóa tài liệu hiện tại", type="tertiary", use_container_width=True, key="quart_btn"):
+                        st.session_state.show_confirm_clear_vs = True
+
+                if st.session_state.get("show_confirm_clear_vs", False):
+                    st.caption("**Bạn có chắc chắn muốn xóa tài liệu hiện tại không?**")
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        if st.button("✅ Đồng ý", key="confirm_clear_vs_yes"):
+                            delete_vectorstore(st.session_state.current_chat_id)
+                            for s in st.session_state.chat_sessions:
+                                if s["id"] == st.session_state.current_chat_id:
+                                    s["file"] = None
+                                    s["files"] = []
+                                    break
+                            
+                            # === RESET TRIỆT ĐỂ session_state ===
+                            st.session_state.vectorstore = None
+                            st.session_state.current_file = None
+                            
+                            # Xóa cache BM25
+                            if "bm25_retriever" in st.session_state:
+                                st.session_state.pop("bm25_retriever", None)
+                            if "bm25_doc_count" in st.session_state:
+                                st.session_state.pop("bm25_doc_count", None)
+
+                            # === SỬA Ở ĐÂY: Không gán trực tiếp source_filter_select ===
+                            # Thay vì gán trực tiếp, chúng ta sẽ xóa key này để selectbox tự reset về index=0
+                            if "source_filter_select" in st.session_state:
+                                del st.session_state.source_filter_select
+
+                            # Lưu lại history
+                            save_history(st.session_state.chat_sessions)
+
+                            st.session_state.show_confirm_clear_vs = False
+                            
+                            st.success("✅ Đã xóa tài liệu và Vector Store thành công!")
+                            st.rerun()
+                    with col2:
+                        if st.button("❌ Hủy", key="confirm_clear_vs_no"):
+                            st.session_state.show_confirm_clear_vs = False
+                            st.rerun()
+
             else:
                 st.markdown(
                     "<div style='color:rgb(255 255 255); border-radius:8px; "
@@ -241,49 +285,7 @@ def render_sidebar(embedder) -> dict:
                     st.session_state.show_confirm = False
                     st.rerun()
 
-        # Nút Clear Vector Store (8.2.3)
-        if st.session_state.vectorstore is not None and st.session_state.current_chat_id is not None:
-            if st.button("🗑️ Xóa tài liệu hiện tại", type="tertiary", use_container_width=True, key="quart_btn"):
-                st.session_state.show_confirm_clear_vs = True
 
-        if st.session_state.get("show_confirm_clear_vs", False):
-            st.caption("**Bạn có chắc chắn muốn xóa tài liệu hiện tại không?**")
-            col1, col2 = st.columns(2)
-            with col1:
-                if st.button("✅ Đồng ý", key="confirm_clear_vs_yes"):
-                    delete_vectorstore(st.session_state.current_chat_id)
-                    for s in st.session_state.chat_sessions:
-                        if s["id"] == st.session_state.current_chat_id:
-                            s["file"] = None
-                            s["files"] = []
-                            break
-                    
-                    # === RESET TRIỆT ĐỂ session_state ===
-                    st.session_state.vectorstore = None
-                    st.session_state.current_file = None
-                    
-                    # Xóa cache BM25
-                    if "bm25_retriever" in st.session_state:
-                        st.session_state.pop("bm25_retriever", None)
-                    if "bm25_doc_count" in st.session_state:
-                        st.session_state.pop("bm25_doc_count", None)
-
-                    # === SỬA Ở ĐÂY: Không gán trực tiếp source_filter_select ===
-                    # Thay vì gán trực tiếp, chúng ta sẽ xóa key này để selectbox tự reset về index=0
-                    if "source_filter_select" in st.session_state:
-                        del st.session_state.source_filter_select
-
-                    # Lưu lại history
-                    save_history(st.session_state.chat_sessions)
-
-                    st.session_state.show_confirm_clear_vs = False
-                    
-                    st.success("✅ Đã xóa tài liệu và Vector Store thành công!")
-                    st.rerun()
-            with col2:
-                if st.button("❌ Hủy", key="confirm_clear_vs_no"):
-                    st.session_state.show_confirm_clear_vs = False
-                    st.rerun()
 
         # Nút New Chat
         if st.button("✨ Hộp thoại mới", type="secondary", use_container_width=True):

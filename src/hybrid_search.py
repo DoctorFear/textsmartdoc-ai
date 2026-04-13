@@ -25,7 +25,6 @@ def build_bm25_retriever(all_docs: list, k: int) -> BM25Retriever:
     retriever.k = k
     return retriever
 
-
 def build_ensemble_retriever(
     bm25_retriever: BM25Retriever,
     faiss_retriever,
@@ -33,16 +32,19 @@ def build_ensemble_retriever(
     faiss_weight: float = FAISS_WEIGHT,
 ) -> EnsembleRetriever:
     """
-    Kết hợp BM25 và FAISS thành EnsembleRetriever.
-
-    Args:
-        bm25_retriever:  BM25Retriever đã build
-        faiss_retriever: FAISS retriever từ vectorstore.as_retriever()
-        bm25_weight:     Trọng số BM25 (mặc định 0.3)
-        faiss_weight:    Trọng số FAISS (mặc định 0.7)
-    Returns:
-        EnsembleRetriever
+    Kết hợp BM25 và FAISS thành EnsembleRetriever với trọng số động.
     """
+    # Đảm bảo tổng trọng số = 1.0
+    total = bm25_weight + faiss_weight
+    if total == 0:
+        bm25_weight = 0.3
+        faiss_weight = 0.7
+    else:
+        bm25_weight = bm25_weight / total
+        faiss_weight = faiss_weight / total
+
+    logger.info(f"Xây dựng EnsembleRetriever | BM25={bm25_weight:.2f} | FAISS={faiss_weight:.2f}")
+
     return EnsembleRetriever(
         retrievers=[bm25_retriever, faiss_retriever],
         weights=[bm25_weight, faiss_weight]
@@ -101,6 +103,6 @@ def get_retriever(
         logger.info(f"Retrieval mode: BM25 | k={top_k}")
     else:  # hybrid (default)
         retriever = build_ensemble_retriever(bm25_retriever, faiss_retriever)
-        logger.info(f"Retrieval mode: Hybrid (BM25={BM25_WEIGHT} + FAISS={FAISS_WEIGHT}) | k={top_k}")
+        logger.info(f"Retrieval mode: Hybrid | k={top_k} (weights will be applied dynamically)")
 
     return retriever, bm25_cache
