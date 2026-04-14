@@ -123,6 +123,7 @@ col_chat = render_upload_panel(
     embedder=get_embedder(),
     chunk_size=settings["chunk_size"],
     chunk_overlap=settings["chunk_overlap"],
+    ocr_enabled=settings["ocr_enabled"],
     create_new_chat_session_fn=create_new_chat_session,
     save_current_session_fn=save_current_session_to_disk,
 )

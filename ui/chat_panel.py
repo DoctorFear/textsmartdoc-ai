@@ -56,6 +56,7 @@ def render_chat_history():
         if "citations" in message and message["citations"]:
             with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
                 for cite in message["citations"]:
+                    
                     st.markdown(f"**Nguồn {cite['index']}:** File `{cite['file']}` — Trang **{cite['page']}**")
                     st.info(f'"{cite["snippet"]}"')
 

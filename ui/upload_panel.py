@@ -20,8 +20,6 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, ocr_enabled, create
     col_upload, col_chat = st.columns([1, 4])
 
     with col_upload:
-        if ocr_enabled:
-            st.info("🔍 Chế độ OCR đang BẬT")
 
         # Key động để tránh cache file cũ
         uploader_key = (

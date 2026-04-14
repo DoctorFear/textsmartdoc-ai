@@ -39,3 +39,6 @@ EMBEDDING_DEVICE  = "cpu"   # "cuda" nếu có GPU
 # ── UI ────────────────────────────────────────────────────────────────────────
 SIDEBAR_TEXT_COLOR = "#FFFFFF"
 MAX_HISTORY_TURNS  = 4     # Số lượt hội thoại tối đa đưa vào context (8.2.6)
+
+
+OCR_MODE = False

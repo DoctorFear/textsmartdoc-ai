@@ -18,7 +18,7 @@ def build_citations(retrieved_docs: list) -> list[dict]:
     """
     citations = []
     for i, doc in enumerate(retrieved_docs):
-        page_num = doc.metadata.get("page", -1) + 1
+        page_num = doc.metadata.get("page", "N/A")
         raw_source = doc.metadata.get("source", "Unknown")
         file_name = (
             os.path.basename(raw_source)
@@ -29,7 +29,7 @@ def build_citations(retrieved_docs: list) -> list[dict]:
 
         citations.append({
             "index":   i + 1,
-            "page":    page_num if page_num > 0 else "N/A",
+            "page":    page_num,
             "file":    file_name,
             "snippet": snippet,
         })
