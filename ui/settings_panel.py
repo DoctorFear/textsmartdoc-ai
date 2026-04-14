@@ -36,9 +36,38 @@ def render_settings_panel() -> dict:
 
         settings["ocr_enabled"] = st.toggle(
             "Chế độ quét ảnh (OCR)", 
-            value=False, 
-            help="Bật khi bạn upload file PDF scan hoặc file ảnh. Tắt để đọc văn bản nhanh hơn."
+            value=False
         )
+
+        if settings["ocr_enabled"]:
+            settings["ocr_mode"] = st.selectbox(
+                "Chất lượng OCR",
+                ["fast", "balanced", "accurate"],
+                index=1
+            )
+
+            # mapping preset
+            if settings["ocr_mode"] == "fast":
+                settings["dpi"] = 150
+                settings["batch_size"] = 4
+                settings["confidence_threshold"] = 0.2
+
+            elif settings["ocr_mode"] == "balanced":
+                settings["dpi"] = 220
+                settings["batch_size"] = 8
+                settings["confidence_threshold"] = 0.3
+
+            else:
+                settings["dpi"] = 300
+                settings["batch_size"] = 8
+                settings["confidence_threshold"] = 0.4
+
+            # 🔥 HIỆN LUÔN
+            settings["dpi"] = st.slider("DPI", 100, 400, settings["dpi"], 10)
+            settings["batch_size"] = st.slider("Batch Size", 1, 32, settings["batch_size"])
+            settings["confidence_threshold"] = st.slider(
+                "Confidence Threshold", 0.0, 1.0, settings["confidence_threshold"], 0.05
+            )
         
         settings["search_type"] = st.selectbox(
             "Search Type",

@@ -29,11 +29,30 @@ class OCRHandler:
     (DOCX đã được convert sang PDF từ loader)
     """
 
-    def __init__(self, languages=None, use_gpu=None):
+    def __init__(
+        self,
+        languages=None,
+        use_gpu=None,
+        dpi=None,
+        batch_size=8,
+        confidence_threshold=0.3
+    ):
         self.logger = setup_logger("smartdoc")
+
         self.languages = languages or OCRConfig.LANGUAGES
         self.use_gpu = use_gpu if use_gpu is not None else OCRConfig.USE_GPU
+
+        # 🔥 Clamp để tránh user phá system
+        self.dpi = min(max(dpi or OCRConfig.DPI, 100), 400)
+        self.batch_size = min(max(batch_size, 1), 32)
+        self.confidence_threshold = min(max(confidence_threshold, 0.0), 1.0)
+
         self.reader = self._init_reader()
+
+        # 🔥 Log config
+        self.logger.info(
+            f"OCR Config | DPI={self.dpi} | batch={self.batch_size} | conf={self.confidence_threshold}"
+        )
 
     def _init_reader(self):
         try:
@@ -54,8 +73,16 @@ class OCRHandler:
     def ocr_image(self, image: Image.Image) -> str:
         """OCR một ảnh PIL"""
         try:
-            results = self.reader.readtext(np.array(image), batch_size=8)
-            lines = [r[1] for r in results if r[2] >= OCRConfig.CONFIDENCE_THRESHOLD]
+            results = self.reader.readtext(
+                np.array(image),
+                batch_size=self.batch_size   # 🔥 dùng config
+            )
+
+            lines = [
+                r[1] for r in results
+                if r[2] >= self.confidence_threshold   # 🔥 dùng config
+            ]
+
             return "\n".join(lines)
 
         except Exception as e:
@@ -70,8 +97,8 @@ class OCRHandler:
     def process_pdf_to_docs(self, pdf_path: str) -> List[LangChainDocument]:
         """
         OCR toàn bộ PDF:
-        - Convert toàn bộ PDF → images 1 lần (NHANH hơn rất nhiều)
-        - OCR từng trang (đa luồng nếu CPU)
+        - Convert toàn bộ PDF → images 1 lần
+        - OCR từng trang
         """
 
         poppler_path = r"D:\textsmartdoc-ai\poppler-bin\poppler-24.08.0\Library\bin"
@@ -89,7 +116,7 @@ class OCRHandler:
         try:
             images = convert_from_path(
                 pdf_path,
-                dpi=OCRConfig.DPI,
+                dpi=self.dpi,   # 🔥 dùng config
                 poppler_path=poppler_path
             )
         except Exception as e:
@@ -130,7 +157,7 @@ class OCRHandler:
 
         # ================= MULTI THREAD =================
         with concurrent.futures.ThreadPoolExecutor(
-            max_workers=1 if self.use_gpu else 3
+            max_workers=1 if self.use_gpu else min(6, os.cpu_count())
         ) as executor:
 
             results = list(tqdm(
@@ -139,7 +166,6 @@ class OCRHandler:
                 desc="OCR PDF Pages"
             ))
 
-        # lọc None
         docs = [doc for doc in results if doc is not None]
 
         # ================= CLEAN MEMORY =================
