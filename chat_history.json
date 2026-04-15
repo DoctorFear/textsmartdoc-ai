@@ -1258,5 +1258,926 @@
         "size_mb": 2.31
       }
     }
+  },
+  {
+    "id": 6,
+    "title": "liệt kê danh sách đồ án",
+    "messages": [
+      {
+        "role": "user",
+        "content": "liệt kê danh sách đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "❌ Lỗi xử lý: [WinError 10061] No connection could be made because the target machine actively refused it",
+        "citations": [],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "liệt kê đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Dựa trên thông tin trong tài liệu, các đồ án của Phạm Nguyễn Thanh Sang bao gồm:\n\n1. Smart school bus - Phát triển một ứng dụng web toàn bộ với Flask làm API và React làm giao diện người dùng trước đó.\n2. Brick matcher - Phát triển một ứng dụng web toàn bộ với Flask làm API và React làm giao diện người dùng trước đó.\n3. Simple restaurant website - Phát triển một ứng dụng web toàn bộ sử dụng Flask phục vụ như API REST và React làm giao diện người dùng, trước đó.\n4. Minishop - Phát triển một ứng dụng web toàn bộ sử dụng Flask phục vụ như API REST và React làm giao diện người dùng, hiện tại.\n5. Quizigma - Phát triển một plugin máy chủ Minecraft để giải trí cho trẻ em trong thời gian rảnh, từ tháng 5 năm 2018 đến tháng 5 năm 2020.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "liệt kê bằng cấp"
+      },
+      {
+        "role": "assistant",
+        "content": "❌ Lỗi xử lý: name 'corag_pipeline' is not defined",
+        "citations": [],
+        "self_rag_meta": null,
+        "mode": "rag+corag"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 12:06:58",
+        "upload_timestamp": "2026-04-15T12:06:58.426032",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 7,
+    "title": "Sang_Resume.pdf",
+    "messages": [],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 12:57:51",
+        "upload_timestamp": "2026-04-15T12:57:51.213713",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 8,
+    "title": "Sang_Resume.pdf",
+    "messages": [],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:01:16",
+        "upload_timestamp": "2026-04-15T13:01:16.296409",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 9,
+    "title": "liệt kê đồ án",
+    "messages": [
+      {
+        "role": "user",
+        "content": "liệt kê đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Dựa trên thông tin trong tài liệu, các đồ án của Phạm Nguyễn Thanh Sang bao gồm:\n\n1. Smart school bus - Phát triển một ứng dụng web đầy đủ chức năng sử dụng Flask làm API và React làm giao diện người dùng phía trước, tích hợp OAuth từ GitHub để hiển thị dữ liệu về sự hợp tác, sử dụng Celery và Redis cho các tác vụ asynchronus.\n\n2. Brick matcher - Phát triển một ứng dụng web đầy đủ chức năng tương tự như đồ án trên, cũng sử dụng Flask làm API và React làm giao diện người dùng phía trước, tích hợp OAuth từ GitHub để hiển thị dữ liệu về sự hợp tác, sử dụng Celery và Redis cho các tác vụ asynchronus.\n\n3. Quizigma - Phát triển một plugin Minecraft server để giải trí cho trẻ em trong giờ rảnh rỗi, đã phát hành lên các trang web thu hút hơn 2000 lượt tải và nhận xét trung bình 4.5/5 sao, đồng thời thực hiện giao tiếp liên tục với quản trị viên server Minecraft để đề xuất các tính năng mới và nhận phản hồi về plugin của mình.\n\nTài liệu cũng đề cập đến một số dự án khác như Minishop và Simple restaurant website nhưng không được gọi là \"đồ án\" cụ thể trong đoạn mô tả.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag+corag"
+      },
+      {
+        "role": "user",
+        "content": "tên người làm đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Phạm Nguyễn Thanh Sang đã thực hiện các dự án như Smart school bus và Brick matcher.Tên người làm đồ án là Phạm Nguyễn Thanh Sang.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:11:41",
+        "upload_timestamp": "2026-04-15T13:11:41.762695",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 10,
+    "title": "liệt kê đồ án",
+    "messages": [
+      {
+        "role": "user",
+        "content": "liệt kê đồ án"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:17:41",
+        "upload_timestamp": "2026-04-15T13:17:41.393022",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 11,
+    "title": "giải thích file",
+    "messages": [
+      {
+        "role": "user",
+        "content": "giải thích file"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:21:15",
+        "upload_timestamp": "2026-04-15T13:21:15.504865",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 12,
+    "title": "liệt kê đồ na",
+    "messages": [
+      {
+        "role": "user",
+        "content": "liệt kê đồ na"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu về đồna cụ thể. Tài liệu đề cập đến một số dự án phát triển web và plugin, nhưng không có thông tin liên quan đến đồna.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:28:25",
+        "upload_timestamp": "2026-04-15T13:28:25.915225",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 13,
+    "title": "tên người làm resume",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tên người làm resume"
+      },
+      {
+        "role": "assistant",
+        "content": "Tên người làmResume là Phạm Nguyễn Thanh Sang.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:29:24",
+        "upload_timestamp": "2026-04-15T13:29:24.644641",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 14,
+    "title": "Liệt kê đồ án",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Liệt kê đồ án"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:32:51",
+        "upload_timestamp": "2026-04-15T13:32:51.575443",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 15,
+    "title": "tên người làm resume",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tên người làm resume"
+      },
+      {
+        "role": "assistant",
+        "content": "Tên người làm resume là Phạm Nguyễn Thanh Sang.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "liệt kê đồ án"
+      },
+      {
+        "role": "user",
+        "content": "liệt kê đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Phạm Nguyễn Thanh Sang đã thực hiện hai đồ án:\n\n1. Smart school bus - phát triển một ứng dụng web toàn bộ sử dụng Flask phục vụ API REST và React làm giao diện người dùng.\n2. Brick matcher - cũng là một ứng dụng web toàn bộ sử dụng Flask phục vụ API REST và React làm giao diện người dùng.\n\nCả hai đồ án này đều sử dụng Python, Flask, React, PostgreSQL, Docker, GitHub OAuth, Celery và Redis cho các tác vụ asynchrone.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "liệt kê đồ án trong resume"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:42:43",
+        "upload_timestamp": "2026-04-15T13:42:43.467167",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 16,
+    "title": "liệt kê tên đồ án",
+    "messages": [
+      {
+        "role": "user",
+        "content": "liệt kê tên đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "### RAG Result\nDựa trên tài liệu cung cấp, tôi có thể liệt kê tên các đồ án như sau:\n\n1. Minishop\n2. Simple restaurant website\n3. Smart school bus\n4. Brick matcher\n\nNhững đồ án này đều được phát triển bằng Python, Flask, React, PostgreSQL và Docker trong khoảng thời gian từ tháng 6 năm 2020 đến hiện tại.\n\n---\n\n### CoRAG Result\nTên các đồ án được liệt kê trong tài liệu bao gồm Smart school bus và Brick matcher.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag+corag"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 13:49:22",
+        "upload_timestamp": "2026-04-15T13:49:22.764038",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 17,
+    "title": "tên người làm đồ án",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tên người làm đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Phạm Nguyễn Thanh Sang đã thực hiện các dự án như Smart school bus, Brick matcher, Minishop và Simple restaurant website.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "kể tên đồ ấn"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 16:20:56",
+        "upload_timestamp": "2026-04-15T16:20:56.528720",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 18,
+    "title": "tell me the project list",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tell me the project list"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 16:28:29",
+        "upload_timestamp": "2026-04-15T16:28:29.299080",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 19,
+    "title": "tell me the resume projects",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tell me the resume projects"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "The resume lists several projects:\n\n1. Smart school bus | Python, Flask, React, PostgreSQL, Docker (June 2020 – Present)\n   - Developed a full-stack web application using Flask serving a REST API with React as the frontend.\n   - Implemented GitHub OAuth to get data from user’s repositories.\n   - Visualized GitHub data to show collaboration.\n   - Used Celery and Redis for asynchronous tasks.\n\n2. Brick matcher | Python, Flask, React, PostgreSQL, Docker (June 2020 – Present)\n   - Developed a full-stack web application using Flask serving a REST API with React as the frontend.\n   - Implemented GitHub OAuth to get data from user’s repositories.\n   - Visualized GitHub data to show collaboration.\n   - Used Celery and Redis for asynchronous tasks.\n\n3. Minishop | Python, Flask, React, PostgreSQL, Docker (June 2020 – Present)\n   - Developed a full-stack web application using Flask serving a REST API with React as the frontend.\n   - Implemented GitHub OAuth to get data from user’s repositories.\n   - Visualized GitHub data to show collaboration.\n   - Used Celery and Redis for asynchronous tasks.\n\n4. Simple restaurant website | Python, Flask, React, PostgreSQL, Docker (June 2020 – Present)\n   - Developed a full-stack web application using Flask serving a REST API with React as the frontend.\n   - Implemented GitHub OAuth to get data from user’s repositories.\n   - Visualized GitHub data to show collaboration.\n   - Used Celery and Redis for asynchronous tasks.\n\n5. Quizigma | Spigot API, Java, Maven, TravisCI, Git (May 2018 – May 2020)\n   - Developed a Minecraft server plugin to entertain kids during free time for a previous job.\n   - Published the plugin on websites gaining 2K+ downloads and an average 4.5/5-star review.\n   - Implemented continuous delivery using TravisCI to build the plugin upon new releases.\n   - Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+              },
+              {
+                "index": 2,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+              },
+              {
+                "index": 3,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Based on the provided context, here are the main projects listed in Pham Nguyen Thanh Sang's resume:\n\n1. Smart school bus - A full-stack web application built using Python, Flask for the backend and React for the frontend. It includes implementing GitHub OAuth to get user data, visualizing GitHub data to show collaboration, and using Celery and Redis for asynchronous tasks.\n\n2. Brick matcher - Another full-stack web application with similar technologies used as in Smart school bus.\n\n3. Minishop - A full-stack web app developed for a retail or e-commerce purpose, also built using Python, Flask for the backend and React for the frontend, including features like GitHub OAuth integration, data visualization, and asynchronous task handling.\n\n4. Simple restaurant website - A full-stack application created to provide online ordering or information services for restaurants, featuring similar technologies and functionalities as mentioned above.\n\n5. Quizigma - Although this project is not a web app but a Minecraft server plugin, it showcases his skills in developing software for specific platforms and implementing continuous delivery processes.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+              },
+              {
+                "index": 2,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+              },
+              {
+                "index": 3,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 16:32:54",
+        "upload_timestamp": "2026-04-15T16:32:54.383777",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 20,
+    "title": "nêu trọng tâm đồ án\\",
+    "messages": [
+      {
+        "role": "user",
+        "content": "nêu trọng tâm đồ án\\"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "Trọng tâm đồ án tập trung vào việc phát triển một hệ thống RAG (Retrieval-Augmented Generation) sử dụng các mô hình lớn ngôn ngữ như Qwen2.5 và Ollama, với khả năng xử lý tài liệu PDF đa ngôn ngữ, đặc biệt hỗ trợ tiếng Việt và hơn 50 ngôn ngữ khác. Hệ thống cũng tự động phát hiện ngôn ngữ của tài liệu đầu vào và cung cấp câu trả lời phù hợp. Ngoài ra, đồ án còn yêu cầu phát triển thêm các chức năng như hỗ trợ file DOCX, lưu trữ lịch sử hội thoại, cho phép xóa lịch sử và cải thiện chiến lược cắt (chunk strategy) để tối ưu hóa hiệu suất và độ chính xác của câu trả lời.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 2,
+                "file": "ossd assignment.pdf",
+                "snippet": "Mục lục LỜI MỞ ĐẦU 4 1 GIỚI THIỆU 5 1.1 Bối cảnh và động lực . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5 1.2 Mục tiêu dự án . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5 1.3 Phạm vi dự án . . . . . . . . . . . ..."
+              },
+              {
+                "index": 2,
+                "page": 6,
+                "file": "ossd assignment.pdf",
+                "snippet": "6. Tối ưu hóa hiệu suất và độ chính xác của câu trả lời 1.3 Phạm vi dự án Dự án tập trung vào: • Xử lý tài liệu PDF đa ngôn ngữ • Hỗ trợ xuất sắc cho tiếng Việt và 50+ ngôn ngữ khác • Tự động phát hiện ngôn ngữ và trả lời phù hợp • Chạy local trên má..."
+              },
+              {
+                "index": 3,
+                "page": 23,
+                "file": "ossd assignment.pdf",
+                "snippet": "Bài tập lớn OSSD 2026 RAG System với LLMs 8 YÊU CẦU PHÁT TRIỂN PROJECT 8.1 Giới thiệu Phần này đưa ra các yêu cầu phát triển thêm cho project, được sắp xếp theo mức độ khó tăng dần. Sinh viên cần hoàn thành các yêu cầu để nâng cao kỹ năng và mở rộng ..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Đồ án tập trung vào thiết kế và triển khai hệ thống dựa trên công nghệ Retrieval-Augmented Generation (RAG). Trọng tâm chính bao gồm:\n\n1. Thống nhất các thành phần như embedding model, vector database, large language models (LLM) như Qwen2.5 và Ollama, framework LangChain.\n2. Kiến trúc tổng quan của hệ thống và luồng dữ liệu cho việc xử lý văn bản và tra cứu.\n3. Liên kết LLM vào hệ thống thông qua tích hợp embedding và retriever.\n\nĐồ án cũng bao gồm chi tiết về thiết kế frontend và backend, cài đặt môi trường làm việc, cấu trúc thư mục, và các cấu hình cần thiết cho hệ thống.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 2,
+                "file": "ossd assignment.pdf",
+                "snippet": "Mục lục LỜI MỞ ĐẦU 4 1 GIỚI THIỆU 5 1.1 Bối cảnh và động lực . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5 1.2 Mục tiêu dự án . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5 1.3 Phạm vi dự án . . . . . . . . . . . ..."
+              },
+              {
+                "index": 2,
+                "page": 2,
+                "file": "ossd assignment.pdf",
+                "snippet": "3.3.5 LLM Integration . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10 3.4 Prompt Engineering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11 4 TRIỂN KHAI 12 4.1 Công nghệ sử dụng . . . . . . . . . . . . . . . . . . . . . . ...."
+              },
+              {
+                "index": 3,
+                "page": 2,
+                "file": "ossd assignment.pdf",
+                "snippet": "2.3.2 Ollama . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7 2.4 LangChain Framework . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7 3 THIẾT KẾ HỆ THỐNG 8 3.1 Kiến trúc tổng quan . . . . . . . . . . . . . . . . . . ...."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "ファイルは名前何ですか"
+      },
+      {
+        "role": "assistant",
+        "content": "The question appears to be in Japanese and asks \"File no namae wa nan desu ka\", which translates to \"What is the name of the file?\" However, there is no information provided about any specific file names in the context given. Therefore, I cannot provide a precise answer based on the available information.\n\nIf you need assistance with understanding or translating Japanese text, feel free to ask!",
+        "citations": [
+          {
+            "index": 1,
+            "page": 4,
+            "file": "ossd assignment.pdf",
+            "snippet": "Bài tập lớn OSSD 2026 RAG System với LLMs 9 KẾT LUẬN 25 9.1 Tổng kết . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25 3..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "ossd assignment.pdf",
+            "snippet": "Bài tập lớn OSSD 2026 RAG System với LLMs 5 GIAO DIỆN NGƯỜI DÙNG 15 5.1 Thiết kế UI/UX . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15 5.1.1 Color Palette . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15 5.1.2 Layou..."
+          },
+          {
+            "index": 3,
+            "page": 23,
+            "file": "ossd assignment.pdf",
+            "snippet": "Bài tập lớn OSSD 2026 RAG System với LLMs 8 YÊU CẦU PHÁT TRIỂN PROJECT 8.1 Giới thiệu Phần này đưa ra các yêu cầu phát triển thêm cho project, được sắp xếp theo mức độ khó tăng dần. Sinh viên cần hoàn thành các yêu cầu để nâng cao kỹ năng và mở rộng ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      }
+    ],
+    "file": "ossd assignment.pdf",
+    "files": [
+      "ossd assignment.pdf"
+    ],
+    "files_metadata": {
+      "ossd assignment.pdf": {
+        "upload_date": "2026-04-15 16:52:29",
+        "upload_timestamp": "2026-04-15T16:52:29.340805",
+        "file_type": "pdf",
+        "size_mb": 0.44
+      }
+    }
+  },
+  {
+    "id": 21,
+    "title": "レスメの著者名前は何ですか",
+    "messages": [
+      {
+        "role": "user",
+        "content": "レスメの著者名前は何ですか"
+      },
+      {
+        "role": "assistant",
+        "content": "The author's name mentioned in the resume is Phạm Nguyễn Thanh Sang.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 16:59:01",
+        "upload_timestamp": "2026-04-15T16:59:01.980183",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 22,
+    "title": "kể tên các đối tượng",
+    "messages": [
+      {
+        "role": "user",
+        "content": "kể tên các đối tượng"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "Không tìm thấy thông tin trong tài liệu về các đối tượng cụ thể cần được kể tên. Tài liệu chỉ đề cập đến chức năng quản lý nguyện vọng và xét tuyển cũng như quản lý điểm cộng nhưng không nêu rõ các đối tượng liên quan.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 7,
+                "file": "Dự án phần mềm tuyển sinh.docx",
+                "snippet": "7..."
+              },
+              {
+                "index": 2,
+                "page": 5,
+                "file": "Dự án phần mềm tuyển sinh.docx",
+                "snippet": "8. Quản lý nguyện vọng và xét tuyển. 5..."
+              },
+              {
+                "index": 3,
+                "page": 4,
+                "file": "Dự án phần mềm tuyển sinh.docx",
+                "snippet": "- Xem danh sách, sửa thông tin, xóa, thêm mới - Thống kê điểm theo loại điểm, môn 7. Quản lý điểm cộng - Xem danh sách điểm cộng - Import danh sách - Thêm, xóa, sửa 4..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Không tìm thấy thông tin trong tài liệu về các đối tượng cụ thể cần được kê tên. Tài liệu chỉ đề cập đến chức năng quản lý nguyện vọng và xét tuyển, cũng như quản lý điểm cộng, nhưng không liệt kê các đối tượng liên quan.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 7,
+                "file": "Dự án phần mềm tuyển sinh.docx",
+                "snippet": "7..."
+              },
+              {
+                "index": 2,
+                "page": 5,
+                "file": "Dự án phần mềm tuyển sinh.docx",
+                "snippet": "8. Quản lý nguyện vọng và xét tuyển. 5..."
+              },
+              {
+                "index": 3,
+                "page": 4,
+                "file": "Dự án phần mềm tuyển sinh.docx",
+                "snippet": "- Xem danh sách, sửa thông tin, xóa, thêm mới - Thống kê điểm theo loại điểm, môn 7. Quản lý điểm cộng - Xem danh sách điểm cộng - Import danh sách - Thêm, xóa, sửa 4..."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "tóm tắt đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu liên quan đến đồ án. Tài liệu cung cấp thông tin về quản lý điểm và điểm cộng nhưng không đề cập đến đồ án.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 7,
+            "file": "Dự án phần mềm tuyển sinh.docx",
+            "snippet": "7..."
+          },
+          {
+            "index": 2,
+            "page": 4,
+            "file": "Dự án phần mềm tuyển sinh.docx",
+            "snippet": "- Xem danh sách, sửa thông tin, xóa, thêm mới - Thống kê điểm theo loại điểm, môn 7. Quản lý điểm cộng - Xem danh sách điểm cộng - Import danh sách - Thêm, xóa, sửa 4..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "tóm tắt đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Dựa trên thông tin trong tài liệu, không có phần mô tả cụ thể về nội dung của đồ án. Do đó, tôi không thể tóm tắt được nội dung đồ án chính xác từ tài liệu này.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 4,
+            "file": "Dự án phần mềm tuyển sinh.docx",
+            "snippet": "- Xem danh sách, sửa thông tin, xóa, thêm mới - Thống kê điểm theo loại điểm, môn 7. Quản lý điểm cộng - Xem danh sách điểm cộng - Import danh sách - Thêm, xóa, sửa 4..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "Dự án phần mềm tuyển sinh.docx",
+            "snippet": "5. Quản lý danh sách ngành - tổ hợp 6. Quản lý điểm thí sinh: có 3 loại điểm THPT, VSAT, ĐGNL - Import danh sách điểm 3..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "kể tên đồ án"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu về đồ án. Tài liệu chỉ đề cập đến các chức năng quản lý điểm và nguyện vọng xét tuyển.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 7,
+            "file": "Dự án phần mềm tuyển sinh.docx",
+            "snippet": "7..."
+          },
+          {
+            "index": 2,
+            "page": 4,
+            "file": "Dự án phần mềm tuyển sinh.docx",
+            "snippet": "- Xem danh sách, sửa thông tin, xóa, thêm mới - Thống kê điểm theo loại điểm, môn 7. Quản lý điểm cộng - Xem danh sách điểm cộng - Import danh sách - Thêm, xóa, sửa 4..."
+          },
+          {
+            "index": 3,
+            "page": 5,
+            "file": "Dự án phần mềm tuyển sinh.docx",
+            "snippet": "8. Quản lý nguyện vọng và xét tuyển. 5..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "Dự án phần mềm tuyển sinh.docx",
+    "files": [
+      "Dự án phần mềm tuyển sinh.docx"
+    ],
+    "files_metadata": {
+      "Dự án phần mềm tuyển sinh.docx": {
+        "upload_date": "2026-04-15 17:45:28",
+        "upload_timestamp": "2026-04-15T17:45:28.214559",
+        "file_type": "docx",
+        "size_mb": 3.5
+      }
+    }
   }
 ]

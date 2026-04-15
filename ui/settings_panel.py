@@ -83,6 +83,18 @@ def render_settings_panel() -> dict:
         
         settings["self_rag_enabled"] = (settings["self_rag_method"] == "Bật Self-RAG (Tự đánh giá)")
 
+        # ================== Combined ==================
+        settings["combined_mode"] = st.selectbox(
+            "Combined Mode",
+            ["rag", "corag", "rag+corag"],
+            index=0,
+            format_func=lambda x: {
+                "rag": "Chỉ RAG",
+                "corag": "Chỉ CoRAG",
+                "rag+corag": "RAG & CoRAG"
+            }[x]
+        )
+
         st.divider()
 
     return settings

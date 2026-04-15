@@ -14,3 +14,7 @@ rank_bm25
 pytesseract
 pillow
 pdf2image
+opencv-python
+easyocr
+docx2pdf
+pypdf2
