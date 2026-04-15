@@ -176,6 +176,19 @@ def render_settings_panel() -> dict:
         elif not settings["self_rag_enabled"]:
             st.session_state.prev_self_rag_state = False
 
+        
+        # ================== Combined ==================
+        settings["combined_mode"] = st.selectbox(
+            "Combined Mode",
+            ["rag", "corag", "rag+corag"],
+            index=0,
+            format_func=lambda x: {
+                "rag": "Chỉ RAG",
+                "corag": "Chỉ CoRAG",
+                "rag+corag": "RAG & CoRAG"
+            }[x]
+        )
+
         st.divider()
 
     return settings

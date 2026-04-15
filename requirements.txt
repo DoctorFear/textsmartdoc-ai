@@ -16,3 +16,5 @@ pillow
 pdf2image
 opencv-python
 easyocr
+docx2pdf
+pypdf2

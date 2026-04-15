@@ -12,6 +12,7 @@ from src.hybrid_search import get_retriever
 from src.citation import build_citations
 from src.logger import setup_logger
 from src.config import BM25_WEIGHT, FAISS_WEIGHT   # ← THÊM DÒNG NÀY
+from src.corag_pipeline import corag_pipeline
 
 logger = setup_logger()
 
@@ -46,20 +47,47 @@ def render_self_rag_meta(meta: dict):
 # ── Render lịch sử chat ───────────────────────────────────────────────────────
 def render_chat_history():
     for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+        with st.chat_message(message["role"]): 
+            mode = message.get("mode") 
+            # ================== COMPARE MODE ================== 
+            if mode == "rag+corag" and message.get("compare_data"): 
+                data = message["compare_data"]
+                # ----- RAG ----- 
+                st.subheader("RAG") 
+                st.markdown(data["rag"]["response"]) 
+                if data["rag"]["citations"]: 
+                    with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"): 
+                        for cite in data["rag"]["citations"]: 
+                            st.markdown( f"**Nguồn {cite['index']}:** File {cite['file']} — Trang **{cite['page']}**" )
+                            st.info(f'"{cite["snippet"]}"') 
+                # ----- CoRAG ----- 
+                st.subheader("CoRAG")
+                st.markdown(data["corag"]["response"]) 
+                if data["corag"]["citations"]: 
+                    with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"): 
+                        for cite in data["corag"]["citations"]:
+                                st.markdown( f"**Nguồn {cite['index']}:** File {cite['file']} — Trang **{cite['page']}**" )
+                                st.info(f'"{cite["snippet"]}"')
 
-        if "self_rag_meta" in message and message["self_rag_meta"]:
-            with st.expander("🔁 Thông tin Self-RAG"):
-                render_self_rag_meta(message["self_rag_meta"])
+                st.caption("Chế độ: RAG + CoRAG") 
 
-        if "citations" in message and message["citations"]:
-            with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
-                for cite in message["citations"]:
-                    
-                    st.markdown(f"**Nguồn {cite['index']}:** File `{cite['file']}` — Trang **{cite['page']}**")
+            # ================== NORMAL MODES ================== 
+            else: 
+                st.markdown(message.get("content", "")) 
+                if mode: 
+                    mode_label = { "rag": "RAG", "corag": "CoRAG" }.get(mode, mode) 
+                    st.caption(f"Chế độ: {mode_label}") 
+
+        # ----- SELF-RAG META ----- 
+        if message.get("self_rag_meta"): 
+            with st.expander("🔁 Thông tin Self-RAG"): 
+                render_self_rag_meta(message["self_rag_meta"]) 
+        # ----- NORMAL CITATIONS ONLY ----- 
+        if ( message.get("citations") and message.get("mode") != "rag+corag" ): 
+            with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"): 
+                for cite in message["citations"]: 
+                    st.markdown( f"**Nguồn {cite['index']}:** File {cite['file']} — Trang **{cite['page']}" ) 
                     st.info(f'"{cite["snippet"]}"')
-
 
 # ── Xử lý câu hỏi & sinh câu trả lời ────────────────────────────────────────
 def handle_query(prompt, settings, save_current_session_fn, create_new_chat_session_fn):
@@ -99,9 +127,12 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
     retrieval_mode   = settings["retrieval_mode"]
     use_reranker     = settings.get("use_reranker", False)
     self_rag_enabled = settings.get("self_rag_enabled", False)
+    self_rag_enabled = settings.get("self_rag_enabled", False)
+    combined_mode    = settings.get("combined_mode", "rag")
 
     retrieved_docs = []
     self_rag_meta  = None
+    logger.info(f"Mode: '{combined_mode}...'") 
 
     with st.chat_message("assistant"):
         spinner_text = "Đang tìm kiếm và suy nghĩ..."
@@ -109,123 +140,216 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
             spinner_text = "Đang chạy Self-RAG..."
         elif use_reranker:
             spinner_text = "Đang rerank bằng Cross-Encoder..."
-
+        elif combined_mode == "corag":
+            spinner_text = "Đang chạy CoRAG..."
+        elif combined_mode == "rag+corag":
+            spinner_text = "Đang chạy RAG + CoRAG..."
+            
         with st.spinner(spinner_text):
             try:
-                logger.info(f"Query: '{prompt[:80]}...'")
-
+                logger.info(f"Query: '{prompt[:80]}...'") 
                 # Filter theo tài liệu
                 source_filter = None
-                if "source_filter_select" in st.session_state:
-                    selected = st.session_state.source_filter_select
-                    if selected != "Tất cả tài liệu":
+                if "source_filter_select" in st.session_state: 
+                    selected = st.session_state.source_filter_select 
+                    if selected != "Tất cả tài liệu": 
                         source_filter = selected
-
-                retriever_kwargs = {"k": top_k, "fetch_k": fetch_k}
-                if source_filter:
-                    retriever_kwargs["filter"] = {"source": source_filter}
-                if search_type == "mmr":
-                    retriever_kwargs["lambda_mult"] = lambda_mult
-
-                all_docs = list(st.session_state.vectorstore.docstore._dict.values())
-
-                # ================== SELF-RAG ==================
-                if self_rag_enabled:
-
-                    bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                    faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
                 
-                    retriever, st.session_state = _update_bm25_cache(
-                        st.session_state,
-                        all_docs, top_k,
-                        retrieval_mode="hybrid",
-                        search_type=search_type,
-                        retriever_kwargs=retriever_kwargs,
-                        bm25_weight=bm25_weight,
-                        faiss_weight=faiss_weight
-                    )
-                    result = self_rag_query(prompt, retriever, max_retries=2)
-                    response = result["answer"]
-                    retrieved_docs = result["docs"]
-                    self_rag_meta = {
-                        "attempts": result["attempts"],
-                        "confidence": result["confidence"],
-                        "query_used": result["query_used"],
-                        "evaluation": result["evaluation"],
-                        "multi_hop_steps": result.get("multi_hop_steps")
-                    }
-                    logger.info(f"Self-RAG | attempts={result['attempts']} | "
-                                f"confidence={result['confidence']} | "
-                                f"bm25_weight={bm25_weight}, faiss_weight={faiss_weight}")
-
-                else:
-                    # ================== NORMAL RAG ==================
-                    query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
-
-                    # Lấy trọng số từ settings
-                    bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                    faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
-
-                    retriever, st.session_state = _update_bm25_cache(
-                        st.session_state,
-                        all_docs, 
-                        top_k,
+                retriever_kwargs = {"k": top_k, "fetch_k": fetch_k} 
+                if source_filter: 
+                    retriever_kwargs["filter"] = {"source": source_filter} 
+                if search_type == "mmr": 
+                    retriever_kwargs["lambda_mult"] = lambda_mult 
+                
+                all_docs = list(st.session_state.vectorstore.docstore._dict.values()) 
+                
+                if combined_mode == "rag+corag": 
+                    # Build retriever FIRST 
+                    bm25_weight = settings.get("bm25_weight", BM25_WEIGHT) 
+                    faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT) 
+                    retriever, st.session_state = _update_bm25_cache( 
+                        st.session_state, all_docs, top_k,
                         retrieval_mode=retrieval_mode,
                         search_type=search_type,
                         retriever_kwargs=retriever_kwargs,
-                        bm25_weight=bm25_weight,
-                        faiss_weight=faiss_weight
-                    )
-
-                    retrieved_docs = retriever.invoke(query_for_retrieval)
-
-                    if use_reranker:
-                        retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
-
-                    if not retrieved_docs:
-                        response = "Không tìm thấy thông tin liên quan trong tài liệu."
-                    else:
-                        context = format_docs(retrieved_docs)
-                        response = rag_chain.invoke({
+                        bm25_weight=bm25_weight, faiss_weight=faiss_weight
+                        )
+                    query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages) 
+                    
+                    # ================== RAG ================== 
+                    rag_docs = retriever.invoke(query_for_retrieval) 
+                    if use_reranker: 
+                        rag_docs = rerank(query_for_retrieval, rag_docs, top_k=top_k) 
+                    if not rag_docs: 
+                        rag_response = "Không tìm thấy thông tin (RAG)." 
+                    else: 
+                        context = format_docs(rag_docs) 
+                        rag_response = rag_chain.invoke({ 
                             "context": context,
                             "question": prompt,
-                            "language_instruction": get_language_instruction(prompt)
-                        }).strip()
+                            "language_instruction": get_language_instruction(prompt) 
+                        }).strip() 
+                        rag_citations = build_citations(rag_docs) 
+                        
+                        # ================== CoRAG ================== 
+                        corag_result = corag_pipeline(prompt, retriever, top_k=top_k) 
+                        corag_response = corag_result["answer"] 
+                        corag_docs = corag_result["docs"] 
+                        corag_citations = build_citations(corag_docs)
+                        logger.info("Mode=RAG+CoRAG (Compare)") 
+                        # ================== UI ================== 
+                        st.subheader("RAG") 
+                        st.markdown(rag_response) 
+                        if rag_citations: 
+                            with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"): 
+                                for cite in rag_citations: 
+                                    st.markdown(f"**Nguồn {cite['index']}:** File {cite['file']} — Trang **{cite['page']}**") 
+                                    st.info(f'"{cite["snippet"]}"') 
+                                        
+                        st.subheader("CoRAG") 
+                        st.markdown(corag_response) 
+                        if corag_citations:
+                            with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"): 
+                                for cite in corag_citations: 
+                                    st.markdown(f"**Nguồn {cite['index']}:** File {cite['file']} — Trang **{cite['page']}**") 
+                                    st.info(f'"{cite["snippet"]}"') 
 
-                citations = build_citations(retrieved_docs)
+                        # ================== SAVE MESSAGE ================== 
+                        combined_response = ( "### RAG Result\n" + rag_response + "\n\n---\n\n### CoRAG Result\n" + corag_response ) 
+                        st.session_state.messages.append({ 
+                            "role": "assistant",
+                            "mode": "rag+corag",
+                            "compare_data": { 
+                                "rag": { 
+                                    "response": rag_response,
+                                    "citations": rag_citations 
+                                    },
+                                "corag": { 
+                                    "response": corag_response,
+                                    "citations": corag_citations 
+                                } 
+                            },
+                            "content": None,
+                            "citations": None,
+                            "self_rag_meta": None 
+                        }) 
 
-            except Exception as e:
-                response = f"❌ Lỗi xử lý: {str(e)}"
-                citations = []
-                self_rag_meta = None
+                else: 
+                    if combined_mode == "rag":
+                        # ================== SELF-RAG ================== 
+                        if self_rag_enabled: 
+                            bm25_weight = settings.get("bm25_weight", BM25_WEIGHT) 
+                            faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT) 
+                            retriever, st.session_state = _update_bm25_cache( 
+                                st.session_state,
+                                all_docs,
+                                top_k,
+                                retrieval_mode="hybrid",
+                                search_type=search_type,
+                                retriever_kwargs=retriever_kwargs,
+                                bm25_weight=bm25_weight,
+                                faiss_weight=faiss_weight 
+                            ) 
+                            result = self_rag_query(prompt, retriever, max_retries=2)
+                            response = result["answer"] 
+                            retrieved_docs = result["docs"] 
+                            self_rag_meta = { 
+                                "attempts": result["attempts"],
+                                "confidence": result["confidence"],
+                                "query_used": result["query_used"],
+                                "evaluation": result["evaluation"],
+                                "multi_hop_steps": result.get("multi_hop_steps") 
+                            } 
+                            logger.info(f"Self-RAG | attempts={result['attempts']} | " f"confidence={result['confidence']} | " f"bm25_weight={bm25_weight},faiss_weight={faiss_weight}") 
+                                
+                        else: 
+                            # ================== NORMAL RAG ================== 
+                            query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages) 
+                            # Lấy trọng số từ settings 
+                            bm25_weight = settings.get("bm25_weight", BM25_WEIGHT) 
+                            faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT) 
+                            retriever, st.session_state =  _update_bm25_cache( 
+                                st.session_state,
+                                all_docs,
+                                top_k,
+                                retrieval_mode=retrieval_mode,
+                                search_type=search_type,
+                                retriever_kwargs=retriever_kwargs,
+                                bm25_weight=bm25_weight,
+                                faiss_weight=faiss_weight 
+                            ) 
+                            retrieved_docs = retriever.invoke(query_for_retrieval) 
+                            if use_reranker:
+                                retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k) 
+                            if not retrieved_docs: 
+                                response = "Không tìm thấy thông tin liên quan trong tài liệu."
+                            else: 
+                                context = format_docs(retrieved_docs) 
+                                response = rag_chain.invoke({
+                                    "context": context,
+                                    "question": prompt,
+                                    "language_instruction": get_language_instruction(prompt)
+                                }).strip() 
+                            
+                            logger.info("Mode=RAG") 
+                            citations = build_citations(retrieved_docs) 
 
-        st.markdown(response)
+                    elif combined_mode == "corag": 
+                        bm25_weight = settings.get("bm25_weight", BM25_WEIGHT) 
+                        faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT) 
+                        retriever, st.session_state = _update_bm25_cache( 
+                            st.session_state, 
+                            all_docs, top_k, 
+                            retrieval_mode=retrieval_mode, 
+                            search_type=search_type,
+                            retriever_kwargs=retriever_kwargs,
+                            bm25_weight=bm25_weight,
+                            faiss_weight=faiss_weight 
+                        ) 
+                        result = corag_pipeline(prompt, retriever) 
+                        response = result["answer"] 
+                        retrieved_docs = result["docs"] 
+                        self_rag_meta = None 
+                        logger.info("Mode=CoRAG") 
+                        citations = build_citations(retrieved_docs) 
+                        
+                    st.markdown(response) 
+                    # Hiển thị meta 
+                    if self_rag_meta: 
+                        with st.expander("🔁 Thông tin Self-RAG"): 
+                            render_self_rag_meta(self_rag_meta) 
 
-    # Hiển thị meta
-    if self_rag_meta:
-        with st.expander("🔁 Thông tin Self-RAG"):
-            render_self_rag_meta(self_rag_meta)
+                    if citations: 
+                        with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"): 
+                            st.markdown("Hệ thống đã dựa vào các đoạn sau để trả lời:") 
+                            for cite in citations: 
+                                st.markdown(f"**Nguồn {cite['index']}:** File {cite['file']} — Trang **{cite['page']}**") 
+                                st.info(f'"{cite["snippet"]}"') 
+                    
+                    st.session_state.messages.append({ 
+                        "role": "assistant",
+                        "content": response,
+                        "citations": citations,
+                        "self_rag_meta": self_rag_meta,
+                        "mode": combined_mode
+                    })
 
-    if citations:
-        with st.expander("Xem nguồn trích dẫn (Citations) & Highlight"):
-            st.markdown("Hệ thống đã dựa vào các đoạn sau để trả lời:")
-            for cite in citations:
-                st.markdown(f"**Nguồn {cite['index']}:** File `{cite['file']}` — Trang **{cite['page']}**")
-                st.info(f'"{cite["snippet"]}"')
+                
+                if combined_mode == "corag":
+                    st.caption("Chế độ: CoRAG") 
+                elif combined_mode == "rag+corag":
+                    st.caption("Chế độ: RAG + CoRAG") 
+                else:
+                    st.caption("Chế độ: RAG") 
 
-    st.session_state.messages.append({
-        "role": "assistant",
-        "content": response,
-        "citations": citations,
-        "self_rag_meta": self_rag_meta,
-    })
 
-    save_current_session_fn()
-
-    streamlit_js_eval(
-        js_expressions="parent.document.querySelectorAll('*').forEach(el => el.scrollTop = el.scrollHeight);",
-        key=f"scroll_{int(time.time() * 100000)}"
-    )
+            except Exception as e: 
+                response = f"❌ Lỗi xử lý: {str(e)}" 
+                citations = [] 
+                self_rag_meta = None 
+        
+        save_current_session_fn() 
+        streamlit_js_eval( js_expressions="parent.document.querySelectorAll('*').forEach(el => el.scrollTop = el.scrollHeight);", key=f"scroll_{int(time.time() * 100000)}" )
 
 
 # ── Internal helper ───────────────────────────────────────────────────────────

@@ -353,5 +353,159 @@
         "size_mb": 1.05
       }
     }
+  },
+  {
+    "id": 6,
+    "title": "tên ngườilamf resume ",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tên ngườilamf resume "
+      },
+      {
+        "role": "assistant",
+        "content": "Tên người làm resume là Phạm Nguyễn Thanh Sang.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          }
+        ],
+        "self_rag_meta": null
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 20:30:47",
+        "upload_timestamp": "2026-04-15T20:30:47.026884",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 7,
+    "title": "tên người làm",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tên người làm"
+      },
+      {
+        "role": "assistant",
+        "content": "Tên người làm là Phạm Nguyễn Thanh Sang.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "liệt kê đồ án"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "Dựa trên tài liệu cung cấp, đây là các đồ án của Phạm Nguyễn Thanh Sang:\n\n1. Smart school bus | Python, Flask, React, PostgreSQL, Docker June 2020 – Present\n2. Brick matcher | Python, Flask, React, PostgreSQL, Docker June 2020 – Present\n\nCác đồ án này đều được phát triển dưới dạng ứng dụng full-stack web sử dụng Flask làm API server và React làm giao diện phía trước.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+              },
+              {
+                "index": 2,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+              },
+              {
+                "index": 3,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Phạm Nguyễn Thanh Sang đã thực hiện các dự án sau:\n\n1. Smart school bus | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n2. Brick matcher | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n3. Minishop | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n4. Simple restaurant website | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n\nNgoài ra, anh còn phát triển một plugin Minecraft server trong quá khứ có tên là Quizigma từ tháng 5 năm 2018 đến tháng 5 năm 2020.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+              },
+              {
+                "index": 2,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+              },
+              {
+                "index": 3,
+                "page": 1,
+                "file": "Sang_Resume.pdf",
+                "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-15 20:35:47",
+        "upload_timestamp": "2026-04-15T20:35:47.283016",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
   }
 ]
