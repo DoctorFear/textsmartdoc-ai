@@ -150,22 +150,5 @@ def load_and_split(
     if not chunks:
         raise ValueError("FILE_EMPTY")
 
-    # --- DEBUG SECTION START ---
-    if chunks:
-        first_chunk = chunks[0]
-        last_chunk = chunks[-1]
-        
-        print("\n" + "="*50)
-        print("🔍 DEBUG METADATA:")
-        print(f"📄 File: {source_name}")
-        print(f"🛠️ Method: {extraction_method}")
-        print(f"1️⃣ Trang đầu tiên (Chunk 0) lưu là: {first_chunk.metadata.get('page')}")
-        print(f"🔟 Trang cuối cùng (Last Chunk) lưu là: {last_chunk.metadata.get('page')}")
-        print("="*50 + "\n")
 
-        if ext == ".pdf" and 'total_pages' in locals():
-            missing_pages = set(range(1, total_pages+1)) - set(d.metadata["page"] for d in docs)
-            print("Missing pages:", missing_pages)
-    # --- DEBUG SECTION END ---
-    
     return chunks
