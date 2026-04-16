@@ -1,435 +1,21 @@
 [
   {
     "id": 0,
-    "title": "phan bội châu là ai",
+    "title": "cho tôi doanh thu quý 1",
     "messages": [
       {
         "role": "user",
-        "content": "phan bội châu là ai"
+        "content": "cho tôi doanh thu quý 1"
       },
       {
         "role": "assistant",
-        "content": "❌ Lỗi xử lý: [WinError 10061] No connection could be made because the target machine actively refused it",
-        "citations": [],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "phan bội châu là ai"
-      },
-      {
-        "role": "assistant",
-        "content": "Phan Bội Châu (1867-1940) là một nhà yêu nước và cách mạng đầu thế kỷ XX ở Việt Nam. Ông là một nhà nho sớm tìm đường cứu nước mới, đỗ Giải nguyên vào năm 1900 nhưng sau đó rời quê hương để tìm kiếm con đường dân chủ tư sản cho đất nước. Phan Bội Châu còn là một nhà văn lớn với nhiều tác phẩm nổi tiếng như Việt Nam vong quốc sử, Hải ngoại huyết thu và Ngục trung thu. Ông là người lãnh đạo phong trào du học xuất dương sang Nhật Bản năm 1905 để tìm cách cứu nước, đồng thời bị bắt bởi thực dân Pháp năm 1925 và qua đời ở Huế trong tù giam.",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
         "citations": [
           {
             "index": 1,
             "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
-          }
-        ],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Nghĩa sự việc là gì"
-      },
-      {
-        "role": "assistant",
-        "content": "Nghĩa sự việc là Phan Bội Châu viết bài thơ \"Lưu biệt khi xuất dương\" để từ biệt bạn bè và đồng chí trước khi đi ra nước ngoài vào năm 1905. Bài thơ này thể hiện tình cảm của ông đối với quê hương và người thân, cũng như tâm thế quyết tâm tìm con đường cứu nước mới.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "sách văn img.docx",
-            "snippet": "LUU BIỆT KHI XUẤT DƯƠNGI\" PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận được vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào của Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Ph..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
-          }
-        ],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Nam Cao có tác phẩm nào"
-      },
-      {
-        "role": "assistant",
-        "content": "Không tìm thấy thông tin về Nam Cao trong tài liệu. Tài liệu này đề cập đến bài thơ của Tôn Quang Phiệt và không liên quan đến Nam Cao hoặc các tác phẩm của ông.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 2,
-            "file": "sách văn img.pdf",
-            "snippet": "VĂN BẢN Phiên âm Sinh vi nam tử yếu hi kì, hứa càn khôn tự 'chuyển di. Ư bách niên trung tu hữu Khởi thiên tải hậu cánh vô thuỳ. son tử hĩ sinh đồ nhuế, Hiền thánh liêu nhiên tung diệc si ! Nguyện trục trường phong hải khứ, Thiên bạch nhất tề phi. Dị..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "sách văn img.docx",
-            "snippet": "VĂN BẢN Phiên âm Sinh vi nam tử yếu hi kì, Khẳng hứa càn khôn tự di. Ư bách niên trung tu hữu ngã, Khởi thiên tải hậu cánh vô thuỳ. Giang son tử hĩ sinh đồ nhuế, Hiền thánh liêu nhiên tụng diệc si ! Nguyện trục truờng phong Đông hải khứ, Thiên trùng ..."
-          }
-        ],
-        "self_rag_meta": null
-      }
-    ],
-    "file": "sách văn img.docx",
-    "files": [
-      "sách văn img.docx",
-      "sách văn img.pdf"
-    ],
-    "files_metadata": {
-      "sách văn img.pdf": {
-        "upload_date": "2026-04-14 21:08:01",
-        "upload_timestamp": "2026-04-14T21:08:01.785987",
-        "file_type": "pdf",
-        "size_mb": 0.92
-      },
-      "sách văn img.docx": {
-        "upload_date": "2026-04-14 21:12:32",
-        "upload_timestamp": "2026-04-14T21:12:32.572613",
-        "file_type": "docx",
-        "size_mb": 1.05
-      }
-    }
-  },
-  {
-    "id": 1,
-    "title": "\"Dạ bẩm\" câu đầy đủ trong tài liệu là gì",
-    "messages": [
-      {
-        "role": "user",
-        "content": "\"Dạ bẩm\" câu đầy đủ trong tài liệu là gì"
-      },
-      {
-        "role": "assistant",
-        "content": "\"Dạ bẩm\" trong văn bản đề cập đến hai từ ngữ được sử dụng ở đầu câu, thể hiện thái độ kính cẩn của người nói. Chúng thường đi kèm với các từ ngữ khác như \"y văn võ đều có tài cả\" để biểu thị sự tôn trọng và trình báo một cách lịch sự.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 4,
-            "file": "sách văn img.pdf",
-            "snippet": "của nguời nói đối với sự việc đó. Thành phần thứ nhất là nghĩa sự việc, thành nghĩa thứ hai là nghĩa tình thái. 6 phần nghĩa phổ những dung năng phân được năng nghĩa hợp từng bằng lòng - cũng bằng lòng - người cũng cùng dung thấy : phần nghĩa giá phầ..."
-          },
-          {
-            "index": 2,
-            "page": 5,
-            "file": "sách văn img.pdf",
-            "snippet": "đó, câu có những nghĩa sự việc khác nhau mức độ khái quát; có thể phân biệt một số nghĩa sự việc và phân biệt câu biểu hiện nghĩa sự việc như sau : Câu biểu hiện hành Xuân Tóc Đỏ cắt đặt đâu vào đấy rồi mới xuống chỗ những người đi đưa (Vũ Trọng Phụn..."
-          },
-          {
-            "index": 3,
-            "page": 5,
-            "file": "sách văn img.pdf",
-            "snippet": "thuờng, trong mỗi câu, hai thành trên hoà quyện với nhau và không thể có nghĩa sự việc mà không có tình thái . cả ở những trường câu có từ ngữ thể hiện nghĩa tình thái thì tình thái vẫn tồn tại trong câu. Đó là tình thái khách quan trung hoà, như ở c..."
-          }
-        ],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Lưu biệt khi xuất dương đã khắc họa vẻ đẹp như thế nào"
-      },
-      {
-        "role": "assistant",
-        "content": "Lưu biệt khi xuất dương của Phan Bội Châu thể hiện một khí概和雄心，表达了作者对新天地的向往与追求。他生为男儿就必须有所作为，不能让天地自行运转。即便是在百年的时光里也应有人留下自己的名字。非得等到千年后才有人出现吗？河山已逝，屈辱依旧存在；圣贤虽在，但读书也不见得有用。他渴望追逐东方大海的长风，穿越万重巨浪驶向远方。整首诗展现了作者对国家未来的美好憧憬和不畏艰难、勇于探索的决心。",
-        "citations": [
-          {
-            "index": 1,
-            "page": 3,
-            "file": "sách văn img.docx",
-            "snippet": "nghĩa là hướng về một chân trời mới đầy hi vọng và ước mơ. Nẳm 1905, trước lúc lên đường sang Nhật Bẳn, làm bài thơ Luu biệt khi xuất dương để từ giã bạn bè_ chí. (1) Xuất dương ra nước ngoài. Phan Bội Châu lãng hùng chóng tưởng đuờng ông Duy ông ông..."
-          },
-          {
-            "index": 2,
-            "page": 4,
-            "file": "sách văn img.docx",
-            "snippet": "Há để càn khôn(2) tự chuyển dời Trong khoảng trăm năm cần có tớ, Sau này muôn thuở, há không ai ? Non đã chết; thêm nhuc, Hiền thánh(3) còn đâu, học cũng hoài ! Muốn vượt bể theo cánh Muôn trùng sóng bạc tiễn ra khơi. TÔN QUANG PHIỆT dịch (4) (Theo V..."
-          },
-          {
-            "index": 3,
-            "page": 2,
-            "file": "sách văn img.pdf",
-            "snippet": "VĂN BẢN Phiên âm Sinh vi nam tử yếu hi kì, hứa càn khôn tự 'chuyển di. Ư bách niên trung tu hữu Khởi thiên tải hậu cánh vô thuỳ. son tử hĩ sinh đồ nhuế, Hiền thánh liêu nhiên tung diệc si ! Nguyện trục trường phong hải khứ, Thiên bạch nhất tề phi. Dị..."
-          }
-        ],
-        "self_rag_meta": null
-      }
-    ],
-    "file": "sách văn img.pdf",
-    "files": [
-      "sách văn img.docx",
-      "sách văn img.pdf",
-      "test_docx_table.docx"
-    ],
-    "files_metadata": {
-      "test_docx_table.docx": {
-        "upload_date": "2026-04-14 21:27:56",
-        "upload_timestamp": "2026-04-14T21:27:56.421695",
-        "file_type": "docx",
-        "size_mb": 0.01
-      },
-      "sách văn img.docx": {
-        "upload_date": "2026-04-14 21:29:14",
-        "upload_timestamp": "2026-04-14T21:29:14.660176",
-        "file_type": "docx",
-        "size_mb": 1.05
-      },
-      "sách văn img.pdf": {
-        "upload_date": "2026-04-14 21:32:55",
-        "upload_timestamp": "2026-04-14T21:32:55.806866",
-        "file_type": "pdf",
-        "size_mb": 0.92
-      }
-    }
-  },
-  {
-    "id": 2,
-    "title": "VoChongAPhu.pdf",
-    "messages": [],
-    "file": "VoChongAPhu.pdf",
-    "files": [
-      "ChuyenNguoiConGaiNamXuong.docx",
-      "VoChongAPhu.pdf",
-      "VoNhat.pdf"
-    ],
-    "files_metadata": {
-      "ChuyenNguoiConGaiNamXuong.docx": {
-        "upload_date": "2026-04-14 21:51:43",
-        "upload_timestamp": "2026-04-14T21:51:43.844897",
-        "file_type": "docx",
-        "size_mb": 0.01
-      },
-      "VoNhat.pdf": {
-        "upload_date": "2026-04-14 21:52:35",
-        "upload_timestamp": "2026-04-14T21:52:35.473745",
-        "file_type": "pdf",
-        "size_mb": 0.24
-      },
-      "VoChongAPhu.pdf": {
-        "upload_date": "2026-04-14 21:52:53",
-        "upload_timestamp": "2026-04-14T21:52:53.886283",
-        "file_type": "pdf",
-        "size_mb": 0.43
-      }
-    }
-  },
-  {
-    "id": 3,
-    "title": "sách văn img.pdf",
-    "messages": [],
-    "file": "sách văn img.pdf",
-    "files": [
-      "VoChongAPhu.pdf",
-      "sách văn img.pdf"
-    ],
-    "files_metadata": {
-      "VoChongAPhu.pdf": {
-        "upload_date": "2026-04-14 22:10:08",
-        "upload_timestamp": "2026-04-14T22:10:08.763062",
-        "file_type": "pdf",
-        "size_mb": 0.43
-      },
-      "sách văn img.pdf": {
-        "upload_date": "2026-04-14 22:13:31",
-        "upload_timestamp": "2026-04-14T22:13:31.970226",
-        "file_type": "pdf",
-        "size_mb": 0.92
-      }
-    }
-  },
-  {
-    "id": 4,
-    "title": "ChuyenNguoiConGaiNamXuong.docx",
-    "messages": [],
-    "file": "ChuyenNguoiConGaiNamXuong.docx",
-    "files": [
-      "ChuyenNguoiConGaiNamXuong.docx",
-      "test_docx_table.docx"
-    ],
-    "files_metadata": {
-      "test_docx_table.docx": {
-        "upload_date": "2026-04-14 22:37:44",
-        "upload_timestamp": "2026-04-14T22:37:44.632958",
-        "file_type": "docx",
-        "size_mb": 0.01
-      },
-      "ChuyenNguoiConGaiNamXuong.docx": {
-        "upload_date": "2026-04-14 22:39:34",
-        "upload_timestamp": "2026-04-14T22:39:34.408382",
-        "file_type": "docx",
-        "size_mb": 0.01
-      }
-    }
-  },
-  {
-    "id": 5,
-    "title": "Mỗi câu thường có hai thành phần nghĩa là ?",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Mỗi câu thường có hai thành phần nghĩa là ?"
-      },
-      {
-        "role": "assistant",
-        "content": "❌ Lỗi xử lý: [WinError 10061] No connection could be made because the target machine actively refused it",
-        "citations": [],
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Mỗi câu thường có hai thành phần nghĩa là ?\n\n"
-      },
-      {
-        "role": "assistant",
-        "content": "Mỗi câu thường có hai thành phần nghĩa, đó là nghĩa sự việc và nghĩa tình thái. Nghĩa sự việc bao gồm nội dung chính của câu đề cập đến sự việc trong thực tế khách quan, còn nghĩa tình thái thì thể hiện thái độ, cảm xúc hoặc đánh giá của người nói đối với sự việc được đề cập.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 4,
-            "file": "sách văn img.docx",
-            "snippet": "NGHIA CỦA CÂU KẾT QUÁ CẦN ĐẠT Nhận thức được hai thành phần nghĩa của câu Ớ nội biến và dễ nhận thấy của Có kĩ tích, lĩnh hội nghĩa của câu và kĩ đặt câu thể hiện được các thành một cách phù nhất. 1 HAI THÀNH PHẨN NGHĨA CỦA CÂU 1.So sánh hai câu tron..."
-          },
-          {
-            "index": 2,
-            "page": 5,
-            "file": "sách văn img.docx",
-            "snippet": "thường, trong mỗi câu, hai thành nghĩa trên hoà quyện với nhau và thể có sự việc mà có tình thái . cả ở trường hợp câu không có từ ngữ thể hiện tình thái thì tình thái vẫn tồn tại trong câu. Đó là tình thái khách quan trung hoà, như ở các câu b2 trên..."
-          },
-          {
-            "index": 3,
-            "page": 5,
-            "file": "sách văn img.docx",
-            "snippet": "và thuộc nhiều loai khác nhau. Do đó, câu có những nghĩa sự việc khác nhau: mức độ khái quát, có thể phân biệt một số nghĩa sự việc và phân biệt câu biểu hiện Sự việc như sau : Câu biểu hiện hành Xuân Tóc Đỏ cắt đặt đâu vào đấy rồi mới xuống chỗ nhữn..."
-          }
-        ],
-        "self_rag_meta": null
-      }
-    ],
-    "file": "sách văn img.docx",
-    "files": [
-      "ChuyenNguoiConGaiNamXuong.docx",
-      "sách văn img.docx"
-    ],
-    "files_metadata": {
-      "ChuyenNguoiConGaiNamXuong.docx": {
-        "upload_date": "2026-04-14 22:48:12",
-        "upload_timestamp": "2026-04-14T22:48:12.825596",
-        "file_type": "docx",
-        "size_mb": 0.01
-      },
-      "sách văn img.docx": {
-        "upload_date": "2026-04-14 22:53:31",
-        "upload_timestamp": "2026-04-14T22:53:31.668820",
-        "file_type": "docx",
-        "size_mb": 1.05
-      }
-    }
-  },
-  {
-    "id": 6,
-    "title": "tên ngườilamf resume ",
-    "messages": [
-      {
-        "role": "user",
-        "content": "tên ngườilamf resume "
-      },
-      {
-        "role": "assistant",
-        "content": "Tên người làm resume là Phạm Nguyễn Thanh Sang.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "Sang_Resume.pdf",
-            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "Sang_Resume.pdf",
-            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "Sang_Resume.pdf",
-            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
-          }
-        ],
-        "self_rag_meta": null
-      }
-    ],
-    "file": "Sang_Resume.pdf",
-    "files": [
-      "Sang_Resume.pdf"
-    ],
-    "files_metadata": {
-      "Sang_Resume.pdf": {
-        "upload_date": "2026-04-15 20:30:47",
-        "upload_timestamp": "2026-04-15T20:30:47.026884",
-        "file_type": "pdf",
-        "size_mb": 2.31
-      }
-    }
-  },
-  {
-    "id": 7,
-    "title": "tên người làm",
-    "messages": [
-      {
-        "role": "user",
-        "content": "tên người làm"
-      },
-      {
-        "role": "assistant",
-        "content": "Tên người làm là Phạm Nguyễn Thanh Sang.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "Sang_Resume.pdf",
-            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "Sang_Resume.pdf",
-            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "Sang_Resume.pdf",
-            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
           }
         ],
         "self_rag_meta": null,
@@ -437,55 +23,67 @@
       },
       {
         "role": "user",
-        "content": "liệt kê đồ án"
+        "content": "cho tôi doanh thu quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý "
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 của công ty năm 2025 là 450 tỷ VND, quý 2 là 520 tỷ VND, quý 3 là 610 tỷ VND, và quý 4 là 680 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 2"
       },
       {
         "role": "assistant",
         "mode": "rag+corag",
         "compare_data": {
           "rag": {
-            "response": "Dựa trên tài liệu cung cấp, đây là các đồ án của Phạm Nguyễn Thanh Sang:\n\n1. Smart school bus | Python, Flask, React, PostgreSQL, Docker June 2020 – Present\n2. Brick matcher | Python, Flask, React, PostgreSQL, Docker June 2020 – Present\n\nCác đồ án này đều được phát triển dưới dạng ứng dụng full-stack web sử dụng Flask làm API server và React làm giao diện phía trước.",
+            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
             "citations": [
               {
                 "index": 1,
                 "page": 1,
-                "file": "Sang_Resume.pdf",
-                "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
-              },
-              {
-                "index": 2,
-                "page": 1,
-                "file": "Sang_Resume.pdf",
-                "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
-              },
-              {
-                "index": 3,
-                "page": 1,
-                "file": "Sang_Resume.pdf",
-                "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+                "file": "test_docx_table.pdf",
+                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
               }
             ]
           },
           "corag": {
-            "response": "Phạm Nguyễn Thanh Sang đã thực hiện các dự án sau:\n\n1. Smart school bus | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n2. Brick matcher | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n3. Minishop | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n4. Simple restaurant website | Python, Flask, React, PostgreSQL, Docker (từ tháng 6 năm 2020 đến nay)\n\nNgoài ra, anh còn phát triển một plugin Minecraft server trong quá khứ có tên là Quizigma từ tháng 5 năm 2018 đến tháng 5 năm 2020.",
+            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
             "citations": [
               {
                 "index": 1,
                 "page": 1,
-                "file": "Sang_Resume.pdf",
-                "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
-              },
-              {
-                "index": 2,
-                "page": 1,
-                "file": "Sang_Resume.pdf",
-                "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
-              },
-              {
-                "index": 3,
-                "page": 1,
-                "file": "Sang_Resume.pdf",
-                "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+                "file": "test_docx_table.pdf",
+                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
               }
             ]
           }
@@ -493,18 +91,527 @@
         "content": null,
         "citations": null,
         "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 2"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "test_docx_table.pdf",
+                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Doanh thu quý 2 của năm 2025 là 520 tỷ VND.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "test_docx_table.pdf",
+                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là một nhân vật trong tác phẩm văn học, nhưng thông tin cụ thể về vai trò hay đặc điểm của Tràng không được đề cập trong tài liệu giới thiệu doanh thu công ty. Tài liệu chỉ nêu tên Tràng qua các câu đối thoại mà không cung cấp thêm thông tin về người này.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          },
+          {
+            "index": 2,
+            "page": 11,
+            "file": "VoNhat.pdf",
+            "snippet": "Ngoài đình bỗng dội lên một hồi trống, dồn dập, vội vã. Đàn quạ trên những cây gạo cao chót vót ngoài bãi chợ hốt hoảng bay vù lên, lượn thành từng đám bay vần trên nền trời như những đám mây đen. Người con dâu khẽ thở dài, thị nói lí nhí trong miệng..."
+          },
+          {
+            "index": 3,
+            "page": 3,
+            "file": "VoNhat.pdf",
+            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai ?"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "Tràng là một nhân vật trong văn bản, có vẻ như là một người bán hàng hoặc làm công việc kinh doanh nhỏ ở địa phương. Từ những đoạn văn đề cập, chúng ta thấy Tràng thường đi lại giữa thị trấn và vùng quê, gặp gỡ các bà con quen biết. Tràng cũng có vẻ khá khéo léo trong việc tán tỉnh và giữ chân người phụ nữ mà ông ta thích.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 2,
+                "file": "VoNhat.pdf",
+                "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
+              },
+              {
+                "index": 2,
+                "page": 3,
+                "file": "VoNhat.pdf",
+                "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+              },
+              {
+                "index": 3,
+                "page": 6,
+                "file": "VoNhat.pdf",
+                "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Tràng là nhân vật trong đoạn văn, một người đàn ông đã trả hàng xong ở chợ tỉnh và sau đó gặp gỡ với một người đàn bà. Ông ta có vẻ quen biết với thị, nhưng ban đầu không nhận ra thị khi thị đến gặp. Tràng sau đó mời thị ăn bánh đúc và cuối cùng thị về sống cùng ông ta.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 3,
+                "file": "VoNhat.pdf",
+                "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+              },
+              {
+                "index": 2,
+                "page": 6,
+                "file": "VoNhat.pdf",
+                "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+              },
+              {
+                "index": 3,
+                "page": 2,
+                "file": "VoNhat.pdf",
+                "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Phan Bội Châu là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Phan Bội Châu (1867-1940) tên thuở nhỏ là Phan Văn San, biệt hiệu chính là Sào Nam. Ông là một nhà chí sĩ cách mạng đầu thế kỷ XX ở Việt Nam. Sau khi đỗ Giải nguyên vào năm 1900, Phan Bội Châu bắt đầu tìm đường cứu nước mới và lãnh đạo phong trào du học xuất dương sang Nhật Bản vào năm 1905. Ông còn là một nhà văn lớn với nhiều tác phẩm nổi tiếng như Việt Nam vong quốc sử, Hải ngoại huyết thu, Ngục trung thu, Phan Bội Châu niên biểu, Phan Sào Nam văn tập và Phan Sào Nam tiên sinh quốc văn thi tập.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Phan Bội Châu là ai?"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "Phan Bội Châu (1867-1940) là một nhà chí sĩ cách mạng và nhà văn lớn của Việt Nam. Ông là một trong những nhà nho đầu tiên nuôi ý định tìm đường cứu nước mới, sau khi phong trào Cần Vương thất bại. Phan Bội Châu đỗ Giải nguyên năm 1900 và sau đó đi tìm cơ hội để lập tổ chức cách mạng theo đường lối dân chủ tư sản tại Việt Nam. Ông lãnh đạo phong trào du học và xuất dương sang Nhật Bản vào năm 1905, nhằm mục đích mưu sự phục quốc cho đất nước. Trải qua hai thập kỷ bôn ba giữa các nước như Nhật Bản, Trung Quốc và Thái Lan, Phan Bội Châu cuối cùng bị thực dân Pháp bắt cóc và giam giữ ở Huế cho đến khi qua đời.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "sách văn img.pdf",
+                "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
+              },
+              {
+                "index": 2,
+                "page": 1,
+                "file": "sách văn img.pdf",
+                "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
+              },
+              {
+                "index": 3,
+                "page": 1,
+                "file": "sách văn img.pdf",
+                "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Phan Bội Châu (1867-1940) là một nhà chí sĩ cách mạng và nhà văn lớn đầu thế kỷ XX ở Việt Nam. Ông sinh tại Đan Nhiễm, nay thuộc thị trấn Nam Đàn, huyện Nam Đàn, tỉnh Nghệ An. Phan Bội Châu là một trong những nhà nho Việt Nam đầu tiên nuôi ý định đi tìm con đường cứu nước mới sau khi phong trào Cần Vương chống Pháp thất bại. Ông bắt đầu hoạt động cách mạng vào năm 1904 và từng lãnh đạo phong trào du xuất dương sang Nhật Bản năm 1905 để tìm cách cứu nước. Trải qua nhiều năm bôn ba và bị giam cầm, Phan Bội Châu vẫn kiên trì đấu tranh cho lý tưởng của mình cho đến khi qua đời.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 1,
+                "file": "sách văn img.pdf",
+                "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
+              },
+              {
+                "index": 2,
+                "page": 1,
+                "file": "sách văn img.pdf",
+                "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
+              },
+              {
+                "index": 3,
+                "page": 1,
+                "file": "sách văn img.pdf",
+                "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là một nhân vật trong tác phẩm văn học, nhưng không có thông tin cụ thể về tên tác giả hoặc tác phẩm trong tài liệu cung cấp. Tuy nhiên, từ ngữ cảnh và nội dung, có thể thấy Tràng là một người đàn ông làm nghề buôn bán nhỏ, thường xuyên đi lại giữa thị trấn và quê nhà. Anh ta có tình cảm với một người phụ nữ, nhưng ban đầu không nhận ra đó là ai trong một tình huống gặp gỡ. Sau này, anh ta phát hiện người phụ nữ này chính là vợ cũ của mình.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "VoNhat.pdf",
+            "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "VoNhat.pdf",
+            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoNhat.pdf",
+            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng trong văn bản này là một nhân vật trong truyện ngắn \"Vợ nhặt\" của nhà văn 김세영（Kim Se-yong），但根据提供的上下文，这里的“Tràng”是指一个住在小巷中的男子。他过去常在傍晚时分回家，并且经常被孩子们围住问东问西，但现在他的生活发生了变化，不再有人迎接他，他显得疲惫不堪地走在路上。",
+        "citations": [
+          {
+            "index": 1,
+            "page": 3,
+            "file": "sách văn img.pdf",
+            "snippet": "HƯỚNG DẪN HỌC BÀI 1. Tiểu dẫn, chú ý bối cảnh lịch sử đất nước và những ảnh hưởng từ nước để hiểu bài thơ. 2. Tưduy mới mẻ, táo bạo và khát vọng hành động của nhà chí sĩ cách mạng trong buổi ra đi tìm cứu nước được biểu lộ như thế nào ? Dựa trên cảm ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là một nhân vật trong truyện \"Vợ nhặt\". Anh ta thường đi làm về vào lúc chạng vạng, bước trên con đường qua xóm chợ của người ngụ cư. Tràng có tật vừa đi vừa nói và thường bị trẻ con trong xóm vây quanh hỏi han.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là nhân vật chính trong truyện \"Vợ nhặt\". Anh ta trước đây thường đi làm về vào buổi chiều, bước đi trên con đường luồn qua xóm ngụ cư. Tràng có thói quen vừa đi vừa nói, thường bị trẻ con trong xóm vây quanh đùa giỡn.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
+          },
+          {
+            "index": 2,
+            "page": 9,
+            "file": "VoNhat.pdf",
+            "snippet": "người vừa ở trong giấc mơ đi ra. Việc hắn có vợ đến hôm nay hắn vẫn còn ngỡ ngàng như không phải. Hắn chắp hai tay sau lưng lững thững bước ra sân. Ánh nắng buổi sáng mùa hè sáng lóa xói vào hai con mắt còn cay xè của hắn. Hắn chớp chớp liên hồi mấy ..."
+          },
+          {
+            "index": 3,
+            "page": 9,
+            "file": "VoNhat.pdf",
+            "snippet": "tổ ấm che mưa che nắng. Một nguồn vui sướng, phấn chấn đột ngột tràn ngập trong lòng. Bây giờ hắn mới thấy hắn nên người, hắn thấy hắn có bổn phận phải lo lắng cho vợ con sau này. Hắn xăm xăm chạy ra giữa sân, hắn cũng muốn làm một việc gì để dự phần..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
       }
     ],
-    "file": "Sang_Resume.pdf",
+    "file": "sách văn img.pdf",
     "files": [
-      "Sang_Resume.pdf"
+      "VoNhat.pdf",
+      "sách văn img.pdf",
+      "test_docx_table.pdf"
     ],
     "files_metadata": {
-      "Sang_Resume.pdf": {
-        "upload_date": "2026-04-15 20:35:47",
-        "upload_timestamp": "2026-04-15T20:35:47.283016",
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-16 23:20:21",
+        "upload_timestamp": "2026-04-16T23:20:21.469673",
         "file_type": "pdf",
-        "size_mb": 2.31
+        "size_mb": 0.1
+      },
+      "VoNhat.pdf": {
+        "upload_date": "2026-04-16 23:04:12",
+        "upload_timestamp": "2026-04-16T23:04:12.741324",
+        "file_type": "pdf",
+        "size_mb": 0.24
+      },
+      "sách văn img.pdf": {
+        "upload_date": "2026-04-16 23:35:51",
+        "upload_timestamp": "2026-04-16T23:35:51.547757",
+        "file_type": "pdf",
+        "size_mb": 0.92
+      }
+    }
+  },
+  {
+    "id": 1,
+    "title": "cho tôi doanh thu quý 1",
+    "messages": [
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 1"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 3"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 3 năm 2025 là 610 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 4"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 4 năm 2025 là 680 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 1"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 3"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 3 năm 2025 là 610 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "cho tôi doanh thu quý 1"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-17 00:05:05",
+        "upload_timestamp": "2026-04-17T00:05:05.789252",
+        "file_type": "pdf",
+        "size_mb": 0.1
       }
     }
   }

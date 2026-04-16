@@ -6,6 +6,9 @@ from src.logger import setup_logger
 from src.persistence import load_history
 from src.vectorstore import get_uploaded_sources
 from src.config import SELF_RAG_ENABLED
+from streamlit_js_eval import streamlit_js_eval
+
+
 
 
 from ui.sidebar import render_sidebar, save_current_session_to_disk, create_new_chat_session
@@ -53,6 +56,7 @@ defaults = {
     "upload_warning_msgs": [],
     "uploader_nonce":      0,
     "self_rag_enabled":    SELF_RAG_ENABLED,
+    "should_scroll": False,
 }
 for key, val in defaults.items():
     if key not in st.session_state:
@@ -118,6 +122,7 @@ if st.session_state.upload_warning_msgs:
 # Lịch sử chat
 render_chat_history()
 
+
 # Upload + chat input ngang hàng
 col_chat = render_upload_panel(
     embedder=get_embedder(),
@@ -137,9 +142,36 @@ if not prompt and st.session_state.pending_prompt:
 
 # Xử lý câu hỏi
 if prompt:
+    with st.chat_message("user"):      # ← thêm dòng này
+        st.markdown(prompt)    
     handle_query(
         prompt=prompt,
         settings=settings,
         save_current_session_fn=save_current_session_to_disk,
         create_new_chat_session_fn=create_new_chat_session,
     )
+
+# app.py
+
+if st.session_state.get("should_scroll", False):
+    # Lệnh JS mới: 
+    # 1. Thử tìm container chính qua data-testid hoặc class section.main
+    # 2. Nếu tìm thấy thì mới gọi scrollTo
+    js_scroll = """
+    (function() {
+        const mainContent = window.parent.document.querySelector('section.main') 
+                          || window.parent.document.querySelector('[data-testid="stMain"]');
+        if (mainContent) {
+            mainContent.scrollTo({
+                top: mainContent.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    })()
+    """
+    
+    streamlit_js_eval(
+        js_expressions=js_scroll, 
+        key=f"scroll_trigger_{len(st.session_state.messages)}"
+    )
+    st.session_state.should_scroll = False
