@@ -46,10 +46,6 @@ def load_and_split(
     ext = os.path.splitext(file_path)[1].lower()
     source_name = display_name or os.path.basename(file_path)
 
-    logger.info(f"📊 Bắt đầu xử lý file: {source_name}")
-    logger.info(f"   → Chế độ OCR     = {'BẬT' if ocr_enabled else 'TẮT'}")
-    logger.info(f"   → Chunk Size     = {chunk_size} ký tự")
-    logger.info(f"   → Loại file      = {ext}")
 
     docs = []
     extraction_method = "direct"
@@ -98,9 +94,7 @@ def load_and_split(
             pages_in_docs = set(d.metadata.get("page", 0) for d in docs)
             missing_pages = set(range(1, total_pages + 1)) - pages_in_docs
 
-            print("📄 Total pages:", total_pages)
-            print("📑 Pages extracted:", sorted(pages_in_docs))
-            print("❌ Missing pages:", sorted(missing_pages))
+
         except Exception as e:
             print("⚠️ Debug page error:", e)
 

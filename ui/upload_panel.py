@@ -63,7 +63,7 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, ocr_enabled,
                         tmp_path = tmp.name
 
                     logger.info(f"Upload nhận file: {uploaded_file.name} | Size: {file_size_mb:.2f}MB")
-
+                    logger.info(f"Chunk Size: {chunk_size} | Chunk Overlap: {chunk_overlap}")
                     # Load và split tài liệu
                     chunks = load_and_split(
                         tmp_path,
@@ -96,6 +96,7 @@ def render_upload_panel(embedder, chunk_size, chunk_overlap, ocr_enabled,
                     total_size_mb += file_size_mb
 
                     logger.info(f"Vectorstore cập nhật xong: {uploaded_file.name} | chunks={len(chunks)}")
+                    logger.info(f"Tổng tài liệu đang index:{len(get_uploaded_sources(st.session_state.vectorstore))}")
 
                 except ValueError as e:
                     if "FILE_EMPTY" in str(e):

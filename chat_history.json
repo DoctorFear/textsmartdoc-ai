@@ -1,39 +1,84 @@
 [
   {
     "id": 0,
-    "title": "cho tôi doanh thu quý 1",
+    "title": "vì sao a Phủ phải ở nhà thống lí Pá Tra",
     "messages": [
       {
         "role": "user",
-        "content": "cho tôi doanh thu quý 1"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
+        "content": "vì sao a Phủ phải ở nhà thống lí Pá Tra"
       },
       {
         "role": "user",
-        "content": "cho tôi doanh thu quý 2"
+        "content": "vì sao a Phủ phải ở nhà thống lí Pá Tra"
+      },
+      {
+        "role": "user",
+        "content": "vì sao a Phủ phải ở nhà thống lí Pá Tra"
+      },
+      {
+        "role": "user",
+        "content": "vì sao a Phủ phải ở nhà thống lí Pá Tra"
+      }
+    ],
+    "file": "VoChongAPhu.pdf",
+    "files": [
+      "VoChongAPhu.pdf"
+    ],
+    "files_metadata": {
+      "VoChongAPhu.pdf": {
+        "upload_date": "2026-04-17 03:15:48",
+        "upload_timestamp": "2026-04-17T03:15:48.805228",
+        "file_type": "pdf",
+        "size_mb": 0.43
+      }
+    }
+  },
+  {
+    "id": 1,
+    "title": "VoChongAPhu.pdf",
+    "messages": [],
+    "file": "VoChongAPhu.pdf",
+    "files": [
+      "VoChongAPhu.pdf"
+    ],
+    "files_metadata": {
+      "VoChongAPhu.pdf": {
+        "upload_date": "2026-04-17 03:46:44",
+        "upload_timestamp": "2026-04-17T03:46:44.753415",
+        "file_type": "pdf",
+        "size_mb": 0.43
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "vì sao a Phủ phải ở nhà thống lí Pá Tra",
+    "messages": [
+      {
+        "role": "user",
+        "content": "vì sao a Phủ phải ở nhà thống lí Pá Tra"
       },
       {
         "role": "assistant",
-        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+        "content": "A Phủ phải ở nhà thống lí Pá Tra do A Sử bị đánh trọng thương bởi thống lí Pá Tra. Khi A Sử đi chơi vào một đêm, đã gây ra sự việc không may khiến anh ta bị đánh vỡ đầu. Do đó, thống lí Pá Tra đã gọi A Phủ đến để chịu tội thay cho A Sử.",
         "citations": [
           {
             "index": 1,
             "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Ai ở xa về, có việc vào nhà thống lí Pá Tra thường trông thấy có một cô con gái ngồi quay sợi gai bên tảng đá trước của, cạnh tàu ngựa. Lúc nào cũng vậy, dù quay sợi, thái cỏ ngựa, dệt vải, chẻ củi hay đi công nước dưới khe suối lên, cô ấy cũng cúi m..."
+          },
+          {
+            "index": 2,
+            "page": 8,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Bọn chức việc khắp vùng Hồng Ngài đến nhà thống lí Pá Tra dự đám xử kiện. Các lí dịch, quan làng, thống quán, xéo phải đội mũ, quấn khăn, xách gậy, cưỡi ngựa kéo đến xử kiện và ăn cỗ. Trong nhà thống lí đã bày năm cái bàn đèn. Khói thuốc phiện tuôn r..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
           }
         ],
         "self_rag_meta": null,
@@ -41,262 +86,67 @@
       },
       {
         "role": "user",
-        "content": "cho tôi doanh thu quý "
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 1 của công ty năm 2025 là 450 tỷ VND, quý 2 là 520 tỷ VND, quý 3 là 610 tỷ VND, và quý 4 là 680 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
+        "content": "vì sao a Phủ phải ở nhà thống lí Pá Tra"
       },
       {
         "role": "assistant",
         "mode": "rag+corag",
         "compare_data": {
           "rag": {
-            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
+            "response": "A Phủ phải ở nhà thống lí Pá Tra để trừ nợ. Theo các thông tin trong văn bản, A Phủ đã bị xử phạt với số tiền là 100 bạc trắng và không có đủ tiền để trả. Do đó, thống lí Pá Tra cho phép A Phủ ở lại làm việc để kiếm tiền trả nợ.",
             "citations": [
               {
                 "index": 1,
-                "page": 1,
-                "file": "test_docx_table.pdf",
-                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-              }
-            ]
-          },
-          "corag": {
-            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 1,
-                "file": "test_docx_table.pdf",
-                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-              }
-            ]
-          }
-        },
-        "content": null,
-        "citations": null,
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
-      },
-      {
-        "role": "assistant",
-        "mode": "rag+corag",
-        "compare_data": {
-          "rag": {
-            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 1,
-                "file": "test_docx_table.pdf",
-                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-              }
-            ]
-          },
-          "corag": {
-            "response": "Doanh thu quý 2 của năm 2025 là 520 tỷ VND.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 1,
-                "file": "test_docx_table.pdf",
-                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-              }
-            ]
-          }
-        },
-        "content": null,
-        "citations": null,
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Tràng là ai ?"
-      },
-      {
-        "role": "assistant",
-        "content": "Tràng là một nhân vật trong tác phẩm văn học, nhưng thông tin cụ thể về vai trò hay đặc điểm của Tràng không được đề cập trong tài liệu giới thiệu doanh thu công ty. Tài liệu chỉ nêu tên Tràng qua các câu đối thoại mà không cung cấp thêm thông tin về người này.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          },
-          {
-            "index": 2,
-            "page": 11,
-            "file": "VoNhat.pdf",
-            "snippet": "Ngoài đình bỗng dội lên một hồi trống, dồn dập, vội vã. Đàn quạ trên những cây gạo cao chót vót ngoài bãi chợ hốt hoảng bay vù lên, lượn thành từng đám bay vần trên nền trời như những đám mây đen. Người con dâu khẽ thở dài, thị nói lí nhí trong miệng..."
-          },
-          {
-            "index": 3,
-            "page": 3,
-            "file": "VoNhat.pdf",
-            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "Tràng là ai ?"
-      },
-      {
-        "role": "assistant",
-        "mode": "rag+corag",
-        "compare_data": {
-          "rag": {
-            "response": "Tràng là một nhân vật trong văn bản, có vẻ như là một người bán hàng hoặc làm công việc kinh doanh nhỏ ở địa phương. Từ những đoạn văn đề cập, chúng ta thấy Tràng thường đi lại giữa thị trấn và vùng quê, gặp gỡ các bà con quen biết. Tràng cũng có vẻ khá khéo léo trong việc tán tỉnh và giữ chân người phụ nữ mà ông ta thích.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 2,
-                "file": "VoNhat.pdf",
-                "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
-              },
-              {
-                "index": 2,
-                "page": 3,
-                "file": "VoNhat.pdf",
-                "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
-              },
-              {
-                "index": 3,
-                "page": 6,
-                "file": "VoNhat.pdf",
-                "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
-              }
-            ]
-          },
-          "corag": {
-            "response": "Tràng là nhân vật trong đoạn văn, một người đàn ông đã trả hàng xong ở chợ tỉnh và sau đó gặp gỡ với một người đàn bà. Ông ta có vẻ quen biết với thị, nhưng ban đầu không nhận ra thị khi thị đến gặp. Tràng sau đó mời thị ăn bánh đúc và cuối cùng thị về sống cùng ông ta.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 3,
-                "file": "VoNhat.pdf",
-                "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+                "page": 8,
+                "file": "VoChongAPhu.pdf",
+                "snippet": "Bọn chức việc khắp vùng Hồng Ngài đến nhà thống lí Pá Tra dự đám xử kiện. Các lí dịch, quan làng, thống quán, xéo phải đội mũ, quấn khăn, xách gậy, cưỡi ngựa kéo đến xử kiện và ăn cỗ. Trong nhà thống lí đã bày năm cái bàn đèn. Khói thuốc phiện tuôn r..."
               },
               {
                 "index": 2,
                 "page": 6,
-                "file": "VoNhat.pdf",
-                "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+                "file": "VoChongAPhu.pdf",
+                "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
               },
               {
                 "index": 3,
                 "page": 2,
-                "file": "VoNhat.pdf",
-                "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
-              }
-            ]
-          }
-        },
-        "content": null,
-        "citations": null,
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Phan Bội Châu là ai"
-      },
-      {
-        "role": "assistant",
-        "content": "Phan Bội Châu (1867-1940) tên thuở nhỏ là Phan Văn San, biệt hiệu chính là Sào Nam. Ông là một nhà chí sĩ cách mạng đầu thế kỷ XX ở Việt Nam. Sau khi đỗ Giải nguyên vào năm 1900, Phan Bội Châu bắt đầu tìm đường cứu nước mới và lãnh đạo phong trào du học xuất dương sang Nhật Bản vào năm 1905. Ông còn là một nhà văn lớn với nhiều tác phẩm nổi tiếng như Việt Nam vong quốc sử, Hải ngoại huyết thu, Ngục trung thu, Phan Bội Châu niên biểu, Phan Sào Nam văn tập và Phan Sào Nam tiên sinh quốc văn thi tập.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "Phan Bội Châu là ai?"
-      },
-      {
-        "role": "assistant",
-        "mode": "rag+corag",
-        "compare_data": {
-          "rag": {
-            "response": "Phan Bội Châu (1867-1940) là một nhà chí sĩ cách mạng và nhà văn lớn của Việt Nam. Ông là một trong những nhà nho đầu tiên nuôi ý định tìm đường cứu nước mới, sau khi phong trào Cần Vương thất bại. Phan Bội Châu đỗ Giải nguyên năm 1900 và sau đó đi tìm cơ hội để lập tổ chức cách mạng theo đường lối dân chủ tư sản tại Việt Nam. Ông lãnh đạo phong trào du học và xuất dương sang Nhật Bản vào năm 1905, nhằm mục đích mưu sự phục quốc cho đất nước. Trải qua hai thập kỷ bôn ba giữa các nước như Nhật Bản, Trung Quốc và Thái Lan, Phan Bội Châu cuối cùng bị thực dân Pháp bắt cóc và giam giữ ở Huế cho đến khi qua đời.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 1,
-                "file": "sách văn img.pdf",
-                "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
+                "file": "VoChongAPhu.pdf",
+                "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
               },
               {
-                "index": 2,
-                "page": 1,
-                "file": "sách văn img.pdf",
-                "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
+                "index": 4,
+                "page": 9,
+                "file": "VoChongAPhu.pdf",
+                "snippet": "đáng nhẽ làng xử mày tội chết, nhưng làng tha cho mày được sống mà nộp vạ. Cả tiền phạt, tiền thuốc, tiền lợn, mày phải chịu một trăm bạc trắng. Mày không có trăm bạc thì tao cho mày vay để mày ở nợ. Bao giờ có tiền giả thì tao cho mày về, chưa có ti..."
               },
               {
-                "index": 3,
-                "page": 1,
-                "file": "sách văn img.pdf",
-                "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
+                "index": 5,
+                "page": 6,
+                "file": "VoChongAPhu.pdf",
+                "snippet": "các chị vợ anh, vợ chú của A Sử có còn ở nhà, không biết tất cả những người đàn bà khốn khổ sa vào nhà quan đã được đi chơi hay là họ cũng đang phải trói như Mị. Mị không thể biết. Đời người đàn bà lấy chồng nhà giàu ở Hồng Ngài thì một đời con người..."
               }
             ]
           },
           "corag": {
-            "response": "Phan Bội Châu (1867-1940) là một nhà chí sĩ cách mạng và nhà văn lớn đầu thế kỷ XX ở Việt Nam. Ông sinh tại Đan Nhiễm, nay thuộc thị trấn Nam Đàn, huyện Nam Đàn, tỉnh Nghệ An. Phan Bội Châu là một trong những nhà nho Việt Nam đầu tiên nuôi ý định đi tìm con đường cứu nước mới sau khi phong trào Cần Vương chống Pháp thất bại. Ông bắt đầu hoạt động cách mạng vào năm 1904 và từng lãnh đạo phong trào du xuất dương sang Nhật Bản năm 1905 để tìm cách cứu nước. Trải qua nhiều năm bôn ba và bị giam cầm, Phan Bội Châu vẫn kiên trì đấu tranh cho lý tưởng của mình cho đến khi qua đời.",
+            "response": "A Phủ phải ở nhà thống lí Pá Tra vì A Sử, cha của A Phủ, đã vay nợ nhà thống lí Pá Tra để lấy vợ cho Mị. Để trả ơn này, thống lí Pá Tra yêu cầu A Phủ làm việc tại nhà mình. A Phủ bị bắt buộc ở lại và làm công quả, bao gồm cả hút thuốc phiện trong buổi xử kiện cùng các chức việc khác, do đó không được tự do về nhà.",
             "citations": [
               {
                 "index": 1,
                 "page": 1,
-                "file": "sách văn img.pdf",
-                "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
+                "file": "VoChongAPhu.pdf",
+                "snippet": "Ai ở xa về, có việc vào nhà thống lí Pá Tra thường trông thấy có một cô con gái ngồi quay sợi gai bên tảng đá trước của, cạnh tàu ngựa. Lúc nào cũng vậy, dù quay sợi, thái cỏ ngựa, dệt vải, chẻ củi hay đi công nước dưới khe suối lên, cô ấy cũng cúi m..."
               },
               {
                 "index": 2,
-                "page": 1,
-                "file": "sách văn img.pdf",
-                "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
+                "page": 8,
+                "file": "VoChongAPhu.pdf",
+                "snippet": "Bọn chức việc khắp vùng Hồng Ngài đến nhà thống lí Pá Tra dự đám xử kiện. Các lí dịch, quan làng, thống quán, xéo phải đội mũ, quấn khăn, xách gậy, cưỡi ngựa kéo đến xử kiện và ăn cỗ. Trong nhà thống lí đã bày năm cái bàn đèn. Khói thuốc phiện tuôn r..."
               },
               {
                 "index": 3,
-                "page": 1,
-                "file": "sách văn img.pdf",
-                "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
+                "page": 6,
+                "file": "VoChongAPhu.pdf",
+                "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
               }
             ]
           }
@@ -304,314 +154,25 @@
         "content": null,
         "citations": null,
         "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Tràng là ai"
-      },
-      {
-        "role": "assistant",
-        "content": "Tràng là một nhân vật trong tác phẩm văn học, nhưng không có thông tin cụ thể về tên tác giả hoặc tác phẩm trong tài liệu cung cấp. Tuy nhiên, từ ngữ cảnh và nội dung, có thể thấy Tràng là một người đàn ông làm nghề buôn bán nhỏ, thường xuyên đi lại giữa thị trấn và quê nhà. Anh ta có tình cảm với một người phụ nữ, nhưng ban đầu không nhận ra đó là ai trong một tình huống gặp gỡ. Sau này, anh ta phát hiện người phụ nữ này chính là vợ cũ của mình.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 2,
-            "file": "VoNhat.pdf",
-            "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
-          },
-          {
-            "index": 2,
-            "page": 3,
-            "file": "VoNhat.pdf",
-            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
-          },
-          {
-            "index": 3,
-            "page": 6,
-            "file": "VoNhat.pdf",
-            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "Tràng là ai"
-      },
-      {
-        "role": "assistant",
-        "content": "Tràng trong văn bản này là một nhân vật trong truyện ngắn \"Vợ nhặt\" của nhà văn 김세영（Kim Se-yong），但根据提供的上下文，这里的“Tràng”是指一个住在小巷中的男子。他过去常在傍晚时分回家，并且经常被孩子们围住问东问西，但现在他的生活发生了变化，不再有人迎接他，他显得疲惫不堪地走在路上。",
-        "citations": [
-          {
-            "index": 1,
-            "page": 3,
-            "file": "sách văn img.pdf",
-            "snippet": "HƯỚNG DẪN HỌC BÀI 1. Tiểu dẫn, chú ý bối cảnh lịch sử đất nước và những ảnh hưởng từ nước để hiểu bài thơ. 2. Tưduy mới mẻ, táo bạo và khát vọng hành động của nhà chí sĩ cách mạng trong buổi ra đi tìm cứu nước được biểu lộ như thế nào ? Dựa trên cảm ..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "VoNhat.pdf",
-            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "Tràng là ai"
-      },
-      {
-        "role": "assistant",
-        "content": "Tràng là một nhân vật trong truyện \"Vợ nhặt\". Anh ta thường đi làm về vào lúc chạng vạng, bước trên con đường qua xóm chợ của người ngụ cư. Tràng có tật vừa đi vừa nói và thường bị trẻ con trong xóm vây quanh hỏi han.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "VoNhat.pdf",
-            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
-          },
-          {
-            "index": 2,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận vẻ đẹp mạn hào của nhà chí sĩ cách mạng đầu thế kí XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan ..."
-          },
-          {
-            "index": 3,
-            "page": 1,
-            "file": "sách văn img.pdf",
-            "snippet": "ước mơ. Nẳm 1905, truớc lúc lên sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dương để từ bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 được lãng hùng quê làng tưởng ngưòi Duy Đông ông quyền sóng tráng công lóng phẩm Trùng hợp lóng  duy..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "Tràng là ai"
-      },
-      {
-        "role": "assistant",
-        "content": "Tràng là nhân vật chính trong truyện \"Vợ nhặt\". Anh ta trước đây thường đi làm về vào buổi chiều, bước đi trên con đường luồn qua xóm ngụ cư. Tràng có thói quen vừa đi vừa nói, thường bị trẻ con trong xóm vây quanh đùa giỡn.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "VoNhat.pdf",
-            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
-          },
-          {
-            "index": 2,
-            "page": 9,
-            "file": "VoNhat.pdf",
-            "snippet": "người vừa ở trong giấc mơ đi ra. Việc hắn có vợ đến hôm nay hắn vẫn còn ngỡ ngàng như không phải. Hắn chắp hai tay sau lưng lững thững bước ra sân. Ánh nắng buổi sáng mùa hè sáng lóa xói vào hai con mắt còn cay xè của hắn. Hắn chớp chớp liên hồi mấy ..."
-          },
-          {
-            "index": 3,
-            "page": 9,
-            "file": "VoNhat.pdf",
-            "snippet": "tổ ấm che mưa che nắng. Một nguồn vui sướng, phấn chấn đột ngột tràn ngập trong lòng. Bây giờ hắn mới thấy hắn nên người, hắn thấy hắn có bổn phận phải lo lắng cho vợ con sau này. Hắn xăm xăm chạy ra giữa sân, hắn cũng muốn làm một việc gì để dự phần..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
       }
     ],
-    "file": "sách văn img.pdf",
+    "file": "ChuyenNguoiConGaiNamXuong.docx",
     "files": [
-      "VoNhat.pdf",
-      "sách văn img.pdf",
-      "test_docx_table.pdf"
+      "ChuyenNguoiConGaiNamXuong.docx",
+      "VoChongAPhu.pdf"
     ],
     "files_metadata": {
-      "test_docx_table.pdf": {
-        "upload_date": "2026-04-16 23:20:21",
-        "upload_timestamp": "2026-04-16T23:20:21.469673",
+      "VoChongAPhu.pdf": {
+        "upload_date": "2026-04-17 03:48:44",
+        "upload_timestamp": "2026-04-17T03:48:44.339967",
         "file_type": "pdf",
-        "size_mb": 0.1
+        "size_mb": 0.43
       },
-      "VoNhat.pdf": {
-        "upload_date": "2026-04-16 23:04:12",
-        "upload_timestamp": "2026-04-16T23:04:12.741324",
-        "file_type": "pdf",
-        "size_mb": 0.24
-      },
-      "sách văn img.pdf": {
-        "upload_date": "2026-04-16 23:35:51",
-        "upload_timestamp": "2026-04-16T23:35:51.547757",
-        "file_type": "pdf",
-        "size_mb": 0.92
-      }
-    }
-  },
-  {
-    "id": 1,
-    "title": "cho tôi doanh thu quý 1",
-    "messages": [
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 1"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 3"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 3 năm 2025 là 610 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 4"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 4 năm 2025 là 680 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 1"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 3"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 3 năm 2025 là 610 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 1"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      }
-    ],
-    "file": "test_docx_table.pdf",
-    "files": [
-      "test_docx_table.pdf"
-    ],
-    "files_metadata": {
-      "test_docx_table.pdf": {
-        "upload_date": "2026-04-17 00:05:05",
-        "upload_timestamp": "2026-04-17T00:05:05.789252",
-        "file_type": "pdf",
-        "size_mb": 0.1
+      "ChuyenNguoiConGaiNamXuong.docx": {
+        "upload_date": "2026-04-17 03:49:05",
+        "upload_timestamp": "2026-04-17T03:49:05.771819",
+        "file_type": "docx",
+        "size_mb": 0.01
       }
     }
   }

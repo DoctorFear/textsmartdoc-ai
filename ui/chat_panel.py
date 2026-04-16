@@ -158,7 +158,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                 selected = st.session_state.source_filter_select
                 if selected != "Tất cả tài liệu":
                     source_filter = selected
-
+            logger.info(f"Tìm kiếm trong tài liệu:{source_filter if source_filter else "Tất cả tài liệu"}")
             retriever_kwargs = {"k": top_k, "fetch_k": fetch_k}
             if source_filter:
                 retriever_kwargs["filter"] = {"source": source_filter}
@@ -182,6 +182,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                 # RAG
                 rag_docs = retriever.invoke(query_for_retrieval)
                 if use_reranker:
+                    logger.info(f"[RAG+CoRAG] Đang chạy Cross-Encoder Reranker")
                     rag_docs = rerank(query_for_retrieval, rag_docs, top_k=top_k)
 
                 rag_response = "Không tìm thấy thông tin (RAG)." if not rag_docs else rag_chain.invoke({
@@ -226,6 +227,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                         )
 
                         result = self_rag_query(prompt, retriever, max_retries=2)
+                        logger.info("[Self-RAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
                         response = result["answer"]
 
                         self_rag_meta = {
@@ -248,8 +250,8 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             st.session_state, all_docs, top_k, retrieval_mode, search_type,
                             retriever_kwargs, bm25_weight, faiss_weight
                         )
-
                         retrieved_docs = retriever.invoke(query_for_retrieval)
+                        logger.info(f"[Normal RAG] Đang chạy Cross-Encoder Reranker")
 
                         if use_reranker:
                             retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
