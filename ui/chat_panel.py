@@ -250,12 +250,14 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             st.session_state, all_docs, top_k, retrieval_mode, search_type,
                             retriever_kwargs, bm25_weight, faiss_weight
                         )
-                        logger.info(f"[Normal RAG] Đang chạy Bi-encoder")
+                        logger.info(f"[Normal RAG] Đang chạy Bi-encoder (Stage 1)")
                         retrieved_docs = retriever.invoke(query_for_retrieval)
 
-                        if use_reranker:
-                            logger.info(f"[Normal RAG] Đang chạy Cross-Encoder Reranker")
+                        if settings.get("use_reranker", False):
+                            logger.info(f"[Normal RAG] On | Cross-Encoder Reranking")
                             retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
+                        else:
+                            logger.info(f"[Normal RAG] Off | Bi-encoder only")
 
                         response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
                             "context": format_docs(retrieved_docs),

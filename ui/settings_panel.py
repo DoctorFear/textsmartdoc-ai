@@ -13,6 +13,10 @@ from src.config import (
     BM25_WEIGHT, FAISS_WEIGHT,
 )
 
+from src.logger import setup_logger
+logger = setup_logger()
+
+
 
 def render_model_info():
     """Expander 'Cấu hình mô hình' — chỉ hiển thị, không widget."""
@@ -32,7 +36,6 @@ def render_settings_panel() -> dict:
         settings["chunk_size"]    = st.slider("Chunk Size",    200,  2000, CHUNK_SIZE,   100)
         settings["chunk_overlap"] = st.slider("Chunk Overlap",   0,   500, CHUNK_OVERLAP, 50)
         settings["top_k"]         = st.slider("Top-k",           1,    10, TOP_K,          1)
-        settings["fetch_k"]       = st.slider("Fetch-k", min_value=settings["top_k"], max_value=100, value=FETCH_K, step=5)
 
         settings["ocr_enabled"] = st.toggle(
             "Chế độ quét ảnh (OCR)", 
@@ -72,15 +75,29 @@ def render_settings_panel() -> dict:
         settings["search_type"] = st.selectbox(
             "Search Type",
             ["similarity", "mmr"],
-            index=0 if SEARCH_TYPE == "similarity" else 1
+            index=0 if SEARCH_TYPE == "similarity" else 1,
+            help="Similarity: Tìm kiếm nhanh dựa trên độ tương đồng\nMMR: Đa dạng hóa kết quả, tránh nội dung lặp"
         )
 
+        # ================== FETCH-K & LAMBDA MULT (Chỉ hiển thị khi MMR) ==================
         if settings["search_type"] == "mmr":
+            settings["fetch_k"] = st.slider(
+                "Fetch-k (Số tài liệu lấy ban đầu)",
+                min_value=settings["top_k"],
+                max_value=100,
+                value=FETCH_K,
+                step=5,
+                help="Số lượng tài liệu candidate lấy trước khi áp dụng MMR (thường lớn hơn Top-k)"
+            )
+            
             settings["lambda_mult"] = st.slider(
-                "Lambda Mult (Diversity)", 0.0, 1.0, LAMBDA_MULT, 0.05,
-                # help="0.7 là giá trị cân bằng tốt nhất cho tiếng Việt"
+                "Lambda Mult (Diversity)",
+                0.0, 1.0, LAMBDA_MULT, 0.05,
+                help="0.0 = Ưu tiên đa dạng | 1.0 = Ưu tiên tương đồng cao (0.7 là giá trị cân bằng tốt)"
             )
         else:
+            # Similarity không dùng Fetch-k và Lambda Mult
+            settings["fetch_k"] = FETCH_K
             settings["lambda_mult"] = LAMBDA_MULT
 
         # ================== SELF-RAG (Đặt trước để kiểm soát Retrieval Mode) ==================
@@ -88,17 +105,33 @@ def render_settings_panel() -> dict:
             "Chế độ Self-RAG",
             ["Tắt (Normal RAG)", "Bật Self-RAG (Tự đánh giá)"],
             index=0,
-            # help="Self-RAG sẽ tự viết lại câu hỏi và đánh giá chất lượng → chính xác hơn nhưng chậm hơn."
+            help="Self-RAG sẽ tự viết lại câu hỏi, đánh giá chất lượng và thử lại nếu cần. Hiện chỉ hỗ trợ chế độ RAG."
         )
-        
+
         settings["self_rag_enabled"] = (settings["self_rag_method"] == "Bật Self-RAG (Tự đánh giá)")
+
+        # ================== COMBINED MODE ==================
+        if settings["self_rag_enabled"]:
+            # Tự động chuyển về Chỉ RAG khi bật Self-RAG
+            settings["combined_mode"] = "rag"
+            
+
+        else:
+            settings["combined_mode"] = st.selectbox(
+                "Combined Mode",
+                ["rag", "corag", "rag+corag"],
+                index=0,
+                format_func=lambda x: {
+                    "rag": "Chỉ RAG",
+                    "corag": "Chỉ CoRAG",
+                    "rag+corag": "RAG & CoRAG"
+                }[x]
+            )
 
         # ================== RETRIEVAL MODE ==================
         if settings["self_rag_enabled"]:
-            # Tự động chuyển sang Hybrid khi bật Self-RAG, nhưng vẫn cho chỉnh trọng số
             settings["retrieval_mode"] = "hybrid"
         else:
-            # Bình thường cho phép chọn chế độ
             retrieval_options = ["faiss", "hybrid", "bm25"]
             retrieval_labels = [
                 "FAISS (Vector Search)", 
@@ -114,8 +147,7 @@ def render_settings_panel() -> dict:
             )
             settings["retrieval_mode"] = retrieval_options[retrieval_labels.index(selected_label)]
 
-        # ================== SLIDER ĐIỀU CHỈNH TỶ LỆ HYBRID ==================
-        # Luôn hiển thị slider khi là Hybrid (dù Self-RAG bật hay tắt)
+        # ================== HYBRID WEIGHT SLIDER ==================
         if settings["retrieval_mode"] == "hybrid":
             st.markdown("**Điều chỉnh tỷ lệ Hybrid Search:**")
             
@@ -137,57 +169,43 @@ def render_settings_panel() -> dict:
 
             st.markdown(
                 f"""
-                <div style="
-                background-color: rgb(255 255 255);
-                border: 1px solid rgb(199, 210, 254);
-                border-radius: 8px;
-                padding: 10px 0 10px 80px;
-                font-size: 0.95rem;
-                font-weight: 500;
-                color: #3F51B5;
-                line-height: 1.6;
-                align-items: normal;
-                margin-bottom: 20px;
-                ">
+                <div style="background-color: rgb(255 255 255); border: 1px solid rgb(199, 210, 254); 
+                border-radius: 8px; padding: 10px 0 10px 80px; font-size: 0.95rem; font-weight: 500; 
+                color: #3F51B5; line-height: 1.6; margin-bottom: 20px;">
                     <b>FAISS:</b> {faiss_weight} &nbsp;&nbsp; | &nbsp;&nbsp; <b>BM25:</b> {bm25_weight}
                 </div>
                 """,
                 unsafe_allow_html=True
             )
         else:
-            # Không phải Hybrid thì dùng giá trị mặc định
             settings["bm25_weight"] = BM25_WEIGHT
             settings["faiss_weight"] = FAISS_WEIGHT
 
         # ================== RERANKING ==================
-        settings["reranking_method"] = st.selectbox(
-            "Reranking",
-            ["Bi-encoder (Nhanh)", "Cross-Encoder (Chính xác hơn)"],
-            index=0,
-            help="Bi-encoder: Nhanh, phù hợp sử dụng thông thường.\nCross-Encoder: Độ chính xác cao hơn nhưng chậm hơn."
-        )
-        
-        settings["use_reranker"] = (settings["reranking_method"] == "Cross-Encoder (Chính xác hơn)")
+        if settings["self_rag_enabled"]:
+            settings["use_reranker"] = False
+            settings["reranking_method"] = "Off (Self-RAG)"
+            
+            # Chỉ ghi log khi Self-RAG vừa được bật (tránh duplicate)
+            if not st.session_state.get("prev_self_rag_state", False):
+                logger.info("[Settings] Self-RAG ON → Cross-Encoder Reranker tự động tắt")
+        else:
+            settings["reranking_method"] = st.selectbox(
+                "Reranking",
+                ["Off | Bi-encoder", "On | Cross-Encoder"],
+                index=0,
+                help="On | Cross-Encoder: Retrieve bằng Bi-encoder → sau đó rerank bằng Cross-Encoder"
+            )
+            
+            settings["use_reranker"] = (settings["reranking_method"] == "On | Cross-Encoder")
 
-        # Rerun để cập nhật giao diện khi bật/tắt Self-RAG
-        if settings["self_rag_enabled"] and st.session_state.get("prev_self_rag_state") != True:
-            st.session_state.prev_self_rag_state = True
-            st.rerun()
-        elif not settings["self_rag_enabled"]:
+        # ================== Rerun khi thay đổi Self-RAG ==================
+        if "prev_self_rag_state" not in st.session_state:
             st.session_state.prev_self_rag_state = False
 
-        
-        # ================== Combined ==================
-        settings["combined_mode"] = st.selectbox(
-            "Combined Mode",
-            ["rag", "corag", "rag+corag"],
-            index=0,
-            format_func=lambda x: {
-                "rag": "Chỉ RAG",
-                "corag": "Chỉ CoRAG",
-                "rag+corag": "RAG & CoRAG"
-            }[x]
-        )
+        if settings["self_rag_enabled"] != st.session_state.prev_self_rag_state:
+            st.session_state.prev_self_rag_state = settings["self_rag_enabled"]
+            st.rerun()
 
         st.divider()
 
