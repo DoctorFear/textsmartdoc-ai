@@ -95,11 +95,15 @@ def get_retriever(
 
     bm25_retriever = bm25_cache["bm25_retriever"]
 
-    lambda_val = retriever_kwargs.get("lambda_mult", "N/A") if "retriever_kwargs" in locals() else "Unknown"
-    mmr_info = f" | lambda_mult={lambda_val}" if search_type == "mmr" else ""
+    if search_type == "mmr":
+        lambda_val = retriever_kwargs.get("lambda_mult", "N/A")
+        fetch_val = retriever_kwargs.get("fetch_k", "N/A")
+        mmr_info = f" | fetch_k={fetch_val} | lambda_mult={lambda_val}"
+    else:
+        mmr_info = ""
+
     if retrieval_mode == "faiss":
         retriever = faiss_retriever
-
         logger.info(f"Retrieval mode: FAISS | search_type={search_type} | top_k={top_k}{mmr_info} ")
     elif retrieval_mode == "bm25":
         retriever = bm25_retriever

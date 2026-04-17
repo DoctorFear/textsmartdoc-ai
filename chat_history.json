@@ -175,5 +175,143 @@
         "size_mb": 0.01
       }
     }
+  },
+  {
+    "id": 3,
+    "title": "vì sao a Phủ bị bắt vào nhà thống lí Pá Tra",
+    "messages": [
+      {
+        "role": "user",
+        "content": "vì sao a Phủ bị bắt vào nhà thống lí Pá Tra"
+      },
+      {
+        "role": "assistant",
+        "content": "A Phủ bị bắt vào nhà thống lí Pá Tra là do ông đã đánh chết A Sử. Theo văn bản, \"Bọn chức việc khắp vùng Hồng Ngài đến nhà thống lí Pá Tra dự đám xử kiện\", trong đó có nhắc tới \"trước nhất, chắp tay lạy lia lịa tên thống lí Pá Tra rồi quay lại đánh A Phủ\". Điều này cho thấy A Phủ đã phạm phải tội nặng và bị bắt vào nhà thống lí để chờ xét xử.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
+          },
+          {
+            "index": 2,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
+          },
+          {
+            "index": 3,
+            "page": 8,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Bọn chức việc khắp vùng Hồng Ngài đến nhà thống lí Pá Tra dự đám xử kiện. Các lí dịch, quan làng, thống quán, xéo phải đội mũ, quấn khăn, xách gậy, cưỡi ngựa kéo đến xử kiện và ăn cỗ. Trong nhà thống lí đã bày năm cái bàn đèn. Khói thuốc phiện tuôn r..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "vì sao a Phủ bị bắt vào nhà thống lí Pá Tra"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu về việc A Phủ bị bắt vào nhà thống lí Pá Tra. Tài liệu không đề cập đến việc A Phủ bị bắt hay đi đâu cả.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
+          },
+          {
+            "index": 2,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
+          },
+          {
+            "index": 3,
+            "page": 7,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "bố mẹ và người trong nhà ấy đã đi ngủ Nhưng người ra người vào còn dập dìu quanh ngõ. A Sử đúng ngoài tức làm. Nó bàn với một lũ khác, doạ đánh bọn con trai lạ vẫn bám quanh nhà đã khiến cho bọn A Sử bị vướng không thể vào được. Bọn A Sử ném đá vào v..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "vì sao a Phủ bị bắt vào nhà thống lí Pá Tra"
+      },
+      {
+        "role": "assistant",
+        "content": "A Phủ bị bắt vào nhà thống lí Pá Tra vì đã tham gia chơi trong đám đông ở làng, gây ra sự cố làm vỡ đầu A Sử. Cụ thể, A Phủ đã đi chơi cùng nhiều trai làng đến nơi có tiếng sáo, tiếng khén, và không may enough, sự cố xảy ra khiến A Sử bị đánh vỡ đầu.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
+          },
+          {
+            "index": 3,
+            "page": 8,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Bọn chức việc khắp vùng Hồng Ngài đến nhà thống lí Pá Tra dự đám xử kiện. Các lí dịch, quan làng, thống quán, xéo phải đội mũ, quấn khăn, xách gậy, cưỡi ngựa kéo đến xử kiện và ăn cỗ. Trong nhà thống lí đã bày năm cái bàn đèn. Khói thuốc phiện tuôn r..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "vì sao a Phủ bị bắt vào nhà thống lí Pá Tra"
+      },
+      {
+        "role": "assistant",
+        "content": "A Phủ bị bắt vào nhà thống lí Pá Tra bởi vì A Phủ đã gây sự với nhóm của A Sử, đánh họ khiến A Sử bị thương nặng. Nhóm của thống lí Pá Tra sau đó đến gây rối để bảo vệ đồng compatriots và đã bắt giữ A Phủ làm tù binh.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "Sáng hôm sau, Mị mới biết mình đang ngồi trong nhà thống lí Pá Tra Họ nhốt Mị vào buồng Ngoài vách kia, tiếng nhạc sinh tiền cúng ma đương rập ròn nhảy múa. Trong khi đó, A Sử đến nhà bố Mị. A Sử nói: –Tôi đã cướp được con gái bố làm vợ, tôi đem về c..."
+          },
+          {
+            "index": 2,
+            "page": 7,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "bố mẹ và người trong nhà ấy đã đi ngủ Nhưng người ra người vào còn dập dìu quanh ngõ. A Sử đúng ngoài tức làm. Nó bàn với một lũ khác, doạ đánh bọn con trai lạ vẫn bám quanh nhà đã khiến cho bọn A Sử bị vướng không thể vào được. Bọn A Sử ném đá vào v..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoChongAPhu.pdf",
+            "snippet": "máu, sụp xuống quanh trán. A Sử nằm lăn ra giường. Lát sau, thống lí Pá Tra bước vào. Theo sau thống lí là một lũ thống quán (một chức việc như phó lí), xéo phải (như trưởng thôn) và một bọn thị sống vẫn thường ra vào hầu hạ, ăn thịt uống rượu, hút t..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "VoChongAPhu.pdf",
+    "files": [
+      "VoChongAPhu.pdf"
+    ],
+    "files_metadata": {
+      "VoChongAPhu.pdf": {
+        "upload_date": "2026-04-17 11:03:11",
+        "upload_timestamp": "2026-04-17T11:03:11.763736",
+        "file_type": "pdf",
+        "size_mb": 0.43
+      }
+    }
   }
 ]
