@@ -1,5 +1,13 @@
 import json
-from src.rag_chain import llm, rag_chain, get_language_instruction, format_docs
+from src.rag_chain import (
+    rewrite_query,
+    evaluate_answer,
+    format_docs,
+    rag_chain,
+    get_language_instruction,
+    decompose_question,
+    llm
+)
 from langchain.prompts import PromptTemplate
 
 # Prompt to grade document relevance
@@ -54,3 +62,81 @@ def corag_pipeline(question, retriever, top_k):
         "docs": filtered_docs,
         "mode": "CoRAG"
     }
+
+def self_corag_query(question, retriever, max_retries: int=2):
+    """
+    Self + CoRAG:
+    - Retrieve
+    - Grade docs (CoRAG)
+    - Generate answer
+    - Self-evaluate
+    - Retry with rewrite + multi-hop if needed
+    """
+
+    last_result = {}
+    multi_hop_steps = None
+
+    for attempt in range(max_retries + 1):
+        query = question if attempt == 0 else rewrite_query(question)
+
+        # 🔁 Multi-hop when retry
+        if attempt >= 1:
+            steps = decompose_question(question)
+            multi_hop_steps = steps
+
+            all_docs = []
+            for step in steps:
+                docs = retriever.invoke(step)
+                all_docs.extend(docs)
+
+        else:
+            all_docs = retriever.invoke(query)
+
+        # 🧠 CoRAG grading step
+        graded_docs = grade_documents(question, all_docs)
+
+        # fallback if nothing useful
+        if not graded_docs:
+            graded_docs = retriever.invoke(f"Thông tin chi tiết về {question}")
+
+        selected_docs = graded_docs[:5]
+
+        if not selected_docs:
+            last_result = {
+                "answer": "Không tìm thấy thông tin liên quan trong tài liệu.",
+                "confidence": 0,
+                "query_used": query,
+                "attempts": attempt + 1,
+                "evaluation": {"score": 0, "reason": "Không có docs", "is_sufficient": False},
+                "docs": [],
+                "multi_hop_steps": multi_hop_steps
+            }
+            continue
+
+        context = format_docs(selected_docs)
+
+        # ✨ Generate answer
+        answer = rag_chain.invoke({
+            "context": context,
+            "question": question,
+            "language_instruction": get_language_instruction(question)
+        }).strip()
+
+        # 🔍 Self-evaluate
+        evaluation = evaluate_answer(question, context, answer)
+
+        last_result = {
+            "answer": answer,
+            "confidence": evaluation.get("score", 5),
+            "query_used": query,
+            "attempts": attempt + 1,
+            "evaluation": evaluation,
+            "docs": selected_docs,
+            "multi_hop_steps": multi_hop_steps
+        }
+
+        # ✅ Stop if good enough
+        if evaluation.get("is_sufficient", False):
+            break
+
+    return last_result

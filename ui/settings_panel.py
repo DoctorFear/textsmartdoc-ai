@@ -106,15 +106,15 @@ def render_settings_panel() -> dict:
 
         settings["self_rag_enabled"] = (settings["self_rag_method"] == "On | Self-RAG")
 
-        # ================== COMBINED MODE ==================
+        # ================== PIPELINE MODE ==================
         if settings["self_rag_enabled"]:
             # Tự động chuyển về Chỉ RAG khi bật Self-RAG
-            settings["combined_mode"] = "rag"
+            settings["pipeline_mode"] = "rag"
             
 
         else:
-            settings["combined_mode"] = st.selectbox(
-                "Combined Mode",
+            settings["pipeline_mode"] = st.selectbox(
+                "Pipeline Mode",
                 ["rag", "corag", "rag+corag"],
                 index=0,
                 format_func=lambda x: {
@@ -123,6 +123,11 @@ def render_settings_panel() -> dict:
                     "rag+corag": "RAG & CoRAG"
                 }[x]
             )
+
+            if settings["pipeline_mode"] == "corag":
+                settings["self_corag_enabled"] = st.checkbox("Enable Self-CoRAG", value=False)
+            else:
+                settings["self_corag_enabled"] = False
 
         # ================== RETRIEVAL MODE ==================
         if settings["self_rag_enabled"]:

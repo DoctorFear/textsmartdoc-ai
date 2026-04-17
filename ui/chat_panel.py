@@ -9,7 +9,7 @@ from src.hybrid_search import get_retriever
 from src.citation import build_citations
 from src.logger import setup_logger
 from src.config import BM25_WEIGHT, FAISS_WEIGHT
-from src.corag_pipeline import corag_pipeline
+from src.corag_pipeline import corag_pipeline, self_corag_query
 
 logger = setup_logger()
 
@@ -131,26 +131,27 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
     retrieval_mode = settings["retrieval_mode"]
     use_reranker = settings.get("use_reranker", False)
     self_rag_enabled = settings.get("self_rag_enabled", False)
-    combined_mode = settings.get("combined_mode", "rag")
+    self_corag_enabled = settings.get("self_corag_enabled", False)
+    pipeline_mode = settings.get("pipeline_mode", "rag")
 
     response = ""
     citations = []
     self_rag_meta = None
-    mode = combined_mode
+    mode = pipeline_mode
 
     spinner_text = "Đang tìm kiếm và suy nghĩ..."
     if self_rag_enabled:
         spinner_text = "Đang chạy Self-RAG..."
     elif use_reranker:
         spinner_text = "Đang rerank bằng Cross-Encoder..."
-    elif combined_mode == "corag":
+    elif pipeline_mode == "corag":
         spinner_text = "Đang chạy CoRAG..."
-    elif combined_mode == "rag+corag":
+    elif pipeline_mode == "rag+corag":
         spinner_text = "Đang chạy RAG + CoRAG..."
 
     with st.spinner(spinner_text):
         try:
-            logger.info(f"Mode: '{combined_mode}' | Query: '{prompt[:80]}...'")
+            logger.info(f"Mode: '{pipeline_mode}' | Query: '{prompt[:80]}...'")
 
             # Filter theo tài liệu
             source_filter = None
@@ -168,7 +169,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
             all_docs = list(st.session_state.vectorstore.docstore._dict.values())
 
             # ================== RAG + CoRAG ==================
-            if combined_mode == "rag+corag":
+            if pipeline_mode == "rag+corag":
                 bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
                 faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
@@ -216,7 +217,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
 
             # ================== NORMAL MODES ==================
             else:
-                if combined_mode == "rag":
+                if pipeline_mode == "rag":
                     if self_rag_enabled:
                         bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
                         faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
@@ -268,26 +269,50 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                         citations = build_citations(retrieved_docs)
                         self_rag_meta = None
 
-                elif combined_mode == "corag":
-                    bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                    faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
+                elif pipeline_mode == "corag":
+                    if self_corag_enabled:
+                        bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
+                        faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
-                    retriever, st.session_state = _update_bm25_cache(
-                        st.session_state, all_docs, top_k, retrieval_mode, search_type,
-                        retriever_kwargs, bm25_weight, faiss_weight
-                    )
+                        retriever, st.session_state = _update_bm25_cache(
+                            st.session_state, all_docs, top_k, retrieval_mode, search_type,
+                            retriever_kwargs, bm25_weight, faiss_weight
+                        )
+                        logger.info("[Self-CORAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
+                        result = self_corag_query(prompt, retriever, max_retries=2)
+                        response = result["answer"]
 
-                    result = corag_pipeline(prompt, retriever, top_k=top_k)
-                    response = result["answer"]
-                    citations = build_citations(result["docs"])
-                    self_rag_meta = None
+                        self_rag_meta = {
+                            "attempts": result["attempts"],
+                            "confidence": result["confidence"],
+                            "query_used": result["query_used"],
+                            "evaluation": result["evaluation"],
+                            "multi_hop_steps": result.get("multi_hop_steps")
+                        }
+
+                        citations = []
+
+                    else:
+                        bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
+                        faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
+
+                        retriever, st.session_state = _update_bm25_cache(
+                            st.session_state, all_docs, top_k, retrieval_mode, search_type,
+                            retriever_kwargs, bm25_weight, faiss_weight
+                        )
+                        
+                        logger.info(f"[Normal CORAG] On | Cross-Encoder Reranking")
+                        result = corag_pipeline(prompt, retriever, top_k=top_k)
+                        response = result["answer"]
+                        citations = build_citations(result["docs"])
+                        self_rag_meta = None
 
                 st.session_state.messages.append({
                     "role": "assistant",
                     "content": response,
                     "citations": citations,
                     "self_rag_meta": self_rag_meta,
-                    "mode": combined_mode
+                    "mode": pipeline_mode
                 })
                 st.session_state.should_scroll = True
                 save_current_session_fn()
@@ -313,7 +338,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                 "content": error_msg,
                 "citations": [],
                 "self_rag_meta": None,
-                "mode": combined_mode
+                "mode": pipeline_mode
             })
             st.session_state.should_scroll = True
             save_current_session_fn()
