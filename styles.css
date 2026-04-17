@@ -47,7 +47,7 @@ h1, h2, h3 {
 
 /* Nút Browse files */
 button[kind="secondary"][data-testid="stBaseButton-secondary"] {
-    background-color: #28a745 !important; /* xanh lá */
+    background-color: #007BFF !important; /* xanh lá */
     color: white !important;
     border-radius: 6px !important;
     border: none !important;
@@ -57,7 +57,7 @@ button[kind="secondary"][data-testid="stBaseButton-secondary"] {
 
 }
 button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
-    background-color: #218838 !important; /* xanh lá đậm */
+    background-color: #0069da !important; /* xanh lá đậm */
     color: #fff !important;
     transform: scale(1.05);
 }
@@ -77,7 +77,7 @@ button[kind="secondary"][data-testid="stBaseButton-secondary"]:hover {
 }
 
 button[kind="tertiary"][data-testid="stBaseButton-tertiary"] {
-  background-color: #8BC34A !important;
+  background-color: #9C27B0  !important;
   color: #fff !important;
   border-radius: 6px !important;
   border: none !important;
@@ -85,7 +85,7 @@ button[kind="tertiary"][data-testid="stBaseButton-tertiary"] {
   transition: 0.3s;
 }
 button[kind="tertiary"][data-testid="stBaseButton-tertiary"]:hover {
-  background-color: #6b953a  !important;
+  background-color: #71217f   !important;
   transform: scale(1.05);
 }
 

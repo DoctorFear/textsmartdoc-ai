@@ -84,7 +84,7 @@ def render_chat_history():
 
                 # Self-RAG Meta (nếu có)
                 if message.get("self_rag_meta"):
-                    with st.expander("🔁 Thông tin Self-RAG"):
+                    with st.expander("Thông tin Self-RAG"):
                         render_self_rag_meta(message["self_rag_meta"])
 
                 # Citations cho chế độ đơn
