@@ -38,13 +38,13 @@ def render_settings_panel() -> dict:
         settings["top_k"]         = st.slider("Top-k",           1,    10, TOP_K,          1)
 
         settings["ocr_enabled"] = st.toggle(
-            "Chế độ quét ảnh (OCR)", 
+            "OCR Mode", 
             value=False
         )
 
         if settings["ocr_enabled"]:
             settings["ocr_mode"] = st.selectbox(
-                "Chất lượng OCR",
+                "OCR Quality",
                 ["fast", "balanced", "accurate"],
                 index=1
             )
@@ -76,24 +76,21 @@ def render_settings_panel() -> dict:
             "Search Type",
             ["similarity", "mmr"],
             index=0 if SEARCH_TYPE == "similarity" else 1,
-            help="Similarity: Tìm kiếm nhanh dựa trên độ tương đồng\nMMR: Đa dạng hóa kết quả, tránh nội dung lặp"
         )
 
         # ================== FETCH-K & LAMBDA MULT (Chỉ hiển thị khi MMR) ==================
         if settings["search_type"] == "mmr":
             settings["fetch_k"] = st.slider(
-                "Fetch-k (Số tài liệu lấy ban đầu)",
+                "Fetch-k",
                 min_value=settings["top_k"],
                 max_value=100,
                 value=FETCH_K,
                 step=5,
-                help="Số lượng tài liệu candidate lấy trước khi áp dụng MMR (thường lớn hơn Top-k)"
             )
             
             settings["lambda_mult"] = st.slider(
-                "Lambda Mult (Diversity)",
+                "Lambda Mult",
                 0.0, 1.0, LAMBDA_MULT, 0.05,
-                help="0.0 = Ưu tiên đa dạng | 1.0 = Ưu tiên tương đồng cao (0.7 là giá trị cân bằng tốt)"
             )
         else:
             # Similarity không dùng Fetch-k và Lambda Mult
@@ -102,13 +99,12 @@ def render_settings_panel() -> dict:
 
         # ================== SELF-RAG (Đặt trước để kiểm soát Retrieval Mode) ==================
         settings["self_rag_method"] = st.selectbox(
-            "Chế độ Self-RAG",
-            ["Tắt (Normal RAG)", "Bật Self-RAG (Tự đánh giá)"],
+            "Self-RAG Mode",
+            ["Off | Nomal RAG", "On | Self-RAG"],
             index=0,
-            help="Self-RAG sẽ tự viết lại câu hỏi, đánh giá chất lượng và thử lại nếu cần. Hiện chỉ hỗ trợ chế độ RAG."
         )
 
-        settings["self_rag_enabled"] = (settings["self_rag_method"] == "Bật Self-RAG (Tự đánh giá)")
+        settings["self_rag_enabled"] = (settings["self_rag_method"] == "On | Self-RAG")
 
         # ================== COMBINED MODE ==================
         if settings["self_rag_enabled"]:
@@ -122,8 +118,8 @@ def render_settings_panel() -> dict:
                 ["rag", "corag", "rag+corag"],
                 index=0,
                 format_func=lambda x: {
-                    "rag": "Chỉ RAG",
-                    "corag": "Chỉ CoRAG",
+                    "rag": "RAG",
+                    "corag": "CoRAG",
                     "rag+corag": "RAG & CoRAG"
                 }[x]
             )
@@ -158,7 +154,6 @@ def render_settings_panel() -> dict:
                 value=0.7,
                 step=0.05,
                 key="hybrid_weight_slider",
-                help="0.0 = Ưu tiên BM25 (từ khóa) | 1.0 = Ưu tiên FAISS (ý nghĩa)"
             )
             
             faiss_weight = round(hybrid_ratio, 2)
@@ -194,7 +189,6 @@ def render_settings_panel() -> dict:
                 "Reranking",
                 ["Off | Bi-encoder", "On | Cross-Encoder"],
                 index=0,
-                help="On | Cross-Encoder: Retrieve bằng Bi-encoder → sau đó rerank bằng Cross-Encoder"
             )
             
             settings["use_reranker"] = (settings["reranking_method"] == "On | Cross-Encoder")

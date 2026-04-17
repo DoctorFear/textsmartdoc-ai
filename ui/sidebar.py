@@ -138,7 +138,7 @@ def render_sidebar(embedder) -> dict:
         settings = render_settings_panel()
 
         # ── Tài liệu đã upload + filter (8.2.8) ──────────────────────────────
-        with st.expander("Tài liệu đã upload"):
+        with st.expander("Tài liệu đã đăng"):
             uploaded_sources = get_uploaded_sources(st.session_state.vectorstore)
             if uploaded_sources:
                 st.markdown(
