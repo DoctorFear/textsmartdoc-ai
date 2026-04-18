@@ -205,9 +205,7 @@
       }
     ],
     "file": "test_docx_table.pdf",
-    "files": [
-      "test_docx_table.pdf"
-    ],
+    "files": [],
     "files_metadata": {
       "test_docx_table.pdf": {
         "upload_date": "2026-04-17 11:29:33",
@@ -739,6 +737,48 @@
           ]
         },
         "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "doanh thu quý 4"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 4 năm 2025 của công ty là 680 tỷ VND, tăng trưởng so với quý trước là 11%.",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 10,
+          "query_used": "doanh thu quý 4",
+          "evaluation": {
+            "score": 10,
+            "reason": "Câu trả lời chính xác về doanh thu quý 4 và có sự tăng trưởng phù hợp theo bảng tài liệu.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "doanh thu quý 4 bằng bao nhiêu phần trăm so với cả năm"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 4 năm 2025 là 680 tỷ VND, chiếm khoảng 30.1% tổng doanh thu cả năm (2260 tỷ VND).",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 9,
+          "query_used": "doanh thu quý 4 bằng bao nhiêu phần trăm so với cả năm",
+          "evaluation": {
+            "score": 9,
+            "reason": "Câu trả lời chính xác về số liệu và tính toán phần trăm",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
       }
     ],
     "file": "test_docx_table.pdf",
@@ -758,6 +798,283 @@
         "upload_timestamp": "2026-04-17T21:47:46.616242",
         "file_type": "pdf",
         "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 9,
+    "title": "doanh thu quý 4 so với quý 2",
+    "messages": [
+      {
+        "role": "user",
+        "content": "doanh thu quý 4 so với quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 4 năm 2025 là 680 tỷ VND, trong khi quý 2 là 520 tỷ VND. So sánh hai số này, ta thấy doanh thu quý 4 cao hơn quý 2 khoảng 160 tỷ VND.",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 9,
+          "query_used": "doanh thu quý 4 so với quý 2",
+          "evaluation": {
+            "score": 9,
+            "reason": "Câu trả lời chính xác về doanh thu của quý 4 và quý 2 năm 2025 từ bảng cung cấp, đồng thời so sánh rõ ràng giữa hai con số.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-18 14:01:18",
+        "upload_timestamp": "2026-04-18T14:01:18.571462",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 10,
+    "title": "so sánh quý 1 so với cả nhăm",
+    "messages": [
+      {
+        "role": "user",
+        "content": "so sánh quý 1 so với cả nhăm"
+      },
+      {
+        "role": "assistant",
+        "content": "Quý 1 năm 2025 có doanh thu là 450 tỷ VND, tăng trưởng 12% so với cùng kỳ. Trong khi đó, tổng doanh thu cả năm 2025 là 2260 tỷ VND. Điều này nghĩa là doanh thu quý 1 chỉ chiếm khoảng 19.91% (450/2260) của tổng doanh thu cả năm.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "so sánh quý 3 doanh thu với quý 4"
+      },
+      {
+        "role": "assistant",
+        "content": "❌ Lỗi không xác định: cannot access local variable 'retrieved_docs' where it is not associated with a value",
+        "citations": [],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "so sánh doanh thu quý 1 với quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "❌ Lỗi không xác định: cannot access local variable 'query_for_retrieval' where it is not associated with a value",
+        "citations": [],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "so sánh doanh thu quý 1 với quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND, trong khi đó doanh thu quý 2 là 520 tỷ VND. So sánh với nhau, ta thấy doanh thu quý 2 cao hơn doanh thu quý 1 khoảng 70 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 3,
+          "confidence": 8,
+          "query_used": "so sánh doanh thu quý một với quý hai",
+          "evaluation": {
+            "score": 8,
+            "reason": "Câu trả lời chính xác về so sánh doanh thu giữa hai quý và chỉ ra sự khác biệt rõ ràng.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": [
+            "CAGR (Compound Annual Growth Rate) của doanh thu quý 1 là bao nhiêu?",
+            "CAGR của doanh thu quý 2 là bao nhiêu?",
+            "Sự khác biệt về doanh thu giữa quý 1 và quý 2 là bao nhiêu?"
+          ]
+        },
+        "mode": "rag"
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-18 14:06:37",
+        "upload_timestamp": "2026-04-18T14:06:37.371384",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 11,
+    "title": "doanh thu quý 1 so với cả năm",
+    "messages": [
+      {
+        "role": "user",
+        "content": "doanh thu quý 1 so với cả năm"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND, chiếm khoảng 19.8% tổng doanh thu cả năm (tổng doanh thu là 2260 tỷ VND).",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 3,
+          "confidence": 8,
+          "query_used": "doanh thu quý 1 so sánh với toàn năm",
+          "evaluation": {
+            "score": 8,
+            "reason": "Câu trả lời chính xác về doanh thu quý 1 và tổng doanh thu năm 2025, nhưng chưa đề cập đến doanh thu so với cả năm.",
+            "is_sufficient": false
+          },
+          "multi_hop_steps": [
+            "Doanh thu quý 1 của công ty là bao nhiêu?",
+            "Tổng doanh thu cả năm của công ty là bao nhiêu?",
+            "Tỷ lệ doanh thu quý 1 so với tổng doanh thu cả năm là bao nhiêu?"
+          ]
+        },
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "doanh thu quý 4 so với doanh thu quý 2"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 4 năm 2025 là 680 tỷ VND, trong khi doanh thu quý 2 cùng năm là 520 tỷ VND. So sánh hai con số này, ta thấy doanh thu quý 4 cao hơn quý 2 khoảng 160 tỷ VND.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "test_docx_table.pdf",
+            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 9,
+          "query_used": "doanh thu quý 4 so với doanh thu quý 2",
+          "evaluation": {
+            "score": 9,
+            "reason": "Câu trả lời chính xác về doanh thu các quý và sự so sánh giữa quý 4 và quý 2.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-18 14:20:29",
+        "upload_timestamp": "2026-04-18T14:20:29.826894",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
+  },
+  {
+    "id": 12,
+    "title": "Tràng là ai",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tràng là ai"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là nhân vật chính trong truyện \"Vợ nhặt\" của nhà văn Kim Lân. Anh ta sống ở một xóm ngụ cư nghèo nàn, đi làm thuê và thường bị đói khát quấy挠挠，这里是需要按照规定用中文回答，并且不包含任何繁体字或拼音，以下是回答：\n\nTràng là nhân物在故事中的主角。他住在一处破败的居民区，靠做零工为生，经常面临饥饿的问题。",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "VoNhat.pdf",
+            "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "VoNhat.pdf",
+            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoNhat.pdf",
+            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+          },
+          {
+            "index": 4,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "Truyện Vợ nhặt Trước kia mỗi chiều, cứ vào lúc chạng vạng mặt người thì Tràng đi làm về. Hắn bước ngật ngưỡng trên con đường khẳng khiu luồn qua cái xóm chợ của những người ngụ cư vào trong bến. Hắn vừa đi vừa tủm tỉm cười, hai con mất nhỏ tí, gà gà ..."
+          },
+          {
+            "index": 5,
+            "page": 11,
+            "file": "VoNhat.pdf",
+            "snippet": "– Việt Minh phải không? – Ừ, sao nhà biết? Tràng không trả lời. Trong ý nghĩ của hắn vụt hiện ra cảnh những người nghèo đói ầm ầm kéo nhau đi trên đê Sộp. Đằng trước có lá cờ đỏ to lắm. Hôm ấy hắn láng máng nghe người ta nói họ là Việt Minh đấy. Họ đ..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 8,
+          "query_used": "Tràng là ai",
+          "evaluation": {
+            "score": 8,
+            "reason": "Câu trả lời cung cấp thông tin chính xác về nhân vật Tràng trong câu hỏi gốc, bao gồm việc anh ta là nhân vật chính và một số đặc điểm nổi bật của anh ta. Tuy nhiên, nó không đề cập đến hoàn cảnh cụ thể khi đề cập đến người vợ mới, điều này làm giảm độ đầy đủ của câu trả lời.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      }
+    ],
+    "file": "VoNhat.pdf",
+    "files": [
+      "VoNhat.pdf"
+    ],
+    "files_metadata": {
+      "VoNhat.pdf": {
+        "upload_date": "2026-04-18 14:25:12",
+        "upload_timestamp": "2026-04-18T14:25:12.066216",
+        "file_type": "pdf",
+        "size_mb": 0.24
       }
     }
   }

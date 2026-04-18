@@ -81,6 +81,7 @@ def render_chat_history():
                     st.caption(f"Chế độ: {mode_label}")
                 
                 st.markdown(message.get("content", ""))
+                data = message.get("compare_data")
 
                 # Self-RAG Meta (nếu có)
                 if message.get("self_rag_meta"):
@@ -223,6 +224,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
             else:
                 if pipeline_mode == "rag":
                     if self_rag_enabled:
+                        query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
                         bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
                         faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
@@ -242,8 +244,14 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             "evaluation": result["evaluation"],
                             "multi_hop_steps": result.get("multi_hop_steps")
                         }
+                        retrieved_docs = retriever.invoke(query_for_retrieval)
+                        response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
+                            "context": format_docs(retrieved_docs),
+                            "question": prompt,
+                            "language_instruction": get_language_instruction(prompt)
+                        }).strip()
 
-                        citations = []
+                        citations = build_citations(retrieved_docs)
 
                     else:
                         query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
@@ -275,6 +283,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
 
                 elif pipeline_mode == "corag":
                     if self_corag_enabled:
+                        query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
                         bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
                         faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
@@ -293,8 +302,14 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             "evaluation": result["evaluation"],
                             "multi_hop_steps": result.get("multi_hop_steps")
                         }
+                        retrieved_docs = retriever.invoke(query_for_retrieval)
+                        response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
+                            "context": format_docs(retrieved_docs),
+                            "question": prompt,
+                            "language_instruction": get_language_instruction(prompt)
+                        }).strip()
 
-                        citations = []
+                        citations = build_citations(retrieved_docs)
 
                     else:
                         bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
