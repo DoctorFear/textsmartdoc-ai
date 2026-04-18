@@ -84,12 +84,8 @@ def render_chat_history():
 
                 # Self-RAG Meta (nếu có)
                 if message.get("self_rag_meta"):
-                    if mode == "corag":
-                        with st.expander("Thông tin Self-CORAG"):
-                            render_self_rag_meta(message["self_rag_meta"])
-                    else:
-                        with st.expander("Thông tin Self-RAG"):
-                            render_self_rag_meta(message["self_rag_meta"])
+                    with st.expander("Thông tin Self-RAG"):
+                        render_self_rag_meta(message["self_rag_meta"])
 
                 # Citations cho chế độ đơn
                 if message.get("citations"):
@@ -153,203 +149,225 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
     elif pipeline_mode == "rag+corag":
         spinner_text = "Đang chạy RAG + CoRAG..."
 
+# Chỉ cần thay spinner bằng nested spinner + status
+
     with st.spinner(spinner_text):
-        try:
-            logger.info(f"Mode: '{pipeline_mode}' | Query: '{prompt[:80]}...'")
+        with st.status(f"🔄 Xử lý câu hỏi...", state="running") as status:
+            try:
+                logger.info(f"Mode: '{pipeline_mode}' | Query: '{prompt[:80]}...'")
 
-            # Filter theo tài liệu
-            source_filter = None
-            if "source_filter_select" in st.session_state:
-                selected = st.session_state.source_filter_select
-                if selected != "Tất cả tài liệu":
-                    source_filter = selected
-            logger.info(f"Tìm kiếm trong tài liệu:{source_filter if source_filter else "Tất cả tài liệu"}")
-            retriever_kwargs = {"k": top_k, "fetch_k": fetch_k}
-            if source_filter:
-                retriever_kwargs["filter"] = {"source": source_filter}
-            if search_type == "mmr":
-                retriever_kwargs["lambda_mult"] = lambda_mult
+                # Filter theo tài liệu
+                source_filter = None
+                if "source_filter_select" in st.session_state:
+                    selected = st.session_state.source_filter_select
+                    if selected != "Tất cả tài liệu":
+                        source_filter = selected
+                logger.info(f"Tìm kiếm trong tài liệu:{source_filter if source_filter else "Tất cả tài liệu"}")
+                retriever_kwargs = {"k": top_k, "fetch_k": fetch_k}
+                if source_filter:
+                    retriever_kwargs["filter"] = {"source": source_filter}
+                if search_type == "mmr":
+                    retriever_kwargs["lambda_mult"] = lambda_mult
 
-            all_docs = list(st.session_state.vectorstore.docstore._dict.values())
+                all_docs = list(st.session_state.vectorstore.docstore._dict.values())
 
-            # ================== RAG + CoRAG ==================
-            if pipeline_mode == "rag+corag":
-                bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
+                # ================== RAG + CoRAG ==================
+                if pipeline_mode == "rag+corag":
+                    status.update(label="📚 Đang truy xuất tài liệu...", state="running")
+                    
+                    bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
+                    faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
-                retriever, st.session_state = _update_bm25_cache(
-                    st.session_state, all_docs, top_k, retrieval_mode, search_type,
-                    retriever_kwargs, bm25_weight, faiss_weight
-                )
-                query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
+                    retriever, st.session_state = _update_bm25_cache(
+                        st.session_state, all_docs, top_k, retrieval_mode, search_type,
+                        retriever_kwargs, bm25_weight, faiss_weight
+                    )
+                    query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
 
-                # RAG
-                logger.info(f"[RAG+CoRAG] Đang chạy Bi-encoder")
-                rag_docs = retriever.invoke(query_for_retrieval)
-                if use_reranker:
-                    logger.info(f"[RAG+CoRAG] Đang chạy Cross-Encoder Reranker")
-                    rag_docs = rerank(query_for_retrieval, rag_docs, top_k=top_k)
+                    # RAG
+                    logger.info(f"[RAG+CoRAG] Đang chạy Bi-encoder")
+                    rag_docs = retriever.invoke(query_for_retrieval)
+                    if use_reranker:
+                        logger.info(f"[RAG+CoRAG] Đang chạy Cross-Encoder Reranker")
+                        rag_docs = rerank(query_for_retrieval, rag_docs, top_k=top_k)
 
-                rag_response = "Không tìm thấy thông tin (RAG)." if not rag_docs else rag_chain.invoke({
-                    "context": format_docs(rag_docs),
-                    "question": prompt,
-                    "language_instruction": get_language_instruction(prompt)
-                }).strip()
+                    status.update(label="🧠 Đang sinh câu trả lời (RAG)...", state="running")
+                    rag_response = "Không tìm thấy thông tin (RAG)." if not rag_docs else rag_chain.invoke({
+                        "context": format_docs(rag_docs),
+                        "question": prompt,
+                        "language_instruction": get_language_instruction(prompt)
+                    }).strip()
 
-                rag_citations = build_citations(rag_docs)
+                    rag_citations = build_citations(rag_docs)
 
-                # CoRAG
-                corag_result = corag_pipeline(prompt, retriever, top_k=top_k)
-                corag_response = corag_result["answer"]
-                corag_citations = build_citations(corag_result["docs"])
+                    # CoRAG
+                    status.update(label="🧠 Đang sinh câu trả lời (CoRAG)...", state="running")
+                    corag_result = corag_pipeline(prompt, retriever, top_k=top_k)
+                    corag_response = corag_result["answer"]
+                    corag_citations = build_citations(corag_result["docs"])
 
-                st.session_state.messages.append({
-                    "role": "assistant",
-                    "mode": "rag+corag",
-                    "compare_data": {
-                        "rag": {"response": rag_response, "citations": rag_citations},
-                        "corag": {"response": corag_response, "citations": corag_citations}
-                    },
-                    "content": None,
-                    "citations": None,
-                    "self_rag_meta": None
-                })
-                st.session_state.should_scroll = True
-                save_current_session_fn()
-                
-                st.rerun()
+                    status.update(label="✅ Hoàn tất!", state="complete")
 
-            # ================== NORMAL MODES ==================
-            else:
-                if pipeline_mode == "rag":
-                    if self_rag_enabled:
-                        bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                        faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "mode": "rag+corag",
+                        "compare_data": {
+                            "rag": {"response": rag_response, "citations": rag_citations},
+                            "corag": {"response": corag_response, "citations": corag_citations}
+                        },
+                        "content": None,
+                        "citations": None,
+                        "self_rag_meta": None
+                    })
+                    st.session_state.should_scroll = True
+                    save_current_session_fn()
+                    
+                    st.rerun()
 
-                        retriever, st.session_state = _update_bm25_cache(
-                            st.session_state, all_docs, top_k, "hybrid", search_type,
-                            retriever_kwargs, bm25_weight, faiss_weight
-                        )
+                # ================== NORMAL MODES ==================
+                else:
+                    if pipeline_mode == "rag":
+                        if self_rag_enabled:
+                            status.update(label="📚 Đang truy xuất tài liệu (Self-RAG)...", state="running")
+                            
+                            bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
+                            faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
-                        result = self_rag_query(prompt, retriever, max_retries=2)
-                        logger.info("[Self-RAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
-                        response = result["answer"]
+                            retriever, st.session_state = _update_bm25_cache(
+                                st.session_state, all_docs, top_k, "hybrid", search_type,
+                                retriever_kwargs, bm25_weight, faiss_weight
+                            )
 
-                        self_rag_meta = {
-                            "attempts": result["attempts"],
-                            "confidence": result["confidence"],
-                            "query_used": result["query_used"],
-                            "evaluation": result["evaluation"],
-                            "multi_hop_steps": result.get("multi_hop_steps")
-                        }
+                            status.update(label="🧠 Đang sinh câu trả lời (Self-RAG)...", state="running")
+                            result = self_rag_query(prompt, retriever, max_retries=2)
+                            logger.info("[Self-RAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
+                            response = result["answer"]
 
-                        citations = []
+                            self_rag_meta = {
+                                "attempts": result["attempts"],
+                                "confidence": result["confidence"],
+                                "query_used": result["query_used"],
+                                "evaluation": result["evaluation"],
+                                "multi_hop_steps": result.get("multi_hop_steps")
+                            }
 
-                    else:
-                        query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
+                            citations = []
 
-                        bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                        faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
-
-                        retriever, st.session_state = _update_bm25_cache(
-                            st.session_state, all_docs, top_k, retrieval_mode, search_type,
-                            retriever_kwargs, bm25_weight, faiss_weight
-                        )
-                        logger.info(f"[Normal RAG] Đang chạy Bi-encoder (Stage 1)")
-                        retrieved_docs = retriever.invoke(query_for_retrieval)
-
-                        if settings.get("use_reranker", False):
-                            logger.info(f"[Normal RAG] On | Cross-Encoder Reranking")
-                            retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
                         else:
-                            logger.info(f"[Normal RAG] Off | Bi-encoder only")
+                            status.update(label="📚 Đang truy xuất tài liệu...", state="running")
+                            
+                            query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
 
-                        response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
-                            "context": format_docs(retrieved_docs),
-                            "question": prompt,
-                            "language_instruction": get_language_instruction(prompt)
-                        }).strip()
+                            bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
+                            faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
-                        citations = build_citations(retrieved_docs)
-                        self_rag_meta = None
+                            retriever, st.session_state = _update_bm25_cache(
+                                st.session_state, all_docs, top_k, retrieval_mode, search_type,
+                                retriever_kwargs, bm25_weight, faiss_weight
+                            )
+                            logger.info(f"[Normal RAG] Đang chạy Bi-encoder (Stage 1)")
+                            retrieved_docs = retriever.invoke(query_for_retrieval)
 
-                elif pipeline_mode == "corag":
-                    if self_corag_enabled:
-                        bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                        faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
+                            if settings.get("use_reranker", False):
+                                logger.info(f"[Normal RAG] On | Cross-Encoder Reranking")
+                                retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
+                            else:
+                                logger.info(f"[Normal RAG] Off | Bi-encoder only")
 
-                        retriever, st.session_state = _update_bm25_cache(
-                            st.session_state, all_docs, top_k, retrieval_mode, search_type,
-                            retriever_kwargs, bm25_weight, faiss_weight
-                        )
-                        logger.info("[Self-CORAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
-                        result = self_corag_query(prompt, retriever, max_retries=2)
-                        response = result["answer"]
+                            status.update(label="🧠 Đang sinh câu trả lời...", state="running")
+                            response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
+                                "context": format_docs(retrieved_docs),
+                                "question": prompt,
+                                "language_instruction": get_language_instruction(prompt)
+                            }).strip()
 
-                        self_rag_meta = {
-                            "attempts": result["attempts"],
-                            "confidence": result["confidence"],
-                            "query_used": result["query_used"],
-                            "evaluation": result["evaluation"],
-                            "multi_hop_steps": result.get("multi_hop_steps")
-                        }
+                            citations = build_citations(retrieved_docs)
+                            self_rag_meta = None
 
-                        citations = []
+                    elif pipeline_mode == "corag":
+                        if self_corag_enabled:
+                            status.update(label="📚 Đang truy xuất tài liệu (Self-CoRAG)...", state="running")
+                            
+                            bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
+                            faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
-                    else:
-                        bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
-                        faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
+                            retriever, st.session_state = _update_bm25_cache(
+                                st.session_state, all_docs, top_k, retrieval_mode, search_type,
+                                retriever_kwargs, bm25_weight, faiss_weight
+                            )
+                            logger.info("[Self-CORAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
+                            
+                            status.update(label="🧠 Đang sinh câu trả lời (Self-CoRAG)...", state="running")
+                            result = self_corag_query(prompt, retriever, max_retries=2)
+                            response = result["answer"]
 
-                        retriever, st.session_state = _update_bm25_cache(
-                            st.session_state, all_docs, top_k, retrieval_mode, search_type,
-                            retriever_kwargs, bm25_weight, faiss_weight
-                        )
-                        
-                        logger.info(f"[Normal CORAG] On | Cross-Encoder Reranking")
-                        result = corag_pipeline(prompt, retriever, top_k=top_k)
-                        response = result["answer"]
-                        citations = build_citations(result["docs"])
-                        self_rag_meta = None
+                            self_rag_meta = {
+                                "attempts": result["attempts"],
+                                "confidence": result["confidence"],
+                                "query_used": result["query_used"],
+                                "evaluation": result["evaluation"],
+                                "multi_hop_steps": result.get("multi_hop_steps")
+                            }
+
+                            citations = []
+
+                        else:
+                            status.update(label="📚 Đang truy xuất tài liệu...", state="running")
+                            
+                            bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
+                            faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
+
+                            retriever, st.session_state = _update_bm25_cache(
+                                st.session_state, all_docs, top_k, retrieval_mode, search_type,
+                                retriever_kwargs, bm25_weight, faiss_weight
+                            )
+                            
+                            status.update(label="🧠 Đang sinh câu trả lời (CoRAG)...", state="running")
+                            logger.info(f"[Normal CORAG] On | Cross-Encoder Reranking")
+                            result = corag_pipeline(prompt, retriever, top_k=top_k)
+                            response = result["answer"]
+                            citations = build_citations(result["docs"])
+                            self_rag_meta = None
+
+                    status.update(label="✅ Hoàn tát!", state="complete")
+
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "content": response,
+                        "citations": citations,
+                        "self_rag_meta": self_rag_meta,
+                        "mode": pipeline_mode
+                    })
+                    st.session_state.should_scroll = True
+                    save_current_session_fn()
+                    
+                    st.rerun()
+
+            except Exception as e:
+                error_str = str(e).lower()
+
+                if any(keyword in error_str for keyword in ["connection", "refused", "ollama", "timeout"]):
+                    error_msg = "❌ Không thể kết nối đến Ollama. Vui lòng kiểm tra Ollama đang chạy chưa."
+                    logger.error(f"Ollama connection error: {e}")
+                elif "model" in error_str and "not found" in error_str:
+                    error_msg = "❌ Model không tồn tại. Vui lòng kiểm tra tên model trong config."
+                elif any(keyword in error_str for keyword in ["faiss", "vectorstore", "retriever"]):
+                    error_msg = "⚠️ Lỗi khi tìm kiếm tài liệu. Có thể vectorstore bị hỏng hoặc chưa có tài liệu."
+                else:
+                    error_msg = f"❌ Lỗi không xác định: {str(e)}"
+                    logger.error(f"Unexpected error in handle_query: {e}")
 
                 st.session_state.messages.append({
                     "role": "assistant",
-                    "content": response,
-                    "citations": citations,
-                    "self_rag_meta": self_rag_meta,
+                    "content": error_msg,
+                    "citations": [],
+                    "self_rag_meta": None,
                     "mode": pipeline_mode
                 })
                 st.session_state.should_scroll = True
                 save_current_session_fn()
                 
                 st.rerun()
-
-        except Exception as e:
-            error_str = str(e).lower()
-
-            if any(keyword in error_str for keyword in ["connection", "refused", "ollama", "timeout"]):
-                error_msg = "❌ Không thể kết nối đến Ollama. Vui lòng kiểm tra Ollama đang chạy chưa."
-                logger.error(f"Ollama connection error: {e}")
-            elif "model" in error_str and "not found" in error_str:
-                error_msg = "❌ Model không tồn tại. Vui lòng kiểm tra tên model trong config."
-            elif any(keyword in error_str for keyword in ["faiss", "vectorstore", "retriever"]):
-                error_msg = "⚠️ Lỗi khi tìm kiếm tài liệu. Có thể vectorstore bị hỏng hoặc chưa có tài liệu."
-            else:
-                error_msg = f"❌ Lỗi không xác định: {str(e)}"
-                logger.error(f"Unexpected error in handle_query: {e}")
-
-            st.session_state.messages.append({
-                "role": "assistant",
-                "content": error_msg,
-                "citations": [],
-                "self_rag_meta": None,
-                "mode": pipeline_mode
-            })
-            st.session_state.should_scroll = True
-            save_current_session_fn()
-            
-            st.rerun()
-
-        # Lưu và scroll
         
 
 # ── Internal helper (giữ nguyên) ─────────────────────────────────────────────

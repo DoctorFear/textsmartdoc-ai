@@ -187,11 +187,7 @@ def render_settings_panel() -> dict:
         # ================== RERANKING ==================
         if settings["self_mode_enabled"]:
             settings["use_reranker"] = False
-            settings["reranking_method"] = "Off (Self-RAG)"
-            
-            # Chỉ ghi log khi Self-RAG vừa được bật (tránh duplicate)
-            if not st.session_state.get("prev_self_rag_state", False):
-                logger.info("[Settings] Self-RAG ON → Cross-Encoder Reranker tự động tắt")
+            settings["reranking_method"] = "Off (Self-RAG/Self-CORAG)"
         else:
             settings["reranking_method"] = st.selectbox(
                 "Reranking",
@@ -201,14 +197,20 @@ def render_settings_panel() -> dict:
             
             settings["use_reranker"] = (settings["reranking_method"] == "On | Cross-Encoder")
 
-        # ================== Rerun khi thay đổi Self-RAG ==================
-        current_self_mode = settings["self_rag_method"]
-
+        # ================== Rerun khi thay đổi Self-RAG/Self-CORAG ==================
         if "prev_self_mode" not in st.session_state:
             st.session_state.prev_self_mode = "Off"
 
-        if current_self_mode != st.session_state.prev_self_mode:
-            st.session_state.prev_self_mode = current_self_mode
+        # Chỉ log khi thay đổi thực sự
+        if settings["self_rag_method"] != st.session_state.prev_self_mode:
+            if settings["self_rag_method"] == "On | Self-RAG":
+                logger.info("[Settings] Self-RAG ON → Cross-Encoder Reranker tự động tắt")
+            elif settings["self_rag_method"] == "On | Self-CORAG":
+                logger.info("[Settings] Self-CORAG ON → Cross-Encoder Reranker tự động tắt")
+            else:
+                logger.info(f"[Settings] {settings['self_rag_method']} → Reranking có sẵn")
+            
+            st.session_state.prev_self_mode = settings["self_rag_method"]
             st.rerun()
 
         st.divider()
