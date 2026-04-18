@@ -524,5 +524,241 @@
         "size_mb": 2.31
       }
     }
+  },
+  {
+    "id": 7,
+    "title": "nói về đồ án file",
+    "messages": [
+      {
+        "role": "user",
+        "content": "nói về đồ án file"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu về bất kỳ đồ án file nào. Tài liệu đề cập đến các dự án như Smart school bus, Brick matcher và Quizigma, nhưng không có thông tin cụ thể về \"đồ án file\".",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 8,
+          "query_used": "nói về đồ án file",
+          "evaluation": {
+            "score": 8,
+            "reason": " câu trả lời đã xác định chính xác rằng không tìm thấy thông tin về đồ án file trong tài liệu, đồng thời nêu rõ các dự án được đề cập.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "corag"
+      }
+    ],
+    "file": "Sang_Resume.pdf",
+    "files": [
+      "Sang_Resume.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-17 21:39:16",
+        "upload_timestamp": "2026-04-17T21:39:16.278116",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      }
+    }
+  },
+  {
+    "id": 8,
+    "title": "tên đồ án file",
+    "messages": [
+      {
+        "role": "user",
+        "content": "tên đồ án file"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu về tên cụ thể của các dự án. Tài liệu chỉ đề cập đến một số dự án mà Phạm Nguyễn Thanh Sang đã phát triển, nhưng không đưa ra tên chính thức hoặc tiêu đề cho những dự án này.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "liệt kê đồ án trong file"
+      },
+      {
+        "role": "assistant",
+        "content": "Dựa trên thông tin từ tài liệu, các đồ án được liệt kê như sau:\n\n1. Smart school bus | Python, Flask, React, PostgreSQL, Docker - Từ tháng 6 năm 2020 đến hiện tại\n2. Brick matcher | Python, Flask, React, PostgreSQL, Docker - Từ tháng 6 năm 2020 đến hiện tại\n\nCác đồ án này đều là các ứng dụng web full-stack được phát triển sử dụng Flask làm backend và React làm frontend, cùng với cơ sở dữ liệu PostgreSQL và công nghệ Docker.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Implemented GitHub OAuth to get data from user’s repositories • Visualized GitHub data to show collaboration • Used Celery and Redis for asynchronous tasks Minishop | Python, Flask, React, PostgreSQL, Docker June 2020 – Present • Developed a full-s..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "• Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review • Implemented continuous delivery using TravisCI to build the plugin upon new a release • Collaborated with Minecraft server administrators to suggest features and ..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "Sang_Resume.pdf",
+            "snippet": "Phạm Nguyễn Thanh Sang *Ho Chi Minh City | # phngthanhsang@gmail.com | (cid:239) linkedin.com/in/pham-nguyen-thanh-sang-5998a0362/ | § github.com/Shovul Summary Full-stack developer with experience in using React, Typescript, NextJS along side with e..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "tell me the projects in the resume"
+      },
+      {
+        "role": "assistant",
+        "content": "The resume lists several projects that Phạm Nguyễn Thanh Sang has worked on:\n\n1. Smart school bus - Developed a full-stack web application using Python, Flask for the backend API and React for the frontend.\n2. Brick matcher - Another full-stack project similar to the previous one, also built with Python, Flask, React, PostgreSQL, Docker.\n3. Minishop - A full-stack web application developed with Python, Flask, React, PostgreSQL, Docker.\n4. Simple restaurant website - This is another example of a full-stack web app created using Python, Flask, React, PostgreSQL, Docker.\n\nAll these projects used similar technologies including Flask for the backend API, React for the frontend, PostgreSQL for database management, and Docker for containerization. Additionally, they involved implementing GitHub OAuth to retrieve user data, visualizing this data through collaboration metrics, and utilizing Celery and Redis for handling asynchronous tasks.",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 8,
+          "query_used": "tell me the projects in the resume",
+          "evaluation": {
+            "score": 8,
+            "reason": "The response accurately lists the projects and provides relevant details but could be more concise.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "tell me the resume certificates"
+      },
+      {
+        "role": "assistant",
+        "content": "The resume lists two certificates:\n\n1. IELTS English Certificates\n2. KOHI’s Japanese N5 Certificates\n\nThese are the only certificates mentioned in the provided context.",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 8,
+          "query_used": "tell me the resume certificates",
+          "evaluation": {
+            "score": 8,
+            "reason": "The response is accurate and relevant to the question.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "tên người làm resume"
+      },
+      {
+        "role": "assistant",
+        "content": "Phạm Nguyễn Thanh Sang",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 8,
+          "query_used": "tên người làm resume",
+          "evaluation": {
+            "score": 8,
+            "reason": "Trả lời chính xác về tên người làm resume",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "so sánh doanh thu quý 4 và doanh thu quý 3"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 4 năm 2025 là 680 tỷ VND, tăng trưởng 11% so với tổng doanh thu. Trong khi đó, doanh thu quý 3 năm 2025 đạt 610 tỷ VND, tăng trưởng 17%. Có thể thấy doanh thu quý 3 cao hơn quý 4 về số tiền nhưng tăng trưởng thấp hơn quý 4.",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 3,
+          "confidence": 8,
+          "query_used": "so sánh.doanh thu.quý 4.với.doanh thu.quý 3",
+          "evaluation": {
+            "score": 8,
+            "reason": "Câu trả lời đã chính xác so sánh doanh thu quý 4 và quý 3 dựa trên dữ liệu trong bảng. Tuy nhiên, có một sai lệch nhỏ giữa số tiền doanh thu của quý 4 (680 tỷ VND) và quý 3 (610 tỷ VND), nhưng tăng trưởng của quý 4 thấp hơn quý 3.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": [
+            "Doanh thu quý 4 năm nào được đưa ra so sánh?",
+            "Doanh thu quý 3 năm nào được đưa ra so sánh?"
+          ]
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "doanh thu quý 4 bằng bao nhiêu phần trăm so với cả năm"
+      },
+      {
+        "role": "assistant",
+        "content": "Doanh thu quý 4 năm 2025 là 680 tỷ VND, chiếm khoảng 30.1% tổng doanh thu cả năm (2260 tỷ VND). Cụ thể, 680 ÷ 2260 ≈ 0.301 hoặc khoảng 30.1%.",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 2,
+          "confidence": 9,
+          "query_used": "doanh thu quý 4 chiếm bao nhiêu phần trăm so với toàn năm",
+          "evaluation": {
+            "score": 9,
+            "reason": "Câu trả lời chính xác về doanh thu quý 4 và phần trăm so với tổng doanh thu năm, sử dụng dữ liệu từ ngữ cảnh tài liệu.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": [
+            "Doanh thu quý 4 là bao nhiêu?",
+            "Tổng doanh thu cả năm là bao nhiêu?",
+            "Tỷ lệ doanh thu quý 4 so với cả năm là bao nhiêu phần trăm?"
+          ]
+        },
+        "mode": "corag"
+      }
+    ],
+    "file": "test_docx_table.pdf",
+    "files": [
+      "Sang_Resume.pdf",
+      "test_docx_table.pdf"
+    ],
+    "files_metadata": {
+      "Sang_Resume.pdf": {
+        "upload_date": "2026-04-17 21:41:04",
+        "upload_timestamp": "2026-04-17T21:41:04.807442",
+        "file_type": "pdf",
+        "size_mb": 2.31
+      },
+      "test_docx_table.pdf": {
+        "upload_date": "2026-04-17 21:47:46",
+        "upload_timestamp": "2026-04-17T21:47:46.616242",
+        "file_type": "pdf",
+        "size_mb": 0.1
+      }
+    }
   }
 ]

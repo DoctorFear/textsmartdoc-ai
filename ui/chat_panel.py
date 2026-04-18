@@ -84,8 +84,12 @@ def render_chat_history():
 
                 # Self-RAG Meta (nếu có)
                 if message.get("self_rag_meta"):
-                    with st.expander("Thông tin Self-RAG"):
-                        render_self_rag_meta(message["self_rag_meta"])
+                    if mode == "corag":
+                        with st.expander("Thông tin Self-CORAG"):
+                            render_self_rag_meta(message["self_rag_meta"])
+                    else:
+                        with st.expander("Thông tin Self-RAG"):
+                            render_self_rag_meta(message["self_rag_meta"])
 
                 # Citations cho chế độ đơn
                 if message.get("citations"):

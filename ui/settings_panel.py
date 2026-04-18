@@ -99,18 +99,26 @@ def render_settings_panel() -> dict:
 
         # ================== SELF-RAG (Đặt trước để kiểm soát Retrieval Mode) ==================
         settings["self_rag_method"] = st.selectbox(
-            "Self-RAG Mode",
-            ["Off | Nomal RAG", "On | Self-RAG"],
+            "Self-RAG/Self-CORAG Mode",
+            ["Off", "On | Self-RAG", "On | Self-CORAG"],
             index=0,
         )
 
-        settings["self_rag_enabled"] = (settings["self_rag_method"] == "On | Self-RAG")
+        settings["self_rag_enabled"] = (
+            settings["self_rag_method"] == "On | Self-RAG"
+        )
+        settings["self_corag_enabled"] = (
+            settings["self_rag_method"] == "On | Self-CORAG"
+        )
+        settings["self_mode_enabled"] = (
+            settings["self_rag_enabled"] or settings["self_corag_enabled"]
+        )
 
         # ================== PIPELINE MODE ==================
         if settings["self_rag_enabled"]:
-            # Tự động chuyển về Chỉ RAG khi bật Self-RAG
             settings["pipeline_mode"] = "rag"
-            
+        elif settings["self_corag_enabled"]:
+            settings["pipeline_mode"] = "corag"
 
         else:
             settings["pipeline_mode"] = st.selectbox(
@@ -124,13 +132,8 @@ def render_settings_panel() -> dict:
                 }[x]
             )
 
-            if settings["pipeline_mode"] == "corag":
-                settings["self_corag_enabled"] = st.checkbox("Enable Self-CoRAG", value=False)
-            else:
-                settings["self_corag_enabled"] = False
-
         # ================== RETRIEVAL MODE ==================
-        if settings["self_rag_enabled"]:
+        if settings["self_mode_enabled"]:
             settings["retrieval_mode"] = "hybrid"
         else:
             retrieval_options = ["faiss", "hybrid", "bm25"]
@@ -182,7 +185,7 @@ def render_settings_panel() -> dict:
             settings["faiss_weight"] = FAISS_WEIGHT
 
         # ================== RERANKING ==================
-        if settings["self_rag_enabled"]:
+        if settings["self_mode_enabled"]:
             settings["use_reranker"] = False
             settings["reranking_method"] = "Off (Self-RAG)"
             
@@ -199,11 +202,13 @@ def render_settings_panel() -> dict:
             settings["use_reranker"] = (settings["reranking_method"] == "On | Cross-Encoder")
 
         # ================== Rerun khi thay đổi Self-RAG ==================
-        if "prev_self_rag_state" not in st.session_state:
-            st.session_state.prev_self_rag_state = False
+        current_self_mode = settings["self_rag_method"]
 
-        if settings["self_rag_enabled"] != st.session_state.prev_self_rag_state:
-            st.session_state.prev_self_rag_state = settings["self_rag_enabled"]
+        if "prev_self_mode" not in st.session_state:
+            st.session_state.prev_self_mode = "Off"
+
+        if current_self_mode != st.session_state.prev_self_mode:
+            st.session_state.prev_self_mode = current_self_mode
             st.rerun()
 
         st.divider()
