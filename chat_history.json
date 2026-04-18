@@ -1,188 +1,48 @@
 [
   {
     "id": 0,
-    "title": "cho tôi doanh thu quý 2",
+    "title": "cho tôi doanh thu quý 1",
     "messages": [
       {
         "role": "user",
-        "content": "cho tôi doanh thu quý 2"
+        "content": "cho tôi doanh thu quý 1"
       },
       {
         "role": "assistant",
-        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 3"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 3 năm 2025 là 610 tỷ VND.",
+        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
         "citations": [],
         "self_rag_meta": {
           "attempts": 1,
           "confidence": 9,
-          "query_used": "cho tôi doanh thu quý 3",
+          "query_used": "cho tôi doanh thu quý 1",
           "evaluation": {
             "score": 9,
-            "reason": "Câu trả lời chính xác về doanh thu quý 3 năm 2025 và đơn vị tiền tệ.",
+            "reason": "Câu trả lời chính xác về doanh thu quý 1 năm 2025 và đơn vị tiền tệ",
             "is_sufficient": true
           },
           "multi_hop_steps": null
         },
-        "mode": "rag"
+        "mode": "corag"
       },
       {
         "role": "user",
-        "content": "cho tôi doanh thu quý 3 tăng bao nhiêu phân trăm so với quý 2"
+        "content": "cho tôi doanh thu quý 2"
       },
       {
         "role": "assistant",
-        "content": "Theo bảng thông tin cung cấp, doanh thu quý 3 năm 2025 là 610 tỷ VND, tăng trưởng 17% so với quý trước. Quý 2 năm 2025 có doanh thu là 520 tỷ VND. Do vậy, doanh thu quý 3 tăng 17% so với quý 2.",
+        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
         "citations": [],
         "self_rag_meta": {
-          "attempts": 2,
-          "confidence": 8,
-          "query_used": "cho tôi biết doanh thu quý 3 tăng bao nhiêu phần trăm so với quý 2",
+          "attempts": 1,
+          "confidence": 9,
+          "query_used": "cho tôi doanh thu quý 2",
           "evaluation": {
-            "score": 8,
-            "reason": "Câu trả lời chính xác về mức tăng trưởng doanh thu và cung cấp số liệu cụ thể từ bảng thông tin.",
+            "score": 9,
+            "reason": "Câu trả lời chính xác về doanh thu quý 2 năm 2025 và đơn vị tiền tệ.",
             "is_sufficient": true
           },
-          "multi_hop_steps": [
-            "Doanh thu quý 3 năm nào được đề cập?",
-            "Doanh thu quý 2 năm đó là bao nhiêu?",
-            "Sự tăng trưởng doanh thu từ quý 2 đến quý 3 là bao nhiêu phần trăm?"
-          ]
+          "multi_hop_steps": null
         },
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
-      },
-      {
-        "role": "assistant",
-        "content": "❌ Không thể kết nối đến Ollama. Vui lòng kiểm tra Ollama đang chạy chưa.",
-        "citations": [],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
-      },
-      {
-        "role": "assistant",
-        "mode": "rag+corag",
-        "compare_data": {
-          "rag": {
-            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 1,
-                "file": "test_docx_table.pdf",
-                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-              }
-            ]
-          },
-          "corag": {
-            "response": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 1,
-                "file": "test_docx_table.pdf",
-                "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-              }
-            ]
-          }
-        },
-        "content": null,
-        "citations": null,
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 2"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 2 năm 2025 là 520 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 1"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "cho tôi doanh thu quý 1"
-      },
-      {
-        "role": "assistant",
-        "content": "Doanh thu quý 1 năm 2025 là 450 tỷ VND.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 1,
-            "file": "test_docx_table.pdf",
-            "snippet": "Giới thiệu về doanh thu công ty năm 2025. Bảng 1: Doanh thu theo quý Quý Doanh thu (tỷ VND) Tăng trưởng Q1 2025 450 12% Q2 2025 520 15% Q3 2025 610 17% Q4 2025 680 11% Tổng 2260 -..."
-          }
-        ],
-        "self_rag_meta": null,
         "mode": "rag"
       },
       {
