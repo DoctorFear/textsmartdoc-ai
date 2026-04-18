@@ -81,7 +81,7 @@
     "messages": [],
     "file": "Sang_Resume.pdf",
     "files": [
-      "Sang_Resume.pdf"
+      "tmp29ggeyml.docx"
     ],
     "files_metadata": {
       "Sang_Resume.pdf": {
@@ -371,9 +371,7 @@
       }
     ],
     "file": "Sang_Resume.pdf",
-    "files": [
-      "Sang_Resume.pdf"
-    ],
+    "files": [],
     "files_metadata": {
       "Sang_Resume.pdf": {
         "upload_date": "2026-04-17 20:24:10",
@@ -935,6 +933,287 @@
         "upload_timestamp": "2026-04-18T14:25:12.066216",
         "file_type": "pdf",
         "size_mb": 0.24
+      }
+    }
+  },
+  {
+    "id": 13,
+    "title": "Test Language",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ai là chủ nhân của file này?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nguyễn Trường Mai Phương là chủ nhân của file này. Thông tin này có thể được suy ra từ thông tin trong tài liệu, nơi liệt kê các dự án và kỹ năng cùng thông tin liên hệ của Nguyễn Trường Mai Phương.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Ai là người làm file này?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nguyễn Trường Mai Phương là người làm file này. Cô ấy đã phát triển ứng dụng Locket Private và liệt kê nó trong các dự án của mình.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Who is the owner of this file?"
+      },
+      {
+        "role": "assistant",
+        "content": "The owner of this file is NGUYEN TRUONG MAI PHUONG (My Phedra).",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "이 파일의 소유자는 누구입니까?"
+      },
+      {
+        "role": "assistant",
+        "content": "이 파일의 소유자는 NGUYEN TRUONG MAI PHUONG (My Phedra)입니다.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "このファイルの所有者は誰ですか？"
+      },
+      {
+        "role": "assistant",
+        "content": "このファイルの所有者はNGUYEN TRUONG MAI PHUONGです。彼女のGitHubポートフォリオには、このファイルに関連するプロジェクトがリストされています。",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "该文件的所有者是谁？"
+      },
+      {
+        "role": "assistant",
+        "content": "根据文档内容，没有明确指出该文件的所有者是谁。文档主要描述了Nguyen Truong Mai Phuong的教育背景、项目经验和技能等信息，但并未提及文件所有权的信息。因此，无法从给定的信息中得出文件所有者的具体身份。",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "tell me her projects"
+      },
+      {
+        "role": "assistant",
+        "content": "Her projects include:\n\n1. Phone Store Management Website: Developed a web application with two user roles using HTML, CSS, JavaScript, and MySQL.\n2. Karaoke Business Management Website: Built a management system with three user roles using Java Swing and MySQL.\n3. Bus Route Management Website: Developed a system with three user roles using Next.js, Node.js, MySQL, and Google Maps API.\n4. Snake Game: Created a simple snake game implemented using Python and Pygame.\n5. Locket Private Mobile Application: Designed an app to capture and store private memories in a hidden folder with yearly reminders, implemented using Java and XML.\n6. E-commerce Website Testing Application: Developed a testing application for an online shopping platform using React, Java Spring Boot, JUnit5, and MockTest.\n7. Library Management System: Created a management system with three user roles implemented using C# WinForms (.NET) and MySQL.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "Đường link Github của cô ấy là gì?"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu về đường link GitHub của cô ấy. CONTEXT chỉ đề cập đến Facebook Portfolio và GitHub Portfolio nhưng không cung cấp cụ thể địa chỉ liên kết.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "corag"
+      },
+      {
+        "role": "user",
+        "content": "이 파일의 소유자는 누구입니까?"
+      },
+      {
+        "role": "assistant",
+        "content": "이 파일의 소유자는 Nguyễn Trường Mai Phương입니다.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "이 파일의 소유자는 누구입니까?"
+      },
+      {
+        "role": "assistant",
+        "content": "파일의 소유자는 Nguyễn Trường Mai Phương입니다. 그는 GitHub Portfolio를 통해 자신의 프로젝트와 경력을 공개하고 있습니다.",
+        "citations": [],
+        "self_rag_meta": {
+          "attempts": 3,
+          "confidence": 7,
+          "query_used": "이 파일의 소유자는 누구입니까?",
+          "evaluation": {
+            "score": 7,
+            "reason": "답변이 정확하지만, 문법과 표현 방식이 한국어에 맞춰져 있지 않습니다.",
+            "is_sufficient": false
+          },
+          "multi_hop_steps": [
+            "이 파일은 누구에 의해 생성되었습니다か？"
+          ]
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tell me tất cả dự án của cô ấy"
+      },
+      {
+        "role": "assistant",
+        "content": "Nguyễn Trường Mai Phương đã thực hiện một số dự án sau:\n\n1. Phone Store Management Website\n2. Karaoke Business Management Website\n3. Bus Route Management Website\n4. Snake Game\n5. Mobile Application: Locket Private\n6. E-commerce Website Testing Application\n7. Library Management System\n\nTất cả các dự án này đều được mô tả chi tiết trên trang GitHub của cô ấy.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "NGUYEN TRUONG MAI PHUONG (My Phedra) Contact Email | Contact Phone | Facebook Portfolio | GitHub Portfolio Education Saigon University Ho Chi Minh City, Vietnam Bachelor of Engineering in Information Technology; GPA: Excellent Expected Graduation: 03..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "ossd_phedra.pdf",
+            "snippet": "• Designed an app to capture and store private memories in a hidden folder, with yearly reminders. • Enabled backup to Google Drive. • Implemented using Java and XML. E-commerce Website Testing Application • Developed a testing application for an onl..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "ossd_phedra.pdf",
+    "files": [
+      "ossd_phedra.pdf"
+    ],
+    "files_metadata": {
+      "ossd_phedra.pdf": {
+        "upload_date": "2026-04-18 08:07:12",
+        "upload_timestamp": "2026-04-18T08:07:12.050819",
+        "file_type": "pdf",
+        "size_mb": 0.09
       }
     }
   }
