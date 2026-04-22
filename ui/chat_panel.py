@@ -245,21 +245,21 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             logger.info("[Self-RAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
                             response = result["answer"]
 
-                        self_rag_meta = {
-                            "attempts": result["attempts"],
-                            "confidence": result["confidence"],
-                            "query_used": result["query_used"],
-                            "evaluation": result["evaluation"],
-                            "multi_hop_steps": result.get("multi_hop_steps")
-                        }
-                        retrieved_docs = retriever.invoke(query_for_retrieval)
-                        response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
-                            "context": format_docs(retrieved_docs),
-                            "question": prompt,
-                            "language_instruction": get_language_instruction(prompt)
-                        }).strip()
+                            self_rag_meta = {
+                                "attempts": result["attempts"],
+                                "confidence": result["confidence"],
+                                "query_used": result["query_used"],
+                                "evaluation": result["evaluation"],
+                                "multi_hop_steps": result.get("multi_hop_steps")
+                            }
+                            retrieved_docs = retriever.invoke(query_for_retrieval)
+                            response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
+                                "context": format_docs(retrieved_docs),
+                                "question": prompt,
+                                "language_instruction": get_language_instruction(prompt)
+                            }).strip()
 
-                        citations = build_citations(retrieved_docs)
+                            citations = build_citations(retrieved_docs)
 
                         else:
                             status.update(label="📚 Đang truy xuất tài liệu...", state="running")
@@ -310,24 +310,30 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             result = self_corag_query(prompt, retriever, max_retries=2)
                             response = result["answer"]
 
-                        self_rag_meta = {
-                            "attempts": result["attempts"],
-                            "confidence": result["confidence"],
-                            "query_used": result["query_used"],
-                            "evaluation": result["evaluation"],
-                            "multi_hop_steps": result.get("multi_hop_steps")
-                        }
-                        retrieved_docs = retriever.invoke(query_for_retrieval)
-                        response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
-                            "context": format_docs(retrieved_docs),
-                            "question": prompt,
-                            "language_instruction": get_language_instruction(prompt)
-                        }).strip()
+                            self_rag_meta = {
+                                "attempts": result["attempts"],
+                                "confidence": result["confidence"],
+                                "query_used": result["query_used"],
+                                "evaluation": result["evaluation"],
+                                "multi_hop_steps": result.get("multi_hop_steps")
+                            }
+                            retrieved_docs = retriever.invoke(query_for_retrieval)
+                            response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
+                                "context": format_docs(retrieved_docs),
+                                "question": prompt,
+                                "language_instruction": get_language_instruction(prompt)
+                            }).strip()
 
-                        citations = build_citations(retrieved_docs)
+                            citations = build_citations(retrieved_docs)
 
                         else:
                             status.update(label="📚 Đang truy xuất tài liệu...", state="running")
+                            query_for_retrieval = rewrite_with_history(
+                                prompt,
+                                st.session_state.messages
+                            )
+
+                            logger.info(f"[Self-CoRAG] Rewritten query: {query_for_retrieval}")
                             
                             bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
                             faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
@@ -339,7 +345,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             
                             status.update(label="🧠 Đang sinh câu trả lời (CoRAG)...", state="running")
                             logger.info(f"[Normal CORAG] On | Cross-Encoder Reranking")
-                            result = corag_pipeline(prompt, retriever, top_k=top_k)
+                            result = corag_pipeline(query_for_retrieval, retriever, top_k=top_k)
                             response = result["answer"]
                             citations = build_citations(result["docs"])
                             self_rag_meta = None
@@ -381,6 +387,8 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                 })
                 st.session_state.should_scroll = True
                 save_current_session_fn()
+                
+                logger.info(f"Completed!")
                 
                 st.rerun()
         

@@ -1,13 +1,20 @@
 #Cross-encoder rerank → 8.2.9
 from sentence_transformers import CrossEncoder
 
-# good balance model
-model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+model = CrossEncoder(
+    "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    device="cpu"
+)
 
 def rerank(query, docs, top_k=3):
+    docs = docs[:15]
     pairs = [(query, doc.page_content) for doc in docs]
 
-    scores = model.predict(pairs)
+    scores = model.predict(
+        pairs,
+        batch_size=16,
+        show_progress_bar=False
+    )
 
     ranked = sorted(
         zip(docs, scores),
