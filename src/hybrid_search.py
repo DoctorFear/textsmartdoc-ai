@@ -1,5 +1,4 @@
-# BM25 + vector ensemble retriever → 8.2.7# src/hybrid_search.py
-# ── Hybrid Search: kết hợp BM25 (keyword) + FAISS (semantic) (8.2.7) ─────────
+# src/hybrid_search.py
 from langchain_community.retrievers import BM25Retriever
 from langchain.retrievers import EnsembleRetriever
 from langchain_community.vectorstores import FAISS
@@ -10,20 +9,11 @@ logger = setup_logger()
 
 
 def build_bm25_retriever(all_docs: list, k: int) -> BM25Retriever:
-    """
-    Tạo BM25Retriever từ toàn bộ documents trong vectorstore.
-    Được cache ở tầng UI (session_state) để tránh tạo lại mỗi lần query.
-
-    Args:
-        all_docs: list Document lấy từ vectorstore.docstore._dict.values()
-        k:        số kết quả trả về
-    Returns:
-        BM25Retriever đã cấu hình
-    """
     logger.info(f"Đang tạo index BM25 từ {len(all_docs)} docs (k={k})...")
     retriever = BM25Retriever.from_documents(all_docs)
     retriever.k = k
     return retriever
+
 
 def build_ensemble_retriever(
     bm25_retriever: BM25Retriever,
@@ -31,10 +21,6 @@ def build_ensemble_retriever(
     bm25_weight: float = BM25_WEIGHT,
     faiss_weight: float = FAISS_WEIGHT,
 ) -> EnsembleRetriever:
-    """
-    Kết hợp BM25 và FAISS thành EnsembleRetriever với trọng số động.
-    """
-    # Đảm bảo tổng trọng số = 1.0
     total = bm25_weight + faiss_weight
     if total == 0:
         bm25_weight = 0.3
@@ -59,57 +45,65 @@ def get_retriever(
     retriever_kwargs: dict,
     top_k: int,
     bm25_cache: dict,
+    bm25_weight: float = None,      # ← Thêm tham số này
+    faiss_weight: float = None,
 ) -> tuple:
     """
-    Hàm chính: trả về retriever phù hợp theo retrieval_mode.
-    Tự động cache BM25 index vào bm25_cache để tránh build lại.
-
-    Args:
-        vectorstore:     FAISS vectorstore hiện tại
-        all_docs:        list Document từ docstore
-        retrieval_mode:  "faiss" | "bm25" | "hybrid"
-        search_type:     "similarity" | "mmr"
-        retriever_kwargs: dict search_kwargs truyền vào FAISS retriever
-        top_k:           số kết quả
-        bm25_cache:      dict dùng làm cache, thường là st.session_state
-                         (phải có key "bm25_retriever" và "bm25_doc_count")
-    Returns:
-        (retriever, bm25_cache) — trả lại cache đã cập nhật
+    Trả về retriever hỗ trợ filter theo source (file chỉ định)
     """
+    metadata_filter = retriever_kwargs.get("filter")   # {"source": "tên_file.pdf"}
+
+    # === 1. FAISS Retriever (hỗ trợ filter tốt) ===
+    faiss_search_kwargs = dict(retriever_kwargs)
+    if metadata_filter:
+        faiss_search_kwargs["filter"] = metadata_filter
+
     faiss_retriever = vectorstore.as_retriever(
         search_type=search_type,
-        search_kwargs=retriever_kwargs
+        search_kwargs=faiss_search_kwargs
     )
 
-    current_doc_count = len(all_docs)
-
-    # Tạo / cập nhật BM25 nếu cần
-    if (
-        "bm25_retriever" not in bm25_cache
-        or bm25_cache.get("bm25_doc_count") != current_doc_count
-    ):
-        bm25_cache["bm25_retriever"] = build_bm25_retriever(all_docs, top_k)
-        bm25_cache["bm25_doc_count"] = current_doc_count
+    # === 2. BM25 Retriever - BUỘC LỌC THEO FILE KHI CÓ FILTER ===
+    if metadata_filter and "source" in metadata_filter:
+        source_name = metadata_filter["source"]
+        filtered_docs = [doc for doc in all_docs if doc.metadata.get("source") == source_name]
+        
+        logger.info(f"BM25: Lọc theo file '{source_name}' | Số docs: {len(filtered_docs)}")
+        
+        if filtered_docs:
+            bm25_retriever = BM25Retriever.from_documents(filtered_docs)
+            bm25_retriever.k = top_k
+        else:
+            logger.warning(f"Không tìm thấy docs cho file {source_name}, fallback toàn bộ")
+            bm25_retriever = build_bm25_retriever(all_docs, top_k)
     else:
-        bm25_cache["bm25_retriever"].k = top_k
+        # Không có filter → dùng cache
+        current_doc_count = len(all_docs)
+        if ("bm25_retriever" not in bm25_cache or 
+            bm25_cache.get("bm25_doc_count") != current_doc_count):
+            bm25_retriever = build_bm25_retriever(all_docs, top_k)
+            bm25_cache["bm25_retriever"] = bm25_retriever
+            bm25_cache["bm25_doc_count"] = current_doc_count
+        else:
+            bm25_retriever = bm25_cache["bm25_retriever"]
+            bm25_retriever.k = top_k
 
-    bm25_retriever = bm25_cache["bm25_retriever"]
-
-    if search_type == "mmr":
-        lambda_val = retriever_kwargs.get("lambda_mult", "N/A")
-        fetch_val = retriever_kwargs.get("fetch_k", "N/A")
-        mmr_info = f" | fetch_k={fetch_val} | lambda_mult={lambda_val}"
-    else:
-        mmr_info = ""
-
+    # === 3. Chọn retriever theo mode ===
     if retrieval_mode == "faiss":
         retriever = faiss_retriever
-        logger.info(f"Retrieval mode: FAISS | search_type={search_type} | top_k={top_k}{mmr_info} ")
+        logger.info(f"Retrieval: FAISS | Filter: {metadata_filter}")
+
     elif retrieval_mode == "bm25":
         retriever = bm25_retriever
-        logger.info(f"Retrieval mode: BM25 |search_type={search_type} | top_k={top_k}{mmr_info} ")
-    else:  # hybrid (default)
-        retriever = build_ensemble_retriever(bm25_retriever, faiss_retriever)
-        logger.info(f"Retrieval mode: Hybrid | search_type={search_type} | top_k={top_k}{mmr_info} |  (weights will be applied dynamically)")
+        logger.info(f"Retrieval: BM25 | Filter: {metadata_filter}")
+
+    else:  # hybrid
+        retriever = build_ensemble_retriever(
+            bm25_retriever, 
+            faiss_retriever,
+            bm25_weight=bm25_weight or BM25_WEIGHT,   # Sửa ở đây
+            faiss_weight=faiss_weight or FAISS_WEIGHT
+        )
+        logger.info(f"Retrieval: HYBRID | Filter theo file: {metadata_filter}")
 
     return retriever, bm25_cache

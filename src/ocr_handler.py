@@ -1,176 +1,146 @@
 import os
 import gc
+import time
 import torch
+import tempfile  # Phải import ở đây
 import numpy as np
-from typing import List
 import concurrent.futures
+from typing import List
 from tqdm import tqdm
 
 from pdf2image import convert_from_path
 from PIL import Image
-
-from langchain.schema import Document as LangChainDocument
 from PyPDF2 import PdfReader
+from langchain.schema import Document as LangChainDocument
 
+# Giả định setup_logger đã có sẵn
 from src.logger import setup_logger
 
-
 class OCRConfig:
-    """Cấu hình OCR chung"""
     CONFIDENCE_THRESHOLD = 0.3
-    DPI = 220
+    DPI = 220 # 200 là "điểm ngọt" giữa tốc độ và độ chính xác OCR
     LANGUAGES = ['vi', 'en']
     USE_GPU = False
 
-
 class OCRHandler:
-    """
-    OCR cho PDF
-    (DOCX đã được convert sang PDF từ loader)
-    """
-
-    def __init__(
-        self,
-        languages=None,
-        use_gpu=None,
-        dpi=None,
-        batch_size=8,
-        confidence_threshold=0.3
-    ):
+    def __init__(self, languages=None, use_gpu=None, dpi=None, batch_size=8, confidence_threshold=0.3):
         self.logger = setup_logger("smartdoc")
-
         self.languages = languages or OCRConfig.LANGUAGES
         self.use_gpu = use_gpu if use_gpu is not None else OCRConfig.USE_GPU
-
-        # 🔥 Clamp để tránh user phá system
         self.dpi = min(max(dpi or OCRConfig.DPI, 100), 400)
         self.batch_size = min(max(batch_size, 1), 32)
         self.confidence_threshold = min(max(confidence_threshold, 0.0), 1.0)
-
         self.reader = self._init_reader()
-
-        # 🔥 Log config
-        self.logger.info(
-            f"OCR Config | DPI={self.dpi} | batch={self.batch_size} | conf={self.confidence_threshold}"
-        )
 
     def _init_reader(self):
         try:
             import easyocr
-
             if self.use_gpu and not torch.cuda.is_available():
                 self.logger.warning("GPU không khả dụng → chuyển sang CPU")
                 self.use_gpu = False
-
-            reader = easyocr.Reader(self.languages, gpu=self.use_gpu, verbose=False)
-            self.logger.info(f"✓ EasyOCR khởi tạo trên {'GPU' if self.use_gpu else 'CPU'}")
-            return reader
-
+            return easyocr.Reader(self.languages, gpu=self.use_gpu, verbose=False)
         except Exception as e:
-            self.logger.error(f"❌ Khởi tạo EasyOCR thất bại: {e}")
+            self.logger.error(f"Khởi tạo EasyOCR thất bại: {e}")
             raise
 
     def ocr_image(self, image: Image.Image) -> str:
-        """OCR một ảnh PIL"""
         try:
-            results = self.reader.readtext(
-                np.array(image),
-                batch_size=self.batch_size   # 🔥 dùng config
-            )
-
-            lines = [
-                r[1] for r in results
-                if r[2] >= self.confidence_threshold   # 🔥 dùng config
-            ]
-
+            results = self.reader.readtext(np.array(image), batch_size=self.batch_size)
+            lines = [r[1] for r in results if r[2] >= self.confidence_threshold]
             return "\n".join(lines)
-
         except Exception as e:
             self.logger.error(f"Lỗi OCR ảnh: {e}")
             return ""
-
         finally:
             if self.use_gpu:
                 torch.cuda.empty_cache()
 
-    # ====================== PDF ======================
-    def process_pdf_to_docs(self, pdf_path: str) -> List[LangChainDocument]:
-        """
-        OCR toàn bộ PDF:
-        - Convert toàn bộ PDF → images 1 lần
-        - OCR từng trang
-        """
 
+    def _process_single_page(self, page_idx: int, img: Image.Image, filename: str):
+        # Log ở cấp độ luồng nhỏ (Optional - có thể bỏ nếu quá rác log)
+        self.logger.debug(f"Đang OCR trang {page_idx}...") 
+        try:
+            image_rgb = img.convert("RGB")
+            text = self.ocr_image(image_rgb)
+            if text.strip():
+                return LangChainDocument(
+                    page_content=text,
+                    metadata={"page": page_idx, "source": filename}
+                )
+        except Exception as e:
+            self.logger.error(f"Lỗi tại trang {page_idx}: {e}")
+        return None
+
+    def process_pdf_to_docs(self, pdf_path: str) -> List[LangChainDocument]:
         poppler_path = r"D:\textsmartdoc-ai\poppler-bin\poppler-24.08.0\Library\bin"
         filename = os.path.basename(pdf_path)
-
+        
         try:
             total_pages = len(PdfReader(pdf_path).pages)
         except Exception as e:
             self.logger.error(f"Không đọc được PDF: {e}")
             return []
 
-        self.logger.info(f"🚀 OCR PDF: {filename} ({total_pages} trang)")
+        self.logger.info(f"BẮT ĐẦU XỬ LÝ: {filename} | Tổng: {total_pages} trang")
+        
+        all_docs = []
+        pdf_batch_size = 10 
+        ocr_workers = 1 if self.use_gpu else min(4, os.cpu_count())
 
-        # ================= CONVERT PDF → IMAGES =================
-        try:
-            images = convert_from_path(
-                pdf_path,
-                dpi=self.dpi,   # 🔥 dùng config
-                poppler_path=poppler_path
-            )
-        except Exception as e:
-            self.logger.error(f"❌ Lỗi convert PDF → images: {e}")
-            return []
+        with tempfile.TemporaryDirectory() as temp_dir:
+            for start in range(1, total_pages + 1, pdf_batch_size):
+                end = min(start + pdf_batch_size - 1, total_pages)
+                
+                # --- TẦNG 3: LOG TIẾN TRÌNH CHUNG (BATCHING) ---
+                self.logger.info(f"[BATCH] Đang xử lý cụm trang: {start} -> {end}")
+                batch_start_time = time.time()
 
-        docs = []
-
-        # ================= OCR =================
-        def process_page(idx_img):
-            idx, img = idx_img
-            try:
-                image = img.convert("RGB")
-                text = self.ocr_image(image)
-
-                if text.strip():
-                    return LangChainDocument(
-                        page_content=text,
-                        metadata={
-                            "page": idx + 1,
-                            "source": filename,
-                            "extraction_method": "ocr"
-                        }
-                    )
-                else:
-                    self.logger.warning(f"Trang {idx+1}: Không nhận diện được chữ")
-                    return None
-
-            except Exception as e:
-                self.logger.error(f"Lỗi OCR trang {idx+1}: {e}")
-                return None
-
-            finally:
+                # --- TẦNG 1: LOG ĐA LUỒNG RENDER (POPPLER) ---
+                self.logger.info(f"[P2I] Đang render PDF sang ảnh (thread_count=4)...")
+                t1_start = time.time()
                 try:
+                    batch_images = convert_from_path(
+                        pdf_path,
+                        dpi=self.dpi,
+                        first_page=start,
+                        last_page=end,
+                        fmt="jpeg",
+                        thread_count=4, 
+                        use_pdftocairo=True,
+                        poppler_path=poppler_path
+                    )
+                    self.logger.info(f"[P2I] Render xong {len(batch_images)} trang trong {time.time()-t1_start:.2f}s")
+                except Exception as e:
+                    self.logger.error(f"[P2I] Lỗi: {e}")
+                    continue
+
+                # --- TẦNG 2: LOG ĐA LUỒNG OCR (PYTHON THREADS) ---
+                self.logger.info(f"[OCR] Đang chạy OCR đa luồng ({ocr_workers} workers)...")
+                t2_start = time.time()
+                
+                with concurrent.futures.ThreadPoolExecutor(max_workers=ocr_workers) as executor:
+                    page_indices = list(range(start, end + 1))
+                    results = list(executor.map(
+                        self._process_single_page, 
+                        page_indices, 
+                        batch_images,
+                        [filename] * len(batch_images)
+                    ))
+                
+                valid_batch_docs = [d for d in results if d is not None]
+                all_docs.extend(valid_batch_docs)
+                self.logger.info(f"[OCR] OCR xong cụm trang trong {time.time()-t2_start:.2f}s")
+
+                # --- GIẢI PHÓNG BỘ NHỚ ---
+                for img in batch_images:
                     img.close()
-                except:
-                    pass
+                del batch_images
+                gc.collect()
+                if self.use_gpu:
+                    torch.cuda.empty_cache()
+                
+                self.logger.info(f"[BATCH] Hoàn tất cụm {start}-{end} sau {time.time()-batch_start_time:.2f}s. Tổng tích lũy: {len(all_docs)} trang.")
 
-        # ================= MULTI THREAD =================
-        with concurrent.futures.ThreadPoolExecutor(
-            max_workers=1 if self.use_gpu else min(6, os.cpu_count())
-        ) as executor:
+        self.logger.info(f"MODULE OCR DONE: Đã trích xuất {len(all_docs)}/{total_pages} trang.")
+        return all_docs
 
-            results = list(tqdm(
-                executor.map(process_page, enumerate(images)),
-                total=len(images),
-                desc="OCR PDF Pages"
-            ))
-
-        docs = [doc for doc in results if doc is not None]
-
-        # ================= CLEAN MEMORY =================
-        del images
-        gc.collect()
-
-        self.logger.info(f"✅ OCR xong: {len(docs)}/{total_pages} trang")
-        return docs

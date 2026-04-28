@@ -101,7 +101,7 @@ Bạn là trợ lý thông minh, trả lời CHÍNH XÁC dựa trên tài liệu
 QUY TẮC:
 1. CHỈ dùng thông tin trong TÀI LIỆU (CONTEXT). Không bịa thêm, không suy luận ngoài.
 2. Nếu TÀI LIỆU có thông tin liên quan (dù chỉ một phần nhỏ), BẮT BUỘC phải trả lời dựa trên đó.
-3. Chỉ được nói "Không tìm thấy thông tin trong tài liệu" khi TÀI LIỆU hoàn toàn KHÔNG có bất kỳ thông tin nào liên quan đến câu hỏi.
+3. Chỉ được nói "Không tìm thấy thông tin trong tài liệu" khi TẤT CẢ TÀI LIỆU hoàn toàn KHÔNG có bất kỳ thông tin nào liên quan đến câu hỏi.
 4. Trả lời ngắn gọn, rõ ràng, tự nhiên (3-6 câu).
 
 {language_instruction}
@@ -283,13 +283,3 @@ def self_rag_query(question: str, retriever, max_retries: int = 2) -> dict:
 
     return last_result
 
-# --- Chạy trực tiếp ---
-if __name__ == "__main__":
-    chunks = load_and_split("data/VoNhat.pdf")
-    vs = create_vectorstore(chunks, embedder)
-    query = "Tóm tắt nội dung chính của tài liệu?"
-    lang = detect_language(query)
-    docs = vs.similarity_search(query, k=3)
-    answer = rag_chain.invoke({"context": format_docs(docs), "question": query, "language_instruction": get_language_instruction(lang)})
-    print("Q:", query)
-    print("A:", answer)

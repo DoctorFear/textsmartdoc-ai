@@ -39,12 +39,12 @@ def load_and_split(
     chunk_overlap=100, 
     ocr_enabled=False
 ):
-    """
+    """ 
     Load và split tài liệu từ PDF hoặc DOCX.
     """
     
-    ext = os.path.splitext(file_path)[1].lower()
-    source_name = display_name or os.path.basename(file_path)
+    ext = os.path.splitext(file_path)[1].lower() # ext = ".pdf" // doc
+    source_name = display_name or os.path.basename(file_path) # source_name = "Báo cáo tài chính" // abc.doc
 
 
     docs = []

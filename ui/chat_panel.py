@@ -160,15 +160,22 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                 # Filter theo tài liệu
                 source_filter = None
                 if "source_filter_select" in st.session_state:
-                    selected = st.session_state.source_filter_select
-                    if selected != "Tất cả tài liệu":
+                    selected = st.session_state.get("source_filter_select")
+                    if selected and selected != "Tất cả tài liệu":
                         source_filter = selected
-                logger.info(f"Tìm kiếm trong tài liệu:{source_filter if source_filter else "Tất cả tài liệu"}")
-                retriever_kwargs = {"k": top_k, "fetch_k": fetch_k}
-                if source_filter:
-                    retriever_kwargs["filter"] = {"source": source_filter}
+                        logger.info(f"🔍 Áp dụng filter theo file: {source_filter}")
+                    else:
+                        logger.info("🔍 Tìm kiếm trong TẤT CẢ tài liệu (không filter source)")
+
+                retriever_kwargs = {
+                    "k": top_k, 
+                    "fetch_k": fetch_k
+                }
                 if search_type == "mmr":
                     retriever_kwargs["lambda_mult"] = lambda_mult
+
+                if source_filter and source_filter != "Tất cả tài liệu":
+                    retriever_kwargs["filter"] = {"source": source_filter}
 
                 all_docs = list(st.session_state.vectorstore.docstore._dict.values())
 
@@ -236,7 +243,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
 
                             retriever, st.session_state = _update_bm25_cache(
-                                st.session_state, all_docs, top_k, "hybrid", search_type,
+                                st.session_state, all_docs, top_k, retrieval_mode, search_type,
                                 retriever_kwargs, bm25_weight, faiss_weight
                             )
 
@@ -276,6 +283,9 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             logger.info(f"[Normal RAG] Đang chạy Bi-encoder (Stage 1)")
                             retrieved_docs = retriever.invoke(query_for_retrieval)
 
+                            if len(retrieved_docs) > top_k:
+                                retrieved_docs = retrieved_docs[:top_k]
+
                             if settings.get("use_reranker", False):
                                 logger.info(f"[Normal RAG] On | Cross-Encoder Reranking")
                                 retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
@@ -289,7 +299,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                                 "language_instruction": get_language_instruction(prompt)
                             }).strip()
 
-                            citations = build_citations(retrieved_docs)
+                            citations = build_citations(retrieved_docs[:top_k])
                             self_rag_meta = None
 
                     elif pipeline_mode == "corag":
@@ -393,16 +403,16 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                 st.rerun()
         
 
-# ── Internal helper (giữ nguyên) ─────────────────────────────────────────────
+# ── Internal helper ─────────────────────
 def _update_bm25_cache(session_state, all_docs, top_k, retrieval_mode,
                        search_type, retriever_kwargs,
                        bm25_weight=None, faiss_weight=None):
+    """Hỗ trợ filter theo file cho tất cả chế độ FAISS/BM25/Hybrid"""
+    
     bm25_cache = {
         "bm25_retriever": session_state.get("bm25_retriever"),
         "bm25_doc_count": session_state.get("bm25_doc_count"),
     }
-
-    source_filter = retriever_kwargs.get("filter", {}).get("source")
 
     retriever, bm25_cache = get_retriever(
         vectorstore=session_state.vectorstore,
@@ -414,17 +424,8 @@ def _update_bm25_cache(session_state, all_docs, top_k, retrieval_mode,
         bm25_cache=bm25_cache,
     )
 
-    if retrieval_mode == "hybrid" and bm25_weight is not None and faiss_weight is not None:
-        faiss_retriever = session_state.vectorstore.as_retriever(
-            search_type=search_type, search_kwargs=retriever_kwargs
-        )
-        from src.hybrid_search import build_ensemble_retriever
-        retriever = build_ensemble_retriever(
-            bm25_cache["bm25_retriever"], faiss_retriever, bm25_weight, faiss_weight
-        )
-        logger.info(f"Hybrid weights applied: BM25={bm25_weight:.2f}, FAISS={faiss_weight:.2f}")
-
-    session_state["bm25_retriever"] = bm25_cache["bm25_retriever"]
-    session_state["bm25_doc_count"] = bm25_cache["bm25_doc_count"]
+    # Cập nhật cache
+    session_state["bm25_retriever"] = bm25_cache.get("bm25_retriever")
+    session_state["bm25_doc_count"] = bm25_cache.get("bm25_doc_count")
 
     return retriever, session_state
