@@ -236,6 +236,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                 else:
                     if pipeline_mode == "rag":
                         if self_rag_enabled:
+                            # ================== SELF-RAG ==================
                             status.update(label="📚 Đang truy xuất tài liệu (Self-RAG)...", state="running")
                             
                             query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
@@ -249,7 +250,7 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
 
                             status.update(label="🧠 Đang sinh câu trả lời (Self-RAG)...", state="running")
                             result = self_rag_query(prompt, retriever, max_retries=2)
-                            logger.info("[Self-RAG] Bắt đầu tiến trình tự đánh giá và sinh câu trả lời")
+                            
                             response = result["answer"]
 
                             self_rag_meta = {
@@ -259,16 +260,12 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                                 "evaluation": result["evaluation"],
                                 "multi_hop_steps": result.get("multi_hop_steps")
                             }
-                            retrieved_docs = retriever.invoke(query_for_retrieval)
-                            response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
-                                "context": format_docs(retrieved_docs),
-                                "question": prompt,
-                                "language_instruction": get_language_instruction(prompt)
-                            }).strip()
 
-                            citations = build_citations(retrieved_docs)
+                            # Self-RAG: Không cắt context sinh câu trả lời, chỉ cắt Citations
+                            citations = build_citations(result.get("docs", [])[:top_k])
 
                         else:
+                            # ================== NORMAL RAG ==================
                             status.update(label="📚 Đang truy xuất tài liệu...", state="running")
                             
                             query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
@@ -283,14 +280,15 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             logger.info(f"[Normal RAG] Đang chạy Bi-encoder (Stage 1)")
                             retrieved_docs = retriever.invoke(query_for_retrieval)
 
-                            if len(retrieved_docs) > top_k:
-                                retrieved_docs = retrieved_docs[:top_k]
-
                             if settings.get("use_reranker", False):
                                 logger.info(f"[Normal RAG] On | Cross-Encoder Reranking")
                                 retrieved_docs = rerank(query_for_retrieval, retrieved_docs, top_k=top_k)
                             else:
                                 logger.info(f"[Normal RAG] Off | Bi-encoder only")
+
+                            # Normal RAG: Cắt cả context sinh câu trả lời và Citations
+                            if len(retrieved_docs) > top_k:
+                                retrieved_docs = retrieved_docs[:top_k]
 
                             status.update(label="🧠 Đang sinh câu trả lời...", state="running")
                             response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
@@ -299,11 +297,12 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                                 "language_instruction": get_language_instruction(prompt)
                             }).strip()
 
-                            citations = build_citations(retrieved_docs[:top_k])
+                            citations = build_citations(retrieved_docs)
                             self_rag_meta = None
 
                     elif pipeline_mode == "corag":
                         if self_corag_enabled:
+                            # ================== SELF-CORAG ==================
                             status.update(label="📚 Đang truy xuất tài liệu (Self-CoRAG)...", state="running")
                             
                             query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
@@ -327,23 +326,16 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                                 "evaluation": result["evaluation"],
                                 "multi_hop_steps": result.get("multi_hop_steps")
                             }
-                            retrieved_docs = retriever.invoke(query_for_retrieval)
-                            response = "Không tìm thấy thông tin liên quan trong tài liệu." if not retrieved_docs else rag_chain.invoke({
-                                "context": format_docs(retrieved_docs),
-                                "question": prompt,
-                                "language_instruction": get_language_instruction(prompt)
-                            }).strip()
 
-                            citations = build_citations(retrieved_docs)
+                            # Self-CoRAG: Không cắt context, chỉ cắt Citations
+                            citations = build_citations(result.get("docs", [])[:top_k])
 
                         else:
+                            # ================== NORMAL CORAG ==================
                             status.update(label="📚 Đang truy xuất tài liệu...", state="running")
-                            query_for_retrieval = rewrite_with_history(
-                                prompt,
-                                st.session_state.messages
-                            )
+                            query_for_retrieval = rewrite_with_history(prompt, st.session_state.messages)
 
-                            logger.info(f"[Self-CoRAG] Rewritten query: {query_for_retrieval}")
+                            logger.info(f"[Normal CoRAG] Rewritten query: {query_for_retrieval}")
                             
                             bm25_weight = settings.get("bm25_weight", BM25_WEIGHT)
                             faiss_weight = settings.get("faiss_weight", FAISS_WEIGHT)
@@ -354,13 +346,19 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                             )
                             
                             status.update(label="🧠 Đang sinh câu trả lời (CoRAG)...", state="running")
-                            logger.info(f"[Normal CORAG] On | Cross-Encoder Reranking")
                             result = corag_pipeline(query_for_retrieval, retriever, top_k=top_k)
                             response = result["answer"]
-                            citations = build_citations(result["docs"])
+
+                            # Normal CoRAG: Cắt cả context và Citations
+                            corag_docs = result.get("docs", [])
+                            if len(corag_docs) > top_k:
+                                corag_docs = corag_docs[:top_k]
+
+                            response = result["answer"]  # giữ nguyên response từ pipeline
+                            citations = build_citations(corag_docs)
                             self_rag_meta = None
 
-                    status.update(label="✅ Hoàn tát!", state="complete")
+                    status.update(label="✅ Hoàn tất!", state="complete")
 
                     st.session_state.messages.append({
                         "role": "assistant",

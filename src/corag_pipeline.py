@@ -6,7 +6,9 @@ from src.rag_chain import (
     rag_chain,
     get_language_instruction,
     decompose_question,
-    llm
+    llm,
+    detect_language,           # ← Thêm dòng này
+    get_self_rag_language_lock
 )
 from langchain.prompts import PromptTemplate
 
@@ -123,7 +125,10 @@ def self_corag_query(question, retriever, max_retries: int=2):
         }).strip()
 
         # 🔍 Self-evaluate
-        evaluation = evaluate_answer(question, context, answer)
+        lang = detect_language(question)                    # ← thêm dòng này
+        language_lock = get_self_rag_language_lock(lang)    # ← thêm dòng này
+
+        evaluation = evaluate_answer(question, context, answer, language_lock)
 
         last_result = {
             "answer": answer,
