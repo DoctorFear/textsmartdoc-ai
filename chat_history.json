@@ -1,224 +1,250 @@
 [
   {
     "id": 0,
-    "title": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối...",
+    "title": "Hàn Mặc Tử tên thật là gi ?",
     "messages": [
       {
         "role": "user",
-        "content": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối liên hệ như thế nào với tâm trạng nhà thơ?\n\n"
+        "content": "Hàn Mặc Tử tên thật là gi ?"
       },
       {
         "role": "assistant",
-        "content": "Hình ảnh thiên nhiên trong \"Đây thôn Vĩ Dạ\" phản ánh và thể hiện tâm trạng phức tạp của nhà thơ. Bức tranh thiên nhiên sáng sủa, tươi đẹp như buổi bình minh tại thôn Vĩ gợi lên niềm nhớ nhung, tình yêu thương dành cho quê hương và người thân xa cách. Tuy nhiên, khổ thơ thứ hai với những hình ảnh buồn thiu, chia ly đã thể hiện nỗi day dứt, u/sbin khi nhà thơ phải xa rời cảnh đẹp ấy, đồng thời cũng phản ánh sự tiếc nuối về mối tình dang dở và hoàn cảnh chia lìa.",
+        "content": "Hàn Mặc Tử tên thật là Nguyễn Trọng Trí.",
         "citations": [
           {
             "index": 1,
-            "page": 3,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+            "page": 1,
+            "file": "Day_thon_Vi_Da_PhanTich.docx",
+            "snippet": "xứ Huế tuyệt đẹp, pha lẫn tâm trạng khắc khoải, nhớ nhung và mặc cảm chia lìa của nhà thơ. II. THÂN BÀI 1. Vài nét về tác giả và hoàn cảnh sáng tác Hàn Mặc Tử (1912–1940), tên thật là Nguyễn Trọng Trí, sinh tại Quảng Bình, lớn lên ở nhiều vùng miền c..."
           },
           {
             "index": 2,
-            "page": 2,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
-          },
-          {
-            "index": 3,
-            "page": 2,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "sức sống và vẻ đẹp rực rỡ của buổi bình minh thôn Vĩ. Những hàng cau cao vút vươn mình đón lấy những tia nắng sớm tinh khôi — hình ảnh quen thuộc của làng quê Việt Nam nhưng dưới ngòi bút Hàn Mặc Tử lại trở nên đặc biệt thơ mộng và đậm chất Huế. Câu ..."
-          }
-        ],
-        "self_rag_meta": null,
-        "mode": "rag"
-      },
-      {
-        "role": "user",
-        "content": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối liên hệ như thế nào với tâm trạng nhà thơ?\n\n"
-      },
-      {
-        "role": "assistant",
-        "content": "Hình ảnh thiên nhiên trong \"Đây thôn Vĩ Dạ\" được Hàn Mặc Tử miêu tả sinh động, vừa cụ thể vừa huyền ảo, tạo nên một không gian tươi đẹp nhưng cũng mang nhiều u buồn. Cụm từ \"nắng hàng cau\", \"vườn xanh như ngọc\", \"lá trúc\" gợi lên bức tranh thiên nhiên thôn Vĩ tươi sáng, trong lành. Tuy nhiên, khổ thơ thứ hai chuyển sang cảnh sông nước buồn bã, hoa bắp lay động - những hình ảnh mang sắc màu u buồn, phản ánh tâm trạng nhà thơ xa quê, nhớ người yêu, và nỗi day dứt về mối tình dang dở. Sự đối lập giữa vẻ đẹp tươi sáng ban đầu và u buồn trong khổ thơ sau này thể hiện sự chuyển biến tâm trạng của tác giả từ hạnh phúc đến u hüz, phản ánh sâu sắc hoàn cảnh sống và cảm xúc nội tâm của nhà thơ.",
-        "citations": [
-          {
-            "index": 1,
-            "page": 3,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
-          },
-          {
-            "index": 2,
-            "page": 2,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+            "page": 6,
+            "file": "Day_thon_Vi_Da_PhanTich.docx",
+            "snippet": "Đặc biệt, chữ \"ai\" được dùng như một sợi chỉ đỏ xuyên suốt bài thơ: \"Vườn ai mướt quá\", \"Thuyền ai đậu bến\", \"Ai biết tình ai\". Chữ \"ai\" vừa phiếm chỉ vừa xác định, vừa gần vừa xa, vừa hỏi vừa không cần câu trả lời — tạo nên một mạng lưới cảm xúc hư ..."
           },
           {
             "index": 3,
             "page": 5,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "file": "Day_thon_Vi_Da_PhanTich.docx",
             "snippet": "Về hình ảnh thơ: Hàn Mặc Tử sử dụng hệ thống hình ảnh phong phú, vừa cụ thể vừa huyền ảo. Những hình ảnh như \"nắng hàng cau\", \"vườn xanh như ngọc\", \"lá trúc\", \"sông trăng\", \"áo em trắng\" đều mang sức gợi mạnh mẽ, tạo nên một thế giới thơ vừa quen thu..."
           }
         ],
         "self_rag_meta": null,
-        "mode": "corag"
-      },
+        "mode": "rag"
+      }
+    ],
+    "file": "Day_thon_Vi_Da_PhanTich.docx",
+    "files": [
+      "Day_thon_Vi_Da_PhanTich.docx"
+    ],
+    "files_metadata": {
+      "Day_thon_Vi_Da_PhanTich.docx": {
+        "upload_date": "2026-04-28 18:47:06",
+        "upload_timestamp": "2026-04-28T18:47:06.194188",
+        "file_type": "docx",
+        "size_mb": 0.01
+      }
+    }
+  },
+  {
+    "id": 1,
+    "title": "Phân tích 4 khổ thơ đầu",
+    "messages": [
       {
         "role": "user",
-        "content": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối liên hệ như thế nào với tâm trạng nhà thơ?\n\n"
+        "content": "Phân tích 4 khổ thơ đầu"
       },
       {
         "role": "assistant",
-        "mode": "rag+corag",
-        "compare_data": {
-          "rag": {
-            "response": "Hình ảnh thiên nhiên trong \"Đây thôn Vĩ Dạ\" của Hàn Mặc Tử được xây dựng để phản ánh sâu sắc tâm trạng của nhà thơ. Bức tranh thiên nhiên tươi sáng, rực rỡ ở khổ một thể hiện niềm vui và khát vọng của nhà thơ về cuộc sống bình dị nhưng đầy ý nghĩa; đồng thời, những hình ảnh gợi lên nỗi buồn, u uất ở khổ hai phản ánh tình cảm chia ly và nỗi day dứt sâu sắc. Cụ thể, \"nắng hàng cau\" và \"vườn xanh như ngọc\" biểu hiện vẻ đẹp thuần khiết của quê hương, còn \"dòng nước buồn thiu, hoa bắp lay\" phản ánh tâm trạng u tối, chia lìa của nhà thơ. Qua đó, nhà thơ thể hiện cuộc đấu tranh giữa tình yêu mãnh liệt và nỗi nhớ khắc khoải.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 3,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
-              },
-              {
-                "index": 2,
-                "page": 2,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
-              },
-              {
-                "index": 3,
-                "page": 6,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "khát vọng được yêu và được sống trọn vẹn. Trải qua bao năm tháng, \"Đây thôn Vĩ Dạ\" vẫn còn nguyên sức lay động day dứt lòng người đọc. Cái tình Hàn Mặc Tử — vừa nồng nàn vừa u uất, vừa trong sáng vừa huyền bí — đã trở thành một phần không thể thiếu c..."
-              },
-              {
-                "index": 4,
-                "page": 2,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "sức sống và vẻ đẹp rực rỡ của buổi bình minh thôn Vĩ. Những hàng cau cao vút vươn mình đón lấy những tia nắng sớm tinh khôi — hình ảnh quen thuộc của làng quê Việt Nam nhưng dưới ngòi bút Hàn Mặc Tử lại trở nên đặc biệt thơ mộng và đậm chất Huế. Câu ..."
-              },
-              {
-                "index": 5,
-                "page": 5,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "Về hình ảnh thơ: Hàn Mặc Tử sử dụng hệ thống hình ảnh phong phú, vừa cụ thể vừa huyền ảo. Những hình ảnh như \"nắng hàng cau\", \"vườn xanh như ngọc\", \"lá trúc\", \"sông trăng\", \"áo em trắng\" đều mang sức gợi mạnh mẽ, tạo nên một thế giới thơ vừa quen thu..."
-              }
-            ]
-          },
-          "corag": {
-            "response": "Hình ảnh thiên nhiên trong \"Đây thôn Vĩ Dạ\" được Hàn Mặc Tử sử dụng để phản ánh tâm trạng của mình một cách sâu sắc. Bức tranh thiên nhiên thôn Vĩ tươi đẹp, sáng ngời ở khổ thơ thứ nhất với những hình ảnh như \"nắng hàng cau\", \"vườn xanh như ngọc\", gợi lên tình yêu mến và nhớ nhung về nơi chốn quê hương thân thương.\n\nTuy nhiên, khi chuyển sang khổ thơ thứ hai, hình ảnh thiên nhiên trở nên u buồn hơn, thể hiện nỗi lòng của nhà thơ: \"Gió theo lối gió mây đường mây\" mô tả sự xa cách giữa gió và mây, ẩn dụ cho sự chia ly không thể hàn gắn; \"Dòng nước buồn thiu, hoa bắp lay\" gợi lên cảm xúc u buồn, day dứt khi nhà thơ nhớ về người yêu. \n\nNhư vậy, hình ảnh thiên nhiên không chỉ phản ánh bức tranh thiên nhiên tươi đẹp mà còn là chất liệu để nhà thơ thể hiện tâm trạng mơ hồ, day dứt và khao khát về người yêu.",
-            "citations": [
-              {
-                "index": 1,
-                "page": 3,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
-              },
-              {
-                "index": 2,
-                "page": 2,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
-              },
-              {
-                "index": 3,
-                "page": 2,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "sức sống và vẻ đẹp rực rỡ của buổi bình minh thôn Vĩ. Những hàng cau cao vút vươn mình đón lấy những tia nắng sớm tinh khôi — hình ảnh quen thuộc của làng quê Việt Nam nhưng dưới ngòi bút Hàn Mặc Tử lại trở nên đặc biệt thơ mộng và đậm chất Huế. Câu ..."
-              },
-              {
-                "index": 4,
-                "page": 5,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "Về hình ảnh thơ: Hàn Mặc Tử sử dụng hệ thống hình ảnh phong phú, vừa cụ thể vừa huyền ảo. Những hình ảnh như \"nắng hàng cau\", \"vườn xanh như ngọc\", \"lá trúc\", \"sông trăng\", \"áo em trắng\" đều mang sức gợi mạnh mẽ, tạo nên một thế giới thơ vừa quen thu..."
-              },
-              {
-                "index": 5,
-                "page": 4,
-                "file": "Day_thon_Vi_Da_PhanTich.pdf",
-                "snippet": "địa lý mà còn gợi lên sự xa cách trong tâm tưởng — người yêu đã trở thành khách lạ trong cuộc đời nhà thơ, chỉ hiện diện trong những giấc mơ. Từ \"mơ\" mở đầu câu thơ xác định rõ tính chất ảo mộng của toàn bộ khổ thơ này — đây là cõi mộng, không phải t..."
-              }
-            ]
-          }
-        },
-        "content": null,
-        "citations": null,
-        "self_rag_meta": null
-      },
-      {
-        "role": "user",
-        "content": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối liên hệ như thế nào với tâm trạng nhà thơ?\n\n"
-      },
-      {
-        "role": "assistant",
-        "content": "Hình ảnh thiên nhiên trong \"Đây thôn Vĩ Dạ\" phản ánh rõ rệt tâm trạng của nhà thơ Hàn Mặc Tử. Bức tranh thiên nhiên sáng sủa, tươi đẹp trong khổ thơ thứ nhất mang đậm chất ảo mộng và trong sáng, thể hiện sự khao khát về một tình yêu tinh khiết, như câu hỏi mở đầu \"Sao anh không về chơi thôn Vĩ?\". Trái lại, khổ thơ thứ hai với hình ảnh gió và mây đi theo lối riêng, dòng sông buồn thiu gợi lên nỗi buồn mênh mang giữa hiện tại và quá khứ, thể hiện sự xa cách không thể hàn gắn. Đây là những hình ảnh thiên nhiên vừa phản ánh thực trạng tự nhiên, vừa ẩn dụ cho tâm trạng của nhà thơ, tạo nên vẻ đẹp huyền ảo nhưng cũng đầy day dứt.",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" mở đầu bằng câu hỏi tu từ đầy tình cảm, \"Sao anh không về chơi thôn Vĩ?\", đồng thời cũng là lời tự hỏi của nhà thơ. Câu hỏi này vừa thể hiện sự trách móc nhẹ nhàng, vừa mang tính mời gọi chân thành, cho thấy nỗi nhớ quê hương và người yêu sâu sắc trong lòng Hàn Mặc Tử.\n\nTiếp theo, bức tranh thiên nhiên thôn Vĩ được vẽ nên qua những hình ảnh tươi sáng của buổi bình minh. \"Nắng hàng cau nắng mới lên\" gợi tả khung cảnh sớm mai êm đềm; điệp từ \"nắng\" nhấn mạnh sức sống và vẻ đẹp rực rỡ của thiên nhiên. \"Vườn ai mướt quá xanh như ngọc\" cùng với \"Lá trúc che ngang mặt chữ điền\" tạo nên một bức tranh toàn cảnh, thể hiện sự hòa quyện giữa con người và thiên nhiên.\n\nCác khổ thơ tiếp theo chuyển sang mô tả khung cảnh sông nước và nỗi buồn chia ly. Hình ảnh \"Gió theo lối gió mây đường mây\" biểu tượng cho sự xa cách không thể hàn gắn, nhấn mạnh tình cảm chia lìa giữa nhà thơ và người yêu. Câu \"Dòng nước buồn thiu, hoa bắp lay\" gợi lên nỗi buồn mênh mang, đồng thời cũng là hình ảnh sông Hương êm đềm của xứ Huế.\n\nQua những khổ thơ này, tác giả đã thể hiện tình cảm sâu sắc, khát vọng và nỗi buồn chia lìa, cùng với bức tranh thiên nhiên tươi đẹp của thôn Vĩ Dạ.",
         "citations": [
           {
             "index": 1,
-            "page": 3,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
-          },
-          {
-            "index": 2,
             "page": 2,
             "file": "Day_thon_Vi_Da_PhanTich.pdf",
             "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
           },
           {
-            "index": 3,
-            "page": 4,
+            "index": 2,
+            "page": 3,
             "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "địa lý mà còn gợi lên sự xa cách trong tâm tưởng — người yêu đã trở thành khách lạ trong cuộc đời nhà thơ, chỉ hiện diện trong những giấc mơ. Từ \"mơ\" mở đầu câu thơ xác định rõ tính chất ảo mộng của toàn bộ khổ thơ này — đây là cõi mộng, không phải t..."
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
           },
           {
-            "index": 4,
+            "index": 3,
             "page": 1,
             "file": "Day_thon_Vi_Da_PhanTich.pdf",
             "snippet": "PHÂN TÍCH BÀI THƠ \"ĐÂY THÔN VĨ DẠ\" CỦA HÀN MẶC TỬ Ngữ văn 11 - Phân tích tác phẩm thơ I. MỞ BÀI Trong nền văn học Việt Nam giai đoạn 1930-1945, phong trào Thơ Mới đã để lại dấu ấn sâu đậm với nhiều tên tuổi lớn. Trong số đó, Hàn Mặc Tử được xem là mộ..."
-          },
-          {
-            "index": 5,
-            "page": 6,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "khát vọng được yêu và được sống trọn vẹn. Trải qua bao năm tháng, \"Đây thôn Vĩ Dạ\" vẫn còn nguyên sức lay động day dứt lòng người đọc. Cái tình Hàn Mặc Tử — vừa nồng nàn vừa u uất, vừa trong sáng vừa huyền bí — đã trở thành một phần không thể thiếu c..."
           }
         ],
-        "self_rag_meta": {
-          "attempts": 2,
-          "confidence": 8,
-          "query_used": "Hình ảnh thiên nhiên trong bài thơ Đây thôn Vĩ Dạ phản ánh tâm trạng nhà thơ như thế nào?",
-          "evaluation": {
-            "score": 8,
-            "reason": "Phân tích chính xác về mối liên hệ giữa hình ảnh thiên nhiên và tâm trạng nhà thơ, nhưng có thể giải thích rõ hơn về cách thức những hình ảnh này phản ánh tâm trạng.",
-            "is_sufficient": true
-          },
-          "multi_hop_steps": [
-            "Thiên nhiên được mô tả như thế nào trong bài thơ Đây thôn Vĩ Dạ?",
-            "Tâm trạng nhà thơ thể hiện ra sao qua bài thơ?"
-          ]
-        },
+        "self_rag_meta": null,
         "mode": "rag"
       },
       {
         "role": "user",
-        "content": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối liên hệ như thế nào với tâm trạng nhà thơ?\n\n"
+        "content": "Tràng là ai ?"
       },
       {
         "role": "assistant",
-        "content": "❌ Lỗi không xác định: name 'detect_language' is not defined",
-        "citations": [],
+        "content": "Tràng là một nhân vật trong văn bản, có vẻ như là một người bán hàng hoặc làm công việc gì đó ở chợ tỉnh. Anh ta có mối quen biết với một người đàn bà không rõ tên, và hai người họ có gặp nhau ở chợ tỉnh. Tràng cũng có hoàn cảnh khó khăn, nói chung anh ta sống trong những cảnh sống ê chề, tăm tối như được đề cập trong văn bản.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "VoNhat.pdf",
+            "snippet": "– Ai đấy nhỉ? … Hay là người dưới quê bà cụ Tứ mới lên? – Chả phải, từ ngày còn mồ ma ông cụ Tứ có thấy họ mạc nào lên thăm đâu. – Quái nhỉ? Im một lúc, có người bỗng lại cười lên rung rúc: – Hay là vợ anh cu Tràng? Ù khéo mà vợ anh cu Tràng thật anh..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "VoNhat.pdf",
+            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoNhat.pdf",
+            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+          }
+        ],
         "self_rag_meta": null,
-        "mode": "corag"
+        "mode": "rag"
       },
       {
         "role": "user",
-        "content": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối liên hệ như thế nào với tâm trạng nhà thơ?\n\n"
+        "content": "Tràng là ai ?"
       },
       {
         "role": "assistant",
-        "content": "Hình ảnh thiên nhiên trong \"Đến thôn Vĩ Dạ\" có mối liên hệ chặt chẽ với tâm trạng của nhà thơ. Bức tranh thiên nhiên sáng sủa, tươi đẹp tại buổi bình minh gợi lên những ký ức và khát vọng tốt đẹp về xứ Huế mộng mơ. Tuy nhiên, khi chuyển sang khổ hai, hình ảnh sông nước buồn thiu và hoa bắp lay phản ánh nỗi buồn chia ly sâu sắc. Các hình ảnh như \"nắng hàng cau\", \"vườn xanh như ngọc\", \"lá trúc\" thể hiện sự hòa quyện giữa con người và thiên nhiên, tạo nên vẻ đẹp huyền ảo nhưng cũng gợi lên sự xa cách không thể hàn gắn. Qua đó, nhà thơ thể hiện tâm trạng u buồn, khao khát tìm về nơi chốn thân thương nhưng đồng thời cảm nhận được nỗi day dứt của mối tình dang dở.",
+        "content": "Không tìm thấy thông tin về nhân vật Tràng trong tài liệu.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "quan hệ giữa hai con người. Trong màn sương khói ấy, bóng người nhòa đi, tình người cũng có thể nhòa đi theo. Xứ Huế mộng mơ bỗng trở thành ranh giới giữa thực và ảo, giữa gần và xa, giữa hạnh phúc và đau thương. Câu kết bài thơ \"Ai biết tình ai có đ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "VoNhat.pdf",
+    "files": [
+      "Day_thon_Vi_Da_PhanTich.pdf",
+      "VoChongAPhu.pdf",
+      "VoNhat.pdf"
+    ],
+    "files_metadata": {
+      "Day_thon_Vi_Da_PhanTich.pdf": {
+        "upload_date": "2026-04-28 18:48:33",
+        "upload_timestamp": "2026-04-28T18:48:33.861081",
+        "file_type": "pdf",
+        "size_mb": 0.15
+      },
+      "VoChongAPhu.pdf": {
+        "upload_date": "2026-04-28 18:48:33",
+        "upload_timestamp": "2026-04-28T18:48:33.861081",
+        "file_type": "pdf",
+        "size_mb": 0.43
+      },
+      "VoNhat.pdf": {
+        "upload_date": "2026-04-28 18:48:33",
+        "upload_timestamp": "2026-04-28T18:48:33.861081",
+        "file_type": "pdf",
+        "size_mb": 0.24
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "BaoCaoDoanhThu_2025.docx",
+    "messages": [],
+    "file": "BaoCaoDoanhThu_2025.docx",
+    "files": [
+      "BaoCaoDoanhThu_2025.docx"
+    ],
+    "files_metadata": {
+      "BaoCaoDoanhThu_2025.docx": {
+        "upload_date": "2026-04-28 18:56:59",
+        "upload_timestamp": "2026-04-28T18:56:59.731500",
+        "file_type": "docx",
+        "size_mb": 0.01
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Tổng doanh thu năm 2025 của công ty là bao nhiêu...",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tổng doanh thu năm 2025 của công ty là bao nhiêu tỷ VND? Công ty có hoàn thành kế hoạch không?"
+      },
+      {
+        "role": "assistant",
+        "content": "Tổng doanh thu năm 2025 của công ty đạt 2.260 tỷ VND. Theo thông tin trong báo cáo, kết quả này đã phản ánh sự nỗ lực không ngừng của toàn thể cán bộ và nhân viên, đồng thời thể hiện năng lực cạnh tranh vững chắc và chiến lược phát triển đúng hướng của Ban lãnh đạo Công ty. Do đó, có thể thấy công ty đã hoàn thành kế hoạch doanh thu năm 2025 đề ra.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "BaoCaoDoanhThu_2025.docx",
+            "snippet": "BÁO CÁO DOANH THU CÔNG TY – NĂM 2025 BÁO CÁO DOANH THU CÔNG TY NĂM TÀI CHÍNH 2025 Phòng Tài chính – Kế toán 1. TỔNG QUAN DOANH THU 2025 Năm 2025 đánh dấu một bước tiến vượt bậc trong hoạt động kinh doanh của công ty. Tổng doanh thu đạt 2.260 tỷ VND, ..."
+          },
+          {
+            "index": 2,
+            "page": 5,
+            "file": "BaoCaoDoanhThu_2025.docx",
+            "snippet": "BÁO CÁO DOANH THU CÔNG TY – NĂM 2025 5. MỤC TIÊU VÀ KẾ HOẠCH NĂM 2026 Dựa trên đà tăng trưởng tích cực của năm 2025, Ban lãnh đạo Công ty đặt mục tiêu tăng trưởng doanh thu năm 2026 đạt 15–18%, tương đương tổng doanh thu dự kiến từ 2.600 đến 2.670 tỷ..."
+          },
+          {
+            "index": 3,
+            "page": 4,
+            "file": "BaoCaoDoanhThu_2025.docx",
+            "snippet": "BÁO CÁO DOANH THU CÔNG TY – NĂM 2025 4. PHÂN TÍCH CHI PHÍ VÀ LỢI NHUẬN GỘP Song song với tăng trưởng doanh thu, công ty đã kiểm soát tốt cơ cấu chi phí. Tỷ lệ lợi nhuận gộp được duy trì ở mức cao, phản ánh hiệu quả vận hành và khả năng tối ưu hóa chu..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Dựa vào câu trả lời trên, nhóm sản phẩm nào có tốc độ tăng trưởng cao nhất trong năm 2025? Tăng trưởng cụ thể là bao nhiêu?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nhóm sản phẩm B - Công nghệ có tốc độ tăng trưởng cao nhất trong năm 2025, đạt 76% từ Q1 đến Q4.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 5,
+            "file": "BaoCaoDoanhThu_2025.docx",
+            "snippet": "BÁO CÁO DOANH THU CÔNG TY – NĂM 2025 5. MỤC TIÊU VÀ KẾ HOẠCH NĂM 2026 Dựa trên đà tăng trưởng tích cực của năm 2025, Ban lãnh đạo Công ty đặt mục tiêu tăng trưởng doanh thu năm 2026 đạt 15–18%, tương đương tổng doanh thu dự kiến từ 2.600 đến 2.670 tỷ..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "BaoCaoDoanhThu_2025.docx",
+            "snippet": "BÁO CÁO DOANH THU CÔNG TY – NĂM 2025 2. PHÂN TÍCH DOANH THU THEO NHÓM SẢN PHẨM Doanh thu được phân bổ theo ba nhóm sản phẩm/dịch vụ chính: Sản phẩm A (hàng tiêu dùng), Sản phẩm B (công nghệ), và Dịch vụ sau bán hàng. Trong đó, nhóm Sản phẩm B ghi nhậ..."
+          },
+          {
+            "index": 3,
+            "page": 5,
+            "file": "BaoCaoDoanhThu_2025.docx",
+            "snippet": "doanh thu. • Đầu tư vào chuyển đổi số, ứng dụng AI vào quy trình bán hàng và chăm sóc khách hàng. • Phát triển dòng Sản phẩm B – Công nghệ với 3 sản phẩm mới dự kiến ra mắt trong H1 2026. • Tối ưu hóa chi phí logistic và chuỗi cung ứng nhằm cải thiện..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" được sáng tác vào năm nào và lấy cảm hứng từ đâu?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" được sáng tác vào năm 1938, lấy cảm hứng từ mối tình đơn phương của Hàn Mặc Tử với cô gái Huế có tên Hoàng Cúc.",
         "citations": [
           {
             "index": 1,
@@ -228,41 +254,208 @@
           },
           {
             "index": 2,
+            "page": 1,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "sức sống hơn bao giờ hết. \"Đây thôn Vĩ Dạ\" là một trong những bài thơ tình hay nhất của Hàn Mặc Tử, được sáng tác vào năm 1938, lấy cảm hứng từ mối tình đơn phương với cô gái Huế có tên Hoàng Cúc. Một tình yêu thiết tha man mác, đượm vẻ u buồn ẩn hiệ..."
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "thể là lời tự hỏi của chính nhà thơ — tự trách bản thân sao không tìm về nơi chốn thân thương, nơi còn lưu giữ bao ký ức đẹp. Sự mơ hồ trong chủ thể lời hỏi tạo nên chiều sâu cảm xúc và sức gợi đặc biệt của câu thơ. Ngay sau câu hỏi ấy, bức tranh thô..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Dựa vào hoàn cảnh sáng tác, tại sao khổ thơ đầu của bài thơ mang không khí tươi sáng, trong khi các khổ sau lại u buồn và huyền ảo?"
+      },
+      {
+        "role": "assistant",
+        "content": "Dựa trên hoàn cảnh sáng tác được mô tả, khổ thơ đầu của bài thơ mang không khí tươi sáng vì nó gợi lên hình ảnh về thôn Vĩ với nắng sớm rực rỡ, hàng cau xanh mướt như ngọc và trúc che mát trên vườn. Đây là những ký ức đẹp về quê hương thân yêu mà nhà thơ muốn tìm lại.\n\nTrong khi đó, các khổ thơ sau trở nên u buồn và huyền ảo do nhà thơ bắt đầu nhớ về tình cảm dang dở với người yêu, đặt ra câu hỏi về tương lai không rõ ràng. Tình cảm này đã biến thành khách xa trong mộng tưởng, mang tính ảo mộng nhưng cũng đầy hy vọng mong manh.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "thể là lời tự hỏi của chính nhà thơ — tự trách bản thân sao không tìm về nơi chốn thân thương, nơi còn lưu giữ bao ký ức đẹp. Sự mơ hồ trong chủ thể lời hỏi tạo nên chiều sâu cảm xúc và sức gợi đặc biệt của câu thơ. Ngay sau câu hỏi ấy, bức tranh thô..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          },
+          {
+            "index": 3,
+            "page": 4,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "ông. Trăng ở khổ hai còn mang theo sắc màu của niềm hy vọng cuối cùng — lung linh nhưng mong manh, đẹp nhưng xa vời. 4. Khổ thơ thứ ba — Cõi mộng và nỗi hoài nghi về tình người Khổ thơ cuối đưa người đọc vào một không gian hoàn toàn của mộng tưởng: M..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "VoNhat.pdf",
+    "files": [
+      "BaoCaoDoanhThu_2025.docx",
+      "Day_thon_Vi_Da_PhanTich.pdf",
+      "VoChongAPhu.pdf",
+      "VoNhat.pdf"
+    ],
+    "files_metadata": {
+      "BaoCaoDoanhThu_2025.docx": {
+        "upload_date": "2026-04-28 19:14:55",
+        "upload_timestamp": "2026-04-28T19:14:55.993407",
+        "file_type": "docx",
+        "size_mb": 0.01
+      },
+      "Day_thon_Vi_Da_PhanTich.pdf": {
+        "upload_date": "2026-04-28 19:14:55",
+        "upload_timestamp": "2026-04-28T19:14:55.993407",
+        "file_type": "pdf",
+        "size_mb": 0.15
+      },
+      "VoChongAPhu.pdf": {
+        "upload_date": "2026-04-28 19:14:55",
+        "upload_timestamp": "2026-04-28T19:14:55.993407",
+        "file_type": "pdf",
+        "size_mb": 0.43
+      },
+      "VoNhat.pdf": {
+        "upload_date": "2026-04-28 19:14:55",
+        "upload_timestamp": "2026-04-28T19:14:55.993407",
+        "file_type": "pdf",
+        "size_mb": 0.24
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Bài thơ \"Đây thôn Vĩ Dạ\" thể hiện tâm trạng nào ...",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" thể hiện tâm trạng nào của Hàn Mặc Tử?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" thể hiện tâm trạng thất vọng lặng lẽ, ngậm ngùi của Hàn Mặc Tử. Đó là sự thất望被移除，改为：——这种失恋所带来的是一种默默的失落感和伤感，反映了诗人对美好爱情的渴望与现实无法实现之间的矛盾。同时，这也是一首关于对家乡和自然美景的怀念之作，表达了诗人的深切思念与无奈之情。",
+        "citations": [
+          {
+            "index": 1,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "khoảng trống mênh mông cho người đọc tự suy ngẫm. Đây không hoàn toàn là sự tuyệt vọng, cũng chẳng phải hy vọng — chỉ là sự thất vọng lặng lẽ, ngậm ngùi của một trái tim khao khát yêu thương mà không bao giờ có được tình yêu trọn vẹn. 5. Đặc sắc nghệ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "sức sống hơn bao giờ hết. \"Đây thôn Vĩ Dạ\" là một trong những bài thơ tình hay nhất của Hàn Mặc Tử, được sáng tác vào năm 1938, lấy cảm hứng từ mối tình đơn phương với cô gái Huế có tên Hoàng Cúc. Một tình yêu thiết tha man mác, đượm vẻ u buồn ẩn hiệ..."
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mình đón lấy những tia nắng sớm tinh khôi — hình ảnh quen thuộc của làng quê Việt Nam nhưng dưới ngòi bút Hàn Mặc Tử lại trở nên đặc biệt thơ mộng và đậm chất Huế. Câu thơ tiếp theo \"Vườn ai mướt quá xanh như ngọc\" là một trong những câu thơ đẹp nhất..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Hình ảnh thiên nhiên trong bài thơ có mối liên hệ như thế nào với cảm xúc của nhà thơ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Hình ảnh thiên nhiên trong bài thơ \"Đây thôn Vĩ Dạ\" thể hiện sâu sắc cảm xúc của nhà thơ Hàn Mặc Tử. Bằng cách mô tả chi tiết cảnh vật như \"nắng hàng cau\", \"vườn xanh như ngọc\", nhà thơ đã tạo nên một bức tranh thiên nhiên tươi đẹp, hòa mình vào đó là hình ảnh con người thấp thoáng giữa thiên nhiên.\n\nCảm xúc của Hàn Mặc Tử được phản ánh qua cách diễn tả cảnh vật. Khổ thơ đầu tiên với ánh sáng rực rỡ và không gian mở mang, gợi lên sự hào hứng và khát vọng. Trong khi đó, khổ thơ thứ hai chìm vào nỗi buồn mênh mông, hình ảnh dòng sông buồn thiu, thuyền đậu lặng lẽ như thể hiện tâm trạng u sầu của nhà thơ.\n\nQua việc hòa quyện giữa thực tại và ảo tưởng, Hàn Mặc Tử đã thể hiện sự khắc khoải, nhớ nhung và mặc cảm chia lìa trong tình yêu đơn phương của mình. Những hình ảnh thiên nhiên vừa cụ thể vừa huyền ảo tạo nên một thế giới thơ vừa mộng mơ vừa chân thật, phản ánh tâm trạng phức tạp của nhà thơ.",
+        "citations": [
+          {
+            "index": 1,
             "page": 3,
             "file": "Day_thon_Vi_Da_PhanTich.pdf",
             "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
           },
           {
+            "index": 2,
+            "page": 1,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "sức sống hơn bao giờ hết. \"Đây thôn Vĩ Dạ\" là một trong những bài thơ tình hay nhất của Hàn Mặc Tử, được sáng tác vào năm 1938, lấy cảm hứng từ mối tình đơn phương với cô gái Huế có tên Hoàng Cúc. Một tình yêu thiết tha man mác, đượm vẻ u buồn ẩn hiệ..."
+          },
+          {
             "index": 3,
             "page": 5,
             "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "Về hình ảnh thơ: Hàn Mặc Tử sử dụng hệ thống hình ảnh phong phú, vừa cụ thể vừa huyền ảo. Những hình ảnh như \"nắng hàng cau\", \"vườn xanh như ngọc\", \"lá trúc\", \"sông trăng\", \"áo em trắng\" đều mang sức gợi mạnh mẽ, tạo nên một thế giới thơ vừa quen thu..."
-          },
-          {
-            "index": 4,
-            "page": 4,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "địa lý mà còn gợi lên sự xa cách trong tâm tưởng — người yêu đã trở thành khách lạ trong cuộc đời nhà thơ, chỉ hiện diện trong những giấc mơ. Từ \"mơ\" mở đầu câu thơ xác định rõ tính chất ảo mộng của toàn bộ khổ thơ này — đây là cõi mộng, không phải t..."
-          },
-          {
-            "index": 5,
-            "page": 2,
-            "file": "Day_thon_Vi_Da_PhanTich.pdf",
-            "snippet": "sức sống và vẻ đẹp rực rỡ của buổi bình minh thôn Vĩ. Những hàng cau cao vút vươn mình đón lấy những tia nắng sớm tinh khôi — hình ảnh quen thuộc của làng quê Việt Nam nhưng dưới ngòi bút Hàn Mặc Tử lại trở nên đặc biệt thơ mộng và đậm chất Huế. Câu ..."
+            "snippet": "khoảng trống mênh mông cho người đọc tự suy ngẫm. Đây không hoàn toàn là sự tuyệt vọng, cũng chẳng phải hy vọng — chỉ là sự thất vọng lặng lẽ, ngậm ngùi của một trái tim khao khát yêu thương mà không bao giờ có được tình yêu trọn vẹn. 5. Đặc sắc nghệ..."
           }
         ],
-        "self_rag_meta": {
-          "attempts": 1,
-          "confidence": 8,
-          "query_used": "Hình ảnh thiên nhiên trong Đây thôn Vĩ Dạ có mối liên hệ như thế nào với tâm trạng nhà thơ?\n\n",
-          "evaluation": {
-            "score": 8,
-            "reason": "Trả lời đúng ý và đầy đủ",
-            "is_sufficient": true
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" được sáng tác vào năm nào?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" được sáng tác khoảng năm 1938.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "sức sống hơn bao giờ hết. \"Đây thôn Vĩ Dạ\" là một trong những bài thơ tình hay nhất của Hàn Mặc Tử, được sáng tác vào năm 1938, lấy cảm hứng từ mối tình đơn phương với cô gái Huế có tên Hoàng Cúc. Một tình yêu thiết tha man mác, đượm vẻ u buồn ẩn hiệ..."
           },
-          "multi_hop_steps": null
-        },
-        "mode": "corag"
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "thơ. II. THÂN BÀI 1. Vài nét về tác giả và hoàn cảnh sáng tác Hàn Mặc Tử (1912–1940), tên thật là Nguyễn Trọng Trí, sinh tại Quảng Bình, lớn lên ở nhiều vùng miền của đất nước, trong đó có Huế — nơi để lại dấu ấn sâu sắc trong tâm hồn ông. Ông bắt đầ..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "cảnh sắc thiên nhiên xứ Huế lung linh, vừa có tâm trạng nhân vật trữ tình sâu sắc, vừa có mối tình riêng thấm đẫm nỗi đau và khát vọng. Bài thơ vừa là lời tỏ tình, vừa là lời từ biệt — từ biệt cảnh đẹp, từ biệt con người, từ biệt cuộc đời mà Hàn Mặc ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tại sao khổ thơ đầu tươi sáng mà khổ thơ cuối lại mang màu sắc u buồn, huyền ảo?"
+      },
+      {
+        "role": "assistant",
+        "content": "Khổ thơ đầu tươi sáng vì mô tả bức tranh thiên nhiên thôn Vĩ sớm mai với ánh nắng vàng rực rỡ chiếu trên hàng cau xanh mướt và vườn cây xanh như ngọc. Điệp từ \"nắng\" được lặp lại hai lần, nhấn mạnh sự sống động và vẻ đẹp tươi mới của buổi bình minh. Tuy nhiên, khổ thơ cuối mang màu sắc u buồn, huyền ảo bởi nó chuyển sang miêu tả tâm trạng của nhà thơ khi nhớ về người tình xa cách ở xứ Huế mộng mơ, với những câu hỏi tự trách bản thân không tìm về nơi chốn thân thương. Sự đối lập giữa bối cảnh thiên nhiên tươi đẹp và nỗi day dứt trong lòng nhà thơ tạo nên sự chuyển biến từ sáng đến u buồn trong bài thơ.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "\"sông trăng\", \"áo em trắng\" đều mang sức gợi mạnh mẽ, tạo nên một thế giới thơ vừa quen thuộc vừa xa lạ, vừa thực vừa mộng. Đặc biệt, các hình ảnh trong bài liên kết với nhau theo trục cảm xúc của nhân vật trữ tình — từ sáng trong, tươi đẹp (khổ 1) đ..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "thể là lời tự hỏi của chính nhà thơ — tự trách bản thân sao không tìm về nơi chốn thân thương, nơi còn lưu giữ bao ký ức đẹp. Sự mơ hồ trong chủ thể lời hỏi tạo nên chiều sâu cảm xúc và sức gợi đặc biệt của câu thơ. Ngay sau câu hỏi ấy, bức tranh thô..."
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
       }
     ],
     "file": "Day_thon_Vi_Da_PhanTich.pdf",
@@ -271,8 +464,634 @@
     ],
     "files_metadata": {
       "Day_thon_Vi_Da_PhanTich.pdf": {
-        "upload_date": "2026-04-28 16:53:56",
-        "upload_timestamp": "2026-04-28T16:53:56.697525",
+        "upload_date": "2026-04-28 19:33:51",
+        "upload_timestamp": "2026-04-28T19:33:51.346237",
+        "file_type": "pdf",
+        "size_mb": 0.15
+      }
+    }
+  },
+  {
+    "id": 5,
+    "title": "Cho tôi doanh thu quý 1",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Cho tôi doanh thu quý 1"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin về doanh thu quý 1 trong tài liệu. Tài liệu đề cập đến cảnh quan và cuộc sống của một số nhân vật, nhưng không có thông tin liên quan đến doanh thu quý 1.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 11,
+            "file": "VoNhat.pdf",
+            "snippet": "Ngoài đình bỗng dội lên một hồi trống, dồn dập, vội vã. Đàn quạ trên những cây gạo cao chót vót ngoài bãi chợ hốt hoảng bay vù lên, lượn thành từng đám bay vần trên nền trời như những đám mây đen. Người con dâu khẽ thở dài, thị nói lí nhí trong miệng..."
+          },
+          {
+            "index": 2,
+            "page": 11,
+            "file": "VoNhat.pdf",
+            "snippet": "Im lặng một lúc thị lại tiếp: – Trên mạn Thái Nguyên, Bắc Giang người ta không chịu đóng thuế nữa đâu. Người ta còn phá cả kho thóc của Nhật, chia cho người đói nữa đấy. Tràng thần mặt ra nghĩ ngợi. Cái mặt to lớn bặm lại, khó đăm đăm. Miếng cám ngậm..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoNhat.pdf",
+            "snippet": "Nói thế Tràng cũng tưởng là nói đùa, ai ngờ thị về thật. Mới đầu anh chàng cũng chợn, nghĩ: thóc gạo này đến cái thân mình cũng chả biết có nuôi nổi không, lại còn đèo bòng. Sau không biết nghĩ thế nào hắn chặc lưỡi một cái: – Chặc, kệ! Hôm ấy hắn đư..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tràng là ai?"
+      },
+      {
+        "role": "assistant",
+        "content": "Tràng là một nhân vật trong văn bản, có thể là một người đàn ông đã về nhà sau khi làm việc ở chợ tỉnh. Anh ta được các con trẻ trong xóm ngụ cư chào đón vui vẻ nhưng hiện tại không còn có sự chào đón như trước nữa. Trong cảnh thứ hai, Tràng gặp Thị, một nhân vật khác trong văn bản, nhưng chưa rõ mối quan hệ giữa họ.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 3,
+            "file": "VoNhat.pdf",
+            "snippet": "– Này bác Tràng! Bác Tràng! … Sau một khuôn cửa tối, một cái đầu trọc thò ra gọi giật giọng. Tràng lật đật quay lại. – Về muộn mấy? Hẵng vào chơi cái đã nào. Tràng đứng lại thoái thác: – Thôi ông để cho đến hôm khác. Cái đầu trọc nháy nháy một con mắ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "VoNhat.pdf",
+            "snippet": "vây lấy hắn, reo cười váng lên: – A a a… Anh Tràng! Anh Tràng đã về chúng mày ơi! – Anh Tràng ơi bế em mấy… – Anh Tràng ơi đã uống rượu chưa? – Anh Tràng ơi!… Đứa túm đằng trước, đứa túm đằng sau, đứa cù, đứa kéo, đứa lôi chân không cho đi. Tràng chỉ..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "VoNhat.pdf",
+            "snippet": "Lần thứ hai, Tràng vừa trả hàng xong, ngồi uống nước ở ngoài cổng chợ tỉnh thì thị ở đâu sầm sập chạy đến. Thị đứng trước mặt hắn sưng sỉa nói: – Điêu! Người thế mà điêu! Hắn giương mắt nhìn thị, không hiểu. Thật ra lúc ấy hắn cũng chưa nhận ra thị l..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "VoNhat.pdf",
+    "files": [
+      "BaoCaoDoanhThu_2025.docx",
+      "VoNhat.pdf"
+    ],
+    "files_metadata": {
+      "BaoCaoDoanhThu_2025.docx": {
+        "upload_date": "2026-04-28 19:42:35",
+        "upload_timestamp": "2026-04-28T19:42:35.639561",
+        "file_type": "docx",
+        "size_mb": 0.01
+      },
+      "VoNhat.pdf": {
+        "upload_date": "2026-04-28 19:42:35",
+        "upload_timestamp": "2026-04-28T19:42:35.639561",
+        "file_type": "pdf",
+        "size_mb": 0.24
+      }
+    }
+  },
+  {
+    "id": 6,
+    "title": "Việc lặp lại chữ “ai” (“Vườn ai”, “Thuyền ai”, “...",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Việc lặp lại chữ “ai” (“Vườn ai”, “Thuyền ai”, “Ai biết tình ai”) mang lại hiệu quả nghệ thuật và cảm xúc như thế nào?"
+      },
+      {
+        "role": "assistant",
+        "content": "Việc lặp lại chữ \"ai\" trong bài thơ tạo nên một mạng lưới cảm xúc hư thực bao trùm toàn bộ tác phẩm. Chữ \"ai\" vừa phiếm chỉ vừa xác định, vừa gần vừa xa, vừa hỏi vừa không cần câu trả lời, mang đến cho người đọc một trải nghiệm cảm xúc phức tạp và sâu sắc.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 6,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Đặc biệt, chữ \"ai\" được dùng như một sợi chỉ đỏ xuyên suốt bài thơ: \"Vườn ai mướt quá\", \"Thuyền ai đậu bến\", \"Ai biết tình ai\". Chữ \"ai\" vừa phiếm chỉ vừa xác định, vừa gần vừa xa, vừa hỏi vừa không cần câu trả lời — tạo nên một mạng lưới cảm xúc hư ..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "thể là lời tự hỏi của chính nhà thơ — tự trách bản thân sao không tìm về nơi chốn thân thương, nơi còn lưu giữ bao ký ức đẹp. Sự mơ hồ trong chủ thể lời hỏi tạo nên chiều sâu cảm xúc và sức gợi đặc biệt của câu thơ. Ngay sau câu hỏi ấy, bức tranh thô..."
+          },
+          {
+            "index": 3,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "quan hệ giữa hai con người. Trong màn sương khói ấy, bóng người nhòa đi, tình người cũng có thể nhòa đi theo. Xứ Huế mộng mơ bỗng trở thành ranh giới giữa thực và ảo, giữa gần và xa, giữa hạnh phúc và đau thương. Câu kết bài thơ \"Ai biết tình ai có đ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Vai trò của thiên nhiên trong việc thể hiện nội tâm nhân vật trữ tình trong bài thơ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Thiên nhiên trong bài thơ đóng vai trò quan trọng trong việc thể hiện nội tâm nhân vật trữ tình. Cụ thể, qua các hình ảnh như \"nắng hàng cau\", \"dòng nước buồn thiu\", nhà thơ tạo nên một không gian thiên nhiên vừa tươi đẹp, rực rỡ ở khổ 1, đến u buồn, mơ hồ ở khổ 2, phản ánh tâm trạng của nhân vật. Những biểu tượng này không chỉ gợi lên bức tranh thiên nhiên thôn Vĩ mà còn thể hiện sự chuyển biến cảm xúc từ hy vọng, mong nhớ sang nỗi buồn chia ly của nhân vật trữ tình.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 3,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "thể là lời tự hỏi của chính nhà thơ — tự trách bản thân sao không tìm về nơi chốn thân thương, nơi còn lưu giữ bao ký ức đẹp. Sự mơ hồ trong chủ thể lời hỏi tạo nên chiều sâu cảm xúc và sức gợi đặc biệt của câu thơ. Ngay sau câu hỏi ấy, bức tranh thô..."
+          },
+          {
+            "index": 3,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "\"sông trăng\", \"áo em trắng\" đều mang sức gợi mạnh mẽ, tạo nên một thế giới thơ vừa quen thuộc vừa xa lạ, vừa thực vừa mộng. Đặc biệt, các hình ảnh trong bài liên kết với nhau theo trục cảm xúc của nhân vật trữ tình — từ sáng trong, tươi đẹp (khổ 1) đ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "Day_thon_Vi_Da_PhanTich.pdf",
+    "files": [
+      "Day_thon_Vi_Da_PhanTich.pdf"
+    ],
+    "files_metadata": {
+      "Day_thon_Vi_Da_PhanTich.pdf": {
+        "upload_date": "2026-04-28 19:48:00",
+        "upload_timestamp": "2026-04-28T19:48:00.543118",
+        "file_type": "pdf",
+        "size_mb": 0.15
+      }
+    }
+  },
+  {
+    "id": 7,
+    "title": "Bài thơ “Đây thôn Vĩ Dạ” được sáng tác năm nào v...",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Bài thơ “Đây thôn Vĩ Dạ” được sáng tác năm nào và lấy cảm hứng từ đâu?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" được sáng tác khoảng năm 1938, khi Hàn Mặc Tử đang chữa bệnh tại Quy Nhơn. Bài thơ được gợi cảm hứng từ tấm bưu thiếp có hình ảnh xứ Huế mà cô gái tên Hoàng Cúc - người mà ông thầm yêu - gửi cho ông.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "sức sống và vẻ đẹp rực rỡ của buổi bình minh thôn Vĩ. Những hàng cau cao vút vươn mình đón lấy những tia nắng sớm tinh khôi — hình ảnh quen thuộc của làng quê Việt Nam nhưng dưới ngòi bút Hàn Mặc Tử lại trở nên đặc biệt thơ mộng và đậm chất Huế. Câu ..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 9,
+          "query_used": "Bài thơ “Đây thôn Vĩ Dạ” được sáng tác năm nào và lấy cảm hứng từ đâu?",
+          "evaluation": {
+            "score": 9,
+            "reason": "Câu trả lời chính xác về năm sáng tác và nguồn cảm hứng của bài thơ",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Phân tích giá trị nội dung và nghệ thuật của bài thơ “Đây thôn Vĩ Dạ”."
+      },
+      {
+        "role": "assistant",
+        "content": "Giá trị nội dung của bài thơ \"Đây thôn Vĩ Dạ\" phản ánh tình yêu u uất nhưng trong sáng của Hàn Mặc Tử dành cho cô gái Huế. Qua những câu hỏi và hình ảnh thiên nhiên, nhà thơ thể hiện nỗi nhớ nhung, day dứt, và khát vọng được yêu thương trọn vẹn.\n\nGiá trị nghệ thuật của bài thơ thể hiện qua việc sử dụng hệ thống hình ảnh phong phú, vừa cụ thể như \"nắng hàng cau\" và \"vườn xanh như ngọc\", vừa huyền ảo. Nghệ thuật đối xứng và sự đối lập giữa thực và ảo trong bài thơ cũng giúp tạo nên sức mạnh cảm xúc đặc biệt.\n\nBài thơ còn là một bức tranh thiên nhiên xứ Huế tuyệt đẹp, hòa quyện với tâm trạng của nhân vật trữ tình sâu sắc, phản ánh khát vọng được yêu thương trọn vẹn trước sự hữu hạn của cuộc đời.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 6,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "khát vọng được yêu và được sống trọn vẹn. Trải qua bao năm tháng, \"Đây thôn Vĩ Dạ\" vẫn còn nguyên sức lay động day dứt lòng người đọc. Cái tình Hàn Mặc Tử — vừa nồng nàn vừa u uất, vừa trong sáng vừa huyền bí — đã trở thành một phần không thể thiếu c..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 9,
+          "query_used": "Phân tích giá trị nội dung và nghệ thuật của bài thơ “Đây thôn Vĩ Dạ”.",
+          "evaluation": {
+            "score": 9,
+            "reason": "Phân tích chính xác về nội dung và nghệ thuật của bài thơ",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Tại sao bài thơ chuyển từ không khí tươi sáng ở khổ 1 sang u buồn, huyền ảo ở khổ 3? Nhà thơ đang thể hiện tâm trạng gì?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bài thơ chuyển từ không khí tươi sáng ở khổ 1 sang u buồn, huyền ảo ở khổ 3 do nhà thơ muốn thể hiện tâm trạng khắc khoải, nhớ nhung và mặc cảm chia lìa. Khổ thơ thứ nhất mô tả bức tranh thiên nhiên tươi đẹp của thôn Vĩ, gợi lên sự bình yên và hạnh phúc. Tuy nhiên, tới khổ thơ thứ ba, tâm trạng của nhà thơ trở nên u uẩn, mơ hồ với những câu hỏi tu từ không lời đáp. Điều này phản ánh tình cảm xa lìa, mong nhớ người thương mà không thể nắm bắt, cùng nỗi hoài nghi về tình người.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+          },
+          {
+            "index": 3,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "quan hệ giữa hai con người. Trong màn sương khói ấy, bóng người nhòa đi, tình người cũng có thể nhòa đi theo. Xứ Huế mộng mơ bỗng trở thành ranh giới giữa thực và ảo, giữa gần và xa, giữa hạnh phúc và đau thương. Câu kết bài thơ \"Ai biết tình ai có đ..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 8,
+          "query_used": "Tại sao bài thơ chuyển từ không khí tươi sáng ở khổ 1 sang u buồn, huyền ảo ở khổ 3? Nhà thơ đang thể hiện tâm trạng gì?",
+          "evaluation": {
+            "score": 8,
+            "reason": "Đáp án chính xác và đầy đủ thông tin cần thiết.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Chữ “ai” được lặp lại nhiều lần trong bài thơ có vai trò nghệ thuật và triết lý như thế nào?"
+      },
+      {
+        "role": "assistant",
+        "content": "Chữ \"ai\" được lặp lại nhiều lần trong bài thơ, tạo nên một mạng lưới cảm xúc hư thực bao trùm toàn bộ tác phẩm. Nó vừa phiếm chỉ vừa xác định, vừa gần gũi vừa xa xôi, vừa hỏi mà không cần câu trả lời - góp phần làm nổi bật tình yêu mông mơ và khát vọng của nhà thơ. Chữ \"ai\" thể hiện sự bất an, day dứt về mối tình dang dở cũng như nỗi lòng của một tâm hồn lãng mạn trước cuộc đời đầy nghiệt ngã.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 6,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Đặc biệt, chữ \"ai\" được dùng như một sợi chỉ đỏ xuyên suốt bài thơ: \"Vườn ai mướt quá\", \"Thuyền ai đậu bến\", \"Ai biết tình ai\". Chữ \"ai\" vừa phiếm chỉ vừa xác định, vừa gần vừa xa, vừa hỏi vừa không cần câu trả lời — tạo nên một mạng lưới cảm xúc hư ..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "PHÂN TÍCH BÀI THƠ \"ĐÂY THÔN VĨ DẠ\" CỦA HÀN MẶC TỬ Ngữ văn 11 - Phân tích tác phẩm thơ I. MỞ BÀI Trong nền văn học Việt Nam giai đoạn 1930-1945, phong trào Thơ Mới đã để lại dấu ấn sâu đậm với nhiều tên tuổi lớn. Trong số đó, Hàn Mặc Tử được xem là mộ..."
+          },
+          {
+            "index": 3,
+            "page": 3,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 1,
+          "confidence": 8,
+          "query_used": "Chữ “ai” được lặp lại nhiều lần trong bài thơ có vai trò nghệ thuật và triết lý như thế nào?",
+          "evaluation": {
+            "score": 8,
+            "reason": "Đáp án đã phân tích đúng vai trò nghệ thuật và triết lý của chữ “ai” trong bài thơ.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": null
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Bài thơ đó nói về cái gì vậy?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bài thơ \"Đây thôn Vĩ Dạ\" của Hàn Mặc Tử nói về cảnh vật thiên nhiên và tâm trạng tình yêu trong sáng. Bức tranh thiên nhiên thôn Vĩ được xây dựng sinh động, từ bầu trời đến mặt đất, thể hiện vẻ đẹp tươi mới của buổi bình minh. Tuy nhiên, bài thơ cũng thể hiện nỗi buồn chia ly khi nhà thơ nhìn thấy sự xa cách giữa gió và mây, dòng sông êm đềm nhưng mang theo nỗi buồn thiu cùng câu hỏi ám ảnh về tình yêu. Cuối cùng, bài thơ khép lại với một câu hỏi tu từ sâu lắng về tình yêu có đậm đà hay không, để lại cho người đọc nhiều suy ngẫm.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 3,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          },
+          {
+            "index": 3,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "quan hệ giữa hai con người. Trong màn sương khói ấy, bóng người nhòa đi, tình người cũng có thể nhòa đi theo. Xứ Huế mộng mơ bỗng trở thành ranh giới giữa thực và ảo, giữa gần và xa, giữa hạnh phúc và đau thương. Câu kết bài thơ \"Ai biết tình ai có đ..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 3,
+          "confidence": 8,
+          "query_used": "Bài thơ này mô tả về điều gì?",
+          "evaluation": {
+            "score": 8,
+            "reason": "Câu trả lời đã bao quát được nội dung chính của bài thơ, nhưng chưa nhấn mạnh đủ vào đặc điểm nghệ thuật và mối liên hệ giữa cảnh vật thiên nhiên với tâm trạng tình yêu trong sáng.",
+            "is_sufficient": false
+          },
+          "multi_hop_steps": [
+            "Bài thơ được đề cập ở đâu?",
+            "Nội dung chính của bài thơ là gì?"
+          ]
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Chữ “ai” xuất hiện nhiều lần trong bài thơ có vai trò gì và nhà thơ muốn nói lên điều gì qua việc sử dụng từ này?"
+      },
+      {
+        "role": "assistant",
+        "content": "Trong bài thơ \"Đây thôn Vĩ Dạ\", chữ \"ai\" được sử dụng xuyên suốt như một sợi chỉ đỏ, xuất hiện trong nhiều câu như \"Vườn ai mướt quá\", \"Thuyền ai đậu bến\", và đặc biệt là \"Ai biết tình ai\". Chữ \"ai\" không chỉ là đại từ phiếm chỉ đơn thuần, mà còn mang hàm ý sâu sắc. Nó thể hiện sự mơ hồ giữa thực tế và ảo tưởng, giữa gần gũi và xa cách trong tâm trạng nhà thơ. \n\nNhà thơ sử dụng chữ \"ai\" để khơi gợi những suy nghĩ mơ hồ về tình yêu, về mối quan hệ không rõ ràng với cô gái Huế. Đồng thời, nó cũng phản ánh sự thất vọng lặng lẽ và khao khát tình yêu của nhà thơ mà không thể đạt được trọn vẹn. Qua việc sử dụng từ này, Hàn Mặc Tử muốn truyền tải cảm xúc phức tạp, vừa là nhớ nhung, day dứt, vừa là hy vọng mong manh nhưng cũng đầy u buồn trong tâm hồn ông.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 5,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "quan hệ giữa hai con người. Trong màn sương khói ấy, bóng người nhòa đi, tình người cũng có thể nhòa đi theo. Xứ Huế mộng mơ bỗng trở thành ranh giới giữa thực và ảo, giữa gần và xa, giữa hạnh phúc và đau thương. Câu kết bài thơ \"Ai biết tình ai có đ..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          },
+          {
+            "index": 3,
+            "page": 6,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Đặc biệt, chữ \"ai\" được dùng như một sợi chỉ đỏ xuyên suốt bài thơ: \"Vườn ai mướt quá\", \"Thuyền ai đậu bến\", \"Ai biết tình ai\". Chữ \"ai\" vừa phiếm chỉ vừa xác định, vừa gần vừa xa, vừa hỏi vừa không cần câu trả lời — tạo nên một mạng lưới cảm xúc hư ..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 2,
+          "confidence": 8,
+          "query_used": "Chữ \"ai\" lặp đi lặp lại trong bài thơ có ý nghĩa gì và nhà thơ mong muốn truyền đạt thông điệp nào qua việc sử dụng từ này?",
+          "evaluation": {
+            "score": 8,
+            "reason": "Trả lời chính xác về vai trò của chữ 'ai' và ý nghĩa nhà thơ muốn truyền tải.",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": [
+            "Trong bài thơ, chữ \"ai\" xuất hiện bao nhiêu lần?",
+            "Chữ \"ai\" được sử dụng ở những vị trí nào trong bài thơ?",
+            "Nhà thơ sử dụng chữ \"ai\" để muốn nhấn mạnh điều gì?"
+          ]
+        },
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Nhiều ý kiến cho rằng “Đây thôn Vĩ Dạ” không chỉ là bài thơ tình mà còn là lời từ biệt với cuộc đời. Bạn đánh giá nhận định này đến mức nào?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nhận định này có độ chính xác cao dựa trên nội dung của.Context. Bài thơ \"Đây thôn Vĩ Dạ\" thực sự thể hiện một tâm trạng phức tạp, không chỉ là bài thơ tình đơn thuần mà còn mang tính từ biệt với cuộc đời.\n\nBài thơ bộc lộ nỗi day dứt về những ký ức đẹp đẽ cùng mối tình dang dở. Đồng thời, thông qua hình ảnh \"trăng\" và câu hỏi \"Có chở trăng về kịp tối nay?\", tác giả thể hiện nỗi lo lắng trước sự hữu hạn của cuộc đời và khát vọng được yêu thương trọn vẹn. Điều này cho thấy bài thơ không chỉ dừng lại ở tình cảm lãng mạn mà còn mang giá trị nhân văn sâu sắc, là tiếng nói của con người đối diện với thực tại.\n\nTóm lại, nhận định này đánh giá đúng bản chất của bài thơ, thể hiện sự phong phú và đa nghĩa của tác phẩm.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 6,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Đặc biệt, chữ \"ai\" được dùng như một sợi chỉ đỏ xuyên suốt bài thơ: \"Vườn ai mướt quá\", \"Thuyền ai đậu bến\", \"Ai biết tình ai\". Chữ \"ai\" vừa phiếm chỉ vừa xác định, vừa gần vừa xa, vừa hỏi vừa không cần câu trả lời — tạo nên một mạng lưới cảm xúc hư ..."
+          },
+          {
+            "index": 2,
+            "page": 2,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "Chính hoàn cảnh đó đã khơi dậy trong lòng nhà thơ bao nhiêu ký ức, thương nhớ và day dứt về xứ Huế mộng mơ cùng mối tình dang dở. 2. Khổ thơ thứ nhất — Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo ..."
+          },
+          {
+            "index": 3,
+            "page": 3,
+            "file": "Day_thon_Vi_Da_PhanTich.pdf",
+            "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa quyện trong thiên nhiên, tạo nên vẻ đẹp hư ảo, thấp thoáng. Cả ba câu thơ dựng lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng, hàng cau), xuống mặt đất (khu vườn), đến con người (khuôn..."
+          }
+        ],
+        "self_rag_meta": {
+          "attempts": 2,
+          "confidence": 9,
+          "query_used": "Đánh giá của nhiều người cho rằng \"Đây thôn Vĩ Dạ\" không chỉ là một bài thơ tình đơn thuần mà còn chứa đựng ý nghĩa từ biệt với cuộc đời. Bạn đồng ý với quan điểm này đến đâu?",
+          "evaluation": {
+            "score": 9,
+            "reason": "Đánh giá chính xác nội dung và ý nghĩa của bài thơ",
+            "is_sufficient": true
+          },
+          "multi_hop_steps": [
+            "Bài thơ \"Đây thôn Vĩ Dạ\" nói về nội dung gì?",
+            "Bài thơ có những biểu hiện nào gợi ý đây là lời từ biệt cuộc đời?"
+          ]
+        },
+        "mode": "rag"
+      }
+    ],
+    "file": "Day_thon_Vi_Da_PhanTich.pdf",
+    "files": [
+      "Day_thon_Vi_Da_PhanTich.pdf"
+    ],
+    "files_metadata": {
+      "Day_thon_Vi_Da_PhanTich.pdf": {
+        "upload_date": "2026-04-28 19:59:32",
+        "upload_timestamp": "2026-04-28T19:59:32.241769",
+        "file_type": "pdf",
+        "size_mb": 0.15
+      }
+    }
+  },
+  {
+    "id": 8,
+    "title": "Tác giả của bài thơ “Lưu biệt khi xuất dương” là...",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Tác giả của bài thơ “Lưu biệt khi xuất dương” là ai? Ông sinh năm nào và mất năm nào?"
+      },
+      {
+        "role": "assistant",
+        "content": "Không tìm thấy thông tin trong tài liệu về tác giả của bài thơ \"Lưu biệt khi xuất Dương\" cũng như năm sinh và năm mất của ông. Tài liệu chỉ đề cập đến Phan Bội Châu làm bài thơ này, nhưng không có thông tin cụ thể về tuổi tác của ông.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "đường sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dưong để từ giã bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 đẹp lãng hùng quê làng Pháp tưởng ngưòi lập Duy ông Đông ông không quyền sóng tráng công lóng phẩm Trùng vong hợp lóng duy..."
+          },
+          {
+            "index": 2,
+            "page": 3,
+            "file": "sách văn img.pdf",
+            "snippet": "HƯỚNG DẪN HỌC BÀI 1. Tiểu dẫn, chú ý bối cảnh lịch sử đất nước và những ảnh hưởng từ nước để hiểu bài thơ. 2.Tưduy mới mẻ, táo bạo và khát vọng hành động của nhà chí sĩ cách mạng trong buổi ra đi tìm cứu nước được biểu lộ như thế nào ? Dựa trên cảm x..."
+          },
+          {
+            "index": 3,
+            "page": 2,
+            "file": "sách văn img.pdf",
+            "snippet": "VĂN BẢN Phiên âm Sinh vi nam tử yếu hi kì, hứa càn khôn tự chuyển di. Ư bách niên trung tu hữu ngã, Khởi thiên tải hậu cánh vô thuỳ. son tử hĩ sinh đồ nhuế, Hiền thánh liêu nhiên tụng diệc si Nguyện trục trường phong hải khứ, Thiên bạch nhất tề phi. ..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      },
+      {
+        "role": "user",
+        "content": "Phan Bội Châu là ai ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Phan Bội Châu (1867-1940) tên thuở nhỏ là Phan Văn San, biệt hiệu chính là Sào Nam. Ông là một nhà yêu nước và cách mạng đầu thế kỷ XX, cũng như là một nhà văn lớn với nhiều tác phẩm nổi tiếng như Việt Nam vong quốc sử, Hải ngoại huyết thu, Ngục trung thu… Không những vậy, ông còn là một trong những nhà nho Việt Nam sớm nuôi ý định tìm con đường cứu nước mới. Phan Bội Châu bị thực dân Pháp bắt và giam giữ tại Huế cho đến khi qua đời.",
+        "citations": [
+          {
+            "index": 1,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "mật thủ tiêu. Truớc làn đấu tranh sôi sục của nhân dân cả nước, nhà cầm buộc phải đua ông ra xử khai tại Hà Nội. Phan Bội Châu được án, nhung bị giam ở Huế cho đến lúc qua đời. Không những là nhà yêu nuớc và cách mạng Phan Bội Châu còn là nhà văn lớn..."
+          },
+          {
+            "index": 2,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "LUU BIỆT KHI XUẤT DƯƠNG (1) PHAN BỘI CHÂU (Xuất dưong luu biệt) KẾT QUÁ CẦN ĐẠT Cám nhận được vẻ mạn hào cúa nhà chí sĩ cách mạng đầu thế kỉ XX và giọng thơ tâm huyết sôi trào cúa Phan Bội Châu. TlỂU DẪN Phan Bội Châu (1867 1940) tên thuở nhỏ là Phan..."
+          },
+          {
+            "index": 3,
+            "page": 1,
+            "file": "sách văn img.pdf",
+            "snippet": "đường sang Nhật Bản, ông làm bài thơ Luu biệt khi xuất dưong để từ giã bạn bè, đồng chí. (1) Xuất ra nước ngoài Phan Bội Châu 3 đẹp lãng hùng quê làng Pháp tưởng ngưòi lập Duy ông Đông ông không quyền sóng tráng công lóng phẩm Trùng vong hợp lóng duy..."
+          }
+        ],
+        "self_rag_meta": null,
+        "mode": "rag"
+      }
+    ],
+    "file": "sách văn img.pdf",
+    "files": [
+      "sách văn img.pdf"
+    ],
+    "files_metadata": {
+      "sách văn img.pdf": {
+        "upload_date": "2026-04-28 20:19:26",
+        "upload_timestamp": "2026-04-28T20:19:26.523159",
+        "file_type": "pdf",
+        "size_mb": 0.92
+      }
+    }
+  },
+  {
+    "id": 9,
+    "title": "Bài thơ “Đây thôn Vĩ Dạ” chủ yếu nói về điều gì?",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Bài thơ “Đây thôn Vĩ Dạ” chủ yếu nói về điều gì?"
+      },
+      {
+        "role": "assistant",
+        "mode": "rag+corag",
+        "compare_data": {
+          "rag": {
+            "response": "Bài thơ \"Đây thôn Vĩ Dạ\" chủ yếu nói về cảm xúc nhớ nhung, thương nhớ quê hương Huế của nhà thơ và tình yêu chưa trọn vẹn. Qua những hình ảnh thiên nhiên tươi đẹp như cau xanh ngọc, vườn mướt xanh, nhà thơ thể hiện nỗi lòng khao khát tìm về nơi chốn thân quen nhưng cũng không thể quên đi nỗi buồn xa cách.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 2,
+                "file": "Day_thon_Vi_Da_PhanTich.pdf",
+                "snippet": "Chính hoàn cảnh đó đã khơi dậy trong nhà thơ bao nhiêu ký ức, thương nhớ và dứt về xứ Huế mộng mơ mối tình dở. 2. Khổ thơ thứ nhất - Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo bao tình ý: Sao anh..."
+              },
+              {
+                "index": 2,
+                "page": 3,
+                "file": "Day_thon_Vi_Da_PhanTich.pdf",
+                "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa trong thiên nhiên; tạo nên vẻ hư thấp thoáng. Cả ba câu thơ lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng; hàng cau), xuống mặt đất (khu vườn) ; đến con (khuôn mặt chữ điền). Đó là bứ..."
+              },
+              {
+                "index": 3,
+                "page": 5,
+                "file": "Day_thon_Vi_Da_PhanTich.pdf",
+                "snippet": "quan hệ giữa hai con Trong màn sương khói ấy, người nhòa đi; tình người có thể nhòa đi theo. Xứ Huế mộng mơ trở thành ranh giới giữa thực và ả0, giữa gần và xa, giữa hạnh phúc và đau thương: Câu kết bài thơ \"Ai biết tình ai có đậm đà?\" là một câu hỏi..."
+              }
+            ]
+          },
+          "corag": {
+            "response": "Bài thơ \"Đây thôn Vĩ Dạ\" chủ yếu nói về ký ức và tình yêu dành cho làng quê Huế mộng mơ. Thông qua bức tranh thiên nhiên tươi đẹp của buổi bình minh và hình ảnh cô thôn nữ, nhà thơ thể hiện nỗi nhớ thương sâu sắc đối với nơi chốn thân thuộc.",
+            "citations": [
+              {
+                "index": 1,
+                "page": 2,
+                "file": "Day_thon_Vi_Da_PhanTich.pdf",
+                "snippet": "Chính hoàn cảnh đó đã khơi dậy trong nhà thơ bao nhiêu ký ức, thương nhớ và dứt về xứ Huế mộng mơ mối tình dở. 2. Khổ thơ thứ nhất - Bức tranh thiên nhiên thôn Vĩ và tình yêu tha thiết Mở đầu bài thơ là một câu hỏi tu từ mang theo bao tình ý: Sao anh..."
+              },
+              {
+                "index": 2,
+                "page": 4,
+                "file": "Day_thon_Vi_Da_PhanTich.pdf",
+                "snippet": "những mơ. Từ 'mơ' mở đầu câu thơ xác định rõ tính chất ảo mộng của toàn bộ khổ thơ này đây là cõi mộng; không thực tai. \"Áo em nhìn không ra' màu của chiếc á0 dài Huế trở thành màu của sự tinh khiết, đến mức gần như vô hình trong màn sương: Hình ảnh ..."
+              },
+              {
+                "index": 3,
+                "page": 3,
+                "file": "Day_thon_Vi_Da_PhanTich.pdf",
+                "snippet": "mai, thanh tú. Đây là hình ảnh con người hòa trong thiên nhiên; tạo nên vẻ hư thấp thoáng. Cả ba câu thơ lên một bức tranh thiên nhiên thôn Vĩ hoàn chỉnh: từ bầu trời (nắng; hàng cau), xuống mặt đất (khu vườn) ; đến con (khuôn mặt chữ điền). Đó là bứ..."
+              }
+            ]
+          }
+        },
+        "content": null,
+        "citations": null,
+        "self_rag_meta": null
+      }
+    ],
+    "file": "Day_thon_Vi_Da_PhanTich.pdf",
+    "files": [
+      "Day_thon_Vi_Da_PhanTich.pdf"
+    ],
+    "files_metadata": {
+      "Day_thon_Vi_Da_PhanTich.pdf": {
+        "upload_date": "2026-04-28 20:26:02",
+        "upload_timestamp": "2026-04-28T20:26:02.989232",
         "file_type": "pdf",
         "size_mb": 0.15
       }

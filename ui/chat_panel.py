@@ -163,9 +163,9 @@ def handle_query(prompt, settings, save_current_session_fn, create_new_chat_sess
                     selected = st.session_state.get("source_filter_select")
                     if selected and selected != "Tất cả tài liệu":
                         source_filter = selected
-                        logger.info(f"🔍 Áp dụng filter theo file: {source_filter}")
+                        logger.info(f"Áp dụng filter theo file: {source_filter}")
                     else:
-                        logger.info("🔍 Tìm kiếm trong TẤT CẢ tài liệu (không filter source)")
+                        logger.info("Tìm kiếm trong TẤT CẢ tài liệu (không filter source)")
 
                 retriever_kwargs = {
                     "k": top_k, 
